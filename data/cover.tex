@@ -1,0 +1,116 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+\secretlevel{保密} 
+\secretyear{2}
+
+\ctitle{基于弹性波模式解耦的全波形反演方法}
+
+% 按照申请工学学位设计。如有其它需要，请修改相应文字。
+\makeatletter
+  \iftongji@doctor
+    \cdegree{博士}
+  \else
+    \iftongji@master
+      \cdegree{理学硕士}
+    \fi
+  \fi
+
+\makeatother
+
+\cdepartment{同济大学海洋学院}
+
+\cmajorfirst{固体地球物理}
+
+\degtype{理学}
+
+\cauthor{王腾飞}
+
+\cstnr{1110701}
+
+\csupervisor{程玖兵 教授}
+
+% 如果没有副指导老师或者联合指导老师，把各自{}中内容留空即可。
+
+\cassosupervisor{}
+
+\ccosupervisor{}
+
+% 日期自动生成，如果你要自己写就改这个cdate
+%\cdate{\CJKdigits{\the\year}年\CJKnumber{\the\month}月}
+\makeatletter
+  \iftongji@doctor
+    \edegree{Doctor of Philosophy}
+  \else
+    \iftongji@master
+      \edegree{Master of Science}
+    \fi
+  \fi
+
+\makeatother
+
+%\cfunds{自然基金项目(No.123456789)}
+
+%\efunds{(Supported by the Natural Science Foundation of China for\\ Distinguished
+%         Young Scholars, Grant No.123456789)}
+
+\etitle{Elastic Full waveform inversion based on wave mode decomposition}
+
+\edepartment{School of Ocean and Earth Science}
+
+\edispline{Natural Science}
+
+\emajorfirst{Solid Geophysics}
+%\emajorsecond{TONGJILUG}
+
+\eauthor{Tengfei Wang}
+
+\esupervisor{Prof. Jiubing Cheng}
+
+%\eassosupervisor{Prof. Gang Wan}
+
+% 这个日期也会自动生成，你要改么？
+% \edate{May, 2009}
+
+% 定义中英文摘要和关键字
+\begin{cabstract}
+	弹性波全波形反演方法（EFWI）想要通过最小化实际观测到的多分量数据与正演模拟的数据
+	之间的残差来获得高分辨率的地下参数模型。由于Hessian矩阵的显式计算与反演代价十分
+	巨大，大规模的应用问题通常采用梯度类的最优化方法而非基于Hessian的方法。然而多参数
+	反演中，参数耦合效应会引起不同参数间梯度的串扰，进而会严重影响反演过程的速度与精度。
+	近期以来，弹性波模式解偶的方法被用来对梯度进行预条件从而降低EFWI过程中的参数耦合
+	问题。在本文中，我们提出了一种基于模式解偶（MD）的EFWI方法，该方法在时间域通过正传
+	与解偶的反传波场之间的互相关来获得梯度。基于解偶的Frech$\acute{e}t$导数，我们通过分析
+	Hessian矩阵和分辨率矩阵、对比Gauss-Newton梯度来解释本方法的物理机制。简单流体饱和模
+	型与Marmousi-II模型的数值实例，证明了基于MD的预条件共轭梯度法可以降低P-波和S-波速度
+	之间的参数耦合，并且在不涉及Hessian计算的同时获得快速的收敛。
+\end{cabstract}
+
+\ckeywords{\TeX, \LaTeX, CJK}
+
+\begin{eabstract}
+Elastic full waveform inversion (EFWI) aims to reduce the misfit between recorded and modelled multi-component
+seismic data for deducing a detailed model of elastic parameters in the subsurface.
+Because the explicit computation and inversion of the Hessian matrix
+is extremely resource intensive,
+a gradient-based (rather than Hessian-based) minimization is generally applied for large-scale applications.
+However, the multi-parameter trade-off effects cause cross-talks in the computed gradients and
+thus severely affect the convergence and the quality of the inverted model.
+Recently, preconditioning the gradients based on elastic wave mode decomposition
+has been suggested for mitigating the parameter trade-offs in the EFWI process.
+In this paper, we propose a mode decomposition (MD)-based EFWI approach, in which the preconditioned gradients
+are obtained through the cross-correlation of the forward and
+decomposed adjoint wavefields in the time domain.
+Based on the decomposed Frech{$\acute{e}$}t derivatives,
+we explain the mechanism of this approach through analyses of Hessian and resolution matrices
+and comparisons with the Gauss-Newton gradients.
+Numerical examples of a simple fluid-saturated model and the Marmousi-II model
+demonstrate that the MD-based preconditioned conjugate-gradient approach
+can mitigate the trade-off between the P- and S-wave velocities and achieve fast
+convergence without any Hessian-involved calculations.
+\end{eabstract}
+
+\ekeywords{Waveform inversion, Elasticity, Mode decomposition, Resolution matrix
+}

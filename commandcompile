@@ -1,0 +1,5 @@
+rm thesis.aux thesis.log thesis.out thesis.toc thesis.bbl thesis.blg 
+xelatex thesis.tex
+bibtex thesis.aux
+xelatex thesis.tex
+xelatex thesis.tex

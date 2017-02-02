@@ -1,0 +1,26 @@
+\chapter{共轭状态法推导弹性波WERTI的梯度}
+\label{cha:AdjointForEWERTI}
+本节中，我们采用Plessix(2006)给出的共轭状态法导出弹性波WERTI的梯度。我们共有三个状态方程其中两个为式\eqref{eq:WE}
+和\eqref{eq:DeltaWE}。第三个状态方程来自DIW的优化约束。
+
+我们知道DIW是要找出$\mathbf{\tau}=\tau(\mathbf{x}_r,t;\mathbf{x}_s)$，使得目标函数$D(l)$最小，其中$D(l)$为：
+\begin{equation}
+	D(\tau)=\frac{1}{2}\int
+	d\mathbf{x}_sd\mathbf{x}_r(d_c(\mathbf{x}_r,t;\mathbf{x}_s)-
+	d_o(\mathbf{x}_r,t+\tau(\mathbf{x}_r,t;\mathbf{x}_s);\mathbf{x}_s))^2
+        \label{eq:Dl}
+\end{equation}
+而目标函数最小则需要满足：
+
+\begin{equation}
+	\frac{\partial D}{\partial \tau}=\int
+	d\mathbf{x}_sd\mathbf{x}_ru(\mathbf{x}_r,t;\mathbf{x}_s)=0.
+        \label{eq:PartialD}
+\end{equation}
+其中$u(\mathbf{x}_r,t;\mathbf{x}_s)=\dot{d}_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)(d_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)-
+d_c(\mathbf{x}_r,t;\mathbf{x}_s))$
+偏导数$\frac{\partial D}{\partial
+\tau}$一定为0，如果不为0，则我们总能找到一个$\tau$使得$D$变得更小，而这与DIW找到的最小值相矛盾。则式\eqref{eq:Partial}为
+第三个状态方程。我们可以定义增广函数：
+
+

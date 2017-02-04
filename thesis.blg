@@ -7,6 +7,7 @@ A level-1 auxiliary file: data/chap02.aux
 The style file: tongjibib.bst
 A level-1 auxiliary file: ack.aux
 A level-1 auxiliary file: appendix01.aux
+A level-1 auxiliary file: appendix02.aux
 A level-1 auxiliary file: resume.aux
 Database file #1: reference.bib
 I was expecting a `,' or a `}'---line 247 of file reference.bib
@@ -74,7 +75,7 @@ Warning--there's a publisher but no address in snieder1999inverse
 Warning--there's a publisher but no address in mavko2009rock
 You've used 61 entries,
             2219 wiz_defined-function locations,
-            896 strings with 14775 characters,
+            897 strings with 14789 characters,
 and the built_in function-call counts, 28361 in all, are:
 = -- 2803
 > -- 711

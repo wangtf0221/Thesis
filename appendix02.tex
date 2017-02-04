@@ -11,16 +11,68 @@
         \label{eq:Dl}
 \end{equation}
 而目标函数最小则需要满足：
-
 \begin{equation}
 	\frac{\partial D}{\partial \tau}=\int
-	d\mathbf{x}_sd\mathbf{x}_ru(\mathbf{x}_r,t;\mathbf{x}_s)=0.
+	d\mathbf{x}_sd\mathbf{x}_r\alpha(\mathbf{x}_r,t;\mathbf{x}_s)=0.
         \label{eq:PartialD}
 \end{equation}
-其中$u(\mathbf{x}_r,t;\mathbf{x}_s)=\dot{d}_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)(d_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)-
+其中$\alpha(\mathbf{x}_r,t;\mathbf{x}_s)=\dot{d}_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)(d_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)-
 d_c(\mathbf{x}_r,t;\mathbf{x}_s))$
 偏导数$\frac{\partial D}{\partial
-\tau}$一定为0，如果不为0，则我们总能找到一个$\tau$使得$D$变得更小，而这与DIW找到的最小值相矛盾。则式\eqref{eq:Partial}为
+\tau}$一定为0，如果不为0，则我们总能找到一个$\tau$使得$D$变得更小，而这与DIW找到的最小值相矛盾。则式\eqref{eq:PartialD}为
 第三个状态方程。我们可以定义增广函数：
+\begin{equation}
+	\begin{split}
+	\mathcal{L}(\mathbf{\tau},\mathbf{u},\mathbf{\psi},\mathbf{\mu},\bar{\mathbf{u}},\bar{\mathbf{\psi}})
+	&=\frac{1}{2}\int \tau^2(\mathbf{x}_r,t;\mathbf{x}_s)d\mathbf{x}_sd\mathbf{x}_rdt\\
+	&-\int
+	\mu(\mathbf{x}_r,t;\mathbf{x}_s)\alpha(\mathbf{x}_r,t;\mathbf{x}_s)d\mathbf{x}_sd\mathbf{x}_rdt\\
+	&-\int \bar{{u_i}}\left(\rho\frac{\partial^2
+	\psi_i }{\partial t^2}-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial
+	\psi_k}{\partial x_l})-\frac{\partial}{\partial x_j}(\delta
+	c_{ijkl}\frac{\partial u_k}{\partial x_l})\right)d\mathbf{x}_sd\mathbf{x}_rdt\\
+	&-\int \bar{{\psi_i}}\left(\rho\frac{\partial^2 u_i }{\partial
+	t^2}-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial u_k}{\partial x_l}) -
+	f_i\right)d\mathbf{x}_sd\mathbf{x}_rdt,
+	\end{split}
+        \label{eq:Lagrangian}
+\end{equation}
+其中，$\tau(\mathbf{x}_r,t;\mathbf{x}_s)$,$\mathbf{u}$和$\mathbf{\psi}$为状态变量，同时$\mu(\mathbf{x}_r,t;\mathbf{x}_s)$，$\bar{\mathbf{u}}$和$\bar{\mathbf{\psi}}$分别为伴随状态变量，$\bar{\mathbf{u}}$和$\bar{\mathbf{\psi}}$也即反传波场。
 
+伴随状态变量可以通过使增广函数对状态变量偏导数为零来求取，也即使得$\frac{\partial \mathcal{L}}{\partial \mathbf{\tau}}=0$，
+$\frac{\partial \mathcal{L}}{\partial \mathbf{u}}=0$和$\frac{\partial \mathcal{L}}{\partial \mathbf{\psi}}=0$。
+则
+\begin{equation}
+	\frac{\partial \mathcal{L}}{\partial \mathbf{\tau}}=\tau(\mathbf{x}_r,t;\mathbf{x}_s)
+	-\mu(\mathbf{x}_r,t;\mathbf{x}_s)\frac{\partial \alpha(\mathbf{x}_r,t;\mathbf{x}_s)}{\partial \tau(\mathbf{x}_r,t;\mathbf{x}_s)},
+        \label{eq:PartialTau}
+\end{equation}
+可得
+\begin{equation}
+	\mu(\mathbf{x}_r,t;\mathbf{x}_s)=\frac{\tau(\mathbf{x}_r,t;\mathbf{x}_s)}{ h_i(\mathbf{x}_r,t;\mathbf{x}_s)},
+        \label{eq:AdjointTau}
+\end{equation}
+其中$h_i(\mathbf{x_r},t;\mathbf{x_s})=(\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))^2-\ddot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})
+(d^c_i(\mathbf{x_r},t;\mathbf{x_s})-d^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))$。而$\dot{d}$则代表$d$在时间方向的导数。同时，通过另外两个偏导数方程可得：
+\begin{equation}
+	\rho\frac{\partial^2 \bar{u}_i }{\partial t^2}
+	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial \bar{u}_k}{\partial x_l})=\mu(\mathbf{x}_r,t;\mathbf{x}_s)
+	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}),
+        \label{eq:PartialU}
+\end{equation}
+和
+\begin{equation}
+	\rho\frac{\partial^2 \bar{\psi}_i }{\partial t^2}
+	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial \bar{\psi}_k}{\partial x_l})=
+	\frac{\partial}{\partial x_j}(\delta c_{ijkl}\frac{\partial \bar{u}_k}{\partial x_l}).
+        \label{eq:PartialPsi}
+\end{equation}
+这样就可以求得梯度：
+\begin{equation}
+	\frac{\partial \mathcal{L}}{\partial c_{ijkl}}=
+    \frac{\partial E}{\partial c_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
+    x_j}\frac{\partial \bar{\psi}_{k}}{\partial x_l}+\frac{\partial \bar{u}_{i}}{\partial
+    x_j}\frac{\partial \psi_{k}}{\partial x_l}),
+    \label{eq:GradientCijkl1}
+\end{equation}
 

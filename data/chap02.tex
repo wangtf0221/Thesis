@@ -127,3 +127,29 @@ WERTI非常类似成像域射线走时层析。而我们知道射线走时层析
 小于射线走时层析。然而，对于一些照明不足，或者
 反射路径覆盖不均匀的区域同样也会出现上述的问题。常规的各向同性的平滑算子很难保证反演收敛到具有地质含义的物理模型。因此，WERTI中采用局部倾角约束同样可以加速
 收敛，并获得具有地质意义的反演结果。
+
+Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构张量是$2\times2$的矩阵：
+\begin{equation}
+        \mathbf{S}=
+        \begin{pmatrix}
+                < s^2_1 > \quad <s_1s_2 >\\
+                < s_1s_2 > \quad < s^2_2 >\\
+        \end{pmatrix},
+        \label{eq:StructureTensor}
+\end{equation}
+其中$s_1$和$s_2$表示图像垂直和水平方向的方向导数，$<\dot>$表示2D的Gaussian平滑函数。上式对应的特征值问题可以表示为：
+\begin{equation}
+	\mathbf{S}=\lambda_u\mathbf{u}\mathbf{u}^T+\lambda_v\mathbf{v}\mathbf{v}^T
+        \label{eq:EigenValueVector}
+\end{equation}
+其中，$\lambda_u$和$\lambda_v$分别为特征向量$\mathbf{u}$和$\mathbf{v}$对应的特征值。我们定义$\lambda_u\ge\lambda_v\ge0$，这样的话$\mathbf{u}$指示梯度最大的
+方向，也即与线性结构垂直的方向。而话$\mathbf{u}$则指示与线性结构平行的方向。Hale(2009)指出，可以设置$\lambda_u(\mathbf{x})=0$
+和$\lambda_v(\mathbf{x})=1$，这样保证图像中每一处平滑都会沿倾角方向。则沿倾角平滑的滤波器可以通过以下方程求解：
+\begin{equation}
+	(\mathbf{B}^T\mathbf{B}+\mathbf{A}^T\mathbf{S}^{\prime}\mathbf{A})\mathbf{h}=\mathbf{B}^T\mathbf{B}\mathbf{f}
+        \label{eq:SparseMatrixSystem}
+\end{equation}
+其中，$\mathbf{S}^{\prime}$为新构造的结构张量，$\mathbf{B}$和$\mathbf{A}$分别为求和算子以及差分算子对应的矩阵，$\mathbf{f}$为输入图像，$\mathbf{h}$
+为输出的平滑后图像。该方程可以通过共轭梯度法快速求解。
+
+

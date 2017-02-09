@@ -1,0 +1,45 @@
+Meaning of file names:
+
+20 Iteration results
+	15Hz (Only 19th results were output because of error)
+		decomp_newinit3_vs_stage4_it_19.bin     
+		newinit3_vs_stage4_it_19.bin     
+		decomp_newinit3_vp_stage4_it_19.bin     
+		newinit3_vp_stage4_it_19.bin     
+40 Iteration results
+	10Hz with decomposition
+		decomp_newinit3_test_vp_stage1_it_40.bin    
+		decomp_newinit3_test_vs_stage1_it_40.bin    
+	15Hz with decomposition
+		decomp_newinit3_vp_stage4_it_40.bin    
+		decomp_newinit3_vs_stage4_it_40.bin    
+	15Hz without decomposition
+		newinit3_vp_stage4_it_40.bin    
+		newinit3_vs_stage4_it_40.bin    
+
+30 Iteration results
+	Cut out 3Hz without decomposition
+		CutLowFreq3Hznewinit3_vp_stage4_it_30.bin 
+		CutLowFreq3Hznewinit3_vs_stage4_it_30.bin
+
+Image results:
+	initial model 
+		init_p_stage1_it1.old
+		init_p_u_stage1_it1.old
+	WERTI model
+		smallsmooth_p_stage99_it1.old
+		2nd_newpsinit_p_u_stage79_it1.old 
+	true model 
+		smooth_p_stage1_it1.old
+		smooth_p_u_stage1_it1.old
+
+Surface data matching
+	PP data 
+		true:	 Cutref_y.su.shot21 (original)
+		initial: Cutref_y.su.shot21.it10021
+		WERTI :  Cutref_y.su.shot21.it11001
+	PS data
+		true:	 Cutref_y.su.shot20.it1801 (P/S separation)
+		initial: Cutref_y.su.shot20.it2021
+		WERTI :  Cutref_y.su.shot20.it2801
+		

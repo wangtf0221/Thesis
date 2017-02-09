@@ -1,0 +1,59 @@
+#!/usr/bin/gnuplot
+#
+# Plotting a velocity model
+#
+# AUTHOR: Tengfei Wang
+reset
+# wxt terminal
+set terminal postscript enhanced size 8,4 eps
+set output outputfilevs
+#set output 'decompvsgnuplot.eps'
+
+##set style line 11 lc rgb '#808080' lt 1
+#set border 2 front ls 11
+set tics nomirror out scale 1.50
+set border linewidth 2.0
+# Colorbar
+# disable colorbar tics
+set cbtics scale 0.1
+set cbrange [1000:2000]
+set style line 1 lt 1 lw 8 lc rgb "red"
+set colorbox user origin 0.915,0.05 size 0.02,0.80
+# matlab palette colors
+set palette defined ( 0 "#000090",\
+                      1 "#000fff",\
+                      2 "#0090ff",\
+                      3 "#0fffee",\
+                      4 "#90ff70",\
+                      5 "#ffee00",\
+                      6 "#ff7000",\
+                      7 "#ee0000",\
+                      8 "#7f0000")
+unset key
+set x2range [0:320]
+set yrange  [150:0]
+unset xtics
+
+set x2tics ("0" 0, "1" 62,"2" 125, "3" 188, "4" 250, "5"  312) font "Times-Roman-bold, 28" offset 0,-0.2
+set x2label 'Position (km)' font "Times-Roman-bold, 32" offset 0,1.4
+
+set ytics ("0" 0, "1" 62,"2" 125) font "Times-Roman-bold, 28" \
+offset 0.5,0
+set ylabel 'Depth (km)' font "Times-Roman-bold, 32" offset -1.5,0
+
+set cbtics ("1" 1000, "1.5" 1500,"2" 2000) font "Times-Roman-bold, 28"  \
+offset -0.5,0
+set cblabel 'Vs (km/s)' font "Times-Roman-bold, 28" offset 1.5,0
+#set arrow from 440,150 to 540,180 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 950,240 to 1050,270 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 750,240 to 850,270 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 850,480 to 950,510 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 850,530 to 950,560 head filled size screen 0.010,20,35 front ls 1
+#set lmargin at screen 0.08;
+set rmargin at screen 0.90;
+set bmargin at screen 0.05;
+set tmargin at screen 0.85;
+#set pm3d map
+#set pm3d interpolate 0,0
+
+plot datafilevs binary array=320x150 scan=yx with image

@@ -843,6 +843,16 @@ $\mathbf{R}^{SS}$的非零元素分布非常一致。因此，想通过分解正
 $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（SI）来通过Hessian的逆来提高声波FWI中$V_p$和$\rho$的估计。尽管Ren和Liu\cite{ren.liu:2016}提出了
 基于波场解耦的四阶段多尺度策略来做EFWI，但是他们只是在第二阶段中采用了P/S分离来压制$V_p$和$V_s$之间的耦合，然后通过多步长的手段来改善三参数同时反演的结果。
 在他们展示的overthrust模型中，密度的反演结果仍然偏离真实模型较远。因此非常有必要进一步调查模式解耦预条件方法对改善密度反演的潜力。
+\begin{figure*}
+    \begin{center}
+        \subfloat[]{\includegraphics[width=7cm]{tariqsugresult/Fig/truerho.pdf}}
+        \subfloat[]{\includegraphics[width=7cm]{tariqsugresult/Fig/initrho.pdf}}
+    \caption{
+                The true (a) and initial (b) density Marmousi-II model.
+    }
+    \label{fig:Marrho}
+    \end{center}
+\end{figure*}
 
 采用速度-密度参数化方式，密度的梯度公式可以表示为\cite[]{mora:1987,kohn:2012}：
 \begin{equation} 
@@ -871,16 +881,6 @@ $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（
 反演的病态性变得更加剧烈。$V_p$和$V_s$之间的耦合甚至导致反演结果中结构的错位。在采用模式解耦预条件后， $V_p$和$V_s$的反演都获得了很大的改善，但是密度的反演
 结果仍然不准确，并包含了较多来自$V_s$扰动的“脚印”。不管如何，我们可以看到模式解耦可以降低反问题病态程度并提高反演模型的分辨率。但是若想改善密度反演结果，
 就需要用到更多的多尺度策略以及Hessian的逆的信息来更好的压制参数耦合效应。
-\begin{figure*}
-    \begin{center}
-        \subfloat[]{\includegraphics[width=7cm]{tariqsugresult/Fig/truerho.pdf}}
-        \subfloat[]{\includegraphics[width=7cm]{tariqsugresult/Fig/initrho.pdf}}
-    \caption{
-                The true (a) and initial (b) density Marmousi-II model.
-    }
-    \label{fig:Marrho}
-    \end{center}
-\end{figure*}
 \begin{figure*}
     \begin{center}
         \subfloat[]{\includegraphics[width=7cm]{tariqsugresult/Fig/1nodevp.pdf}}

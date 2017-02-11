@@ -420,4 +420,31 @@ Jeong W, Lee H~Y, Min D~J.
 \newblock Geophysical Journal International, 2012, 188(3):1221--1242
 \tongjidot
 
+\bibitem{Schuster1993}
+Schuster G~T.
+\newblock Least-squares cross-well migration.
+\newblock Proceedings of {SEG} Technical Program Expanded Abstracts 1993.
+  Society of Exploration Geophysicists, 1993
+\tongjidot
+
+\bibitem{Nemeth1999}
+Nemeth T, Wu C, Schuster G~T.
+\newblock Least-squares migration of incomplete reflection data.
+\newblock {GEOPHYSICS}, 1999, 64(1):208--221
+\tongjidot
+
+\bibitem{Dai2013}
+Dai W, Schuster G~T.
+\newblock Plane-wave least-squares reverse-time migration.
+\newblock {GEOPHYSICS}, 2013, 78(4):S165--S177
+\tongjidot
+
+\bibitem{Dong2012}
+Dong S, Cai J, Guo M, et~al.
+\newblock Least-squares reverse time migration: towards true amplitude imaging
+  and improving the resolution.
+\newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2012.
+  Society of Exploration Geophysicists, 2012
+\tongjidot
+
 \end{thebibliography}

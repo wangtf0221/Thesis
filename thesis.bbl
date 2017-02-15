@@ -447,4 +447,33 @@ Dong S, Cai J, Guo M, et~al.
   Society of Exploration Geophysicists, 2012
 \tongjidot
 
+\bibitem{Dai2015}
+Dai W, Xu Z, Coates R.
+\newblock Least-squares reverse-time migration for visco-acoustic media.
+\newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2015.
+  Society of Exploration Geophysicists, 2015
+\tongjidot
+
+\bibitem{Duan2016}
+Duan Y, Sava P, Guitton A.
+\newblock Elastic least-squares reverse time migration.
+\newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2016.
+  Society of Exploration Geophysicists, 2016.
+\newblock  4152--4157
+\tongjidot
+
+\bibitem{Feng2016}
+Feng Z, Schuster G.
+\newblock Elastic least-squares reverse time migration.
+\newblock Society of Exploration Geophysicists, sep, 2016: 4163--4167
+\tongjidot
+
+\bibitem{Xu2016}
+Xu L, Stanton A, Sacchi M.
+\newblock Elastic least-squares reverse time migration.
+\newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2016.
+  Society of Exploration Geophysicists, 2016.
+\newblock  2289--2293
+\tongjidot
+
 \end{thebibliography}

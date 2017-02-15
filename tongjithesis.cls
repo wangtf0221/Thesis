@@ -53,7 +53,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ExecuteOptions{gbk,arialtitle}
 \ProcessOptions\relax
-\LoadClass[12pt,a4paper,openany]{book}
+\LoadClass[11pt,a4paper,openany]{book}
   \iftongji@master\relax\else
     \iftongji@doctor\relax\else
       \ClassError{tongjithesis}%
@@ -502,11 +502,11 @@
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                      {-24bp\@plus -1ex \@minus -.2ex}%
                      {6bp \@plus .2ex}%
-                     {\hei\csname tongji@title@font\endcsname\sihao[1.429]}}
+                     {\hei\csname tongji@title@font\endcsname\xiaosan[1.429]}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                         {-12bp\@plus -1ex \@minus -.2ex}%
                         {6bp \@plus .2ex}%
-                        {\hei\csname tongji@title@font\endcsname\banxiaosi[1.538]}}
+                        {\hei\csname tongji@title@font\endcsname\sihao[1.538]}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                            {-12bp\@plus -1ex \@minus -.2ex}%
                            {6bp \@plus .2ex}%

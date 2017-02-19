@@ -1,0 +1,63 @@
+#!/usr/bin/gnuplot
+#
+# Plotting a velocity model
+#
+# AUTHOR: Tengfei Wang
+reset
+# wxt terminal
+set terminal postscript enhanced size 8.0,4 eps
+set output outputfilevp
+
+##set style line 11 lc rgb '#808080' lt 1
+#set border 2 front ls 11
+set tics nomirror out scale 1.5
+set border linewidth 2.0
+# Colorbar
+# disable colorbar tics
+set cbtics scale 0.1
+set cbrange [1500:3000]
+set colorbox user origin 0.915,0.05 size 0.02,0.80
+# matlab palette colors
+set palette defined ( 0 "#000090",\
+                      1 "#000fff",\
+                      2 "#0090ff",\
+                      3 "#0fffee",\
+                      4 "#90ff70",\
+                      5 "#ffee00",\
+                      6 "#ff7000",\
+                      7 "#ee0000",\
+                      8 "#7f0000")
+unset key
+set x2range [0:320]
+set yrange  [150:0]
+unset xtics
+
+set x2tics ("0" 0, "1" 62,"2" 125, "3" 188, "4" 250, "5"  312) font "Times-Roman-bold, 28" offset 0,0.2
+set x2label 'Position (km)' font "Times-Roman-bold, 32" offset 0,1.4
+
+set ytics ("0" 0, "1" 62,"2" 125) font "Times-Roman-bold, 28" offset 0.5,0
+set ylabel 'Depth (km)' font "Times-Roman-bold, 32" offset -1.5,0
+
+set cbtics ("1.5" 1500, "2.0" 2000,"2.5" 2500,"3.0" 3000) font "Times-Roman-bold,28" \
+offset -0.5,0
+set cblabel 'Vp (km/s)' font "Times-Roman-bold, 28" offset 1.5,0
+set style line 1 lt 1 lw 8 lc rgb "red"
+#set arrow from 850,250 to 950,280 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 550,250 to 650,280 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 850,480 to 950,510 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 850,530 to 950,560 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 1600,360 to 1700,330 head filled size screen 0.010,20,35 front ls 1
+#set arrow from 1830,380 to 1850,330 head filled size screen 0.010,20,35 front ls 1
+##### Set the margin of the picture##########
+set lmargin at screen 0.08;
+set rmargin at screen 0.9;
+set bmargin at screen 0.05;
+set tmargin at screen 0.85;
+plot datafilevp binary array=320x150 scan=yx with image
+
+#plot 'nx2800nz700dxdz5.vp' binary array=2800x700 scan=yx with image
+#plot 'nx2800nz700dxdz5.vp' binary array=700x2800 with image
+#plot 'nx2800nz700dxdz5.vp' binary center=(1400,350) rotation=-90d array=700x2800 with image
+
+#plot 'modeloutput_test_vs_stage4_it_24.bin' binary rotation=-90d array=700x2800 with image
+#plot 'nx2800nz700dxdz5.smooth.vp' binary  array=700x2800 with image

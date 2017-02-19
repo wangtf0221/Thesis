@@ -157,10 +157,10 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
 \subsection{Sigsbee2A模型}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/cuttruevp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/cuttruevs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/cutinitvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/cutinitvs.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutinitvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutinitvs.pdf}}
    \caption{Sigbee2A model example. On the top are true models of 
    $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
    (d) linearly increasing with depth. }
@@ -170,10 +170,10 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
 但这两者都偏离真实值很远。36炮地面模拟数据均匀的分布在地表，最大偏移距为4km，其震源为主频15Hz的纯P波震源。
 \begin{figure}[!htb]
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/newinit3vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/newinit3vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/nodevp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/nodevs.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/nodevp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/nodevs.pdf}}
    \caption{Inverted results of WERTI and EFWI. (a) and (b) are inverted $V_p$ and
        $V_s$ model through two-stage elastic WERTI with the linearly increased models
        as initial models. (c) and (d) are inverted $V_p$ and $V_s$ through EFWI using
@@ -182,8 +182,8 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
 \end{figure}
 \begin{figure}[!htb]
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/1km.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{sigbee2/Fig/3km.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/1km.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/3km.pdf}}
    \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
        3km (b). The black and blue lines indicate the true and linearly increased
        initial model. The green and yellow lines indicate the WERTI and EFWI results,
@@ -197,3 +197,33 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
 常规EFWI反演。如图\ref{fig:InvertedModel}c和\ref{fig:InvertedModel}d所示，$V_p$和$V_s$模型都得到了很好的重建，除了模型右侧一小部分。原因可能是在
 地面观测下，模型右侧的反射波覆盖不够导致WERTI不能准确的恢复该区域速度的长波长分量。图\ref{fig:Profiles}也展示了1.5km和3km处的垂向剖面。从图中可以看出，
 弹性WERTI能够提供可靠的包含长波长分量的初始模型，并且以此为始模型的EFWI反演结果也与真实值很好的吻合。
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_truevp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_truevs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_initvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_initvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_wertivp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_wertivs.pdf}}
+   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
+       3km (b). The black and blue lines indicate the true and linearly increased
+       initial model. The green and yellow lines indicate the WERTI and EFWI results,
+       respectively.
+   }
+   \label{fig:Profiles}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_true.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_init.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_werti.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_true.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_init.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_werti.pdf}}
+   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
+       3km (b). The black and blue lines indicate the true and linearly increased
+       initial model. The green and yellow lines indicate the WERTI and EFWI results,
+       respectively.
+   }
+   \label{fig:Profiles}
+\end{figure}

@@ -6,6 +6,55 @@ Claerbout, JonF.
 \newblock Blackwell Scientific, 1985: 217--217
 \tongjidot
 
+\bibitem{lailly1983seismic}
+Lailly P.
+\newblock The seismic inverse problem as a sequence of before stack migrations.
+\newblock Proceedings of Conference on inverse scattering: theory and
+  application. Society for Industrial and Applied Mathematics, Philadelphia,
+  PA, 1983.
+\newblock  206--220
+\tongjidot
+
+\bibitem{tarantola1984}
+Tarantola A.
+\newblock Inversion of seismic reflection data in the acoustic approximation.
+\newblock Geophysics, 1984, 49(8):1259--1266
+\tongjidot
+
+\bibitem{xu:2012}
+Xu S, Wang D, Chen F, et~al.
+\newblock Inversion on reflected seismic wave.
+\newblock 82nd Annual International Meeting, SEG, Expanded Abstracts, 2012.
+  1--7
+\tongjidot
+
+\bibitem{zhou:2015}
+Zhou W, Brossier R, Operto S, et~al.
+\newblock Full waveform inversion of diving \& reflected waves for velocity
+  model building with impedance inversion based on scale separation.
+\newblock Geophysical Journal International, 2015, 202:1535--1554
+\tongjidot
+
+\bibitem{chi:2015}
+Chi B~X, Dong L~G, Liu Y~Z.
+\newblock Correlation-based reflection full-waveform inversion.
+\newblock Geophysics, 2015, 80(4):R189--R202
+\tongjidot
+
+\bibitem{Sava2006}
+Sava P, Fomel S.
+\newblock Time-shift imaging condition in seismic migration.
+\newblock {GEOPHYSICS}, 2006, 71(6):S209--S217
+\tongjidot
+
+\bibitem{Almomin2012}
+Almomin A, Biondi B.
+\newblock Tomographic Full Waveform Inversion: Practical and Computationally
+  Feasible Approach.
+\newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2012.
+  Society of Exploration Geophysicists, 2012
+\tongjidot
+
 \bibitem{luo1991}
 Luo Y, Schuster G.
 \newblock Wave equation traveltime inversion.
@@ -194,13 +243,6 @@ Hoop M~V, Qiu L, Scherzer O.
 \newblock Local analysis of inverse problems: Holder stability and iterative
   reconstruction.
 \newblock Inverse Problem, 2012, 2012:045001
-\tongjidot
-
-\bibitem{xu:2012}
-Xu S, Wang D, Chen F, et~al.
-\newblock Inversion on reflected seismic wave.
-\newblock 82nd Annual International Meeting, SEG, Expanded Abstracts, 2012.
-  1--7
 \tongjidot
 
 \bibitem{biondi.almomin:2013}

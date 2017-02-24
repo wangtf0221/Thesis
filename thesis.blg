@@ -3,6 +3,30 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: data/denotation.aux
 A level-1 auxiliary file: data/chap01.aux
+White space in argument---line 123 of file data/chap01.aux
+ : \citation{woodward1992,Meng
+ :                             et al.,2004; Woodward et al.,2008; Jones,2010}
+I'm skipping whatever remains of this command
+White space in argument---line 125 of file data/chap01.aux
+ : \citation{Meng
+ :                et al.}
+I'm skipping whatever remains of this command
+White space in argument---line 126 of file data/chap01.aux
+ : \citation{2004;
+ :                 Woodward et al.}
+I'm skipping whatever remains of this command
+White space in argument---line 127 of file data/chap01.aux
+ : \citation{2008;
+ :                 Jones}
+I'm skipping whatever remains of this command
+White space in argument---line 129 of file data/chap01.aux
+ : \citation{Sava
+ :                & Fomel 2006; Yang & Sava 2011; Almomin & Biondi 2012; Biondi & Almomin 2012; Sun & Symes 2012; Lameloise et al. 2015}
+I'm skipping whatever remains of this command
+White space in argument---line 130 of file data/chap01.aux
+ : \citation{Sava
+ :                & Fomel 2006; Yang & Sava 2011; Almomin & Biondi 2012; Biondi & Almomin 2012; Sun & Symes 2012; Lameloise et al. 2015}
+I'm skipping whatever remains of this command
 A level-1 auxiliary file: data/chap02.aux
 A level-1 auxiliary file: data/chap03.aux
 A level-1 auxiliary file: data/chap04.aux
@@ -12,19 +36,24 @@ A level-1 auxiliary file: data/appendix01.aux
 A level-1 auxiliary file: data/appendix02.aux
 A level-1 auxiliary file: data/resume.aux
 Database file #1: reference.bib
-I was expecting a `,' or a `}'---line 378 of file reference.bib
+I was expecting a `,' or a `}'---line 480 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 387 of file reference.bib
+I was expecting a `,' or a `}'---line 489 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring dehoop:2012's extra "volume" field
---line 688 of file reference.bib
+--line 790 of file reference.bib
 Warning--I didn't find a database entry for "Wu2015"
-Warning--I didn't find a database entry for "kennett:1988"
+Warning--I didn't find a database entry for "PRATTEtAl1990"
+Warning--I didn't find a database entry for "miller:1987"
 Warning--I didn't find a database entry for "yang:2016"
+Warning--I didn't find a database entry for "Wang2017"
+Warning--I didn't find a database entry for "woodward1992"
+Warning--I didn't find a database entry for "2010"
+Warning--I didn't find a database entry for "kennett:1988"
 Warning--I didn't find a database entry for "Luo2014"
 Warning--I didn't find a database entry for "Yang2017"
 Warning--I didn't find a database entry for "Wang2016"
@@ -60,6 +89,7 @@ Name 2 in "R. Brossier and S. Operto, and J. Virieux" has a comma at the end for
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "Sirgue, L. and Etgen, J., and Albertin, U." has a comma at the end for entry sirgue:2008
 while executing---line 1196 of file tongjibib.bst
+Warning--there's a number but no volume in 黄超2015
 Name 2 in "Clement, F. and Chavent, G., and Gomez, S." has a comma at the end for entry clement:2001
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "de Hoop, M. V. and Qiu, L., and Scherzer, O." has a comma at the end for entry dehoop:2012
@@ -86,45 +116,45 @@ while executing---line 1196 of file tongjibib.bst
 Warning--there's a publisher but no address in menke:1989
 Warning--there's a publisher but no address in snieder1999inverse
 Warning--there's a publisher but no address in mavko2009rock
-You've used 76 entries,
+You've used 88 entries,
             2219 wiz_defined-function locations,
-            992 strings with 17280 characters,
-and the built_in function-call counts, 35207 in all, are:
-= -- 3514
-> -- 867
+            1063 strings with 19230 characters,
+and the built_in function-call counts, 40730 in all, are:
+= -- 4059
+> -- 1008
 < -- 10
-+ -- 400
-- -- 200
-* -- 2831
-:= -- 4703
-add.period$ -- 168
-call.type$ -- 76
++ -- 466
+- -- 233
+* -- 3307
+:= -- 5456
+add.period$ -- 192
+call.type$ -- 88
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 81
-duplicate$ -- 2378
-empty$ -- 3733
-format.name$ -- 267
-if$ -- 8030
+cite$ -- 94
+duplicate$ -- 2750
+empty$ -- 4322
+format.name$ -- 309
+if$ -- 9261
 int.to.chr$ -- 0
-int.to.str$ -- 76
-missing$ -- 82
-newline$ -- 462
-num.names$ -- 76
-pop$ -- 326
+int.to.str$ -- 88
+missing$ -- 94
+newline$ -- 534
+num.names$ -- 88
+pop$ -- 368
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 546
+skip$ -- 615
 stack$ -- 0
-substring$ -- 4888
-swap$ -- 109
+substring$ -- 5676
+swap$ -- 110
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 5
-while$ -- 377
-width$ -- 78
-write$ -- 913
-(There were 24 error messages)
+warning$ -- 6
+while$ -- 439
+width$ -- 90
+write$ -- 1056
+(There were 30 error messages)

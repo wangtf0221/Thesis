@@ -55,17 +55,10 @@ Almomin A, Biondi B.
   Society of Exploration Geophysicists, 2012
 \tongjidot
 
-\bibitem{luo1991}
-Luo Y, Schuster G.
-\newblock Wave equation traveltime inversion.
-\newblock Geophysics, 1991, 56(5):645--653
-\tongjidot
-
-\bibitem{tarantola:1986}
-Tarantola A.
-\newblock A strategy for nonlinear elastic inversion of seismic reflection
-  data.
-\newblock Geophysics, 1986, 51(10):1893--1903
+\bibitem{Claerbout1971}
+Claerbout J~F.
+\newblock {TOWARD} A {UNIFIED} {THEORY} {OF} {REFLECTOR} {MAPPING}.
+\newblock {GEOPHYSICS}, 1971, 36(3):467--481
 \tongjidot
 
 \bibitem{virieux2009overview}
@@ -81,14 +74,20 @@ Mora P.
 \newblock Geophysics, 1987, 52(9):1211--1228
 \tongjidot
 
-\bibitem{crase1990robust}
-Crase E, Pica A, Noble M, et~al.
-\newblock Robust elastic nonlinear waveform inversion: Application to real
-  data.
-\newblock Geophysics, 1990, 55(5):527--538
+\bibitem{mora1988elastic}
+Mora P.
+\newblock Elastic wave-field inversion of reflection and transmission data.
+\newblock Geophysics, 1988, 53(6):750--759
 \tongjidot
 
-\bibitem{ravaut2004multiscale}
+\bibitem{pratt1996two}
+Pratt R, Song Z~M, Williamson P, et~al.
+\newblock Two-dimensional velocity models from wide-angle seismic data by
+  wavefield inversion.
+\newblock Geophysical Journal International, 1996, 124(2):323--340
+\tongjidot
+
+\bibitem{RavautEtAl2004}
 Ravaut C, Operto S, Improta L, et~al.
 \newblock Multiscale imaging of complex structures from multifold wide-aperture
   seismic data by frequency-domain full-waveform tomography: application to a
@@ -96,13 +95,34 @@ Ravaut C, Operto S, Improta L, et~al.
 \newblock Geophysical Journal International, 2004, 159(3):1032--1056
 \tongjidot
 
-\bibitem{operto2006crustal}
-Operto S, Virieux J, Dessa J~X, et~al.
+\bibitem{Operto2006}
+Operto S, Virieux J, Dessa J, et~al.
 \newblock Crustal seismic imaging from multifold ocean bottom seismometer data
   by frequency domain full waveform tomography: Application to the eastern
   Nankai trough.
-\newblock Journal of Geophysical Research: Solid Earth (1978--2012), 2006,
+\newblock Journal of Geophysical Research: Solid Earth (1978–2012), 2006,
   111(B9)
+\tongjidot
+
+\bibitem{ShinEtAl2009}
+Shin C, Cha Y~H.
+\newblock Waveform inversion in the {Laplace}-{Fourier} domain.
+\newblock Geophysical Journal International, 2009, 177(3):1067--1079
+\tongjidot
+
+\bibitem{sirgue2006importance}
+Sirgue L.
+\newblock The importance of low frequency and large offset in waveform
+  inversion.
+\newblock Proceedings of 68th EAGE Conference and Exhibition incorporating SPE
+  EUROPEC 2006, 2006
+\tongjidot
+
+\bibitem{tarantola:1986}
+Tarantola A.
+\newblock A strategy for nonlinear elastic inversion of seismic reflection
+  data.
+\newblock Geophysics, 1986, 51(10):1893--1903
 \tongjidot
 
 \bibitem{crase1992nonlinear}
@@ -191,6 +211,45 @@ Forgues E, Lambare G.
 \newblock Journal of Seismic Exploration, 1997, 6:253--278
 \tongjidot
 
+\bibitem{黄超2015}
+黄超, 董良国, 迟本鑫.
+\newblock 低频缺失情况下的弹性波包络反演.
+\newblock 应用地球物理:英文版, 2015, (3):362--377
+\tongjidot
+
+\bibitem{王官超2016}
+王官超, 杜启振.
+\newblock 基于包络目标函数的弹性波波形反演.
+\newblock 石油物探, 2016, 55(1):133--141
+\tongjidot
+
+\bibitem{BrossierEtAl2010}
+Brossier R, Operto S, Virieux J.
+\newblock Which data residual norm for robust elastic frequency-domain full
+  waveform inversion?
+\newblock {GEOPHYSICS}, 2010, 75(3):R37--R46
+\tongjidot
+
+\bibitem{王毓玮2016}
+王毓玮, 董良国, 黄超, et~al.
+\newblock 弹性波全波形反演目标函数性态与反演策略.
+\newblock 石油物探, 2016, 55(1):123--132
+\tongjidot
+
+\bibitem{operto2013guided}
+Operto S, Gholami Y, Prieux V, et~al.
+\newblock A guided tour of multiparameter full-waveform inversion with
+  multicomponent data: From theory to practice.
+\newblock The Leading Edge, 2013, 32(9):1040--1054
+\tongjidot
+
+\bibitem{pratt1998gauss}
+Pratt R~G, Shin C, Hick G.
+\newblock Gauss--Newton and full Newton methods in frequency--space seismic
+  waveform inversion.
+\newblock Geophysical Journal International, 1998, 133(2):341--362
+\tongjidot
+
 \bibitem{wu.aki:1985}
 Wu R, Aki K.
 \newblock Scattering characteristics of elastic waves by an elastic
@@ -211,6 +270,57 @@ Gholami Y, Brossier R, Operto S, et~al.
   isotropic full waveform inversion? Part 1: Sensitivity and trade-off
   analysis.
 \newblock Geophysics, 2013, 78(2):R81--R105
+\tongjidot
+
+\bibitem{fichtner2011hessian}
+Fichtner A, Trampert J.
+\newblock Hessian kernels of seismic data functionals based upon adjoint
+  techniques.
+\newblock Geophysical Journal International, 2011, 185(2):775--798
+\tongjidot
+
+\bibitem{pan2015estimation}
+Pan W, Innanen K~A, Margrave G~F, et~al.
+\newblock Estimation of Elastic Constants in HTI Media Using Gauss-Newton and
+  Full-Newton Multi-Parameter Full Waveform Inversion.
+\newblock SEG Technical Program Expanded Abstracts 2015, 2015. 1177--1182
+\tongjidot
+
+\bibitem{WangEtAl2016}
+Wang Y, Dong L, Liu Y, et~al.
+\newblock {2D} frequency-domain elastic full-waveform inversion using the
+  block-diagonal pseudo-Hessian approximation.
+\newblock {GEOPHYSICS}, 2016, 81(5):R247--R259
+\tongjidot
+
+\bibitem{luo1991}
+Luo Y, Schuster G.
+\newblock Wave equation traveltime inversion.
+\newblock Geophysics, 1991, 56(5):645--653
+\tongjidot
+
+\bibitem{crase1990robust}
+Crase E, Pica A, Noble M, et~al.
+\newblock Robust elastic nonlinear waveform inversion: Application to real
+  data.
+\newblock Geophysics, 1990, 55(5):527--538
+\tongjidot
+
+\bibitem{ravaut2004multiscale}
+Ravaut C, Operto S, Improta L, et~al.
+\newblock Multiscale imaging of complex structures from multifold wide-aperture
+  seismic data by frequency-domain full-waveform tomography: application to a
+  thrust belt.
+\newblock Geophysical Journal International, 2004, 159(3):1032--1056
+\tongjidot
+
+\bibitem{operto2006crustal}
+Operto S, Virieux J, Dessa J~X, et~al.
+\newblock Crustal seismic imaging from multifold ocean bottom seismometer data
+  by frequency domain full waveform tomography: Application to the eastern
+  Nankai trough.
+\newblock Journal of Geophysical Research: Solid Earth (1978--2012), 2006,
+  111(B9)
 \tongjidot
 
 \bibitem{symes.carazzone:1991}
@@ -271,13 +381,6 @@ Alkhalifah T.
 \newblock Geophysical Journal International, 2015, 200(1):363--373
 \tongjidot
 
-\bibitem{operto2013guided}
-Operto S, Gholami Y, Prieux V, et~al.
-\newblock A guided tour of multiparameter full-waveform inversion with
-  multicomponent data: From theory to practice.
-\newblock The Leading Edge, 2013, 32(9):1040--1054
-\tongjidot
-
 \bibitem{xu.mcmechan:2014}
 Xu K, McMechan G~A.
 \newblock 2D frequency-domain elastic full-waveform inversion using time-domain
@@ -285,32 +388,11 @@ Xu K, McMechan G~A.
 \newblock Geophysics, 2014, 79(2):R41--R53
 \tongjidot
 
-\bibitem{pratt1998gauss}
-Pratt R~G, Shin C, Hick G.
-\newblock Gauss--Newton and full Newton methods in frequency--space seismic
-  waveform inversion.
-\newblock Geophysical Journal International, 1998, 133(2):341--362
-\tongjidot
-
-\bibitem{fichtner2011hessian}
-Fichtner A, Trampert J.
-\newblock Hessian kernels of seismic data functionals based upon adjoint
-  techniques.
-\newblock Geophysical Journal International, 2011, 185(2):775--798
-\tongjidot
-
 \bibitem{innanen2014seismic}
 Innanen K~A.
 \newblock Seismic AVO and the inverse Hessian in precritical reflection full
   waveform inversion.
 \newblock Geophysical Journal International, 2014, 199(2):717--734
-\tongjidot
-
-\bibitem{pan2015estimation}
-Pan W, Innanen K~A, Margrave G~F, et~al.
-\newblock Estimation of Elastic Constants in HTI Media Using Gauss-Newton and
-  Full-Newton Multi-Parameter Full Waveform Inversion.
-\newblock SEG Technical Program Expanded Abstracts 2015, 2015. 1177--1182
 \tongjidot
 
 \bibitem{shin2001improved}

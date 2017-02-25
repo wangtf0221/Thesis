@@ -100,12 +100,17 @@ $\omega$为角频率，$\mathbf{n}$为$\mathbf{k}$方向的单位向量。由上
    }
    \label{fig:WavenumberVector}
 \end{figure}
-因此FWI的成功与否非常依赖于长偏移距记录和数据中有效的低频分量。如图\ref{fig:Cycle-skipping}
+因此FWI的成功与否非常依赖于长偏移距记录和数据中有效的低频分量。如图\ref{fig:WavenumberVector}b
 所示，如果初始模型不够好导致波形匹配时相差$\frac{1}{2}T$以上，那么就会使得反演陷入局部极值，这也就是所谓的“周波跳跃”问题。
-在声波FWI中，发展了许多策略来解决非线性问题，如从低频到高频{\color{red}(Sirgue and Pratt, 2004; 刘国峰等, 2012; 刘璐等,2013; 曹书红和陈景波, 2014; 
-张文生等, 2015)，选取不同的时窗与偏移距逐步加入反演中(Shipp and Singh, 2002; Wang and Rao, 2009; Sears,2008)，
-修正目标函数使其凸性更好(Luo and Schuster, 1991;Tromp et al., 2005;Chi
-et al., 2014; Wu et al., 2014; Shin and Cha, 2008; Luo et al., 2016;)}等等。这些策略可以用
+在声波FWI中，发展了许多策略来解决非线性问题，如从低频到高频(Sirgue and
+Pratt, 2004\cite{sirgue.pratt:2004}; 刘国峰等, 2012\cite{刘国峰2012};
+刘璐等,2013\cite{刘璐2013}; 曹书红和陈景波, 2014\cite{曹书红2014}; 
+张文生等, 2015\cite{张文生2015})，选取不同的时窗与偏移距逐步加入反演中(Shipp and
+Singh, 2002\cite{shipp:2002}; Wang and Rao, 2009\cite{WangEtAl2009}; Sears,2008\cite{sears2008})，
+修正目标函数使其凸性更好(Luo and Schuster, 1991\cite{luo1991};Tromp et al.,
+2005\cite{tromp2005seismic};Chi
+et al., 2014\cite{ChiEtAl2014}; Wu et al., 2014\cite{Wu2014b}; Shin and Cha,
+2008\cite{shin.cha:2008}; Luo et al., 2016\cite{Luo2016})等等。这些策略可以用
 在EFWI中，但是由于更多参数引入以及更复杂的弹性波波场，使得在使用这些策略的时候需要根据情况来择优选取。
 而在EFWI中，不但会出现同样的强烈非线性，而且将面临更复杂的情况。
 在构建初始模型的时候我们要同时获得足够好的$V_p$与$V_s$模型，这样才能对各种模式的转换波形进行
@@ -114,7 +119,7 @@ et al., 2014; Wu et al., 2014; Shin and Cha, 2008; Luo et al., 2016;)}等等。�
 包络目标函数（黄超等，2015\cite{黄超2015},王官超和杜启振，2016\cite{王官超2016}），或者通过研究目标函数性态来指导多尺度策略的设计
 （Brossier et al., 2010\cite{BrossierEtAl2010};王毓玮等，2016\cite{王毓玮2016}）。
 Tarantola（1986）\cite{tarantola:1986}指出EFWI应分主次顺序依次构建具有不同影响的参数。
-或者采用多尺度策略多级的选取不同数据分量来进行反演（Sears, 2008\cite{sears:2008}; Operto et al., 2013
+或者采用多尺度策略多级的选取不同数据分量来进行反演（Sears, 2008\cite{sears2008}; Operto et al., 2013
 \cite{operto2013guided}）。然而实际中，诸多因素会制约这些策略的应用，例如（低频缺失，初始模型不够好，子波估计，噪音等等）。因而降低EFWI的非线性
 程度使得反演更加稳健可靠依然需要诸多努力。
 
@@ -125,11 +130,11 @@ Tarantola（1986）\cite{tarantola:1986}指出EFWI应分主次顺序依次构建
 Plessix and Cao, 2011\cite{plessix.cao:2011},Gholami et al, 2013\cite{gholami2013}）。
 当然最有效的就是考虑多参数Hessian算子的方法，用Hessian的信息来压制参数耦合的影响(Fichtner et al., 2001\cite{fichtner2011hessian};Operto et al.,
 2013\cite{operto2013guided},Pan et al., 2015\cite{pan2015estimation};Yang et al.,
-2016\cite{yang:2016})。然而由于Hessian计算所需代价太过于昂贵，即使在声波FWI也很难在大规模问题中获得应用。在EFWI中想要获得压制参数耦合的效果，就
+2016\cite{Yang2016})。然而由于Hessian计算所需代价太过于昂贵，即使在声波FWI也很难在大规模问题中获得应用。在EFWI中想要获得压制参数耦合的效果，就
 需要在反演中包含对Hessian的非对角区块的近似。近期，在Hessian非对角区块的近似与利用方面，许多学者都将其应用到了EFWI中，例如Wang
-et al.(2016)\cite{WangEtAl2016}采用块对角Hessian压制参数耦合，Pan et al(2017)采用Hessian-free
-的方式采用l-BFGS的优化策略进行多参数反演，Wang and Cheng
-(2017)\cite{Wang2017}指出模式解耦可以部分的利用Hessian非对角块来压制P波对$V_s$反演的干扰。而于此同时EFWI中，由于密度参数对数据不敏感，因此密度
+et al.(2016)\cite{WangEtAl2016}采用块对角Hessian压制参数耦合，Pan et
+al(2017)\cite{PanEtAl2017}采用Hessian-free的方式采用l-BFGS的优化策略进行多参数反演，Wang and Cheng
+(2017)\cite{WangEtAl2017}指出模式解耦可以部分的利用Hessian非对角块来压制P波对$V_s$反演的干扰。而于此同时EFWI中，由于密度参数对数据不敏感，因此密度
 的反演依然很难获得令人满意的结果。
 \subsection{弹性反射波FWI研究现状}
 尽管常规FWI在长偏移距，宽方位数据中有着令人满意的效果，但是在这种观测系统下，FWI主要利用了长偏移距透射波以及临界反射波所携带的信息来更新速度模型的
@@ -140,16 +145,47 @@ et al.(2016)\cite{WangEtAl2016}采用块对角Hessian压制参数耦合，Pan et
 
 利用反射波信息可以更好的照明深部，通常可以在成像域或者数据域实现深部的速度更新。在成像域，该类方法通常被称为偏移速度分析(MVA)，其主要利用拉平
 共成像点道集作为收敛准则。
-在实际生产中，通过射线走时层析来利用反射波信息更新中深部的背景速度已经是非常成熟的技术\cite{woodward1992,Meng
-et al., 2004; Woodward et al., 2008;
-Jones,2010}。其通过将道集上的剩余时差（或深度差）反投影到射线路径上来获得速度更新。不过射线层析经常需要进行许多人工干预，尤其是在每轮迭代中进行
+在实际生产中，通过射线走时层析来利用反射波信息更新中深部的背景速度已经是非常成熟的技术\cite{Woodward1992,MengEtAl2004, Woodward2008,
+Jones2010}。其通过将道集上的剩余时差（或深度差）反投影到射线路径上来获得速度更新。不过射线层析经常需要进行许多人工干预，尤其是在每轮迭代中进行
 成像剖面与成像道集的拾取。而且在构造复杂区域，射线高频渐近近似失效，使得走时层析很难获得成功。
-基于波动理论的成像域MVA方法通常
-需要引入扩展成像条件，通过最小化扩展道集上非零偏移距的能量来实现更新\cite{Sava &
-Fomel 2006; Yang & Sava 2011; Almomin & Biondi 2012; Biondi
-& Almomin 2012; Sun & Symes 2012; Lameloise et al.
-2015}。尽管在二维应用中取得了不错的效果，但是这类方法主要缺陷是计算代价太过昂贵，尤其实在三维问题中，一方面偏移成像需要大量计算，
+基于波动理论的成像域偏移速度分析（WEMVA）可以很好的回避上述问题，但是其通常
+需要引入扩展成像条件，通过最小化扩展道集上非零偏移距的能量来实现更新，如Sava and
+Fomel(2006)\cite{SavaEtAl2006}; Yang and Sava(2011)\cite{YangEtAl2011}; Almomin and
+Biondi(2012)\cite{Almomin2012}; Sun and Symes(2012)\cite{SunEtAl2012}。尽管WEMVA在
+二维应用中取得了不错的效果，但其主要缺陷就是计算代价太过昂贵，尤其实在三维问题中，一方面偏移成像需要大量计算，
 另一方面扩展成像条件的施加同样耗费极大。
+针对反射走时，Luo et
+al(2016)\cite{Luo2016}用时间轴方向的扩展成像与Rytov近似结合，导出了全走时反演（FTI）获得了不错的反演效果，但其实质上也是一种成像域的反演方法。
+
+在数据域同样可以实现反射波对模型的深部更新。
+许多学者（Chavent et al, 1994\cite{ChaventEtAl1994}; Plessix et al.,1998\cite{PlessixEtAl1998}; Clment et al.
+,2001\cite{ClementEtAl2001}）将速度模型分成高波数（反射率）与低波数成分(背景模型)，提出了偏移成像走时层析（MBTT）。
+从Woodward et
+al.(2008)\cite{Woodward2008}和Alder(2008)\cite{Adler2008}提出的基于射线理论的非线性层析方法出发，Wang
+et al\cite{WangEtAl2014}和Yang et al\cite{YangEtAl2016}采用一次偏移后拾取+图偏移的方式建立叠前数据的不变量（如走时，相位，出射慢度等），从而实现对
+叠前数据的多次非线性拟合，进而减少人工拾取工作量达到加快速度的效果。基于波动理论的数据域速度建模近年来受到了广泛的关注。
+受MBTT方法的启发，Xu et al (2012)\cite{xu:2012}提出了反射波波形反演方法（RWI）。RWI先采用RTM或LSRTM的方式获取反射率，
+然后用Born模拟来预测反射率所产生的反射波，而反射波与背景波场的互相关就可以得到反射波波路径信息。
+RWI思想的关键就是将数据域中通过不同目标函数获得的数据残差反投影到反射波波路径上，从而更新中低波数成分的模型分量。
+RWI的思想产生后，许多学者针对不同的目标函数选取方法做了很多研究。许多RWI研究都采用波形拟拟合的$L_2$范数，如Xu
+et al (2012)\cite{xu:2012}, Wang et al(2013)\cite{Wang2013}, Wu and
+Alkhalifah(2015)\cite{Wu2015b},
+Zhou et al(2015)\cite{zhou:2015}。然而尽管RWI的目的在于更新背景速度，波形拟合的$L_2$范数在背景速度与真实值相差较远的时候，反射率所预测的反射波与
+观测数据中的反射波波形相差半个周期以上的时候，仍然会产生周波跳跃。Wang et
+al(2013)\cite{Wang2013}指出采用低频数据可以一定程度上避免跳周现象。为了避免振幅相关的目标函数带来的非线性，与背景速度更具有线性关系的
+走时类的目标函数也获得了关注。Ma and
+Hale(2013)\cite{ma2013}采用动态图像识别（DIW）来获得模拟与观测反射数据之间的时移，从而导出了波动方程反射走时反演（WERTI）。Chi
+et al (2015)\cite{chi2015}和Wang et al
+(2015)\cite{Wang2015}采用互相关类的方法来获取时移（或空移）。而近期，Irabor and
+Warner(2016)\cite{Irabor2016}和Wang et al(2016)\cite{WangEtAl2016}通过上下形波分离来获取常规FWI中的背景更新分量，但其实质上也利用了反射波波路径的信息。
+
+以上RWI的研究现状都是基于声波方程得出的。在弹性波反射波形反演中，目前只有Guo and
+Alkhalifah(2016)\cite{Guo2016}将Wu and
+Alkhalifah(2015)\cite{Wu2015b}的思路扩展到了弹性介质中，而其他方法在弹性介质中的应用则
+基本没有研究触及到。在弹性介质中，除了声波介质中面临的问题，ERWI还需要处理更多的复杂情况，如多参数，模式转换，更复杂的反射记录以及
+$V_s$结构中成像与反演的困难等等诸多挑战。为了解决这些问题，利用波模式解耦来分别获取P与S反射波然后应用到声波对应的方法中将是非常直观的思路，但是
+这都需要考虑到弹性波的特殊情况，处理好每种方法相应的问题才能获得可行的ERWI方案。
+%许多研究通过选取不同的目标函数来选取方法对应不同名称的反演方法，但核心思想都是一致的
 
 \subsection{弹性波LSRTM研究现状}
 et al.(2016)\cite{WangEtAl2016}采用块对角Hessian压制参数耦合，Pan et al(2017)采用Hessian-free

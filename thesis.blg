@@ -76,13 +76,16 @@ Warning--I didn't find a database entry for "chi:2015"
 Warning--I didn't find a database entry for "PRATTEtAl1990"
 Warning--I didn't find a database entry for "sears:2008"
 Warning--I didn't find a database entry for "miller:1987"
-Warning--I didn't find a database entry for "Wang2017"
+Warning--I didn't find a database entry for "Beylkin"
+Warning--I didn't find a database entry for "Luo2014"
+Warning--I didn't find a database entry for "ZhangEtAl2015"
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "Yang2017"
+Warning--I didn't find a database entry for "Ren2016"
+Warning--I didn't find a database entry for "Wang2016"
 Warning--I didn't find a database entry for "ma.hale:2013"
 Warning--I didn't find a database entry for "kennett:1988"
 Warning--I didn't find a database entry for "yang:2016"
-Warning--I didn't find a database entry for "Luo2014"
-Warning--I didn't find a database entry for "Yang2017"
-Warning--I didn't find a database entry for "Wang2016"
 Warning--I didn't find a database entry for "Li2016a"
 Warning--I didn't find a database entry for "Wang2015a"
 Warning--I didn't find a database entry for "Zhou2015"
@@ -140,7 +143,7 @@ Warning--there's a publisher but no address in snieder1999inverse
 Warning--there's a publisher but no address in mavko2009rock
 You've used 118 entries,
             2219 wiz_defined-function locations,
-            1237 strings with 24878 characters,
+            1241 strings with 24916 characters,
 and the built_in function-call counts, 54734 in all, are:
 = -- 5455
 > -- 1372

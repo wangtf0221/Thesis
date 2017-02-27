@@ -1,4 +1,4 @@
-\begin{thebibliography}{100}
+\begin{thebibliography}{10}
 
 \bibitem{Claerbout1985Imaging}
 Claerbout, JonF.
@@ -536,6 +536,34 @@ Nemeth T, Wu C, Schuster G~T.
 \newblock {GEOPHYSICS}, 1999, 64(1):208--221
 \tongjidot
 
+\bibitem{shin2001improved}
+Shin C, Jang S, Min D~J.
+\newblock Improved amplitude preservation for prestack depth migration by
+  inverse scattering theory.
+\newblock Geophysical prospecting, 2001, 49(5):592--606
+\tongjidot
+
+\bibitem{Symes2008}
+Symes W~W.
+\newblock Approximate linearized inversion by optimal scaling of prestack depth
+  migration.
+\newblock {GEOPHYSICS}, 2008, 73(2):R23--R35
+\tongjidot
+
+\bibitem{bae2012frequency}
+Bae H~S, Pyun S, Chung W, et~al.
+\newblock Frequency-domain acoustic-elastic coupled waveform inversion using
+  the Gauss-Newton conjugate gradient method.
+\newblock Geophysical Prospecting, 2012, 60(3):413--432
+\tongjidot
+
+\bibitem{Metivier2014}
+Métivier L, Bretaudeau F, Brossier R, et~al.
+\newblock Full waveform inversion and the truncated Newton method: quantitative
+  imaging of complex subsurface structures.
+\newblock Geophysical Prospecting, 2014, 62(6):1353--1375
+\tongjidot
+
 \bibitem{Dai2013}
 Dai W, Schuster G~T.
 \newblock Plane-wave least-squares reverse-time migration.
@@ -548,6 +576,32 @@ Dong S, Cai J, Guo M, et~al.
   and improving the resolution.
 \newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2012.
   Society of Exploration Geophysicists, 2012
+\tongjidot
+
+\bibitem{Luo2014}
+Luo S, Hale D.
+\newblock Least-squares migration in the presence of velocity errors.
+\newblock {GEOPHYSICS}, 2014, 79(4):S153--S161
+\tongjidot
+
+\bibitem{WongEtAl2015}
+Wong M, Biondi B~L, Ronen S.
+\newblock Imaging with primaries and free-surface multiples by joint
+  least-squares reverse time migration.
+\newblock {GEOPHYSICS}, 2015, 80(6):S223--S235
+\tongjidot
+
+\bibitem{Symes2008a}
+Symes W~W.
+\newblock Migration velocity analysis and waveform inversion.
+\newblock Geophysical Prospecting, 2008, 56(6):765--790
+\tongjidot
+
+\bibitem{DuttaEtAl2014}
+Dutta G, Schuster G~T.
+\newblock Attenuation compensation for least-squares reverse time migration
+  using the viscoacoustic-wave equation.
+\newblock {GEOPHYSICS}, 2014, 79(6):S251--S262
 \tongjidot
 
 \bibitem{Dai2015}
@@ -579,11 +633,10 @@ Xu L, Stanton A, Sacchi M.
 \newblock  2289--2293
 \tongjidot
 
-\bibitem{ren.liu:2016}
-Ren Z, Liu Y.
-\newblock A hierarchical elastic full-waveform inversion scheme based on
-  wavefield separation and the multistep-length approach.
-\newblock Geophysics, 2016, 81(3):R99--R123
+\bibitem{RenEtAl2016}
+Ren Z, Liu Y, Sen M~K.
+\newblock Least-squares reverse time migration in elastic media.
+\newblock Geophysical Journal International, 2016, 208(2):1103--1125
 \tongjidot
 
 \bibitem{plessix2006}
@@ -591,223 +644,6 @@ Plessix R~E.
 \newblock A review of the adjoint-state method for computing the gradient of a
   functional with geophysical applications.
 \newblock Geophysical Journal International, 2006, 167(2):495--503
-\tongjidot
-
-\bibitem{crase1990robust}
-Crase E, Pica A, Noble M, et~al.
-\newblock Robust elastic nonlinear waveform inversion: Application to real
-  data.
-\newblock Geophysics, 1990, 55(5):527--538
-\tongjidot
-
-\bibitem{ravaut2004multiscale}
-Ravaut C, Operto S, Improta L, et~al.
-\newblock Multiscale imaging of complex structures from multifold wide-aperture
-  seismic data by frequency-domain full-waveform tomography: application to a
-  thrust belt.
-\newblock Geophysical Journal International, 2004, 159(3):1032--1056
-\tongjidot
-
-\bibitem{operto2006crustal}
-Operto S, Virieux J, Dessa J~X, et~al.
-\newblock Crustal seismic imaging from multifold ocean bottom seismometer data
-  by frequency domain full waveform tomography: Application to the eastern
-  Nankai trough.
-\newblock Journal of Geophysical Research: Solid Earth (1978--2012), 2006,
-  111(B9)
-\tongjidot
-
-\bibitem{symes.carazzone:1991}
-Symes W, Caeazzone J.
-\newblock Velocity inversion by differential semblance optimization.
-\newblock Geophysics, 1991, 56:654--663
-\tongjidot
-
-\bibitem{bunks1995multiscale}
-Bunks C, Saleck F~M, Zaleski S, et~al.
-\newblock Multiscale seismic waveform inversion.
-\newblock Geophysics, 1995, 60(5):1457--1473
-\tongjidot
-
-\bibitem{clement:2001}
-Clement F, Chavent G, Gomez S.
-\newblock Migration-based traveltime waveform inversion of 2-D simple
-  structures: A synthetic example.
-\newblock Geophysics, 2001, 66:845--860
-\tongjidot
-
-\bibitem{dehoop:2012}
-Hoop M~V, Qiu L, Scherzer O.
-\newblock Local analysis of inverse problems: Holder stability and iterative
-  reconstruction.
-\newblock Inverse Problem, 2012, 2012:045001
-\tongjidot
-
-\bibitem{biondi.almomin:2013}
-Biondi B, Almomin A.
-\newblock Tomographic full-waveform inversion ({TFWI}) by combing {FWI} and
-  wave-equation migration velocity analysis.
-\newblock The Leading Edge, 2013, 32(9):1074--1080
-\tongjidot
-
-\bibitem{warner2016adaptive}
-Warner M, Guasch L.
-\newblock Adaptive waveform inversion: Theory.
-\newblock Geophysics, 2016, 81(6):R429--R445
-\tongjidot
-
-\bibitem{alkhalifah2015scattering}
-Alkhalifah T.
-\newblock Scattering-angle based filtering of the waveform inversion gradients.
-\newblock Geophysical Journal International, 2015, 200(1):363--373
-\tongjidot
-
-\bibitem{xu.mcmechan:2014}
-Xu K, McMechan G~A.
-\newblock 2D frequency-domain elastic full-waveform inversion using time-domain
-  modeling and a multistep-length gradient approach.
-\newblock Geophysics, 2014, 79(2):R41--R53
-\tongjidot
-
-\bibitem{innanen2014seismic}
-Innanen K~A.
-\newblock Seismic AVO and the inverse Hessian in precritical reflection full
-  waveform inversion.
-\newblock Geophysical Journal International, 2014, 199(2):717--734
-\tongjidot
-
-\bibitem{shin2001improved}
-Shin C, Jang S, Min D~J.
-\newblock Improved amplitude preservation for prestack depth migration by
-  inverse scattering theory.
-\newblock Geophysical prospecting, 2001, 49(5):592--606
-\tongjidot
-
-\bibitem{choi.shin:2008}
-Choi Y, Shin C.
-\newblock Frequency-domain elastic full waveform inversion using the new pseudo
-  Hessian matrix: Expericence of elastic Marmousi 2 synthetic data.
-\newblock Bulletin of the Seismological Society of American, 2008,
-  98(5):2402--2415
-\tongjidot
-
-\bibitem{nocedal2006numerical}
-Nocedal J, Wright S.
-\newblock Numerical optimization.
-\newblock Springer Science \& Business Media, 2006
-\tongjidot
-
-\bibitem{sheen:2006}
-Sheen D~H, Tuncay K, Baag C~E, et~al.
-\newblock Tiem domain Guass-Newton seismic waveform inversion in elastic media.
-\newblock Geophysical Journal International, 2006, 167:1373--1384
-\tongjidot
-
-\bibitem{bae:2012}
-Bae H~S, Pyun S, Chung W, et~al.
-\newblock Frequency-domain acoustic-elastic coupled waveform inversion using
-  the Gauss-Newton conjugate gradient method.
-\newblock Geophysical prospecting, 2012, 60:413--432
-\tongjidot
-
-\bibitem{wang:2015}
-Wang T, Cheng J, Wang C.
-\newblock Elastic wave mode decoupling for full waveform inversion.
-\newblock 77th EAGE Conference and Exhibition 2015, Expanded Abstracts, 2015.
-\tongjidot
-
-\bibitem{yan:2008}
-Yan J, Sava P.
-\newblock Isotropic angle-domain elastic reverse-time migration.
-\newblock Geophysics, 2008, 73(6):S229--S239
-\tongjidot
-
-\bibitem{wang2016scalar}
-Wang C, Cheng J, Arntsen B.
-\newblock Scalar and vector imaging based on wave mode decoupling for elastic
-  reverse time migration in isotropic and transversely isotropic media.
-\newblock {GEOPHYSICS}, 2016, 81(5):S383--S398
-\tongjidot
-
-\bibitem{kamath2016elastic}
-Kamath N, Tsvankin I.
-\newblock Elastic full-waveform inversion for {VTI} media: Methodology and
-  sensitivity analysis.
-\newblock Geophysics, 2016, 81(2):C53--C68
-\tongjidot
-
-\bibitem{zhang.mcmechan:2010}
-Zhang Q, McMechan G~A.
-\newblock {2D} and {3D} elastic wavefield vector decomposition in the
-  wavenumber domain for {VTI} media.
-\newblock Geophysics, 2010, 75(3):D13--D26
-\tongjidot
-
-\bibitem{ma.zhu:2003}
-Ma D~T, Zhu G~M.
-\newblock P- and S-wave separated elastic wave equation numerical modeling (in
-  Chinese).
-\newblock Oil Geophysical Prospecting, 2003, 38:482--486
-\tongjidot
-
-\bibitem{cheng:2016}
-Cheng J~B, Alkhalifah T, Wu Z~D, et~al.
-\newblock Simulating propagation of decoupled elastic waves using low-rank
-  approximate mixed-domain integral operators for anisotropic media.
-\newblock Geophysics, 2016, 81(2):T63--T77
-\tongjidot
-
-\bibitem{brytik:2011}
-Brytik V, Hoop M~V, Smith H~F, et~al.
-\newblock Decoupling of modes for the elastic wave equation in media of limited
-  smoothness.
-\newblock Proceeding of the Project Review, Geo-Mathematical Imaging Group,
-  Purdue University, West Lafaytte IN, 2011, 1:193--202
-\tongjidot
-
-\bibitem{wang.mcmechan:2015b}
-Wang W, McMechan G~A, Zhang Q.
-\newblock Comparison of two algorithms for isotropic elastic {P} and {S} vector
-  decomposition.
-\newblock Geophysics, 2015, 80(4):T147--T160
-\tongjidot
-
-\bibitem{vigh20083d}
-Vigh D, Starr E~W.
-\newblock 3D prestack plane-wave, full-waveform inversion.
-\newblock Geophysics, 2008, 73(5):VE135--VE144
-\tongjidot
-
-\bibitem{menke:1989}
-Menke W.
-\newblock Geophysical data analysis: {D}iscrete inverse theory.
-\newblock Academic Press Inc., San Diego, CA, 1989
-\tongjidot
-
-\bibitem{snieder1999inverse}
-Snieder R, Trampert J.
-\newblock Inverse problems in geophysics.
-\newblock Springer, 1999
-\tongjidot
-
-\bibitem{kohn:2012}
-K{\"o}hn D, De~Nil D, Kurzmann A, et~al.
-\newblock On the influence of model parametrization in elastic full waveform
-  tomography.
-\newblock Geophysical Journal International, 2012, 191(1):325--345
-\tongjidot
-
-\bibitem{mavko2009rock}
-Mavko G, Mukerji T, Dvorkin J.
-\newblock The rock physics handbook: Tools for seismic analysis of porous
-  media.
-\newblock Cambridge university press, 2009
-\tongjidot
-
-\bibitem{jeong2012full}
-Jeong W, Lee H~Y, Min D~J.
-\newblock Full waveform inversion strategy for density in the frequency domain.
-\newblock Geophysical Journal International, 2012, 188(3):1221--1242
 \tongjidot
 
 \end{thebibliography}

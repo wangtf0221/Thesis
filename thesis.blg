@@ -3,21 +3,22 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: data/denotation.aux
 A level-1 auxiliary file: data/chap01.aux
+A level-1 auxiliary file: data/chap03.aux
 The style file: tongjibib.bst
 A level-1 auxiliary file: ack.aux
 A level-1 auxiliary file: data/appendix01.aux
 A level-1 auxiliary file: data/appendix02.aux
 A level-1 auxiliary file: data/resume.aux
 Database file #1: reference.bib
-Repeated entry---line 498 of file reference.bib
+Repeated entry---line 511 of file reference.bib
  : @article{WangEtAl2016
  :                      ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 950 of file reference.bib
+I was expecting a `,' or a `}'---line 963 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 959 of file reference.bib
+I was expecting a `,' or a `}'---line 972 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
@@ -27,12 +28,13 @@ Warning--I didn't find a database entry for "PRATTEtAl1990"
 Warning--I didn't find a database entry for "sears:2008"
 Warning--I didn't find a database entry for "miller:1987"
 Warning--I didn't find a database entry for "Beylkin"
-Warning--I didn't find a database entry for "Chavent1999"
 Warning--I didn't find a database entry for "ZhangEtAl2015"
 Warning--I didn't find a database entry for "刘玉金2015"
 Warning--I didn't find a database entry for "Yang2017"
 Warning--I didn't find a database entry for "李振春2014"
 Warning--I didn't find a database entry for "Wang2016"
+Warning--I didn't find a database entry for "Li2016a"
+Warning--I didn't find a database entry for "Wang2015a"
 Warning--there's a publisher but no address in Claerbout1985Imaging
 Name 2 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
 while executing---line 1196 of file tongjibib.bst
@@ -58,45 +60,45 @@ while executing---line 1196 of file tongjibib.bst
 Warning--there's a number but no volume in 黄超2015
 Name 2 in "B. X. Chi and L. G. Dong, and Y. Z. Liu" has a comma at the end for entry chi2015
 while executing---line 1196 of file tongjibib.bst
-You've used 94 entries,
+You've used 95 entries,
             2219 wiz_defined-function locations,
-            1133 strings with 21362 characters,
-and the built_in function-call counts, 43809 in all, are:
-= -- 4391
-> -- 1085
+            1142 strings with 21575 characters,
+and the built_in function-call counts, 44245 in all, are:
+= -- 4436
+> -- 1094
 < -- 12
-+ -- 502
-- -- 251
-* -- 3549
-:= -- 5865
-add.period$ -- 212
-call.type$ -- 94
++ -- 506
+- -- 253
+* -- 3586
+:= -- 5923
+add.period$ -- 214
+call.type$ -- 95
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 97
-duplicate$ -- 2969
-empty$ -- 4634
-format.name$ -- 332
-if$ -- 9990
+cite$ -- 98
+duplicate$ -- 2998
+empty$ -- 4681
+format.name$ -- 335
+if$ -- 10087
 int.to.chr$ -- 0
-int.to.str$ -- 94
-missing$ -- 97
-newline$ -- 571
-num.names$ -- 94
-pop$ -- 398
+int.to.str$ -- 95
+missing$ -- 98
+newline$ -- 577
+num.names$ -- 95
+pop$ -- 402
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 677
+skip$ -- 682
 stack$ -- 0
-substring$ -- 6042
+substring$ -- 6107
 swap$ -- 138
 text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 469
-width$ -- 96
-write$ -- 1134
+while$ -- 474
+width$ -- 97
+write$ -- 1146
 (There were 14 error messages)

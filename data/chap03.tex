@@ -24,15 +24,81 @@ LSRTM被推广到了变密度声波介质\cite{Yang2017}，衰减介质\cite{Dai
 如Duan et al.(2016)\cite{Duan2016},Feng et
 al.(2016)\cite{Feng2016}等都推导出了与EFWI梯度非常类似的成像条件。该成像条件也可以回避极性反转问题，同时也可以认为是更加接近于高频的参数扰动梯度。而基于
 第二章中对EFWI算法的分析，模式解耦带来的优势将同样能在ELSRTM中得以应用，因此我们将在本章中应用波模式解耦来对ELSRTM进行预条件，从而获得更好结果。
-\section{弹性}
-假设在背景弹性介质$c_{ijkl}$中有一个参数扰动$\delta c_{ijkl}$，则背景波场与扰动波场满足以下方程：
+\section{矩阵形式弹性波方程}
+与第二章中类似，我们将从弹性波方程出发，推导出E-LSRTM的梯度。本章中，为了方便，我们将
+利用矩阵形式的弹性波方程来完成推导。方程\ref{eq:WE}可以写作：
 \begin{equation}
-    \rho \frac{\partial u^2_i}{\partial t^2}  -
-    \frac{\partial}{\partial x_j}\left[ 
-        c_{ijkl}\frac{\partial u_{k}}{\partial
-        x_l}\right]=f_i,
-    \label{eq:WE} 
+\mathbf{L}(\lambda,\mu,\rho)\mathbf{U}=\mathbf{f},
+    \label{eq:WE_Matrix} 
 \end{equation}
+其中，位移场与应力场构成波场矢量满足$\mathbf{U}=[u_x,u_z,\tau_{xx},\tau_{zz},\tau_{xz}]^T$，$\mathbf{f}$为震源，并且
+\begin{equation}
+        \mathbf{L}=
+        =
+        \begin{bmatrix}
+			&\rho\partial^2_{tt} &0 &-\partial_x & 0 &-\partial_z\\
+			& 0  &\rho\partial^2_{tt} &0 &-\partial_z &-\partial_x\\
+			&-(\lambda+2\mu)\partial_x &-\lambda\partial_z &1 &0&0\\
+			& -\lambda\partial_x  &-(\lambda+2\mu)\partial_z &0 &1&0\\
+			& -\mu\partial_z  &-\mu\partial_x &0 &0&1\\
+        \end{bmatrix},
+        \label{eq:L}
+\end{equation}
+上式中$\partial_x$和$\partial_z$分别为空间x和z方向一阶导数，$\partial^2_{tt}$为时间二阶导数。在有模型扰动$\delta\lambda,\delta\mu,\delta\rho$时
+\begin{equation}
+\mathbf{L}(\lambda+\delta\lambda,\mu+\delta\mu,\rho+\delta\rho)(\mathbf{U+\delta U})=\mathbf{f},
+    \label{eq:WE_Matrix_all} 
+\end{equation}
+将式\ref{eq:WE_Matrix_all}-\ref{eq:WE_Matrix}则可得扰动波场与背景波场之间满足：
+\begin{equation}
+\mathbf{L}(\lambda,\mu,\rho)\mathbf{\delta U}=-(\delta\lambda\mathbf{L}^{'}_{\lambda}+\delta\mu\mathbf{L}^{'}_{\mu}+\delta\rho\mathbf{L}^{'}_{\rho})\mathbf{U},
+    \label{eq:WE_Matrix_delta} 
+\end{equation}
+其中
+\begin{equation}
+        \mathbf{L}^{'}_{\lambda}=
+        \begin{bmatrix}
+			&0 &0 &0 & 0 &0\\
+			& 0  &0 &0 &0 &0\\
+			&-\partial_x &-\partial_z &0 &0&0\\
+			& -\partial_x  &-\partial_z &0 &0&0\\
+			& 0  &-0&0 &0&0\\
+        \end{bmatrix},
+%        \label{eq:L_lambda}
+        \mathbf{L}^{'}_{\mu}=
+        \begin{bmatrix}
+            &0 &0 &0 & 0 &0\\
+            & 0  &0 &0 &0 &0\\
+            &-2\partial_x &0 &0 &0&0\\
+            & 0  &-2\partial_z &0 &0&0\\
+            & -\partial_z  &-\partial_x&0 &0&0\\
+        \end{bmatrix},
+        \label{eq:L_lambdamu}
+\end{equation}
+\begin{equation}
+        \mathbf{L}^{'}_{\rho}=
+        \begin{bmatrix}
+            &\partial^2_{tt} &0 &0 & 0 &0\\
+            & 0  &\partial^2_{tt} &0 &0 &0\\
+            &-\partial_x &-\partial_z &0 &0&0\\
+            & -\partial_x  &-\partial_z &0 &0&0\\
+            & 0  &-0&0 &0&0\\
+        \end{bmatrix},
+        \label{eq:L_rho}
+\end{equation}
+在E-LSRTM中，方程\ref{eq:WE_Matrix_delta}则成为新的状态方程，方程右端项为背景波场与参数扰动之间通过辐射模式的作用形成新的震源。上述问题通常
+假定在背景模型足够好的时候来恢复扰动，因此方程也只描述一次散射。与EFWI中所描述的正问题不同的是，该过程假定背景模型以及背景场不发生变化
+，因此该正问题只考虑反射（散射）波的扰动而不包含透射波（直达波）。
+
+考虑到模式解耦，我们同样可以获得以下方程：
+\begin{equation}
+\mathbf{L}^P(\lambda,\mu,\rho)\mathbf{\delta U}=-(\delta\lambda\mathbf{L}^{'}_{\lambda}+\delta\mu\mathbf{L}^{'}_{\mu}+\delta\rho\mathbf{L}^{'}_{\rho})\mathbf{U},
+    \label{eq:WE_Matrix_delta} 
+\end{equation}
+
+
+
+
 和
 \begin{equation}
     \rho \frac{\partial \delta u^2_i}{\partial t^2}  -

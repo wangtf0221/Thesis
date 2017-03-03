@@ -25,7 +25,7 @@ LSRTM被推广到了变密度声波介质\cite{Yang2017}，衰减介质\cite{Dai
 al.(2016)\cite{Feng2016}等都推导出了与EFWI梯度非常类似的成像条件。该成像条件也可以回避极性反转问题，同时也可以认为是更加接近于高频的参数扰动梯度。而基于
 第二章中对EFWI算法的分析，模式解耦带来的优势将同样能在ELSRTM中得以应用，因此我们将在本章中应用波模式解耦来对ELSRTM进行预条件，从而获得更好结果。
 \section{矩阵形式弹性波方程}
-与第二章中类似，我们将从弹性波方程出发，推导出E-LSRTM的梯度。本章中，为了方便，我们将
+与第二章中类似，我们将从弹性波方程出发，推导出E-LSRTM的梯度。本章中，为了方便，我们同样将在频率域
 利用矩阵形式的弹性波方程来完成推导。方程\ref{eq:WE}可以写作：
 \begin{equation}
 \mathbf{L}(\lambda,\mu,\rho)\mathbf{U}=\mathbf{f},
@@ -36,25 +36,28 @@ al.(2016)\cite{Feng2016}等都推导出了与EFWI梯度非常类似的成像条�
         \mathbf{L}=
         =
         \begin{bmatrix}
-			&\rho\partial^2_{tt} &0 &-\partial_x & 0 &-\partial_z\\
-			& 0  &\rho\partial^2_{tt} &0 &-\partial_z &-\partial_x\\
+%			&\rho\partial^2_{tt} &0 &-\partial_x & 0 &-\partial_z\\
+			&-\rho\omega^2 &0 &-\partial_x & 0 &-\partial_z\\
+			& 0  &-\rho\omega^2 &0 &-\partial_z &-\partial_x\\
+%			& 0  &\rho\partial^2_{tt} &0 &-\partial_z &-\partial_x\\
 			&-(\lambda+2\mu)\partial_x &-\lambda\partial_z &1 &0&0\\
 			& -\lambda\partial_x  &-(\lambda+2\mu)\partial_z &0 &1&0\\
 			& -\mu\partial_z  &-\mu\partial_x &0 &0&1\\
         \end{bmatrix},
         \label{eq:L}
 \end{equation}
-上式中$\partial_x$和$\partial_z$分别为空间x和z方向一阶导数，$\partial^2_{tt}$为时间二阶导数。在有模型扰动$\delta\lambda,\delta\mu,\delta\rho$时
+上式中$\omega$为角频率，$\partial_x$和$\partial_z$分别为空间x和z方向一阶导数，$\rho,\lambda,\mu$为弹性介质背景参数。在有模型扰动
+$\delta\lambda,\delta\mu,\delta\rho$时，介质中总波场和扰动场满足：
 \begin{equation}
 \mathbf{L}(\lambda+\delta\lambda,\mu+\delta\mu,\rho+\delta\rho)(\mathbf{U+\delta U})=\mathbf{f},
     \label{eq:WE_Matrix_all} 
 \end{equation}
-将式\ref{eq:WE_Matrix_all}-\ref{eq:WE_Matrix}则可得扰动波场与背景波场之间满足：
+将式\ref{eq:WE_Matrix_all}减去式\ref{eq:WE_Matrix}则可得扰动波场与背景波场之间的关系：
 \begin{equation}
-\mathbf{L}(\lambda,\mu,\rho)\mathbf{\delta U}=-(\delta\lambda\mathbf{L}^{'}_{\lambda}+\delta\mu\mathbf{L}^{'}_{\mu}+\delta\rho\mathbf{L}^{'}_{\rho})\mathbf{U},
+\mathbf{L}(\lambda,\mu,\rho)\mathbf{\delta U}=-\mathbf{L}^{'}\mathbf{U},
     \label{eq:WE_Matrix_delta} 
 \end{equation}
-其中
+其中$\mathbf{L}^{'}=(\delta\lambda\mathbf{L}^{'}_{\lambda}+\delta\mu\mathbf{L}^{'}_{\mu}+\delta\rho\mathbf{L}^{'}_{\rho})$，且
 \begin{equation}
         \mathbf{L}^{'}_{\lambda}=
         \begin{bmatrix}
@@ -78,24 +81,70 @@ al.(2016)\cite{Feng2016}等都推导出了与EFWI梯度非常类似的成像条�
 \begin{equation}
         \mathbf{L}^{'}_{\rho}=
         \begin{bmatrix}
-            &\partial^2_{tt} &0 &0 & 0 &0\\
-            & 0  &\partial^2_{tt} &0 &0 &0\\
-            &-\partial_x &-\partial_z &0 &0&0\\
-            & -\partial_x  &-\partial_z &0 &0&0\\
+		&-\omega^2 &0 &0 & 0 &0\\
+            & 0  &-\omega^2 &0 &0 &0\\
+            &0&0 &0 &0&0\\
+            &0  &0 &0 &0&0\\
             & 0  &-0&0 &0&0\\
-        \end{bmatrix},
+        \end{bmatrix}.
         \label{eq:L_rho}
 \end{equation}
-在E-LSRTM中，方程\ref{eq:WE_Matrix_delta}则成为新的状态方程，方程右端项为背景波场与参数扰动之间通过辐射模式的作用形成新的震源。上述问题通常
-假定在背景模型足够好的时候来恢复扰动，因此方程也只描述一次散射。与EFWI中所描述的正问题不同的是，该过程假定背景模型以及背景场不发生变化
-，因此该正问题只考虑反射（散射）波的扰动而不包含透射波（直达波）。
-
-考虑到模式解耦，我们同样可以获得以下方程：
+由于在E-LSRTM中假设背景场及背景模型不发生变化，则可将方程\ref{eq:WE_Matrix_delta}看作为新的状态方程，
+方程右端项为背景波场与参数扰动之间通过辐射模式作用形成新的震源。
+上述问题通常假定在背景模型足够好的时候来恢复扰动，因此方程也只描述一次散射。
+与EFWI中所描述的正问题不同的是，该正问题只考虑反射（散射）波的扰动而不包含透射波（直达波）。
+然而实际地下介质中，模型复杂时多次散射效应会对成像带来很大影响。近期，也有学者考虑在该过程中将扰动量同时加入背景场，
+例如Guo and
+Alkhalifah(2016)\cite{Guo2016}所展示的RWI过程中，他们将界面扰动同时加入到背景场中来包括多次散射效应的影响。
+\section{E-LSRTM梯度}
+E-LSRTM中我们同样利用$L_2$范数来定义目标函数：
 \begin{equation}
-\mathbf{L}^P(\lambda,\mu,\rho)\mathbf{\delta U}=-(\delta\lambda\mathbf{L}^{'}_{\lambda}+\delta\mu\mathbf{L}^{'}_{\mu}+\delta\rho\mathbf{L}^{'}_{\rho})\mathbf{U},
-    \label{eq:WE_Matrix_delta} 
+    E=\frac{1}{2}\sum_{\omega}\sum_{s,r}\left\lVert \mathfrak{F}\delta \mathbf{U}-\mathbf{d}^{obs} \right \rVert^2,
+    \label{eq:misfit_LSRTM}
 \end{equation}
-
+其中，$\mathfrak{F}$为重采样函数，$\delta\mathbf{U}$为模拟的反射波数据，$s,r$代表在炮点$s$出发到达接收点$r$的炮检关系
+，该目标函数要对所有频率所有炮检对的反射数据残差求和。利用lagrangian乘子法，建立增广函数：
+\begin{equation}
+\begin{split}
+    \mathcal{L}(\delta\mathbf{U},\bm\Phi,\delta\lambda,\delta\mu,\delta\rho)=&Re\left[
+	\frac{1}{2}\sum_{\omega}\sum_{s,r}\left\lVert \mathfrak{F}\delta \mathbf{U}-\mathbf{d}^{obs} \right \rVert^2 \right. \\
+	&\left.-\sum_{\omega}\sum_{s}\langle\bm\Phi,\mathbf{L}\delta\mathbf{U}-\mathbf{L}^{'}\mathbf{U}\rangle_{\mathbf{x}}\right],
+    \label{eq:Lagrangian_LSRTM}
+\end{split}
+\end{equation}
+这里，$\bm\Phi=(\phi_x,\phi_z,\phi_{xx},\phi_{zz},\phi_{xz})^T$为伴随波场，$\langle\rangle_\mathbf{x}$
+代表空间域的内积运算，根据Plessix(2006)\cite{plessix2006}，该优化问题的极值点需要满足
+$\frac{\partial\mathcal{L}}{\partial(\delta\mathbf{U}_s)}=0$，也即对应于共轭状态方程：
+\begin{equation}
+	\mathbf{L}^*(\lambda,\mu,\rho)\bm\Phi_s=\sum_{r}(\delta\mathbf{U}-\mathbf{d}^{obs}),
+    \label{eq:Adjoint_LSRTM} 
+\end{equation}
+由于每一炮每一个频率的数据都对应一个共轭方程，因此上式中未出现对频率及炮点的求和。为了简单，我们隐去了上式中的重采样函数。上式左端项中
+$\mathbf{L}^*$，该共轭转置代表了传播算子的逆时反传，而右端项则代表了每炮数据检波点处的残差波场，因此伴随波场$\bm\Phi$是以数据残差为震源的逆时
+传播波场。则式\ref{eq:Lagrangian_LSRTM}对应的梯度应为：
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial \delta\mathbf{m}}=Re\left(\sum_{\omega}\sum_{s,r}
+	\langle\bm\Phi,\frac{\partial \mathbf{L}^{'}}{\partial\delta\mathbf{m}}\mathbf{U}\rangle\right),
+    \label{eq:Gradient_LSRTM}
+\end{equation}
+其中$\delta\mathbf{m}=(\delta\lambda, \delta\mu,\delta\rho$，利用式\ref{eq:L_lambdamu}-\ref{eq:L_rho}对$\delta\mathbf{m}$求导并将其转换到时间域
+可得：
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial \delta\lambda}=\left(\sum_{s,r}\int^T_{0}
+%	\bm\Phi^T\mathbf{L}^{'}_{\lambda}\mathbf{U}\right),
+	(\phi_x)\mathbf{L}^{'}_{\lambda}\mathbf{U}\right),
+    \label{eq:Gradient_lambda_LSRTM}
+\end{equation}
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial \delta\mu}=\left(\sum_{s,r}\int^T_{0}
+	\bm\Phi^T\mathbf{L}^{'}_{\mu}\mathbf{U}\right),
+    \label{eq:Gradient_mu_LSRTM}
+\end{equation}
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial \delta\rho}=\left(\sum_{s,r}\int^T_{0}
+	\bm\Phi^T\mathbf{L}^{'}_{\rho}\mathbf{U}\right),
+    \label{eq:Gradient_mu_LSRTM}
+\end{equation}
 
 
 

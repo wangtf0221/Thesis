@@ -106,133 +106,111 @@ E-LSRTM中我们同样利用$L_2$范数来定义目标函数：
 ，该目标函数要对所有频率所有炮检对的反射数据残差求和。利用lagrangian乘子法，建立增广函数：
 \begin{equation}
 \begin{split}
-    \mathcal{L}(\delta\mathbf{U},\bm\Phi,\delta\lambda,\delta\mu,\delta\rho)=&Re\left[
+    \mathcal{L}(\delta\mathbf{U},\bm\Psi,\delta\lambda,\delta\mu,\delta\rho)=&Re\left[
 	\frac{1}{2}\sum_{\omega}\sum_{s,r}\left\lVert \mathfrak{F}\delta \mathbf{U}-\mathbf{d}^{obs} \right \rVert^2 \right. \\
-	&\left.-\sum_{\omega}\sum_{s}\langle\bm\Phi,\mathbf{L}\delta\mathbf{U}-\mathbf{L}^{'}\mathbf{U}\rangle_{\mathbf{x}}\right],
+	&\left.-\sum_{\omega}\sum_{s}\langle\bm\Psi,\mathbf{L}\delta\mathbf{U}-\mathbf{L}^{'}\mathbf{U}\rangle_{\mathbf{x}}\right],
     \label{eq:Lagrangian_LSRTM}
 \end{split}
 \end{equation}
-这里，$\bm\Phi=(\phi_x,\phi_z,\phi_{xx},\phi_{zz},\phi_{xz})^T$为伴随波场，$\langle\rangle_\mathbf{x}$
+这里，$\bm\Psi=(\psi_x,\psi_z,\psi_{xx},\psi_{zz},\psi_{xz})^T$为伴随波场，$\langle\rangle_\mathbf{x}$
 代表空间域的内积运算，根据Plessix(2006)\cite{plessix2006}，该优化问题的极值点需要满足
 $\frac{\partial\mathcal{L}}{\partial(\delta\mathbf{U}_s)}=0$，也即对应于共轭状态方程：
 \begin{equation}
-	\mathbf{L}^*(\lambda,\mu,\rho)\bm\Phi_s=\sum_{r}(\delta\mathbf{U}-\mathbf{d}^{obs}),
+	\mathbf{L}^*(\lambda,\mu,\rho)\bm\Psi_s=\sum_{r}(\delta\mathbf{U}-\mathbf{d}^{obs}),
     \label{eq:Adjoint_LSRTM} 
 \end{equation}
 由于每一炮每一个频率的数据都对应一个共轭方程，因此上式中未出现对频率及炮点的求和。为了简单，我们隐去了上式中的重采样函数。上式左端项中
-$\mathbf{L}^*$，该共轭转置代表了传播算子的逆时反传，而右端项则代表了每炮数据检波点处的残差波场，因此伴随波场$\bm\Phi$是以数据残差为震源的逆时
-传播波场。则式\ref{eq:Lagrangian_LSRTM}对应的梯度应为：
+$\mathbf{L}^*$，该共轭转置代表了传播算子的逆时反传，而右端项则代表了每炮数据检波点处的残差波场，因此伴随波场$\bm\Psi$是以数据残差为震源的逆时
+传播波场。
+则式\ref{eq:Lagrangian_LSRTM}对应的梯度应为：
 \begin{equation}
     \frac{\partial\mathcal{L}}{\partial \delta\mathbf{m}}=Re\left(\sum_{\omega}\sum_{s,r}
-	\langle\bm\Phi,\frac{\partial \mathbf{L}^{'}}{\partial\delta\mathbf{m}}\mathbf{U}\rangle\right),
+	\langle\bm\Psi,\frac{\partial \mathbf{L}^{'}}{\partial\delta\mathbf{m}}\mathbf{U}\rangle\right),
     \label{eq:Gradient_LSRTM}
 \end{equation}
-其中$\delta\mathbf{m}=(\delta\lambda, \delta\mu,\delta\rho$，利用式\ref{eq:L_lambdamu}-\ref{eq:L_rho}对$\delta\mathbf{m}$求导并将其转换到时间域
+其中$\delta\mathbf{m}=(\delta\lambda, \delta\mu,\delta\rho)$，
+注意到$\frac{\partial\mathcal{L}}{\partial \delta\mathbf{m}}$的相关导数正好对应于，$\frac{\partial\mathcal{L}}{\partial 
+\delta\lambda}=\mathcal{L}^{'}_{\lambda}$，$\frac{\partial\mathcal{L}}{\partial\delta\mu}=\mathcal{L}^{'}_{\mu}$以及
+$\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
+利用式\ref{eq:L_lambdamu}-\ref{eq:L_rho}对$\delta\mathbf{m}$求导并将其转换到时间域
 可得：
 \begin{equation}
-    \frac{\partial\mathcal{L}}{\partial \delta\lambda}=\left(\sum_{s,r}\int^T_{0}
-%	\bm\Phi^T\mathbf{L}^{'}_{\lambda}\mathbf{U}\right),
-	(\phi_x)\mathbf{L}^{'}_{\lambda}\mathbf{U}\right),
-    \label{eq:Gradient_lambda_LSRTM}
+\begin{split}
+   & \frac{\partial\mathcal{L}}{\partial \delta\lambda}=\sum_{s,r}\int^T_{0}
+	(\frac{\partial u_x}{\partial x}+\frac{\partial u_z}{\partial z})(\psi_{xx}+\psi_{zz}),\\
+   & \frac{\partial\mathcal{L}}{\partial \delta\mu}=\sum_{s,r}\int^T_{0}
+	2(\frac{\partial u_x}{\partial x}\psi_{xx}+\frac{\partial u_z}{\partial z}\psi_{zz})+
+	(\frac{\partial u_x}{\partial z}+\frac{\partial u_x}{\partial z})\psi_{xz},\\
+   & \frac{\partial\mathcal{L}}{\partial \delta\rho}=\sum_{s,r}\int^T_{0}
+	\frac{\partial^2 u_x}{\partial t^2}\psi_x+\frac{\partial^2 u_z}{\partial t^2}\psi_{z}.
+    \label{eq:Gradient_lambdamurho_LSRTM}
+\end{split}
 \end{equation}
+另外需要注意到的是，将式\ref{eq:Adjoint_LSRTM}变换到时空域并展开：
 \begin{equation}
-    \frac{\partial\mathcal{L}}{\partial \delta\mu}=\left(\sum_{s,r}\int^T_{0}
-	\bm\Phi^T\mathbf{L}^{'}_{\mu}\mathbf{U}\right),
-    \label{eq:Gradient_mu_LSRTM}
+\begin{split}
+   & \rho\frac{\partial^2 \psi_{x}}{\partial t^2}=	(\lambda+2\mu)\frac{\partial \psi_{xx}}{\partial x}+
+		\lambda\frac{\partial \psi_{zz}}{\partial x}+\mu\frac{\partial \psi_{xz}}{\partial z},\\
+   & \rho\frac{\partial^2 \psi_{z}}{\partial t^2}=	\lambda\frac{\partial \psi_{xx}}{\partial z}+
+		(\lambda+2\mu)\frac{\partial \psi_{zz}}{\partial z}+\mu\frac{\partial \psi_{xz}}{\partial x},\\
+   & \psi_{xx}=\frac{\partial \psi_x}{\partial x}, \psi_{zz}=\frac{\partial \psi_z}{\partial z},\\
+   & \psi_{xz}=\frac{\partial \psi_x}{\partial z} + \frac{\partial \psi_z}{\partial x},
+    \label{eq:Time_Adjoint_WE_LSRTM}
+\end{split}
 \end{equation}
+可以看到在反传波场的求取过程中，由于转置算子的作用导致伴随状态方程发生了改变不再是原本的弹性波方程，新的方程中多出了两项应力导数项，同时应力
+应变也不再是原本的关系，这是求解中需要注意的。但是我们也通过实验发现，采用新的方程也并未带来非常大的不同，可以说新方程在数学导出上不一样，但是
+不影响物理过程。
+\section{模式解耦对E-LSRTM进行预条件}
+可以看到以上梯度表达式与EFWI中的梯度(式\ref{eq:DeGradient_vpvsrho})非常类似，只是EFWI中$\lambda$和$\mu$的梯度互相关波场都为位移的空间导数，而
+此处则为位移场空间导数与应力场的互相关，密度的梯度表达式则完全一致。
+采用速度-密度的参数化方式，我们可以导出$V_p$与$V_s$的E-LSRTM梯度：
 \begin{equation}
-    \frac{\partial\mathcal{L}}{\partial \delta\rho}=\left(\sum_{s,r}\int^T_{0}
-	\bm\Phi^T\mathbf{L}^{'}_{\rho}\mathbf{U}\right),
-    \label{eq:Gradient_mu_LSRTM}
+\begin{split}
+   & \frac{\partial\mathcal{L}}{\partial \delta V_p}=2\rho V_p\frac{\partial\mathcal{L}}{\partial \delta \lambda}\\
+   & \frac{\partial\mathcal{L}}{\partial \delta V_s}=2\rho V_s(-2\frac{\partial\mathcal{L}}{\partial \delta \lambda}
+	+\frac{\partial\mathcal{L}}{\partial \delta \mu})\\
+   & \frac{\partial\mathcal{L}}{\partial \delta\rho_{vel}}=(V^2_p-2V^2_s)\frac{\partial\mathcal{L}}{\partial \delta \lambda}+V^2_s\frac{\partial\mathcal{L}}{\partial \delta \lambda}+\frac{\partial\mathcal{L}}{\partial \delta\rho}.
+    \label{eq:Gradient_VpVsrho_LSRTM}
+\end{split}
 \end{equation}
 
+为了利用解耦来降低$V_p$和$V_s$之间的耦合性，我们同样在E-LSRTM中暂不考虑密度扰动。
+则考虑模式解耦的E-LSRTM梯度为：
+\begin{equation}
+\begin{split}
+   & \frac{\partial\mathcal{L}}{\partial \delta V_p}=2\rho V_p\sum_{s,r}\int^T_{0}
+	(\frac{\partial u_x}{\partial x}+\frac{\partial u_z}{\partial
+	z})(\psi_{xx}+\psi_{zz})dt,\\
+   & \frac{\partial\mathcal{L}}{\partial \delta V_s}=2\rho V_s\sum_{s,r}\int^T_{0}
+	2(\frac{\partial u^M_x}{\partial x}\psi^S_{xx}+\frac{\partial u^M_z}{\partial z}\psi^S_{zz})+
+	(\frac{\partial u^M_x}{\partial z}+\frac{\partial u^M_x}{\partial
+	z})\psi^S_{xz}dt,
+    \label{eq:Gradient_lambdamurho_LSRTM}
+\end{split}
+\end{equation}
+其中$M\in{P,S}$。需要注意到，与EFWI所不同的是LSRTM中我们希望获得高分辨率的高波数分量，因此所处理的数据频率越高越好。但是
+在高频数据中，在模型复杂区域，层间多次波或者多次散射经常也会比较严重。尤其是在利用S波波场进行LSRTM的情况下，本身S波波场能量较弱，
+对于S波散射或者多次转换严重的区域会对解耦之后的梯度产生很不利的干扰。因此对正传波场的解耦
+也会有助于减少假象与干扰。所以这里我们不再约束只对反传播场进行解耦而是否解耦正传波场需要视情况而定。如果多次散射较弱，那么不用解耦正传波场，
+如果多次散射严重，就解耦正传波场用更多计算量来压制假象。
 
+此外，前文中也提到需要对梯度进行其他预条件才能更好的加速收敛，这里我们采用震源波场的照明能量来进行补偿：
+\begin{equation}
+	\mathbf{Q} =\left[\int^T_0(u^2_x+u^2_z)dt\right]^{-1},
+    \label{eq:Gradient_Illumination_LSRTM}
+\end{equation}
+该能量补偿相当于对角Hessian的作用，因此最终采用模式解耦作为预条件的E-LSRTM更新方式如下：
+\begin{equation}
+        \delta\mathbf{m}_{k+1}=\delta\mathbf{m}_{k}-\alpha_k
+        \begin{bmatrix}\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_p}}\\
+		\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_s}}\end{bmatrix}_{k},
+        \label{eq:Gradientmethod}
+\end{equation}
+其中$\delta\mathbf{m}_{k}$为$k$次迭代的模型扰动，$\alpha$为k+1次迭代的步长。
+步长搜索我们同样采用抛物线拟合的方式来求取。
 
-和
-\begin{equation}
-    \rho \frac{\partial \delta u^2_i}{\partial t^2}  -
-    \frac{\partial}{\partial x_j}\left[ 
-        c_{ijkl}\frac{\partial \delta u_{k}}{\partial
-        x_l}\right]=\frac{\partial}{\partial x_j}\left[\delta c_{ijkl}\frac{\partial u_{k}}{\partial x_l}\right],
-    \label{eq:DeltaWE} 
-\end{equation}
-其中，$\delta u_i$可以看作是用RTM或其他方法的成像结果，$\delta c_{ijkl}$进行反偏移之后的反射数据。在WERTI中，我们需要使得观测数据$\mathbf{d}^{o}$与模拟数据
-$\mathbf{d}^{c}$之间的走时残差最小，则目标函数为：
-\begin{equation}
-    E=\frac{1}{2}\int\tau^2(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
-    \label{eq:Objectivefunction} 
-\end{equation}
-其中，走时残差$\tau(\mathbf{x_r},t;\mathbf{x_s})$可以通过DIW来获取。通过类似Ma and
-Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我们可以得到如下梯度公式：
-\begin{equation}
-    \frac{\partial E}{\partial c_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
-    x_j}\frac{\partial \delta \psi_{k}}{\partial x_l}+\frac{\partial \delta u_{i}}{\partial
-    x_j}\frac{\partial \psi_{k}}{\partial x_l}),
-    \label{eq:GradientCijkl}
-\end{equation}
-其中，$\psi_i$和$\delta \psi_i$是共轭波场满足：
-\begin{equation}
-    \rho \frac{\partial \psi^2_i}{\partial t^2}  -
-    \frac{\partial}{\partial x_j}\left[ 
-        c_{ijkl}\frac{\partial \psi_{k}}{\partial
-        x_l}\right]=\tau(\mathbf{x_r},t;\mathbf{x_s})\frac{\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})}{h_i(\mathbf{x_r},t;\mathbf{x_s})},
-    \label{eq:AdjointWE} 
-\end{equation}
-和
-\begin{equation}
-    \rho \frac{\partial \delta \psi^2_i}{\partial t^2}  -
-    \frac{\partial}{\partial x_j}\left[ 
-        c_{ijkl}\frac{\partial \delta \psi_{k}}{\partial 
-        x_l}\right]=\frac{\partial}{\partial x_j}\left[\delta c_{ijkl}\frac{\partial
-        \psi_{k}}{\partial x_l}\right], 
-    \label{eq:AdjointDeltaWE} 
-\end{equation}
-上式中$h_i(\mathbf{x_r},t;\mathbf{x_s})=(\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))^2-\ddot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})
-(d^c_i(\mathbf{x_r},t;\mathbf{x_s})-d^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))$，而$\dot{d}$则代表$d$在时间方向的导数。在方程\eqref{eq:GradientCijkl}的右端项
-中，第一和第二项分别表示震源端和检波点端的反射波路径。之后我们可以通过链式法则来导出P波与S波速度的梯度公式：
-\begin{equation}
-    \frac{\partial E}{\partial V_p}=2\rho V_p\frac{\partial E}{\partial
-        c_{ijkl}}\delta_{ij}\delta_{kl}, \qquad
-    \frac{\partial E}{\partial V_s}=2\rho V_s\frac{\partial
-    E}{\partial c_{ijkl}}(-2\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+
-    \delta_{il}\delta_{jk}).
-    \label{eq:GradientVel}
-\end{equation}
-\section{弹性波WERTI工作流程}
-弹性波介质中，不同模式的转换波，主要是PP与PS同相轴之间，会互相叠加、互相交叉。在用DIW提取走时差的时候，这些交叉点的位置就会变成一些奇异点而给拾取带来很大困难
-。因此，如果直接用原始多分量数据的话，拾取到的$\tau(\mathbf{x_r},t;\mathbf{x_s})$就会不准确，这也是为什么式\eqref{eq:AdjointDeltaWE}中的梯度很难直接应用。
-为了解决这个问题，我们将观测与模拟地震数据分解为P波与S波两部分。该模式分解只作用于地面地震数据\cite[]{Li2016a}，因此我们可以快速地获得每一炮数据分解之后的矢量
-P波或S波地震记录。这样，走时残差就可以被分成P波与S波两部分，使得弹性波WERTI变得可行，也即用一个两阶段的流程，先P波阶段后S波阶段。
-
-在P波阶段，主要采用PP反射波来建立P波速度的背景模型。首先，我们从ERTM中获得P波速度的扰动，也即$\delta V_p$。由于在WERTI中我们只考虑走时，所以我们只进行ERTM成像
-而不是最小平方ERTM来拟合反射波振幅。因此，目标函数可以变做最小化PP反射波的走时残差：
-\begin{equation}
-    E_{pp}=\frac{1}{2}\int\tau^2_{pp}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s}.
-    \label{eq:ObjectivefunctionPP} 
-\end{equation}
-这样，采用P波记录来计算方程\eqref{eq:AdjointWE}的右端项，并用$\delta V_p$替换方程\eqref{eq:DeltaWE}和\eqref{eq:AdjointDeltaWE}中的$\delta c_{ijkl}$，我们
-就可以计算得到$V_p$的梯度， $\frac{\partial E}{\partial V_p}$。
-
-在S波阶段，我们将采用类似的策略但是只利用PS反射波。则目标函数变为：
-\begin{equation}
-    E_{ps}=\frac{1}{2}\int\tau^2_{ps}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s}.
-    \label{eq:ObjectivefunctionPS} 
-\end{equation}
-但是，实现方式与前一阶段策略略有不同。经过P波阶段反演之后，$V_p$的背景速度已经获得了很好的恢复，此时PP波成像结果应该已经比较接近准确位置。而通常情况下，地
-下介质中$V_p$与$V_s$的界面是比较一致的。所以，我们推荐采用较为准确的PP成像（$\delta V_p$）结果而不是$\delta V_s$来产生PS反射波。此外，在PS反射中，波路径的
-震源端只与P波速度相关，因此我们在计算$\frac{\partial E}{\partial V_s}$可以丢掉方程\eqref{eq:GradientCijkl} 右端项的第一部分。并且，波模式分解也会施加在
-梯度的计算过程中来确保只有S波能量参与其中：
-\begin{equation}
-    \frac{\partial E_{ps}}{\partial V_s}=-2\rho V_s
-    \int (\frac{\partial \delta u^S_{i}}{\partial
-    x_j}\frac{\partial \psi^S_{k}}{\partial x_l})
-    (\delta_{ik}\delta_{jl}+
-    \delta_{il}\delta_{jk}).
-    \label{eq:GradientVel}
-\end{equation}
-上述梯度与Wang et al. (2015)\cite{Wang2015a}提出的EFWI方法类似。模式解耦可以在$V_s$的反演中降低参数耦合同时也可以压制假象。
-
-\section{局部倾角滤波约束}
+\subsection{局部倾角滤波约束}
 WERTI非常类似成像域射线走时层析。而我们知道射线走时层析反问题通常不收敛，很难收敛或者很难收敛获得具有地质意义的模型。
 在偏移后，成像结果可以提供地下界面大致的倾角信息，通过此类倾角信息，可以设计预条件算子来沿地层倾角来对反演进行约束，使得反演结果更合理。
 采用倾角约束滤波可以加快收敛速度，在很大程度上改善反演结果。由于采用波动方程作为手段，WERTI采用波路径信息来反投影走时残差信息，因而其所面临的挑战要

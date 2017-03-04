@@ -16,47 +16,45 @@ I was expecting a `,' or a `}'---line 972 of file reference.bib
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Yang2017"
 Warning--I didn't find a database entry for "Wang2016"
-Warning--I didn't find a database entry for "Li2016a"
-Warning--I didn't find a database entry for "Wang2015a"
-You've used 12 entries,
+You've used 11 entries,
             2219 wiz_defined-function locations,
-            631 strings with 6326 characters,
-and the built_in function-call counts, 5399 in all, are:
-= -- 558
-> -- 122
+            621 strings with 6155 characters,
+and the built_in function-call counts, 5045 in all, are:
+= -- 524
+> -- 113
 < -- 4
-+ -- 56
-- -- 28
-* -- 386
-:= -- 706
-add.period$ -- 31
-call.type$ -- 12
++ -- 52
+- -- 26
+* -- 358
+:= -- 657
+add.period$ -- 29
+call.type$ -- 11
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 360
-empty$ -- 567
-format.name$ -- 38
-if$ -- 1274
+cite$ -- 11
+duplicate$ -- 341
+empty$ -- 528
+format.name$ -- 35
+if$ -- 1193
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 14
-newline$ -- 77
-num.names$ -- 12
-pop$ -- 63
+int.to.str$ -- 11
+missing$ -- 13
+newline$ -- 71
+num.names$ -- 11
+pop$ -- 59
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 115
+skip$ -- 110
 stack$ -- 0
-substring$ -- 679
+substring$ -- 632
 swap$ -- 49
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 57
-width$ -- 14
-write$ -- 148
+while$ -- 53
+width$ -- 13
+write$ -- 136
 (There were 2 error messages)

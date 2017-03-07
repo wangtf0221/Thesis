@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: data/denotation.aux
-A level-1 auxiliary file: data/chap03.aux
+A level-1 auxiliary file: data/4_lsrtm.aux
 The style file: tongjibib.bst
 A level-1 auxiliary file: ack.aux
 Database file #1: reference.bib
@@ -18,7 +18,7 @@ Warning--I didn't find a database entry for "Yang2017"
 Warning--I didn't find a database entry for "Wang2016"
 You've used 11 entries,
             2219 wiz_defined-function locations,
-            621 strings with 6155 characters,
+            621 strings with 6156 characters,
 and the built_in function-call counts, 5045 in all, are:
 = -- 524
 > -- 113

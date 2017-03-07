@@ -189,7 +189,7 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
     \label{eq:Gradient_lambdamurho_LSRTM}
 \end{split}
 \end{equation}
-其中$M\in{P,S}$。需要注意到，与EFWI所不同的是LSRTM中我们希望获得高分辨率的高波数分量，因此所处理的数据频率越高越好。但是
+其中$M\in{P,S}$。需要注意到，与EFWI所不同的是LSRTM中我们希望获得高分辨率的高波数分量，因此所处理的数据频率通常较高。但是
 在高频数据中，在模型复杂区域，层间多次波或者多次散射经常也会比较严重。尤其是在利用S波波场进行LSRTM的情况下，本身S波波场能量较弱，
 对于S波散射或者多次转换严重的区域会对解耦之后的梯度产生很不利的干扰。因此对正传波场的解耦
 也会有助于减少假象与干扰。所以这里我们不再约束只对反传播场进行解耦而是否解耦正传波场需要视情况而定。如果多次散射较弱，那么不用解耦正传波场，
@@ -209,42 +209,10 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 \end{equation}
 其中$\delta\mathbf{m}_{k}$为$k$次迭代的模型扰动，$\alpha$为k+1次迭代的步长。
 步长搜索我们同样采用抛物线拟合的方式来求取。
-
-\subsection{局部倾角滤波约束}
-WERTI非常类似成像域射线走时层析。而我们知道射线走时层析反问题通常不收敛，很难收敛或者很难收敛获得具有地质意义的模型。
-在偏移后，成像结果可以提供地下界面大致的倾角信息，通过此类倾角信息，可以设计预条件算子来沿地层倾角来对反演进行约束，使得反演结果更合理。
-采用倾角约束滤波可以加快收敛速度，在很大程度上改善反演结果。由于采用波动方程作为手段，WERTI采用波路径信息来反投影走时残差信息，因而其所面临的挑战要
-小于射线走时层析。然而，对于一些照明不足，或者
-反射路径覆盖不均匀的区域同样也会出现上述的问题。常规的各向同性的平滑算子很难保证反演收敛到具有地质含义的物理模型。因此，WERTI中采用局部倾角约束同样可以加速
-收敛，并获得具有地质意义的反演结果。
-
-Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构张量是$2\times2$的矩阵：
-\begin{equation}
-        \mathbf{S}=
-        \begin{pmatrix}
-                < s^2_1 > \quad <s_1s_2 >\\
-                < s_1s_2 > \quad < s^2_2 >\\
-        \end{pmatrix},
-        \label{eq:StructureTensor}
-\end{equation}
-其中$s_1$和$s_2$表示图像垂直和水平方向的方向导数，$<\dot>$表示2D的Gaussian平滑函数。上式对应的特征值问题可以表示为：
-\begin{equation}
-	\mathbf{S}=\lambda_u\mathbf{u}\mathbf{u}^T+\lambda_v\mathbf{v}\mathbf{v}^T
-        \label{eq:EigenValueVector}
-\end{equation}
-其中，$\lambda_u$和$\lambda_v$分别为特征向量$\mathbf{u}$和$\mathbf{v}$对应的特征值。我们定义$\lambda_u\ge\lambda_v\ge0$，这样的话$\mathbf{u}$指示梯度最大的
-方向，也即与线性结构垂直的方向。而话$\mathbf{u}$则指示与线性结构平行的方向。Hale(2009)指出，可以设置$\lambda_u(\mathbf{x})=0$
-和$\lambda_v(\mathbf{x})=1$，这样保证图像中每一处平滑都会沿倾角方向。则沿倾角平滑的滤波器可以通过以下方程求解：
-\begin{equation}
-	(\mathbf{B}^T\mathbf{B}+\mathbf{A}^T\mathbf{S}^{\prime}\mathbf{A})\mathbf{h}=\mathbf{B}^T\mathbf{B}\mathbf{f}
-        \label{eq:SparseMatrixSystem}
-\end{equation}
-其中，$\mathbf{S}^{\prime}$为新构造的结构张量，$\mathbf{B}$和$\mathbf{A}$分别为求和算子以及差分算子对应的矩阵，$\mathbf{f}$为输入图像，$\mathbf{h}$
-为输出的平滑后图像。该方程可以通过共轭梯度法快速求解。
-
 \section{数值实验}
-\subsection{目标函数性态变化}
-\subsection{Sigsbee2A模型}
+\subsection{反射数据与Born数据的差异}
+\subsection{参数耦合的影响}
+\subsection{Marmousi模型}
 \begin{figure}
    \centering
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevp.pdf}}

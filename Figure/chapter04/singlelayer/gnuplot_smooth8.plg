@@ -1,0 +1,39 @@
+#!/usr/local/gnuplot.5.0.4/bin/gnuplot
+#
+# Plotting a velocity model
+#
+# AUTHOR: Tengfei Wang
+reset
+# wxt terminal
+#set termoption dash
+set terminal postscript enhanced color size 9.0,3. eps 
+set output "smooth8.eps"
+
+##set style line 11 lc rgb '#808080' lt 1
+#set border 2 front ls 11
+set tics nomirror out scale 1.5
+set border linewidth 2.0
+unset key
+set xrange [600:1000]
+set yrange  [-4e-10:5e-10]
+#unset xtics
+
+set xtics ("0.6" 600, "0.8" 800,"1" 1000) font "Times-Roman-bold, 28" offset 0,0.2
+set xlabel 'Time(s)' font "Times-Roman-bold, 32" offset 0,0.5
+
+set ytics ("-4" -4e-10,"-2" -2e-10,"0" 0, "2" 2e-10,"4" 4e-10) font "Times-Roman-bold, 28" offset 0.5,0
+set ylabel 'Amplitude ' font "Times-Roman-bold, 32" offset -0.5,0
+set style line 1  linecolor rgb "red"  linewidth 3.000 
+set style line 2  linecolor rgb "black"  linewidth 3.000 
+set style line 4  linecolor rgb "green"  linewidth 3.000
+#set colorbox vertical origin screen 0.9, 0.2, 0 size screen 0.05, 0.6, 0 front noinvert bdefault
+unset colorbox
+
+##### Set the margin of the picture##########
+set lmargin at screen 0.08;
+set bmargin at screen 0.12;
+#set rmargin at screen 0.9;
+#set tmargin at screen 0.85;
+plot 'smooth8_1' binary record=(2000) format='%float32' u 0:1 with lines ls 1,\
+	 'smooth8_2' binary record=(2000) format='%float32' u 0:1 with lines ls 4,\
+	 'smooth8_3' binary record=(2000) format='%float32' u 0:1 with lines ls 2

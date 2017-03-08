@@ -211,7 +211,48 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 步长搜索我们同样采用抛物线拟合的方式来求取。
 \section{数值实验}
 \subsection{反射数据与Born数据的差异}
+\begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.58\textwidth]{Figure/chapter04/singlelayer/smooth3.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.58\textwidth]{Figure/chapter04/singlelayer/smooth8.pdf}}
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:refl_born_comparison}
+\end{figure}
+\begin{figure}
+   \centering
+%   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/RTMborn.pdf}}
+%   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/RTMref.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/born.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/ref.pdf}}
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:TrueAndInitial_1}
+\end{figure}
+\begin{figure}
+   \centering
+   \subfloat{\includegraphics[width=0.58\textwidth]{Figure/chapter04/singlelayer/comparison.pdf}}\\
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:line_comparison}
+\end{figure}
 \subsection{参数耦合的影响}
+\begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vsnodecomp.pdf}}
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:tradeoff}
+\end{figure}
 \subsection{Marmousi模型}
 \begin{figure}
    \centering
@@ -248,6 +289,28 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 \end{figure}
 \begin{figure}
    \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsnodecomp.pdf}}
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:RTM_1_refl}
+\end{figure}
+\begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vsnodecomp.pdf}}
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:LSRTM_1_refl}
+\end{figure}
+\begin{figure}
+   \centering
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vp.pdf}}
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vs.pdf}}\\
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpsmooth.pdf}}
@@ -279,36 +342,3 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
    (d) linearly increasing with depth. }
    \label{fig:LSRTM_2}
 \end{figure}
-我们采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b）。$V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，其速度值随深度线性增加。我们可以看到初始模型中，$V_p$比真实值偏低而$V_s$则偏高，
-我们采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b）。$V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，其速度值随深度线性增加。我们可以看到初始模型中，$V_p$比真实值偏低而$V_s$则偏高，
-我们采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b）。$V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，其速度值随深度线性增加。我们可以看到初始模型中，$V_p$比真实值偏低而$V_s$则偏高，
-但这两者都偏离真实值很远。36炮地面模拟数据均匀的分布在地表，最大偏移距为4km，其震源为主频15Hz的纯P波震源。
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/nodevp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/nodevs.pdf}}
-   \caption{Inverted results of WERTI and EFWI. (a) and (b) are inverted $V_p$ and
-       $V_s$ model through two-stage elastic WERTI with the linearly increased models
-       as initial models. (c) and (d) are inverted $V_p$ and $V_s$ through EFWI using
-   (a) and (b) as starting models.}
-   \label{fig:InvertedModel}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/1km.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/3km.pdf}}
-   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
-       3km (b). The black and blue lines indicate the true and linearly increased
-       initial model. The green and yellow lines indicate the WERTI and EFWI results,
-       respectively.
-   }
-   \label{fig:Profiles}
-\end{figure}
-
-图\ref{fig:InvertedModel}a和\ref{fig:InvertedModel}b为弹性WERTI的反演结果。由于线性增加的初始模型偏离真值很远，如果用该模型来进行常规EFWI，将不可避免的
-受困于cycle-skipping问题。然而，经过每个阶段40次迭代之后，WERTI可以得到$V_p$和$V_s$较好的背景速度更新。采用WERTI的反演结果作为初始模型，我们重新进行了
-常规EFWI反演。如图\ref{fig:InvertedModel}c和\ref{fig:InvertedModel}d所示，$V_p$和$V_s$模型都得到了很好的重建，除了模型右侧一小部分。原因可能是在
-地面观测下，模型右侧的反射波覆盖不够导致WERTI不能准确的恢复该区域速度的长波长分量。图\ref{fig:Profiles}也展示了1.5km和3km处的垂向剖面。从图中可以看出，
-弹性WERTI能够提供可靠的包含长波长分量的初始模型，并且以此为始模型的EFWI反演结果也与真实值很好的吻合。

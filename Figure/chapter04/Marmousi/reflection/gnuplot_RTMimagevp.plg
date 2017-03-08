@@ -1,4 +1,4 @@
-#!/usr/local/gnuplot.5.0.4/bin/gnuplot
+#!/usr/bin/gnuplot
 #
 # Plotting a velocity model
 #
@@ -6,16 +6,19 @@
 reset
 # wxt terminal
 set terminal postscript enhanced size 8.0,4 eps
-set output "test.eps"
+#set terminal postscript enhanced size 8.0,4
+set output outputfilevp
 
 ##set style line 11 lc rgb '#808080' lt 1
 #set border 2 front ls 11
-set tics nomirror out scale 1.5
+set tics nomirror out scale 1.50
 set border linewidth 2.0
 # Colorbar
 # disable colorbar tics
 set cbtics scale 0.1
-#set cbrange [1000:5000]
+#bclip=0.0160046 wclip=-0.0179905
+#1365.06 wclip=-1376.97
+set cbrange [-40.:40]
 set colorbox user origin 0.915,0.05 size 0.02,0.80
 # matlab palette colors
 #set palette defined ( 0 "#000090",\
@@ -28,29 +31,34 @@ set colorbox user origin 0.915,0.05 size 0.02,0.80
 #                      7 "#ee0000",\
 #                      8 "#7f0000")
 unset key
-set xrange [0:199]
-set yrange  [199:0]
-#unset xtics
+set x2range [0:500]
+set yrange  [280:0]
+unset xtics
 
-set x2tics ("0" 0, "2" 400,"4" 800,"6" 1200,"8" 1600, "10" 2000, "12" 2400,\
-"14" 2800) font "Times-Roman-bold, 28" offset 0,0.2
-#set x2label 'Position (km)' font "Times-Roman-bold, 32" offset 0,1.4
+set x2tics ("0" 0,"1" 100, "2" 200,"3" 300,"4" 400,"5" 500) font "Times-Roman-bold, 28" offset 0,0.2
+set x2label 'Position (km)' font "Times-Roman-bold, 32" offset 0,1.4
 
-set ytics ("0" 0, "1" 200,"2" 400,"3" 600) font "Times-Roman-bold, 28" offset 0.5,0
-#set ylabel 'Depth (km)' font "Times-Roman-bold, 32" offset -1.5,0
+set ytics ("0" 0, "1" 100,"2" 200) font "Times-Roman-bold, 28" offset 0.5,0
+set ylabel 'Depth (km)' font "Times-Roman-bold, 32" offset -1.5,0
 
-set style line 1 lt 1 lw 8 lc rgb "red"
+set cbtics ("-1" -1000,"-0.5" -500, "0" 0,"0.5" 500,"1" 1000) font "Times-Roman-bold, 28" \
+offset -0.5,0
+set cblabel 'Vs (km/s)' font "Times-Roman-bold, 28" offset -0.5,0
+unset colorbox
 ##### Set the margin of the picture##########
 set lmargin at screen 0.08;
-set rmargin at screen 0.9;
+set rmargin at screen 0.95;
 set bmargin at screen 0.05;
 set tmargin at screen 0.85;
-#plot 'model_decomp_vp_stage3_it_33.bin' binary array=2800x700 scan=yx with image,\
-plot 'tmp1' binary record=(200) format='%float32' u ($1/20+20):0 with lines\
-	 ,'output' binary record=(200) format='%float32' u ($1/20+20):0 with lines 
-#	 ,'tmp2' binary array=200:200 format='%float32' u 0:2 with lines 
-#plot 'model_decomp_vp_stage3_it_33.bin' binary record=700 format='%float32' skip=100 u 0:($100/10) with lines
 
+#set lmargin at screen 0.08;
+#set rmargin at screen 0.95;
+#set bmargin at screen 0.05;
+#set tmargin at screen 0.92;
+
+plot datafilevp binary array=500x280 scan=yx with image
+
+#plot 'nx2800nz700dxdz5.vp' binary array=2800x700 scan=yx with image
 #plot 'nx2800nz700dxdz5.vp' binary array=700x2800 with image
 #plot 'nx2800nz700dxdz5.vp' binary center=(1400,350) rotation=-90d array=700x2800 with image
 

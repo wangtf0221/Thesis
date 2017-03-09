@@ -1,60 +1,64 @@
 ##############  Plot Vp model ############
-data=OnlyVp.vp
-out=OnlyVp
-output=OnlyVp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp.plg
+./filter1 Vssmoothnew_decomp_adjoint_vp_stage1_it_11.bin tmp
+data=tmp
+out=vpdecomp
+output=vpdecomp.eps
+bclip=561.458 wclip=-585.869
+gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-data=OnlyVp.vs
-out=OnlyVs
-output=OnlyVs.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vs.plg
+./filter1 Vssmoothnew_nodecomp_adjoint_vp_stage1_it_20.bin tmp
+data=tmp
+out=vpnodecomp
+output=vpnodecomp.eps
+bclip=628.241 wclip=-604.452
+gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-data=born_decompsmooth3_scaledata_MulV_vp_stage1_it_44.bin
-out=imagevpdecomp
-output=imagevpdecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+./filter2 Vssmoothnew_decomp_adjoint_vs_stage1_it_40.bin tmp
+data=tmp
+out=vsdecomp
+output=vsdecomp.eps
+bclip=478.54 wclip=-415.274
+gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-data=born_nodecompsmooth3_scaledata_MulV_vp_stage1_it_40.bin
-out=imagevpnodecomp
-output=imagevpnodecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+./filter2 Vssmoothnew_nodecomp_adjoint_vs_stage1_it_40.bin tmp
+data=tmp
+out=vsnodecomp
+output=vsnodecomp.eps
+bclip=515.537 wclip=-499.162
+gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-data=born_decompsmooth3_scaledata_MulV_vs_stage1_it_44.bin
-out=imagevsdecomp
-output=imagevsdecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevs.plg
+./filter1 Vssmoothnew_decomp_adjoint_firstvs2nd_vp_stage1_it_23.bin tmp
+data=tmp
+out=firstvs2ndvpdecomp
+output=firstvs2ndvpdecomp.eps
+bclip=737.109 wclip=-597.193
+gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-data=born_nodecompsmooth3_scaledata_MulV_vs_stage1_it_40.bin
-out=imagevsnodecomp
-output=imagevsnodecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevs.plg
-epstopdf ${out}.eps
-
-data=born_decompsmooth3_scaledata_MulV_vp_stage1_it_1.bin
-out=RTMimagevpdecomp
-output=RTMimagevpdecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_RTMimagevp.plg
-epstopdf ${out}.eps
-
-data=born_nodecompsmooth3_scaledata_MulV_vp_stage1_it_1.bin
-out=RTMimagevpnodecomp
-output=RTMimagevpnodecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_RTMimagevp.plg
-epstopdf ${out}.eps
-
-data=born_decompsmooth3_scaledata_MulV_vs_stage1_it_1.bin
-out=RTMimagevsdecomp
-output=RTMimagevsdecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_RTMimagevs.plg
-epstopdf ${out}.eps
-
-data=born_nodecompsmooth3_scaledata_MulV_vs_stage1_it_1.bin
-out=RTMimagevsnodecomp
-output=RTMimagevsnodecomp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_RTMimagevs.plg
-epstopdf ${out}.eps
+#data=
+##out=RTMvpdecomp
+#output=RTMvpdecomp.eps
+#gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+#epstopdf ${out}.eps
+#
+#data=smoothnew_nodecomp_adjoint_vp_stage1_it_1.bin
+#out=RTMvpnodecomp
+#output=RTMvpnodecomp.eps
+#gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+#epstopdf ${out}.eps
+#
+#data=smoothnew_decomp_adjoint_vs_stage1_it_1.bin
+#out=RTMvsdecomp
+#output=RTMvsdecomp.eps
+#gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+#epstopdf ${out}.eps
+#
+#data=smoothnew_nodecomp_adjoint_vs_stage1_it_1.bin
+#out=RTMvsnodecomp
+#output=RTMvsnodecomp.eps
+#gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+#epstopdf ${out}.eps

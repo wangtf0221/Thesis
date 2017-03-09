@@ -6,7 +6,7 @@
 reset
 # wxt terminal
 set terminal postscript enhanced color size 8.0,4 eps
-set output "comparison.eps"
+set output "comparison2.eps"
 
 ##set style line 11 lc rgb '#808080' lt 1
 #set border 2 front ls 11
@@ -39,9 +39,9 @@ unset xtics
 set ytics ("0" 0, "0.5" 50,"1" 100,"1.5" 150,"2" 200) font "Times-Roman-bold, 28" offset 0.5,0
 set ylabel 'Depth (km)' font "Times-Roman-bold, 32" offset -1.5,0
 
-set style line 1  linecolor rgb "black"  linewidth 3.000
-set style line 2  linecolor rgb "red"  linewidth 3.000
-set style line 3  linecolor rgb "green"  linewidth 3.000
+set style line 1  linecolor rgb "black"  linewidth 7.000
+set style line 2  linecolor rgb "red"  linewidth 7.000
+set style line 3  linecolor rgb "green"  linewidth 7.000
 
 ##### Set the margin of the picture##########
 set lmargin at screen 0.08;
@@ -50,15 +50,6 @@ set tmargin at screen 0.05;
 set bmargin at screen 0.85;
 #plot '1decomp_smooth10_vp_stage1_it_32.bin'binary array=200x200 scan=yx with image
 #plot 'true50' binary record=200 format='%float32' u ($1/100+50):0 with lines
-plot  for[i=50:150:20] 'line/true'.i binary record=(200) format='%float32' u($1/10+i):0 with lines ls 1,\
-	for[i=50:150:20] 'line/born'.i binary record=(200) format='%float32' u($1/10+i):0 with lines ls 2, \
-	for[i=50:150:20] 'line/ref'.i binary record=(200) format='%float32' u($1/10+i):0 with lines ls 3
-#	 ,'output' binary record=(200) format='%float32' u ($1/20+20):0 with lines 
-#	 ,'tmp2' binary array=200:200 format='%float32' u 0:2 with lines 
-#plot 'model_decomp_vp_stage3_it_33.bin' binary record=700 format='%float32' skip=100 u 0:($100/10) with lines
-
-#plot 'nx2800nz700dxdz5.vp' binary array=700x2800 with image
-#plot 'nx2800nz700dxdz5.vp' binary center=(1400,350) rotation=-90d array=700x2800 with image
-
-#plot 'modeloutput_test_vs_stage4_it_24.bin' binary rotation=-90d array=700x2800 with image
-#plot 'nx2800nz700dxdz5.smooth.vp' binary  array=700x2800 with image
+plot  for[i=50:150:20] 'line/true'.i binary record=(200) format='%float32' u($1/10+i):0 with lines ls 2,\
+	for[i=50:150:20] 'line/born'.i binary record=(200) format='%float32' u($1/10+i):0 with lines ls 3
+#	for[i=50:150:20] 'line/ref'.i binary record=(200) format='%float32' u($1/10+i):0 with lines ls 3

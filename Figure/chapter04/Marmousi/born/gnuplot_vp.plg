@@ -18,7 +18,8 @@ set border linewidth 2.0
 set cbtics scale 0.1
 #bclip=0.0160046 wclip=-0.0179905
 #set cbrange [4700:1500]
-set cbrange [1500:4700]
+set cbrange [a:b]
+#set cbrange [1500:4700]
 set colorbox user origin 0.915,0.05 size 0.02,0.80
 # matlab palette colors
 set palette defined ( 0 "#000090",\

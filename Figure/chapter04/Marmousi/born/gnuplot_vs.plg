@@ -17,7 +17,7 @@ set border linewidth 2.0
 # disable colorbar tics
 set cbtics scale 0.1
 #bclip=0.0160046 wclip=-0.0179905
-set cbrange [900:3200]
+set cbrange [990:3200]
 set colorbox user origin 0.915,0.05 size 0.02,0.80
 # matlab palette colors
 #set palette defined ( 0 "#000090",\

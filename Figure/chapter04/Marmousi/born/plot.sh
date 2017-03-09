@@ -2,7 +2,9 @@
 data=OnlyVp.vp
 out=vp
 output=vp.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp.plg
+a=1500
+b=4700
+gnuplot -e "a='${a}';b='${b}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp.plg
 epstopdf ${out}.eps
 
 data=OnlyVp.vs
@@ -14,10 +16,13 @@ epstopdf ${out}.eps
 data=OnlyVpsmooth.vp
 out=vpsmooth
 output=vpsmooth.eps
-gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp.plg
+a=1500
+b=4700
+gnuplot -e "a='${a}';b='${b}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp.plg
+#gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp.plg
 epstopdf ${out}.eps
 
-data=OnlyVp.vs
+data=OnlyVpsmooth.vs
 out=vssmooth
 output=vssmooth.eps
 gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vs.plg

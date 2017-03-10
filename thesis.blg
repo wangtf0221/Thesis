@@ -2,10 +2,52 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: data/denotation.aux
+A level-1 auxiliary file: data/1_introduction.aux
+A level-1 auxiliary file: data/2_efwi.aux
+A level-1 auxiliary file: data/3_ewerti.aux
+Case mismatch error between cite keys Ma2013 and ma2013
+---line 14 of file data/3_ewerti.aux
+ : \citation{Ma2013
+ :                 ,Chi2015,Luo2016}
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys Ma2013 and ma2013
+---line 15 of file data/3_ewerti.aux
+ : \citation{Ma2013
+ :                 }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys Chi2015 and chi2015
+---line 16 of file data/3_ewerti.aux
+ : \citation{Chi2015
+ :                  }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys Ma2013 and ma2013
+---line 18 of file data/3_ewerti.aux
+ : \citation{Ma2013
+ :                 }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys Ma2013 and ma2013
+---line 19 of file data/3_ewerti.aux
+ : \citation{Ma2013
+ :                 }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys Ma2013 and ma2013
+---line 22 of file data/3_ewerti.aux
+ : \citation{Ma2013
+ :                 }
+I'm skipping whatever remains of this command
+Case mismatch error between cite keys Ma2013 and ma2013
+---line 23 of file data/3_ewerti.aux
+ : \citation{Ma2013
+ :                 }
+I'm skipping whatever remains of this command
 A level-1 auxiliary file: data/4_lsrtm.aux
 The style file: tongjibib.bst
 A level-1 auxiliary file: ack.aux
 Database file #1: reference.bib
+Repeated entry---line 511 of file reference.bib
+ : @article{WangEtAl2016
+ :                      ,
+I'm skipping whatever remains of this entry
 I was expecting a `,' or a `}'---line 963 of file reference.bib
  : publisher={SEG}
  :                .
@@ -14,47 +56,116 @@ I was expecting a `,' or a `}'---line 972 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
+Warning--I'm ignoring dehoop:2012's extra "volume" field
+--line 1273 of file reference.bib
+Warning--I didn't find a database entry for "Wu2015"
+Warning--I didn't find a database entry for "chi:2015"
+Warning--I didn't find a database entry for "PRATTEtAl1990"
+Warning--I didn't find a database entry for "sears:2008"
+Warning--I didn't find a database entry for "miller:1987"
+Warning--I didn't find a database entry for "Beylkin"
+Warning--I didn't find a database entry for "ZhangEtAl2015"
+Warning--I didn't find a database entry for "刘玉金2015"
 Warning--I didn't find a database entry for "Yang2017"
+Warning--I didn't find a database entry for "李振春2014"
 Warning--I didn't find a database entry for "Wang2016"
-You've used 11 entries,
+Warning--I didn't find a database entry for "ma.hale:2013"
+Warning--I didn't find a database entry for "kennett:1988"
+Warning--I didn't find a database entry for "yang:2016"
+Warning--I didn't find a database entry for "Zhou2015"
+Warning--I didn't find a database entry for "Hale2013"
+Warning--I didn't find a database entry for "Li2016a"
+Warning--I didn't find a database entry for "Wang2015a"
+Warning--there's a publisher but no address in Claerbout1985Imaging
+Name 2 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry zhou:2015
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry zhou:2015
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "Timothy J. Sears and Penny J. Barton, and Satish C. Singh" has a comma at the end for entry sears:2010
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "Denes Vigh and Kun Jiao, and Dave Watts, and Dong Sun" has a comma at the end for entry vigh:2014
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "Denes Vigh and Kun Jiao, and Dave Watts, and Dong Sun" has a comma at the end for entry vigh:2014
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "R. Brossier and S. Operto, and J. Virieux" has a comma at the end for entry brossier2009
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "Sirgue, L. and Etgen, J., and Albertin, U." has a comma at the end for entry sirgue:2008
+while executing---line 1196 of file tongjibib.bst
+Warning--there's a number but no volume in 曹书红2014
+Name 2 in "T.J. Sears and S.C. Singh, and P.J. Barton" has a comma at the end for entry sears2008
+while executing---line 1196 of file tongjibib.bst
+Warning--there's a number but no volume in 黄超2015
+Name 2 in "B. X. Chi and L. G. Dong, and Y. Z. Liu" has a comma at the end for entry chi2015
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "Clement, F. and Chavent, G., and Gomez, S." has a comma at the end for entry clement:2001
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "de Hoop, M. V. and Qiu, L., and Scherzer, O." has a comma at the end for entry dehoop:2012
+while executing---line 1196 of file tongjibib.bst
+Warning--there's a publisher but no address in nocedal2006numerical
+Name 2 in "Sheen, D. H. and Tuncay, K., and Baag, C. E., and Ortoleva, P. J." has a comma at the end for entry sheen:2006
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "Sheen, D. H. and Tuncay, K., and Baag, C. E., and Ortoleva, P. J." has a comma at the end for entry sheen:2006
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "T.F. Wang and J.B. Cheng, and C.L. Wang" has a comma at the end for entry wang:2015
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "V. Brytik and M. V. de-Hoop, and H. F. Smith, and G. Uhlmann" has a comma at the end for entry brytik:2011
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "V. Brytik and M. V. de-Hoop, and H. F. Smith, and G. Uhlmann" has a comma at the end for entry brytik:2011
+while executing---line 1196 of file tongjibib.bst
+Warning--there's a publisher but no address in menke:1989
+Warning--there's a publisher but no address in snieder1999inverse
+Warning--there's a publisher but no address in mavko2009rock
+You've used 127 entries,
             2219 wiz_defined-function locations,
-            621 strings with 6156 characters,
-and the built_in function-call counts, 5045 in all, are:
-= -- 524
-> -- 113
-< -- 4
-+ -- 52
-- -- 26
-* -- 358
-:= -- 657
-add.period$ -- 29
-call.type$ -- 11
+            1286 strings with 26296 characters,
+and the built_in function-call counts, 58775 in all, are:
+= -- 5861
+> -- 1467
+< -- 12
++ -- 678
+- -- 339
+* -- 4801
+:= -- 7889
+add.period$ -- 279
+call.type$ -- 127
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 341
-empty$ -- 528
-format.name$ -- 35
-if$ -- 1193
+cite$ -- 134
+duplicate$ -- 3979
+empty$ -- 6244
+format.name$ -- 450
+if$ -- 13355
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 13
-newline$ -- 71
-num.names$ -- 11
-pop$ -- 59
+int.to.str$ -- 127
+missing$ -- 134
+newline$ -- 769
+num.names$ -- 127
+pop$ -- 535
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 110
+skip$ -- 856
 stack$ -- 0
-substring$ -- 632
-swap$ -- 49
-text.length$ -- 4
+substring$ -- 8169
+swap$ -- 138
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 53
-width$ -- 13
-write$ -- 136
-(There were 2 error messages)
+warning$ -- 7
+while$ -- 630
+width$ -- 130
+write$ -- 1525
+(There were 32 error messages)

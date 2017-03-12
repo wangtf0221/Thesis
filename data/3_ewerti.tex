@@ -56,9 +56,10 @@ Wu and Alkhalifah (2015)\cite[]{Wu2015b}以及Zhou et al. (2015)\cite[]{Zhou2015
 信息。在本章中，我们将致力于通过波模式解耦和DIW\cite[]{Ma2013}来区分出PP和PS的反射走时。之后，我们利用区分出的PP和PS反射走时，通过一个两步
 的反演流程来实现WERTI\cite[]{Hale2013}。最后，最后，Sigsbee2A模型的数值实验结果证明了弹性波WERTI方法的有效性。
 \section{弹性WERTI方法的目标函数和梯度}
-利用反射波来进行走时反演，首先需要预测出反射波，进而与观测数据进行匹配。反射波的预测通常采用偏移/反偏移的方式实现。我们同样从弹性波方程出发
-导出WERTI的梯度。
-假设在背景弹性介质$c_{ijkl}$中有一个参数扰动$\delta c_{ijkl}$，则背景波场与扰动波场满足以下方程：
+利用反射波来进行反演的需要预测出反射波数，进而与观测数据进行匹配，从而进行模型更新。在E-WERTI中，需要对反射波数据的走时信息进行匹配，
+并将走时残差反投影到反射波路径上更新背景模型。我们同样从弹性波方程出发导出E-WERTI的梯度。
+弹性波反射波的预测通常采用偏移/反偏移的方式实现。
+同样假设在背景弹性介质$c_{ijkl}$中有一个参数扰动$\delta c_{ijkl}$，则背景波场与扰动波场满足以下方程：
 \begin{equation}
     \rho \frac{\partial u^2_i}{\partial t^2}  -
     \frac{\partial}{\partial x_j}\left[ 
@@ -74,14 +75,14 @@ Wu and Alkhalifah (2015)\cite[]{Wu2015b}以及Zhou et al. (2015)\cite[]{Zhou2015
         x_l}\right]=\frac{\partial}{\partial x_j}\left[\delta c_{ijkl}\frac{\partial u_{k}}{\partial x_l}\right],
     \label{eq:DeltaWE} 
 \end{equation}
-其中，$\delta u_i$可以看作是用RTM或其他方法的成像结果，$\delta c_{ijkl}$进行反偏移之后的反射数据。在WERTI中，我们需要使得观测数据$\mathbf{d}^{o}$与模拟数据
-$\mathbf{d}^{c}$之间的走时残差最小，则目标函数为：
+这里$\delta u_i$可以看作是用RTM或其他方法的成像结果$\delta c_{ijkl}$进行反偏移之后的反射数据。
+在WERTI中，观测数据$\mathbf{d}^{o}$与模拟数据$\mathbf{d}^{c}$之间的走时残差需要达到最小，则目标函数为：
 \begin{equation}
     E=\frac{1}{2}\int\tau^2(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
     \label{eq:Objectivefunction} 
 \end{equation}
 其中，走时残差$\tau(\mathbf{x_r},t;\mathbf{x_s})$可以通过DIW来获取。通过类似Ma and
-Hale (2013)\cite{Ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我们可以得到如下梯度公式：
+Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我们可以得到如下梯度公式：
 \begin{equation}
     \frac{\partial E}{\partial c_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
     x_j}\frac{\partial \delta \psi_{k}}{\partial x_l}+\frac{\partial \delta u_{i}}{\partial
@@ -109,37 +110,187 @@ Hale (2013)\cite{Ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我
 (d^c_i(\mathbf{x_r},t;\mathbf{x_s})-d^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))$，而$\dot{d}$则代表$d$在时间方向的导数。在方程\eqref{eq:GradientCijkl}的右端项
 中，第一和第二项分别表示震源端和检波点端的反射波路径。之后我们可以通过链式法则来导出P波与S波速度的梯度公式：
 \begin{equation}
-    \frac{\partial E}{\partial V_p}=2\rho V_p\frac{\partial E}{\partial
-        c_{ijkl}}\delta_{ij}\delta_{kl}, \qquad
-    \frac{\partial E}{\partial V_s}=2\rho V_s\frac{\partial
+\begin{split}
+    &\frac{\partial E}{\partial V_p}=2\rho V_p\frac{\partial E}{\partial
+        c_{ijkl}}\delta_{ij}\delta_{kl}, \\
+    &\frac{\partial E}{\partial V_s}=2\rho V_s\frac{\partial
     E}{\partial c_{ijkl}}(-2\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+
     \delta_{il}\delta_{jk}).
+\end{split}
     \label{eq:GradientVel}
 \end{equation}
+\section{弹性波反射波路径核函数}
+利用反射波来进行反演的关键思路需要将预测的反射波与观测数据之间的残差反投影到反射波路径上从而实现对模型的更新。因此反射波路径的计算将是反演中
+的关键之处。在弹性波中由于存在各种模式的转换，因此反射波波路径的复杂程度将远大于声波中的情况。我们将首先分析弹性波反射波路径的性质，并尝试通过
+模式解耦解决其中的部分问题。
+由附录推导可看出，不同的目标函数选取方法只影响共轭状态方程的伴随震源项，而并不影响最终梯度的互相关方式。
+因此分析弹性反射波波路径的核函数性态将有助于压制梯度中假象并帮助设计弹性反射波反演的策略。
+为了简化表达，我们将式\ref{eq:GradientCijkl}重新写作：
+\begin{equation}
+    \nabla E(
+    \mathbf{m}_0)=-\int(
+    \mathbf{u}\cdot\delta \boldsymbol{\psi}
+    +\delta
+    \mathbf{u}\cdot{\boldsymbol{\psi}})
+    \label{eq:kernelgradient} 
+\end{equation} 
+其中$\mathbf{u}$和$\boldsymbol{\psi}$背景介质的正传与共轭波场，$\delta\mathbf{u}$和$\delta \boldsymbol{\psi}$为正传与共轭的散射场，
+这里我们统一用$\cdot$表示波场分量的互相关，因此上式只示意性表达出反射波路径的计算方式，而不同参数化方式相应的具体计算公式需要参照链式法则获得。
+上式中第一项表示震源到反射界面的波路径，第二项表示从反射界面到检波点的波路径。考虑到
+波场解耦，上式的梯度也可以分解成P或S波数据组合的分量：
+\begin{equation}
+    K_m^{MN}     
+    =-\int(\mathbf{u}^M\cdot\delta \boldsymbol{\psi}^N
+    +\delta
+    \mathbf{\u}^M\cdot\boldsymbol{\psi}^N),\\
+    \label{eq:decompkernel} 
+\end{equation}
+其中$m\in\{V_p, V_s\}$，$M,N\in\{P,S\}$。
+\begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/1vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/1vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vponlyvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vsonlyvp.pdf}}\\
+   \caption{单独$V_p$反射层时的反射波路径。(a)为$V_p$模型，(b)为$V_s$模型，(c)为$V_p$核函数，(d)为$V_s$核函数.}
+   \label{fig:kernel1_vp}
+\end{figure}
+
+为了观察弹性波反射波路径核函数，我们在简单的单层界面中计算反射波波路径。首先，我们假定只有$V_p$的扰动界面，如图\ref{fig:kernel1_vp}(a), (b)
+%\begin{figure}
+%   \centering
+%   \subfloat[]{\includegraphics[width=0.38\textwidth]{Figure/chapter03/Kernel/1vp.pdf}}
+%   \subfloat[]{\includegraphics[width=0.38\textwidth]{Figure/chapter03/Kernel/1vs.pdf}}\\
+%   \caption{单独$V_p$扰动界面。左侧为$V_p$，右侧为$V_s$.}
+%   \label{fig:KernelModel1}
+%\end{figure}
+该模型由于没有$V_s$界面，因此没有模式转换能量只有PP波反射，非常接近于声波情况。
+采用该模型获得的反射波波路径如图\ref{fig:kernel1_vp}(c)和(d)。可以看到，$V_p$的反射波
+路径分为震源端以及检波点端左右两支，与声波波路径非常接近。同时$V_s$也会有相应的路径能量，但是路径中能量主要集中在边缘部分，中央第一菲涅尔带区域
+能量较弱，可能的原因是这部分路径信息是由于PP波反射能量所产生，其对$V_s$背景信息并不敏感。
+%如果换做$\lambda$和$\mu$的参数化方式，其产生的波路径如图\ref{Kernel1_lambda}所示
+%\begin{figure}
+%   \centering
+%   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/lambdaonlyvp.pdf}}
+%   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/muonlyvp.pdf}}\\
+%   \caption{图\ref{fig:KernelModel1}模型$\lambda$参数化时的反射波路径。左侧为$\lambda$，右侧为$\mu$.}
+%   \label{fig:kernel1_lambda}
+%\end{figure}
+
+之后，我们考虑$V_s$界面存在时的情况（图\ref{fig:kernel2}(a),(b)），这时波场就会变得十分复杂
+，在正传及反传波场中会同时存在P波与S波，因此反射波路径将变得更加复杂，如图\ref{fig:kernel2}）
+\begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/2vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/2vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vponlyvs.pdf}}
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vsonlyvs.pdf}}\\
+   \caption{单独$V_s$反射层时的反射波路径。(a)为$V_p$模型，(b)为$V_s$模型，(c)为$V_p$核函数，(d)为$V_s$核函数.}
+%   \caption{单独$V_p$扰动界面。左侧为$V_p$，右侧为$V_s$.}
+   \label{fig:kernel2}
+\end{figure}
+%\begin{figure}
+%   \centering
+%   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vponlyvs.pdf}}
+%   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vsonlyvs.pdf}}\\
+%   \caption{单独$V_p$扰动时的反射波路径。左侧为$V_p$，右侧为$V_s$.}
+%   \label{fig:kernel2}
+%\end{figure}
+上图中，$V_p$核函数与图\ref{fig:kernel1_vp}中略有不同，这是因为由于存在$V_s$反射层，反传的散射波场在界面处产生“非物理”的S-P转换波，
+这部分SP波与背景场中的P波互相关就会产生的一些假象。而在$V_s$的核函数中，可以看到多种模式转换导致的多个波路径叠加，使得核函数变得十分复杂。
+尤其式其中的P波路径的能量总是占主导地位。
+如果直接采用该核函数来计算$V_s$的梯度，一定会对反演带来更多的难度。根据式\ref{eq:decompkernel}，我们将原始的$V_s$核函数分解为四个部分。
+如图\ref{fig:kernel2_vs_decomp}所示，$K_{V_s}^{PP}$的能量与图\ref{fig:kernel2}c中
+的$V_p$核函数十分类似，$K_{V_s}^{PS}$与$K_{V_s}^{SP}$则包含非常多的高频信息，
+实际上它们是不同模式的正传与反传波场之间的偏移脉冲相应。而$K_{V_s}^{SS}$则与其他三者有些不同，其只包含了检波点端的一只反射路径，这是由于
+我们采用了P波震源，在震源端的波场中不包含S波数据，因此$K_{V_s}^{SS}$的震源端项会是0。这样的话，$K_{V_s}^{SS}$就很少会受到P波路径的影响，这将
+会非常有助于背景$V_s$的反演。
+\begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsPP.pdf}}
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsPS.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsSP.pdf}}
+   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsSS.pdf}}
+   \caption{$K_{V_s}$核函数的四个分量。a, $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
+   \label{fig:kernel2_vs_decomp}
+\end{figure}
 \section{弹性波WERTI工作流程}
 弹性波介质中，不同模式的转换波，主要是PP与PS同相轴之间，会互相叠加、互相交叉。在用DIW提取走时差的时候，这些交叉点的位置就会变成一些奇异点而给拾取带来很大困难
 。因此，如果直接用原始多分量数据的话，拾取到的$\tau(\mathbf{x_r},t;\mathbf{x_s})$就会不准确，这也是为什么式\eqref{eq:AdjointDeltaWE}中的梯度很难直接应用。
 为了解决这个问题，我们将观测与模拟地震数据分解为P波与S波两部分。该模式分解只作用于地面地震数据\cite[]{Li2016a}，因此我们可以快速地获得每一炮数据分解之后的矢量
 P波或S波地震记录。这样，走时残差就可以被分成P波与S波两部分，使得弹性波WERTI变得可行，也即用一个两阶段的流程，先P波阶段后S波阶段。
-
-在P波阶段，主要采用PP反射波来建立P波速度的背景模型。首先，我们从ERTM中获得P波速度的扰动，也即$\delta V_p$。由于在WERTI中我们只考虑走时，所以我们只进行ERTM成像
-而不是最小平方ERTM来拟合反射波振幅。因此，目标函数可以变做最小化PP反射波的走时残差：
+\subsection{$V_p$反演}
+在P波阶段，主要采用PP反射波来建立P波速度的背景模型。首先，我们从ERTM中获得P波速度的扰动，也即$\delta V_p$。
+为了确保模拟的反射波与观测数据中的零（小）偏移距走时匹配，我们采用小偏移距的数据
+获取$\delta V_p$。因为在速度不准的情况下大偏移距数据的偏移/反偏移结果会
+造成模拟的反射波零偏移距走时变化，进而增加反演的困难程度。
+此外，由于在WERTI中我们只考虑走时，所以我们只进行ERTM成像
+而不是最小平方ERTM来拟合反射波振幅。
+这也降低了反演中对反射系数估计的依赖程度。因此，目标函数变为最小化PP反射波的走时残差：
 \begin{equation}
     E_{pp}=\frac{1}{2}\int\tau^2_{pp}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s}.
     \label{eq:ObjectivefunctionPP} 
 \end{equation}
 这样，采用P波记录来计算方程\eqref{eq:AdjointWE}的右端项，并用$\delta V_p$替换方程\eqref{eq:DeltaWE}和\eqref{eq:AdjointDeltaWE}中的$\delta c_{ijkl}$，我们
-就可以计算得到$V_p$的梯度， $\frac{\partial E}{\partial V_p}$。
+就可以计算得到$V_p$的梯度， $\frac{\partial E}{\partial V_p}$。与EFWI中一样，该梯度中的互相关项自动隐含了散度算子，因此，在
+计算时只采用了PP波的反射波，所以模式解耦无法对该梯度起作用。
 
+\subsection{$V_s$反演}
 在S波阶段，我们将采用类似的策略但是只利用PS反射波。则目标函数变为：
 \begin{equation}
     E_{ps}=\frac{1}{2}\int\tau^2_{ps}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s}.
     \label{eq:ObjectivefunctionPS} 
 \end{equation}
-但是，实现方式与前一阶段策略略有不同。经过P波阶段反演之后，$V_p$的背景速度已经获得了很好的恢复，此时PP波成像结果应该已经比较接近准确位置。而通常情况下，地
-下介质中$V_p$与$V_s$的界面是比较一致的。所以，我们推荐采用较为准确的PP成像（$\delta V_p$）结果而不是$\delta V_s$来产生PS反射波。此外，在PS反射中，波路径的
-震源端只与P波速度相关，因此我们在计算$\frac{\partial E}{\partial V_s}$可以丢掉方程\eqref{eq:GradientCijkl} 右端项的第一部分。并且，波模式分解也会施加在
-梯度的计算过程中来确保只有S波能量参与其中：
+但是，模拟PS反射波的实现方式与前一阶段策略略有不同。这里我们有两种思路来模拟PS反射波，第一，采用反演好的$V_p$以及初始$V_s$模型来进行PS成像
+并使用该成像结果进行反偏移；第二，由于$V_p$的背景速度已经获得了很好的恢复，此时PP波成像结果应该已经比较接近准确位置，而通常情况下，地
+下介质中$V_p$与$V_s$的界面是比较一致的，因此也可以采用PP波成像结果。但是经过测试，我们发现第一种方式产生的近偏移距走时
+对$V_p$模型的误差非常敏感，即使$V_p$模型在真值附近也有可能获得错误方向的走时残差。
+
+我们知道PS反射波的路径是非对称的，我们假定地下的简单PS反射路径如示意图\ref{fig:PS_refl}。
+由几何关系以及snell定律，入射角$\theta_1$与反射角$\theta_2$之间以及深度、偏移距与该角度之间的关系为：
+\begin{equation}
+%\begin{split}
+    \frac{sin\theta_1}{V_p}=\frac{sin\theta_2}{V_s},\qquad
+    h(tan\theta_1+tan\theta_2)=X,
+%\end{split}
+    \label{eq:Snell_PS} 
+\end{equation}
+\begin{figure}
+   \centering
+   \subfloat{\includegraphics[width=0.40\textwidth]{Figure/chapter03/PS_problem/PS_refl.pdf}}
+   \caption{单界面PS反射波示意图。}
+   \label{fig:PS_refl}
+\end{figure}
+则该简单反射面的PS波时距曲线关系为：
+\begin{equation}
+	t=\frac{h}{cos\theta_1V_p}+\frac{h}{cos\theta_2V_s},
+    \label{eq:TravelTime_PS} 
+\end{equation}
+在速度不准的时候我们通常先使用小偏移距数据进行偏移，获得界面之后反偏移获得模拟反射数据的走时，这个过程可以采用零（小）偏移距的图偏移+
+式\ref{eq:TravelTime_PS}的正演来近似获得Born反射数据的时距关系。在图偏移过程中，零偏移距走时保持不变，则偏移后的深度位置满足：
+\begin{equation}
+	\frac{h^{'}}{V_p}+\frac{h^{'}}{V^{'}_s}=\frac{h}{V_p}+\frac{h}{V_s},
+    \label{eq:Mapmigration_PS} 
+\end{equation}
+其中$V^{'}_p$和$V^{'}_s$为错误的偏移速度。可以求得：
+\begin{equation}
+	{h^{'}}=\frac{V^{'}_s(V_p+V_s)}{V_s(V^{'}_p+V^{'}_s)}h.
+    \label{eq:ZerooffMig_PS} 
+\end{equation}
+我们将使用式\ref{eq:Snell_PS}-\ref{eq:ZerooffMig_PS}测试Born反射数据的时距关系对$V^{'}_p$和$h$的敏感性。
+这里我们测试的参数为$V_p=2500m/s$, $V_s=1500m/s$, $h=800m/s$, $V^{'}_s=1300m/s$, $V^{'}_p=2450--2550m/s$.
+图\ref{fig:Sens_Vp}中可以看到采用PS波偏移反偏移获取的Born反射数据对$V_p$的误差非常敏感，在$+-50m/s$范围内就会引起反偏移数据的走时残差发生方向
+改变，而如果给定较为准确的偏移深度时，虽然Born模拟走时偏离真值较远，但是其更新方向都是正确的。
+
+所以，我们推荐采用较为准确的PP成像（$\delta V_p$）结果而不
+是$\delta V_s$来产生PS反射波。这样做有两个弊端
+第一、产生的PS反射无法保证振幅的准确性，但采用此种振幅不保真的同相轴并不会给DIW拾取走时残差带来非常大的
+干扰。第二、来自深部的PS反射可能由于时差太大而受到cycle-skipping困扰，不过这个问题可以通过层剥离的方式，先更新浅层$V_s$
+然后更新深层来避免。
+
+此外，正如前文核函数分析提到，PS反射中，震源端波路径只与P波速度相关，
+因此我们在计算$\frac{\partial E}{\partial V_s}$可以丢掉方程\eqref{eq:GradientCijkl} 
+右端项的第一部分。并且，波模式分解也会施加在梯度的计算过程中来确保只有S波能量参与其中：
 \begin{equation}
     \frac{\partial E_{ps}}{\partial V_s}=-2\rho V_s
     \int (\frac{\partial \delta u^S_{i}}{\partial

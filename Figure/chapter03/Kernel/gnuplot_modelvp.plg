@@ -1,0 +1,68 @@
+#!/usr/bin/gnuplot
+#
+# Plotting a velocity model
+#
+# AUTHOR: Tengfei Wang
+reset
+# wxt terminal
+#set terminal png size 5,4
+#set terminal postscript enhanced size 5,4
+set terminal postscript enhanced size 4.7,4 eps
+#set output '1vp.eps'
+set output outputfilevp
+
+##set style line 11 lc rgb '#808080' lt 1
+#set border 2 front ls 11
+set tics nomirror out scale 1.5
+set border linewidth 2.0
+set style line 1 lt 1 lw 2
+# Colorbar
+# disable colorbar tics
+set cbtics scale 1
+set cbrange [3000:3400]
+# matlab palette colors
+set palette defined ( 0 "#000090",\
+                      1 "#000fff",\
+                      2 "#0090ff",\
+                      3 "#0fffee",\
+                      4 "#90ff70",\
+                      5 "#ffee00",\
+                      6 "#ff7000",\
+                      7 "#ee0000",\
+                      8 "#7f0000")
+#set palette gray
+unset key
+set x2range [0:299]
+set yrange  [149:0]
+unset xtics
+#unset cbtics
+#unset colorbox
+#unset x2label
+#unset ylabel
+
+set x2tics ("0" 0, "1.5" 150, "3" 299) font "Times-Roman-bold, 24" offset 0,0.2
+set x2label 'Position(km)' font "Times-Roman-bold, 28" offset 0,0.8
+
+set ytics ("0" 0, "0.75" 75, "1.5" 149) font "Times-Roman-bold, 24" offset 0.5,0
+set ylabel 'Depth(km)' font "Times-Roman-bold, 28" offset -0.8, 0
+set label 1 "{/ZapfDingbats \130}" at 20,36 front font "ZapfDingbats,44" textcolor lt 1
+set label 2 "{/ZapfDingbats \164}" at 120,36 front font "ZapfDingbats,38" textcolor lt 1
+#set arrow from 20,36 to 75,100 head filled size screen 0.015,20,35 front ls 1
+#set arrow from 75,100 to 120,36 head filled size screen 0.015,20,35 front ls 1
+
+
+set cbtics ("3.0" 3000,"3.2" 3200, "3.4" 3400) font "Times-Roman-bold, 16" offset -0.5,0
+set cblabel 'Vp (km/s)' font "Times-Roman-bold, 24" offset 1.0
+##### Set the margin of the picture##########
+set lmargin at screen 0.15;
+set rmargin at screen 0.85;
+set bmargin at screen 0.07;
+set tmargin at screen 0.85;
+#set pm3d map
+#set pm3d interpolate 0,0
+set size square
+#splot datafilevp binary array=30x30 scan=yx 
+#plot 'Source.Vp.newSPallshot.newgrad.vp200vs100' binary array=150x300 scan=yx with image
+#plot 'true.vp' binary array=150x300 scan=yx with image
+plot datafilevp binary array=150x300 scan=yx with image
+

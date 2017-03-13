@@ -110,6 +110,20 @@ Guo Q, Alkhalifah T.
 \newblock Society of Exploration Geophysicists, sep, 2016: 1421--1425
 \tongjidot
 
+\bibitem{Li2016a}
+Li Z, Ma X, Fu C, et~al.
+\newblock Frequency-wavenumber implementation for P- and S-wave separation from
+  multi-component seismic data.
+\newblock Exploration Geophysics, 2016, 47(1):32
+\tongjidot
+
+\bibitem{vanLeeuwen:2010}
+Leeuwen T, Mulder W~A.
+\newblock A correlation-based misfit criterion for wave-equation traveltime
+  tomography.
+\newblock Geophysical Journal International, 2010, 182:1383--1394
+\tongjidot
+
 \bibitem{Schuster1993}
 Schuster G~T.
 \newblock Least-squares cross-well migration.

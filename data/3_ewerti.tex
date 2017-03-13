@@ -78,7 +78,13 @@ Wu and Alkhalifah (2015)\cite[]{Wu2015b}以及Zhou et al. (2015)\cite[]{Zhou2015
 这里$\delta u_i$可以看作是用RTM或其他方法的成像结果$\delta c_{ijkl}$进行反偏移之后的反射数据。
 在WERTI中，观测数据$\mathbf{d}^{o}$与模拟数据$\mathbf{d}^{c}$之间的走时残差需要达到最小，则目标函数为：
 \begin{equation}
-    E=\frac{1}{2}\int\tau^2(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
+	\left\{
+		\begin{aligned}
+			&\tau(\mathbf{x_r},t;\mathbf{x_s})=\mathop{\arg\min}_{\tau}
+			\parallel\mathbf{d}^{cal}(\mathbf{x}_r,t;\mathbf{x}_s)-\mathbf{d}^{obs}(\mathbf{x}_r,t+\tau;\mathbf{x}_s)\parallel^2\\
+    &E=\frac{1}{2}\int\tau^2(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
+		\end{aligned}
+	\right.
     \label{eq:Objectivefunction} 
 \end{equation}
 其中，走时残差$\tau(\mathbf{x_r},t;\mathbf{x_s})$可以通过DIW来获取。通过类似Ma and
@@ -335,8 +341,60 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
 
 \section{数值实验}
 \subsection{目标函数性态变化}
-\subsection{Sigsbee2A模型}
+事实上，除了DIW提取走时之外，空间或者时间方向上的互相关也经常用来作为提取走时的方式\cite{vanLeeuwen:2010,chi2015,Wang2015}，其目标函数为：
+\begin{equation}
+\left\{
+	\begin{aligned}
+		&\Delta t(h)=\mathop{\arg\min}_{\Delta t}\int d^{obs}(t+\Delta t,h)d^{cal}(t,h)dt,\\
+	&E_t=\frac{1}{2}\sum\parallel \Delta t(h)\parallel ^2
+	\end{aligned}
+	\right.
+    \label{eq:Obj_TimeCorr} 
+\end{equation}
+或
+\begin{equation}
+\left\{
+	\begin{aligned}
+		&\Delta h(t)=\mathop{\arg\min}_{\Delta h}\int d^{obs}(t,h+\Delta h)d^{cal}(t,h)dt,\\
+	&E_h=\frac{1}{2}\sum\parallel \Delta h(t)\parallel ^2
+	\end{aligned}
+	\right.
+    \label{eq:Obj_TimeCorr} 
+\end{equation}
+互相关提取的时差是每一道或每一时刻数据全局性的平均效果，
+如果数据中反射同相轴比较多时，互相关反映出来的时差并不能体现某一个同相轴的趋势。这就导致如果在模型复杂的时候，很难应对多震相的问题。
+而对比式\ref{eq:Objectivefunction}可以发现，DIW则衡量的是局部的数据差异，其更能反映局部的同相轴时差。这里我们将对比
+在不同模型复杂程度下以上三种目标函数的性态变化。
+由于给定了准确深度位置，PS波走时匹配需要采用层剥离逐步逼近，该过程较为复杂，因此我们这里只对PP波走时进行目标函数性态分析。我们采用常速背景+反射
+系数的方式通过Born正演获得反射波观测数据，然后扰动背景速度，通过偏移/反偏移的方式计算目标函数值。
+
 \begin{figure}
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/DIW_L2/1layer.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/DIW_L2/1layerL2.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/DIW_L2/3layer.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/DIW_L2/3layerL2.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/DIW_L2/Sigsbee.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/DIW_L2/complexL2.pdf}}
+   \caption{不同模型及对应的PP波走时目标函数变化曲线。红色，蓝色和黑色分别对应DIW，时间互相关与空间互相关走时提取方式。}
+   \label{fig:L2}
+\end{figure}
+三种不同模型对应的目标函数性态如图\ref{fig:L2}。
+可以看到在单层界面时，反射同相轴单一可区分度很高，由于DIW为局部数据匹配，其计算也会受到cycle-skipping影响，
+此时时间和空间互相关的目标函数表现要优于DIW。在三层模型中，由于反射同相轴变多，空间和时间互相关的目标函数准确性快速下降。空间互相关方式在
+真值附近出现了局部极值。而时间互相关由于更难反映出时差随深度的变化，
+其极值点出现在了错误的数值附近。但是DIW方式的稳定性并未随之剧烈变化，只是在速度偏大时对速度变化
+不敏感，这也是由于受到cycle-skipping影响。
+最后我们选取Sigsbee2A模型一部分的来做上述测试，
+可以看到时间互相关目标函数的极值点仍然偏离准确值较远，
+空间互相关目标函数也开始变得对初始模型更加敏感，而基于DIW的目标函数在复杂构造下仍然变化不大，可以说其收敛性相对更加稳健。
+
+\subsection{Sigsbee2A模型}
+为了验证算法的有效性，我们采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b）。
+$V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，
+其速度值随深度线性增加。我们可以看到初始模型中，$V_p$比真实值偏低而$V_s$则偏高，
+但这两者都偏离真实值很远。36炮地面模拟数据均匀的分布在地表，最大偏移距为4km，其震源为主频15Hz的纯P波震源。
+\begin{figure}[h]
    \centering
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevp.pdf}}
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevs.pdf}}\\
@@ -347,8 +405,7 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
    (d) linearly increasing with depth. }
    \label{fig:TrueAndInitial}
 \end{figure}
-我们采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b）。$V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，其速度值随深度线性增加。我们可以看到初始模型中，$V_p$比真实值偏低而$V_s$则偏高，
-但这两者都偏离真实值很远。36炮地面模拟数据均匀的分布在地表，最大偏移距为4km，其震源为主频15Hz的纯P波震源。
+初始模型的成像结果
 \begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}

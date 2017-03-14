@@ -20,15 +20,15 @@ set cbrange [wclip:bclip]
 #set style line 1 lt 1 lw 8 lc rgb "red"
 #set colorbox user origin 0.915,0.05 size 0.02,0.80
 # matlab palette colors
-#set palette defined ( 0 "#000090",\
-#                      1 "#000fff",\
-#                      2 "#0090ff",\
-#                      3 "#0fffee",\
-#                      4 "#90ff70",\
-#                      5 "#ffee00",\
-#                      6 "#ff7000",\
-#                      7 "#ee0000",\
-#                      8 "#7f0000")
+set palette defined ( 0 "#000090",\
+                      1 "#000fff",\
+                      2 "#0090ff",\
+                      3 "#0fffee",\
+                      4 "#90ff70",\
+                      5 "#ffee00",\
+                      6 "#ff7000",\
+                      7 "#ee0000",\
+                      8 "#7f0000")
 unset key
 set x2range [0:320]
 set yrange  [150:0]

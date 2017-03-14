@@ -33,6 +33,7 @@ unset key
 set x2range [0:320]
 set yrange  [3000:0]
 unset xtics
+set grid x front
 
 set x2tics ("0" 0, "1" 62,"2" 125, "3" 188, "4" 250, "5"  312) font "Times-Roman-bold, 28" offset 0,-0.2
 set x2label 'Position (km)' font "Times-Roman-bold, 32" offset 0,1.4

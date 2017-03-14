@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: NoLSF_Gra_vp.eps
 %%Creator: gnuplot 4.2 patchlevel 6 
-%%CreationDate: Mon Mar 13 23:09:34 2017
+%%CreationDate: Tue Mar 14 22:31:42 2017
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 626 338
 %%EndComments
@@ -48,7 +48,7 @@ SDict begin [
   /Author (wtf)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Mon Mar 13 23:09:34 2017)
+  /CreationDate (Tue Mar 14 22:31:42 2017)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -482,10 +482,25 @@ gsave % colour palette begin
 /SelectSpace {ColorSpace (HSV) eq {HSV2RGB}{ColorSpace (XYZ) eq {
   XYZ2RGB}{ColorSpace (CMY) eq {CMY2RGB}{ColorSpace (YIQ) eq {YIQ2RGB}
   if} ifelse} ifelse} ifelse} def
-/InterpolatedColor false def
-/cF7 {sqrt} bind def	% sqrt(x)
-/cF5 {dup dup mul mul} bind def	% x^3
-/cF15 {360 mul sin} bind def	% sin(360x)
+/InterpolatedColor true def
+/grayindex {/gidx 0 def
+  {GrayA gidx get grayv ge {exit} if /gidx gidx 1 add def} loop} def
+/dgdx {grayv GrayA gidx get sub GrayA gidx 1 sub get
+  GrayA gidx get sub div} def 
+/redvalue {RedA gidx get RedA gidx 1 sub get
+  RedA gidx get sub dgdxval mul add} def
+/greenvalue {GreenA gidx get GreenA gidx 1 sub get
+  GreenA gidx get sub dgdxval mul add} def
+/bluevalue {BlueA gidx get BlueA gidx 1 sub get
+  BlueA gidx get sub dgdxval mul add} def
+/interpolate {
+  grayindex grayv GrayA gidx get sub abs 1e-5 le
+    {RedA gidx get GreenA gidx get BlueA gidx get}
+    {/dgdxval dgdx def redvalue greenvalue bluevalue} ifelse} def
+/GrayA [0 .125 .25 .375 .5 .625 .75 .875 1 ] def
+/RedA [0 0 0 .0588 .5647 1 1 .9333 .498 ] def
+/GreenA [0 .0588 .5647 1 1 .9333 .4392 0 0 ] def
+/BlueA [.5647 1 1 .9333 .4392 0 0 0 0 ] def
 /pm3dround {maxcolors 0 gt {dup 1 ge
 	{pop 1} {maxcolors mul floor maxcolors 1 sub div} ifelse} if} def
 /pm3dGamma 1.0 1.5 div def
@@ -618,13 +633,60 @@ InterpretLevel1 {
   /imagebuf 55050 string def
   currentfile imagebuf readstring
 } {
-  gsave
-  822 4911 translate
-  10006 -4608 scale
-  320 150 8
-  [ 320 0 0 150 0 0 ]
-  currentfile /ASCII85Decode filter
-  image
+gsave
+822 4911 translate
+10006 -4608 scale
+%%%%BeginPalette
+[ /Indexed
+  /DeviceRGB 255
+  <
+   000090 000093 000197 00019a 00029e 0002a1 0003a5 0003a8
+   0004ac 0004af 0005b3 0005b6 0006ba 0006bd 0007c1 0007c4
+   0008c8 0008cb 0008cf 0009d2 0009d6 000ad9 000add 000be0
+   000be4 000ce7 000ceb 000dee 000df2 000ef5 000ef8 000ffc
+   0010ff 0014ff 0018ff 001cff 0020ff 0024ff 0028ff 002cff
+   0030ff 0034ff 0038ff 003cff 0040ff 0044ff 0048ff 004cff
+   0050ff 0054ff 0058ff 005cff 0060ff 0064ff 0069ff 006dff
+   0071ff 0075ff 0079ff 007dff 0081ff 0085ff 0089ff 008dff
+   0091ff 0194fe 0198fe 029bfd 029ffd 02a2fc 03a6fc 03a9fb
+   04adfb 04b0fa 05b4fa 05b7f9 06bbf8 06bef8 07c2f7 07c5f7
+   08c9f6 08ccf6 09d0f5 09d3f5 0ad7f4 0adaf4 0addf3 0be1f3
+   0be4f2 0ce8f2 0cebf1 0deff0 0df2f0 0ef6ef 0ef9ef 0ffdee
+   11ffed 15ffe9 19ffe5 1dffe1 21ffdd 25ffd9 29ffd5 2dffd1
+   31ffcd 35ffc9 39ffc5 3dffc1 41ffbd 45ffb9 49ffb5 4dffb1
+   51ffad 55ffa9 59ffa5 5dffa1 61ff9d 66ff9a 6aff96 6eff92
+   72ff8e 76ff8a 7aff86 7eff82 82ff7e 86ff7a 8aff76 8eff72
+   92ff6e 95fe6b 99fe67 9cfd64 a0fd60 a3fc5d a7fc59 aafb56
+   aefa52 b1fa4f b5f94b b8f948 bcf844 bff841 c2f73d c6f73a
+   c9f636 cdf633 d0f52f d4f52b d7f428 dbf424 def321 e2f21d
+   e5f21a e9f116 ecf113 f0f00f f3f00c f7ef08 faef05 feee01
+   ffec00 ffe800 ffe400 ffe000 ffdc00 ffd800 ffd400 ffd000
+   ffcc00 ffc800 ffc400 ffc000 ffbc00 ffb800 ffb400 ffb000
+   ffac00 ffa800 ffa400 ffa000 ff9c00 ff9900 ff9500 ff9100
+   ff8d00 ff8900 ff8500 ff8100 ff7d00 ff7900 ff7500 ff7100
+   ff6d00 fe6a00 fe6600 fd6300 fc5f00 fc5c00 fb5800 fb5500
+   fa5100 fa4e00 f94a00 f94700 f84300 f84000 f73c00 f73900
+   f63500 f63200 f52e00 f42b00 f42700 f32400 f32000 f21d00
+   f21900 f11600 f11200 f00e00 f00b00 ef0700 ef0400 ee0000
+   eb0000 e70000 e40000 e10000 dd0000 da0000 d60000 d30000
+   cf0000 cc0000 c80000 c50000 c10000 be0000 ba0000 b70000
+   b30000 b00000 ac0000 a90000 a50000 a20000 9e0000 9b0000
+   970000 940000 900000 8d0000 890000 860000 820000 7f0000
+  >
+] setcolorspace
+%%%%EndPalette
+<<
+  /ImageType 1
+  /Width 320
+  /Height 150
+  /BitsPerComponent 8
+  /ImageMatrix [ 320 0 0 150 0 0 ]
+  /Decode [ 0 255 ]
+  /DataSource currentfile /ASCII85Decode filter
+  /MultipleDataSources false
+  /Interpolate false
+>>
+image
 } ifelse
 IXQWmI!g9eH$FOVF`_\FEcH)=E,]`6Df0H1DJa6-D/F-,D/F-,D/O6/DJj?0DJj?0D/F-,Ci!p'CMR
 ^$CMR^$C2.KuC2.KtBk_9qBkhBtC2.KuC2.KuC2.HsBk_9qBP;'mBP;'mBP;$lBP;'mBP;'mBP;'mB

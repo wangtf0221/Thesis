@@ -65,7 +65,7 @@ Wu and Alkhalifah (2015)\cite[]{Wu2015b}以及Zhou et al. (2015)\cite[]{Zhou2015
     \frac{\partial}{\partial x_j}\left[ 
         c_{ijkl}\frac{\partial u_{k}}{\partial
         x_l}\right]=f_i,
-    \label{eq:WE} 
+    \label{eq:WE_3} 
 \end{equation}
 和
 \begin{equation}
@@ -247,11 +247,15 @@ P波或S波地震记录。这样，走时残差就可以被分成P波与S波两�
     E_{ps}=\frac{1}{2}\int\tau^2_{ps}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s}.
     \label{eq:ObjectivefunctionPS} 
 \end{equation}
-但是，模拟PS反射波的实现方式与前一阶段策略略有不同。这里我们有两种思路来模拟PS反射波，第一，采用反演好的$V_p$以及初始$V_s$模型来进行PS成像
-并使用该成像结果进行反偏移；第二，由于$V_p$的背景速度已经获得了很好的恢复，此时PP波成像结果应该已经比较接近准确位置，而通常情况下，地
-下介质中$V_p$与$V_s$的界面是比较一致的，因此也可以采用PP波成像结果。但是经过测试，我们发现第一种方式产生的近偏移距走时
-对$V_p$模型的误差非常敏感，即使$V_p$模型在真值附近也有可能获得错误方向的走时残差。
+但是，模拟PS反射波的实现方式与前一阶段策略略有不同。这里我们有两种思路来模拟PS反射波：
 
+方式\uppercase\expandafter{\romannumeral1}: 采用反演好的$V_p$以及初始$V_s$模型来进行PS成像并使用该成像结果进行反偏移；
+
+方式\uppercase\expandafter{\romannumeral2}: 由于$V_p$的背景速度已经获得了很好的恢复，此时PP波成像结果应该已经比较接近准确位置，且通常情况下，地
+下介质中$V_p$与$V_s$的界面是比较一致的，因此也可以采用PP波成像结果。
+
+但是经过测试，我们发现第一种方式产生的近偏移距走时
+对$V_p$模型的误差非常敏感，即使$V_p$模型在真值附近也有可能获得错误方向的走时残差。
 我们知道PS反射波的路径是非对称的，我们假定地下的简单PS反射路径如示意图\ref{fig:PS_refl}。
 由几何关系以及snell定律，入射角$\theta_1$与反射角$\theta_2$之间以及深度、偏移距与该角度之间的关系为：
 \begin{equation}
@@ -283,10 +287,24 @@ P波或S波地震记录。这样，走时残差就可以被分成P波与S波两�
 	{h^{'}}=\frac{V^{'}_s(V_p+V_s)}{V_s(V^{'}_p+V^{'}_s)}h.
     \label{eq:ZerooffMig_PS} 
 \end{equation}
+通常情况下
+$V_p>V_s$因此$\frac{V_p+V_s}{V^{'}_p+V^{'}_s}$中$V^{'}_p$的偏差也会带来很大的影响，
+因此PS零偏移距成像界面的深度会同时受到$V_p$与$V_s$速度误差的影响。
 我们将使用式\ref{eq:Snell_PS}-\ref{eq:ZerooffMig_PS}测试Born反射数据的时距关系对$V^{'}_p$和$h$的敏感性。
-这里我们测试的参数为$V_p=2500m/s$, $V_s=1500m/s$, $h=800m/s$, $V^{'}_s=1300m/s$, $V^{'}_p=2450--2550m/s$.
-图\ref{fig:Sens_Vp}中可以看到采用PS波偏移反偏移获取的Born反射数据对$V_p$的误差非常敏感，在$+-50m/s$范围内就会引起反偏移数据的走时残差发生方向
-改变，而如果给定较为准确的偏移深度时，虽然Born模拟走时偏离真值较远，但是其更新方向都是正确的。
+这里我们测试的参数为$V_p=2500m/s$, $V_s=1500m/s$, $V^{'}_s=1300m/s$, $V^{'}_p=2450-2550m/s$.
+图\ref{fig:Sens_vp}中可以看到采用PS波偏移反偏移获取的Born反射数据对$V_p$的误差非常敏感，在$\pm50m/s$范围内就会引起反偏移数据的走时残差发生方向
+改变，而如果采用PP波的偏移深度时，其更新方向都是正确的。
+但也存在问题即在界面深度较深时，Born模拟的走时偏离真值较远，如果存在个同相轴就会难以进行震相间的匹配，这样即使DIW也会受到
+cycle-skipping影响，但幸运的是界面深度较浅时，Born模拟走时与观测数据偏离并不远，这样的话可以层剥离的方式来解决深层反射的震相匹配问题。
+\begin{figure}[h]
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/PS_problem/h1000.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/PS_problem/h500.pdf}}
+   \caption{不同界面深度时方式\uppercase\expandafter{\romannumeral1}（黑色虚线）与
+   方式\uppercase\expandafter{\romannumeral2}（蓝色虚线）反偏移获得PS波走时曲线
+   与真实值（红色实线）之间的对比。数字1,2,3分别代表不同$V^{'}_p$速度的结果。(a) 界面深度$h=1000$; (b) 界面深度$h=500$.}
+   \label{fig:Sens_vp}
+\end{figure}
 
 所以，我们推荐采用较为准确的PP成像（$\delta V_p$）结果而不
 是$\delta V_s$来产生PS反射波。这样做有两个弊端
@@ -391,21 +409,95 @@ Hale(2009)采用结构张量来估计地层倾角。对于2D的图像，结构�
 
 \subsection{Sigsbee2A模型}
 为了验证算法的有效性，我们采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b）。
-$V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，
+其中$V_s$模型通过固定的泊松比来产生。
+图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，
 其速度值随深度线性增加。我们可以看到初始模型中，$V_p$比真实值偏低而$V_s$则偏高，
-但这两者都偏离真实值很远。36炮地面模拟数据均匀的分布在地表，最大偏移距为4km，其震源为主频15Hz的纯P波震源。
+但这两者都偏离真实值很远。
+观测数据模拟采用交错网格有限差分求解方程\ref{eq:WE_3}
+水平和深度方向上空间采样均为16m，时间采样为1.2毫秒，接收时间为3.6s。
+36个炮点均匀的分布在地表，检波点也布放在地表，最大偏移距为4km，震源子波主频为15Hz。本文实验中我们采用纯P波震源。
+初始模型的成像结果
 \begin{figure}[h]
    \centering
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevp.pdf}}
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cuttruevs.pdf}}\\
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutinitvp.pdf}}
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutinitvs.pdf}}
-   \caption{Sigbee2A model example. On the top are true models of 
-   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
-   (d) linearly increasing with depth. }
+   \caption{Sigbee2A真实$V_p$(a)和$V_s$(b)模型与初始$V_p$ (c)和$V_s$(d)模型。}
    \label{fig:TrueAndInitial}
 \end{figure}
-初始模型的成像结果
+
+由于我们采用的初始模型随深度线性增大，其偏离真实值较远。
+图\ref{fig:Results_init}为初始模型ERTM与EFWI结果。可以看到小偏移距ERTM成像结果界面位置全部错位，绕射波没有收敛。
+PP与PS波成像结果都无法估计准确反射界面位置。如果采用该初始模型进行EFWI，
+在浅部区域由于透射波存在还能够恢复出部分结构，但是随着深度的增加，由于速度中低波数成分不正确导致cycle-skipping存在，EFWI很快就会
+陷入局部极值。
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_initvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_initvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/badinitvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/badinitvs.pdf}}\\
+   \caption{初始模型下的小偏移距成像结果以及EFWI结果。(a)和(b)分别为PP与PS波ERTM结果，(c)和(d)分别为EFWI后$V_p$与$V_s$}
+   \label{fig:Results_init}
+\end{figure}
+
+从上述糟糕的初始模型出发，我们按照前文所设计的工作流程进行E-WERTI，其反演结果如
+图\ref{fig:InvertedModel}a和\ref{fig:InvertedModel}b为弹性WERTI的反演结果。
+在经过每个阶段40次迭代之后，WERTI恢复了模型中深部的中低波数成分，但是对模型两侧反射数据覆盖较少以及最底部无反射波穿过的区域，
+E-WERTI也无法反演。
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vs.pdf}}\\
+   \caption{E-WERTI反演模型。(a) $V_p$, (b) $V_s$.}
+   \label{fig:InvertedModel}
+\end{figure}
+
+采用上述模型我们重新进行ERTM成像，可以看到，随着模型中深部波数成分的恢复，PP波与PS波的成像结果得到了很大的改善，绕射波也得到了收敛。但在模型右侧
+部分由于界面倾角以及观测数据限制，反射波接收补充分，E-WERTI未能很好地恢复模型中低波数成分，成像结果不是十分聚焦。
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_truevp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_truevs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_wertivp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_wertivs.pdf}}
+   \caption{真实模型与E-WERTI反演模型的ERTM结果对比。(a)和(b)分别为真实模型PP与PS波ERTM结果；(c)和(d)分别为E-WERTI模型PP与PS波ERTM结果。}
+   \label{fig:ERTM_comparison}
+\end{figure}
+此外，我们也将E-WERTI前后的反射数据进行了对比。
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_true.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_init.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_werti.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_true.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_init.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_werti.pdf}}
+   \caption{真实反射数据（左），初始模型Born反射数据（中）与E-WERTI之后Born反射数据（右）之间的比较。(a),(b)和(c)为垂直分量，(d),(e),(f)为水平
+   分量。}
+   \label{fig:Data_comparison}
+\end{figure}
+
+上述结果中，局部倾角滤波约束对降低反演的多解性有着至关重要的作用。
+在E-WERTI过程中，每次迭代的梯度我们都采用该轮迭代中的ERTM成像结果来进行局部倾角滤波约束。从图\ref{fig:LSF_comparison}b中可以看到，
+尽管E-WERTI的梯度很光滑
+，但是不加倾角约束滤波的梯度中包含了反射波的照明脚印，采用该梯度进行更新最后会得到图\ref{fig:LSF_comparison}d的收敛结果，
+采用该结果将很难进行进一步的$V_s$更新
+。而采用倾角滤波约束后，E-WERTI获得了非常具有地质意义的反演结果，也为后续$V_s$更新提供了较好的$V_p$模型。需要注意的是，虽然在$V_s$反演中，我们
+采用PP波反射界面进行反偏移，但是局部倾角滤波仍然采用PS波成像结果。
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/LSF_Gra_vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/NoLSF_Gra_vp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/NoLSF_vp.pdf}}\\
+   \caption{局部倾角滤波约束效果展示。(a)和(c)分别为倾角滤波约束下的首次迭代$V_p$梯度与最终反演结果，
+   (b)和(d)分别为不加约束时首次迭代的$V_p$梯度与最终反演结果}
+   \label{fig:LSF_comparison}
+\end{figure}
+
+
 \begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}
@@ -430,47 +522,7 @@ $V_s$模型通过一个固定的泊松比来产生。图\ref{fig:TrueAndInitial}
    \label{fig:Profiles}
 \end{figure}
 
-图\ref{fig:InvertedModel}a和\ref{fig:InvertedModel}b为弹性WERTI的反演结果。由于线性增加的初始模型偏离真值很远，如果用该模型来进行常规EFWI，将不可避免的
-受困于cycle-skipping问题。然而，经过每个阶段40次迭代之后，WERTI可以得到$V_p$和$V_s$较好的背景速度更新。采用WERTI的反演结果作为初始模型，我们重新进行了
+采用WERTI的反演结果作为初始模型，我们重新进行了
 常规EFWI反演。如图\ref{fig:InvertedModel}c和\ref{fig:InvertedModel}d所示，$V_p$和$V_s$模型都得到了很好的重建，除了模型右侧一小部分。原因可能是在
 地面观测下，模型右侧的反射波覆盖不够导致WERTI不能准确的恢复该区域速度的长波长分量。图\ref{fig:Profiles}也展示了1.5km和3km处的垂向剖面。从图中可以看出，
 弹性WERTI能够提供可靠的包含长波长分量的初始模型，并且以此为始模型的EFWI反演结果也与真实值很好的吻合。
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/LSF_Gra_vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/NoLSF_Gra_vp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/newinit3vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/NoLSF_vp.pdf}}\\
-   \caption{1111}
-   \label{fig:Profiles}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_truevp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_truevs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_initvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_initvs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_wertivp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter03/sigbee2/Fig/cutimage_wertivs.pdf}}
-   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
-       3km (b). The black and blue lines indicate the true and linearly increased
-       initial model. The green and yellow lines indicate the WERTI and EFWI results,
-       respectively.
-   }
-   \label{fig:Profiles}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_true.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_init.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPP_werti.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_true.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_init.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_werti.pdf}}
-   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
-       3km (b). The black and blue lines indicate the true and linearly increased
-       initial model. The green and yellow lines indicate the WERTI and EFWI results,
-       respectively.
-   }
-   \label{fig:Profiles}
-\end{figure}

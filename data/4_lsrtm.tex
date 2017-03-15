@@ -232,11 +232,11 @@ LSRTM的理论是基于Born散射数据导出的，因此高频参数扰动预�
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/ref.pdf}
-				\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/comparison1.pdf}}\\
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/born.pdf}
-			   \includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/comparison2.pdf}}
-%   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/singlelayer/comparison.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/singlelayer/ref.pdf}
+				\includegraphics[width=0.5\textwidth]{Figure/chapter04/singlelayer/comparison1.pdf}}\\
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/singlelayer/born.pdf}
+			   \includegraphics[width=0.5\textwidth]{Figure/chapter04/singlelayer/comparison2.pdf}}
+%   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/singlelayer/comparison.pdf}}
    \caption{图中左侧为E-LSRTM的$\delta
 	   V_p$，右侧为相应位置上的抽线对比。顶部为反射残差数据反演结果，底部为Born数据反演结果。}
    \label{fig:Vpcomparison}
@@ -263,17 +263,17 @@ Schuster,2016\cite{Feng2016}。但是他们也只能做到压制“脚印”，�
 为了测试参数耦合对E-LSRTM的影响以及模式解耦的有效性，我们选取具有不同结构的$V_p$与$V_s$双层模型来进行实验。
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vs.pdf}}\\
    \caption{真实模型，(a)$V_p$,(b)$V_s$}
    \label{fig:tradeoffModel}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/RTMvpnodecomp.pdf}}
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/RTMvsnodecomp.pdf}}\\
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vpnodecomp.pdf}}
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vsnodecomp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvpnodecomp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvsnodecomp.pdf}}\\
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vpnodecomp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsnodecomp.pdf}}
    \caption{常规ERTM与E-LSRTM结果。左侧为$\delta V_p$，右侧为$\delta V_s$。第一排为ERTM结果，第二排为E-LSRTM结果。}
    \label{fig:tradeoff_nodecomp}
 \end{figure}
@@ -292,10 +292,10 @@ V_s$不可能与真值一样，这样数据残差中就一定存在少量的来�
 V_s$的P波。如果想要压制这一部分干扰，可以考虑策略2。
 \begin{figure}
    \centering
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/RTMvpdecomp.pdf}}
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/RTMvsdecomp.pdf}}\\
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vpdecomp.pdf}}
-   \subfloat{\includegraphics[width=0.48\textwidth]{Figure/chapter04/tradeoff/vsdecomp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvpdecomp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvsdecomp.pdf}}\\
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vpdecomp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsdecomp.pdf}}
    \caption{模式解耦预条件的ERTM与E-LSRTM结果。左侧为$\delta V_p$，右侧为$\delta V_s$。第一排为ERTM结果，第二排为E-LSRTM结果。}
    \label{fig:tradeoff_decomp}
 \end{figure}
@@ -313,46 +313,46 @@ V_p$时这一部分P波残差就不会在梯度中产生太多的干扰，从而
 每个模型我们都采用Born数据与反射残差数据各进行一次E-LSRTM。
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vpsmooth.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vssmooth.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vpsmooth.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vssmooth.pdf}}
    \caption{Marmousi真实模型与偏移模型。左侧为$V_p$，右侧为$V_s$。第一行为真实模型，第二行为偏移模型。}
    \label{fig:TrueAndInitial_1}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/RTMvpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/RTMvsnodecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvsnodecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vsnodecomp.pdf}}
    \caption{常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果。}
    \label{fig:nodecomp_1}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/RTMvpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/RTMvsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/born/vsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vsdecomp.pdf}}\\
    \caption{常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果。}
    \label{fig:decomp_1}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsnodecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsnodecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/vsnodecomp.pdf}}
    \caption{反射数据常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:RTM_1_refl}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/reflection/vsdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/vsdecomp.pdf}}
    \caption{散射数据模式解耦ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:LSRTM_1_refl}
 \end{figure}
@@ -404,53 +404,53 @@ V_s$反演并未完全消除其产生的P波残差，因此最后的反演结果
 
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpsmooth.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vssmooth.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpsmooth.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vssmooth.pdf}}
    \caption{Marmousi真实模型与偏移模型。}
    \label{fig:TrueAndInitial_2}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsnodecomp.pdf}}
    \caption{Born数据常规ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:nodecomp_2}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsnodecomp.pdf}}
    \caption{Born数据模式解耦ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:decomp_2}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsnodecomp.pdf}}
    \caption{反射数据常规ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:nodecomp_2_refl}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsnodecomp.pdf}}
    \caption{反射数据模式解耦ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:decomp_2_refl}
 \end{figure}
 \begin{figure}
    \centering
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.48\textwidth]{Figure/chapter04/Marmousi/Vsreflection/firstvs2ndvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/firstvs2ndvpdecomp.pdf}}
    \caption{Sigbee2A model example. On the top are true models of 
    $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
    (d) linearly increasing with depth. }

@@ -36,3 +36,45 @@ output=NoLSF_vp.eps
 gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp_arrow.plg
 epspdf ${out}.eps
 
+##############  Plot Low Frequency Cut model ############
+./a.out CutLowFreq3Hznewinit3_vp_stage5_it_10.bin tmp
+data=tmp
+out=3Hzvp
+output=3Hzvp.eps
+gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp_arrow.plg
+epspdf ${output}
+
+./a.out CutLowFreq5Hznewinit3_vp_stage5_it_10.bin tmp
+data=tmp
+out=5Hzvp
+output=5Hzvp.eps
+gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp_arrow.plg
+epspdf ${output}
+
+./a.out CutLowFreq7Hznewinit3_vp_stage5_it_10.bin tmp
+data=tmp
+out=7Hzvp
+output=7Hzvp.eps
+gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_vp_arrow.plg
+epspdf ${output}
+
+./a.out CutLowFreq3Hznewinit3_vs_stage5_it_10.bin tmp
+data=tmp
+out=3Hzvs
+output=3Hzvs.eps
+gnuplot -e "datafilevs='${data}'; outputfilevs='${output}'" gnuplot_vs_arrow.plg
+epspdf ${output}
+
+./a.out CutLowFreq5Hznewinit3_vs_stage5_it_10.bin tmp
+data=tmp
+out=5Hzvs
+output=5Hzvs.eps
+gnuplot -e "datafilevs='${data}'; outputfilevs='${output}'" gnuplot_vs_arrow.plg
+epspdf ${output}
+
+./a.out CutLowFreq7Hznewinit3_vs_stage5_it_10.bin tmp
+data=tmp
+out=7Hzvs
+output=7Hzvs.eps
+gnuplot -e "datafilevs='${data}'; outputfilevs='${output}'" gnuplot_vs_arrow.plg
+epspdf ${output}

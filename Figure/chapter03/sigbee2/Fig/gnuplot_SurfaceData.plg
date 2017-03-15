@@ -33,7 +33,8 @@ unset key
 set x2range [0:320]
 set yrange  [3000:0]
 unset xtics
-set grid x front
+#set grid ytics mytics front lw 3
+#show grid
 
 set x2tics ("0" 0, "1" 62,"2" 125, "3" 188, "4" 250, "5"  312) font "Times-Roman-bold, 28" offset 0,-0.2
 set x2label 'Position (km)' font "Times-Roman-bold, 32" offset 0,1.4
@@ -45,7 +46,18 @@ unset colorbox
 #set cbtics ("1" 1000, "1.5" 1500,"2" 2000) font "Times-Roman-bold, 28"  \
 #offset -0.5,0
 #set cblabel 'Vs (km/s)' font "Times-Roman-bold, 28" offset 1.5,0
-#set arrow from 440,150 to 540,180 head filled size screen 0.010,20,35 front ls 1
+set arrow from 0,208 to 312,208 nohead  front lt 0 lw 5
+set arrow from 0,417 to 312,417 nohead  front lt 0 lw 5
+set arrow from 0,624 to 312,624 nohead  front lt 0 lw 5
+set arrow from 0,833 to 312,833 nohead  front lt 0 lw 5
+set arrow from 0,1041 to 312,1041 nohead  front lt 0 lw 5
+set arrow from 0,1250 to 312,1250 nohead front lt 0 lw 5
+set arrow from 0,1457 to 312,1457 nohead front lt 0 lw 5
+set arrow from 0,1667 to 312,1667 nohead front lt 0 lw 5
+set arrow from 0,1874 to 312,1874 nohead front lt 0 lw 5
+set arrow from 0,2084 to 312,2084 nohead front lt 0 lw 5
+set arrow from 0,2290 to 312,2290 nohead front lt 0 lw 5
+set arrow from 0,2500 to 312,2500 nohead front lt 0 lw 5
 #set arrow from 950,240 to 1050,270 head filled size screen 0.010,20,35 front ls 1
 #set arrow from 750,240 to 850,270 head filled size screen 0.010,20,35 front ls 1
 #set arrow from 850,480 to 950,510 head filled size screen 0.010,20,35 front ls 1

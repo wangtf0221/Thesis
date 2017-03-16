@@ -189,11 +189,11 @@ $\delta \mathbf{m}=(\delta\mathbf{V}_p \quad \delta\mathbf{V}_s)^T$.
 所以很自然地，我们采用模式解耦来作为EFWI中降低参数耦合效应的工具。
 \begin{figure*}
     \begin{center}
-        \subfloat(a){\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/PP.pdf}}
+        \subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/PP.pdf}}
 %        \subfloat{\includegraphics[width=5cm]{radiationpattern/Fig/PP.pdf}}
-        \subfloat(b){\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/PS.pdf}}
-        \subfloat(c){\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SP.pdf}}
-        \subfloat(d){\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SS.pdf}}
+        \subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/PS.pdf}}\\
+        \subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SP.pdf}}
+        \subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SS.pdf}}
         \caption{The radiation patterns of $V_p$
         (red) and $V_s$ (blue) perturbations. (a) PP, (b) PS, (c) SP and (d) SS modes.
     }
@@ -323,7 +323,7 @@ and
 边界条件不完整的情况下。因此需要采取策略来回避多分量地震记录的地面分解。
 \begin{figure*}
     \begin{center}
-        \includegraphics[width=10cm]{Figure/chapter02/finalMarmousiII/Fig/zerolagLAST1.pdf}
+        \includegraphics[width=1.0\textwidth]{Figure/chapter02/finalMarmousiII/Fig/zerolagLAST1.pdf}
         \caption{
 Schematic illustration of gradient calculation through zero-lag correlation
  between the partial derivative wavefields
@@ -580,7 +580,7 @@ $\mathbf{R}$ 的对角区块隐含了单参数内部间的相互影响及其相�
 \end{equation}
 且$\mathbf{H}_a^S=\mathbf{J}^{\dagger}\mathbf{J}^S$。容易证明$\mathbf{R}=\mathbf{R}^P+\mathbf{R}^S$。
 
-\begin{figure*}
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=8cm]{Figure/chapter02/ResoOpera/Fig/resolutionoriginal.pdf}
         \caption{
@@ -589,7 +589,7 @@ Resolution matrix and its components:
     }
     \label{fig:Resolution}
     \end{center}
-\end{figure*}
+\end{figure}
 继续前文所采用的小模型试验，我们可以显式计算出模型分辨率矩阵$\mathbf{R}$，$\mathbf{R}^P$和$\mathbf{R}^S$。
 原始分辨率矩阵（图\ref{fig:Resolution}a）为带状对角阵，对角元素为小于1的正值。这说明了近似Hessian的逆可以为$V_p$和$V_s$的反演
 提供很好的预条件。P波与S波数据对应的分辨率矩阵（图\ref{fig:Resolution}b和c）展示了一些有趣的现象。例如，$\mathbf{R}^P$和$\mathbf{R}^S$的非零对角块
@@ -631,7 +631,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
         \label{eq:KeyPoint}
 \end{equation}
 （见附录A）。
-\begin{figure*}
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=14cm]{Figure/chapter02/Hessiantest/Fig/newepsall.pdf}
         \caption{
@@ -656,7 +656,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
     }
     \label{fig:all}
     \end{center}
-\end{figure*}
+\end{figure}
 在图\ref{fig:all}中，我们同样采用前文中小模型实验来比较原始梯度、GN梯度和解耦梯度。
 我们在模型中央放置三种不同类型，大小为10$\times$10m的参数扰动组合，分别为：(a) $\delta V_p \neq 0$, $\delta V_s = 0$; (b) $\delta V_p = 0$，
 $\delta V_s \neq 0$，和(c) $\delta V_p =10\delta
@@ -752,7 +752,7 @@ $V_p=2.6 km/s$和$V_s=1.66 km/s$，下部为水饱和$V_p=3.0 km/s$和$V_s=1.66 
 在22次迭代后数据残差快速下降达到终止条件。这些结果说明利用模式解耦对梯度做预条件可以很有效地在反演中降低参数耦合从而加速收敛。
 \begin{figure}
     \begin{center}
-        \includegraphics[width=8cm]{Figure/chapter02/tariqsugresult/Fig/L2.pdf}
+        \includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/L2.pdf}
         \caption{
             Normalized L2 norms as a function of iteration for the PCG-based (dash)
             and MD-based (solid) inversions in the first (red) and second (blue)

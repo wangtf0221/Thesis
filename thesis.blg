@@ -31,6 +31,7 @@ Case mismatch error between cite keys Ma2013 and ma2013
  :                 }
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: data/4_lsrtm.aux
+A level-1 auxiliary file: data/5_conclusion.aux
 The style file: tongjibib.bst
 A level-1 auxiliary file: ack.aux
 A level-1 auxiliary file: data/appendix01.aux
@@ -120,7 +121,7 @@ Warning--there's a publisher but no address in snieder1999inverse
 Warning--there's a publisher but no address in mavko2009rock
 You've used 129 entries,
             2219 wiz_defined-function locations,
-            1298 strings with 26674 characters,
+            1299 strings with 26695 characters,
 and the built_in function-call counts, 59596 in all, are:
 = -- 5938
 > -- 1493

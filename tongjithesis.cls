@@ -53,7 +53,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ExecuteOptions{gbk,arialtitle}
 \ProcessOptions\relax
-\LoadClass[11pt,a4paper,openany]{book}
+\LoadClass[12pt,a4paper,openany]{book}
   \iftongji@master\relax\else
     \iftongji@doctor\relax\else
       \ClassError{tongjithesis}%

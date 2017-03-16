@@ -19,12 +19,8 @@ P波与S波模式，从而获得更多与岩性相关的信息，这对于岩性
 而随着高性能计算能力的不断提升，基于波动理论来获取模型高、低波数成分的方法也受到了广泛关注。
 \begin{figure}[!htb] 
    \centering 
-   \subfloat[]{\includegraphics[width=0.68\textwidth]{Figure/chapter01/GapInSeis.jpg}}
-   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
-       3km (b). The black and blue lines indicate the true and linearly         increased
-       initial model. The green and yellow lines indicate the WERTI and EFWI    results,
-       respectively.
-   }
+   \subfloat{\includegraphics[width=1.00\textwidth]{Figure/chapter01/WavenumberGap.pdf}}
+   \caption{地震数据所能恢复的频带示意图，传统层析+成像的方式所恢复的速度频带中有着明显的中低频缺失，而FWI则尝试恢复中低频部分的缺失。}
    \label{fig:GapInSeisVel}
 \end{figure}
 
@@ -92,12 +88,14 @@ $\omega$为角频率，$\mathbf{n}$为$\mathbf{k}$方向的单位向量。由上
 \begin{figure}[!htb] 
    \centering 
    \subfloat{\includegraphics[width=0.40\textwidth]{Figure/chapter01/Wavenumbervector.pdf}}
-   \subfloat{\includegraphics[width=0.40\textwidth]{Figure/chapter01/Cycle-skipping.pdf}}
-   \caption{Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
-       3km (b). The black and blue lines indicate the true and linearly         increased
-       initial model. The green and yellow lines indicate the WERTI and EFWI    results,
-       respectively.
-   }
+   \caption{地下散射点处入射波矢量，散射波矢量以及散射角之间关系示意图。}
+   \label{fig:WavenumberVector}
+\end{figure}
+\begin{figure}[!htb] 
+   \centering 
+   \subfloat{\includegraphics[width=0.60\textwidth]{Figure/chapter01/Cycle-skipping.pdf}}
+   \caption{FWI波形匹配中的cycle-skipping现象。当波形相差$T/2$周期以上的时候，数据将会与在另一个周期中进行匹配，此时获得的数据残差会导致反演
+   陷入局部极值。}
    \label{fig:WavenumberVector}
 \end{figure}
 因此FWI的成功与否非常依赖于长偏移距记录和数据中有效的低频分量。如图\ref{fig:WavenumberVector}b

@@ -125,6 +125,15 @@ Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我
 \end{split}
     \label{eq:GradientVel}
 \end{equation}
+\begin{figure}[h]
+   \centering
+   \subfloat[]{\includegraphics[width=0.40\textwidth]{Figure/chapter03/Kernel/1vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.40\textwidth]{Figure/chapter03/Kernel/1vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.40\textwidth]{Figure/chapter03/Kernel/Vponlyvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.40\textwidth]{Figure/chapter03/Kernel/Vsonlyvp.pdf}}\\
+   \caption{单独$V_p$反射层时的反射波路径。(a)为$V_p$模型，(b)为$V_s$模型，(c)为$V_p$核函数，(d)为$V_s$核函数.}
+   \label{fig:kernel1_vp}
+\end{figure}
 \section{弹性波反射波路径核函数}
 利用反射波来进行反演的关键思路需要将预测的反射波与观测数据之间的残差反投影到反射波路径上从而实现对模型的更新。因此反射波路径的计算将是反演中
 的关键之处。在弹性波中由于存在各种模式的转换，因此反射波波路径的复杂程度将远大于声波中的情况。我们将首先分析弹性波反射波路径的性质，并尝试通过
@@ -152,15 +161,6 @@ Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我
     \label{eq:decompkernel} 
 \end{equation}
 其中$m\in\{V_p, V_s\}$，$M,N\in\{P,S\}$。
-\begin{figure}
-   \centering
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/1vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/1vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vponlyvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vsonlyvp.pdf}}\\
-   \caption{单独$V_p$反射层时的反射波路径。(a)为$V_p$模型，(b)为$V_s$模型，(c)为$V_p$核函数，(d)为$V_s$核函数.}
-   \label{fig:kernel1_vp}
-\end{figure}
 
 为了观察弹性波反射波路径核函数，我们在简单的单层界面中计算反射波波路径。首先，我们假定只有$V_p$的扰动界面，如图\ref{fig:kernel1_vp}(a), (b)
 %\begin{figure}
@@ -173,7 +173,7 @@ Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我
 该模型由于没有$V_s$界面，因此没有模式转换能量只有PP波反射，非常接近于声波情况。
 采用该模型获得的反射波波路径如图\ref{fig:kernel1_vp}(c)和(d)。可以看到，$V_p$的反射波
 路径分为震源端以及检波点端左右两支，与声波波路径非常接近。同时$V_s$也会有相应的路径能量，但是路径中能量主要集中在边缘部分，中央第一菲涅尔带区域
-能量较弱，可能的原因是这部分路径信息是由于PP波反射能量所产生，其对$V_s$背景信息并不敏感。
+能量较弱，可能因为这部分路径信息是由于PP波反射能量所产生，其对$V_s$背景信息并不敏感。
 %如果换做$\lambda$和$\mu$的参数化方式，其产生的波路径如图\ref{Kernel1_lambda}所示
 %\begin{figure}
 %   \centering
@@ -182,19 +182,19 @@ Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我
 %   \caption{图\ref{fig:KernelModel1}模型$\lambda$参数化时的反射波路径。左侧为$\lambda$，右侧为$\mu$.}
 %   \label{fig:kernel1_lambda}
 %\end{figure}
-
-之后，我们考虑$V_s$界面存在时的情况（图\ref{fig:kernel2}(a),(b)），这时波场就会变得十分复杂
-，在正传及反传波场中会同时存在P波与S波，因此反射波路径将变得更加复杂，如图\ref{fig:kernel2}）
-\begin{figure}
+\begin{figure}[!htb]
    \centering
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/2vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/2vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vponlyvs.pdf}}
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vsonlyvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/2vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/2vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/Vponlyvs.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/Vsonlyvs.pdf}}\\
    \caption{单独$V_s$反射层时的反射波路径。(a)为$V_p$模型，(b)为$V_s$模型，(c)为$V_p$核函数，(d)为$V_s$核函数.}
 %   \caption{单独$V_p$扰动界面。左侧为$V_p$，右侧为$V_s$.}
    \label{fig:kernel2}
 \end{figure}
+
+之后，我们考虑$V_s$界面存在时的情况（图\ref{fig:kernel2}(a),(b)），这时波场就会变得十分复杂
+，在正传及反传波场中会同时存在P波与S波，因此反射波路径将变得更加复杂，如图\ref{fig:kernel2}）
 %\begin{figure}
 %   \centering
 %   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/Vponlyvs.pdf}}
@@ -202,24 +202,26 @@ Hale (2013)\cite{ma2013}的推导（见附录\ref{cha:AdjointForEWERTI}），我
 %   \caption{单独$V_p$扰动时的反射波路径。左侧为$V_p$，右侧为$V_s$.}
 %   \label{fig:kernel2}
 %\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsPP.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsPS.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsSP.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsSS.pdf}}
+   \caption{$K_{V_s}$核函数的四个分量。a, $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
+   \label{fig:kernel2_vs_decomp}
+\end{figure}
 上图中，$V_p$核函数与图\ref{fig:kernel1_vp}中略有不同，这是因为由于存在$V_s$反射层，反传的散射波场在界面处产生“非物理”的S-P转换波，
 这部分SP波与背景场中的P波互相关就会产生的一些假象。而在$V_s$的核函数中，可以看到多种模式转换导致的多个波路径叠加，使得核函数变得十分复杂。
-尤其式其中的P波路径的能量总是占主导地位。
-如果直接采用该核函数来计算$V_s$的梯度，一定会对反演带来更多的难度。根据式\ref{eq:decompkernel}，我们将原始的$V_s$核函数分解为四个部分。
+尤其是其中的P波路径的能量总是占主导地位。
+如果直接采用该核函数来计算$V_s$的梯度，一定会对反演带来更多的难度。
+
+根据式\ref{eq:decompkernel}，我们将原始的$V_s$核函数分解为四个部分。
 如图\ref{fig:kernel2_vs_decomp}所示，$K_{V_s}^{PP}$的能量与图\ref{fig:kernel2}c中
 的$V_p$核函数十分类似，$K_{V_s}^{PS}$与$K_{V_s}^{SP}$则包含非常多的高频信息，
 实际上它们是不同模式的正传与反传波场之间的偏移脉冲相应。而$K_{V_s}^{SS}$则与其他三者有些不同，其只包含了检波点端的一只反射路径，这是由于
 我们采用了P波震源，在震源端的波场中不包含S波数据，因此$K_{V_s}^{SS}$的震源端项会是0。这样的话，$K_{V_s}^{SS}$就很少会受到P波路径的影响，这将
 会非常有助于背景$V_s$的反演。
-\begin{figure}
-   \centering
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsPP.pdf}}
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsPS.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsSP.pdf}}
-   \subfloat[]{\includegraphics[width=0.30\textwidth]{Figure/chapter03/Kernel/VsonlyvsSS.pdf}}
-   \caption{$K_{V_s}$核函数的四个分量。a, $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
-   \label{fig:kernel2_vs_decomp}
-\end{figure}
 \section{弹性波WERTI工作流程}
 弹性波介质中，不同模式的转换波，主要是PP与PS同相轴之间，会互相叠加、互相交叉。在用DIW提取走时差的时候，这些交叉点的位置就会变成一些奇异点而给拾取带来很大困难
 。因此，如果直接用原始多分量数据的话，拾取到的$\tau(\mathbf{x_r},t;\mathbf{x_s})$就会不准确，这也是为什么式\eqref{eq:AdjointDeltaWE}中的梯度很难直接应用。
@@ -240,7 +242,8 @@ P波或S波地震记录。这样，走时残差就可以被分成P波与S波两�
 \end{equation}
 这样，采用P波记录来计算方程\eqref{eq:AdjointWE}的右端项，并用$\delta V_p$替换方程\eqref{eq:DeltaWE}和\eqref{eq:AdjointDeltaWE}中的$\delta c_{ijkl}$，我们
 就可以计算得到$V_p$的梯度， $\frac{\partial E}{\partial V_p}$。与EFWI中一样，该梯度中的互相关项自动隐含了散度算子，因此，在
-计算时只采用了PP波的反射波，所以模式解耦无法对该梯度起作用。
+计算时只采用了PP波的反射波，所以模式解耦无法对该梯度起作用。注意到，在使用P波的反演阶段，其本质上等价于声波反演的过程。但是区别在于我们需要将地
+面地震记录进行数据的模式分离，而在分离后的数据中可能包含部分的SP模式的转换波，这部分转换对反演可能造成不利的影响。
 
 \subsection{$V_s$反演}
 在S波阶段，我们将采用类似的策略但是只利用PS反射波。则目标函数变为：

@@ -357,16 +357,16 @@ Pan W, Innanen K~A, Margrave G~F, et~al.
 
 \bibitem{Yang2016}
 Yang J, Liu Y, Dong L.
-\newblock Simultaneous estimation of velocity and density in acoustic
-  multiparameter full-waveform inversion using an improved scattering-integral
-  approach.
-\newblock {GEOPHYSICS}, 2016, 81(6):R399--R415
+\newblock Least-squares reverse time migration in the presence of density
+  variations.
+\newblock {GEOPHYSICS}, 2016, 81(6):S497--S509
 \tongjidot
 
 \bibitem{WangEtAl2016}
-Wang F, Donno D, Chauris H, et~al.
-\newblock Waveform inversion based on wavefield decomposition.
-\newblock {GEOPHYSICS}, 2016, 81(6):R457--R470
+Wang C, Cheng J, Arntsen B.
+\newblock Scalar and vector imaging based on wave mode decoupling for elastic
+  reverse time migration in isotropic and transversely isotropic media.
+\newblock {GEOPHYSICS}, 2016, 81(5):S383--S398
 \tongjidot
 
 \bibitem{PanEtAl2017}
@@ -882,6 +882,25 @@ Leeuwen T, Mulder W~A.
 \newblock A correlation-based misfit criterion for wave-equation traveltime
   tomography.
 \newblock Geophysical Journal International, 2010, 182:1383--1394
+\tongjidot
+
+\bibitem{DuEtAl2014}
+Du Q, Gong X, Zhang M, et~al.
+\newblock {3D} {PS}-wave imaging with elastic reverse-time migration.
+\newblock {GEOPHYSICS}, 2014, 79(5):S173--S184
+\tongjidot
+
+\bibitem{GongEtAl2016}
+Gong T, Nguyen B~D, McMechan G~A.
+\newblock Polarized wavefield magnitudes with optical flow for elastic
+  angle-domain common-image gathers.
+\newblock {GEOPHYSICS}, 2016, 81(4):S239--S251
+\tongjidot
+
+\bibitem{RochaEtAl2016a}
+Rocha D, Tanushev N, Sava P.
+\newblock Isotropic elastic wavefield imaging using the energy norm.
+\newblock {GEOPHYSICS}, 2016, 81(4):S207--S219
 \tongjidot
 
 \end{thebibliography}

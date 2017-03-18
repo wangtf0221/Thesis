@@ -78,7 +78,8 @@
 \begin{cabstract}
 	通过地震数据定量化地估计弹性参数甚至岩石物理参数是地震勘探的终极目标。随着计算能力的快速提升以及
 	宽方位、长偏移距、宽频带的地震数据采集技术的成熟，以估计全频带速度模型为目标的全波形反演方法(FWI)
-	成为勘探地震学中的研究热点。但是受制于初始模型不够好，子波估计不准，噪音影响等原因，FWI无法一劳永逸地解决问题。
+	成为勘探地震学中的有力工具。但是受制于初始模型不够好，数据缺乏足够低频，
+	子波估计不准，噪音影响等原因，FWI无法一劳永逸地解决问题。
 	为了恢复不同波数频带的模型，本文围绕模式解耦的数据分离工具，从弹性波全波形反演（EFWI）、弹性波波动方程反射走时反演
 	（E-WERTI）以及弹性波最小二乘逆时偏移（E-LSRTM）出发，分别尝试恢复全波数频带、中低波数以及高波数成分的弹性模型。
 
@@ -94,23 +95,24 @@
 	型与Marmousi-II模型的数值实例，证明了基于MD的预条件共轭梯度法可以降低P-波和S-波速度
 	之间的参数耦合，并且在不涉及Hessian计算的同时获得快速的收敛。
 
-	利用弹性反射波波形反演（ERWI）可以更新中深层的模型低波数成分从而为EFWI提供好的初始模型。
+	利用弹性反射波波形反演（ERWI）可以更新中深层的模型中低波数成分从而为EFWI提供好的初始模型。
 	然而波形匹配的ERWI也同样会面临周波跳跃的问题。由于走时信息与背景速度模型之间具有更强的线性关系，因此第三章中采用E-WERTI
 	通过DIW算法（Dynamic image warping）来提取走时残差并以此建立目标函数的
 	方式可以有效地回避周波跳跃。
 	文中采用两步反演的策略，首先采用PP波数据反演$V_p$，然后基于反演好的$V_p$通过PS波反演$V_s$。
 	地面数据分离+空间模式解耦可以有效地分离出P或S波数据从而实现分别反演，这将有效降低反演的非线性程度。通过反射波波路径核函数分析
-	证明了模式解耦在反射波反演中的有效性。倾角滤波约束可以使得反演更加快速收敛到具有地质意义的模型。最后，Sigsbee2A模型的数值实验
-	验证了E-WERTI算法以及反演策略的有效性，并为EFWI提供了良好的初始模型。
+	证明了模式解耦在反射波反演中的有效性。倾角滤波约束可以使得反演快速收敛到具有地质意义的模型。最后，采用Sigsbee2A模型来
+	验证E-WERTI算法以及反演策略的有效性，并用EFWI检验其初始模型的准确性。
 
 	E-LSRTM旨在通过拟合反射波数据振幅信息来反演弹性模型的高波数成分，其可以视为线性的EFWI问题。
-	由于反射数据与Born数据之间存在差异，因此在E-LSRTM中最好能匹配反射数据与背景波场之间的残差。常规E-LSRTM可以通过多次迭代压制参数间的耦合
-	效应，但是无法完全压制。模式解耦则可以通过分离出S波数据使得E-LSRTM中S波速度扰动的反演变做单参数反演。由此第四章中我们针对不同情况设计了相应
-	的反演策略来压制参数耦合。在$V_p$较少受$V_s$耦合影响时，采用解耦梯度下的双参数同时反演；而在$V_p$与$V_s$强烈相互影响时，推荐先采用解耦通过S波
+	由于反射数据与Born数据之间存在差异，因此在E-LSRTM中最好能匹配反射数据与背景波场之间的残差。常规E-LSRTM可以通过多次迭代部分地压制参数间的耦合
+	效应。模式解耦则可以在计算梯度时通过分离出S波梯度，使得E-LSRTM中S波速度扰动的反演变做单参数反演。由此第四章中我们针对不同情况设计了相应
+	的反演策略来压制参数耦合。在$V_p$较少受$V_s$耦合影响时，采用解耦梯度下的双参数同时反演；而在$V_p$与$V_s$强烈相互影响时，先采用解耦通过S波
 	反演好$V_s$，然后后反演$V_p$，这样可以进一步压制$V_p$所受到的来自$V_s$的耦合影响。
 
-	本文利用以上围绕模式解耦的方式，可以根据不同阶段反演的需要分别采用相应的策略来降低反问提的非线性程度、降低参数耦合效应来获得从浅到深更精细，
-	更准确的弹性参数预测。
+	本文利用以上围绕模式解耦的反演方式，可以根据不同阶段反演的需求分别
+	采用相应的策略来降低反问题的非线性程度、降低参数耦合效应等来获得从浅到深
+	更准确的弹性参数估计。
 
 
 \end{cabstract}
@@ -118,6 +120,24 @@
 \ckeywords{全波形反演，Hessian和分辨率矩阵，参数耦合，波动方程反射走时反演，反射波路径核函数，最小平方逆时偏移，弹性波，模式解耦}
 
 \begin{eabstract}
+	The aim of seismic exploration is to estimate the elastic parameters or rock properties
+	quantitively                                              
+	with the recording data on the surface. With the developement of 
+	high-performance computation ability and the
+	maturation of wide-azimuth, long-offset and broadband data accquisition 
+	technology, full waveform inversion (FWI) becomes a powerful tool to recover the full
+	 wavenumber spectrum of the subsurface. However, FWI can not provide the perfectly estimated
+	model
+	once and for all due to the obstacles such as bad initial models,
+	insufficiency of low frequency component in the data, inaccurately estimated source
+	wavelet, low sigal/noisy ratio in the data and so on,
+	In order to rebuild the model with different wavenumber spectrum, elastic full waveform
+	inversion (EFWI), elastic wave equation 
+	reflected traveltime inversion (E-WERTI) and elastic least square reverse time
+	migration (E-LSRTM) are implemented with the help of wave mode decomposition, in which we
+	try to recover the full wavenumber, the low and intermediat wavenumber
+	and the high wavenumber spectrum of the elastic model, respectively.
+
 Elastic full waveform inversion (EFWI) aims to reduce the misfit between recorded and modelled multi-component
 seismic data for deducing a detailed model of elastic parameters in the subsurface.
 Because the explicit computation and inversion of the Hessian matrix
@@ -137,6 +157,43 @@ Numerical examples of a simple fluid-saturated model and the Marmousi-II model
 demonstrate that the MD-based preconditioned conjugate-gradient approach
 can mitigate the trade-off between the P- and S-wave velocities and achieve fast
 convergence without any Hessian-involved calculations.
+
+Elastic reflection waveform inversion (ERWI) utilize the reflections to update the low and
+intermediate wavenumber in the
+deeper part of model, which can provide good initial models for EFWI. However, ERWI suffers from
+the cycle-skipping problem because of the objective function fitting waveform. Since taveltime
+information relates to the background model more linearly, the cycle-skipping will be less severe
+compared with waveform norm. Thus, in the third chapter we use the $L_2$ norm of the traveltime
+residual extracted by the Dynamic image warping (DIW) as objective function in the manner of
+WERTI. 
+A two-step inversion strategy is adopted. Firstly, PP reflections are used to invert $V_p$. 
+After that PS reflections are used to invert $V_s$ based on the well recoverd $V_p$. Surface P/S
+separation and spatial wave mode decomposition provide P or S wave data effectively, which helps
+to  reduce the nonlinearty of inversion greatly.
+The kernel of reflection wavepath proves that mode decomposition can surpress the artifacts in
+the reflection inversion. The local dip-dependent smooth filter ensures the inversion converging to
+a
+geological model. Finally, numerical example of Sigsbee2A model validates the effectivenss of the 
+algorithms and strategies for E-WERTI, whose results also are tested through EFWI.
+
+E-LSRTM is the linearied EFWI aimming to fit the waveform of reflections with the inverted
+high-wavenumber perturbations. Due to the energy difference between Born and reflection data, it is
+more suitable to match the residual between reflection data and the background data during E-LSRTM.
+Conventional
+E-LSRTM can sligthly mitigate the parameter trade-offs through iterations. While mode decomposition
+isolates the S-wave part in  gradient calculation, which makes the inversion of S-wave velocity
+perturbation a mono-parameter inversion to help mitigate the trade-offs. In the fourth chapter, we
+design different inversion strategies to cope with the different situations. When $V_p$ is little
+affected by $V_s$, we invert the two parameter simultaneously with mode decomposition; when $V_p$
+and $V_s$ couple with each
+other severely, we recommand inverting $V_s$ firstly followed by $V_p$ inversion to further mitigate
+the trade-offs from $V_s$ during the $V_p$ inversion.
+
+In this paper, we focus on the mode-decomposition-based inversion methods, select different strategy
+according to the requirement of different inversion stage to reduce the nonlinearty, trade-off
+effects and other problems and finally rebuild the elastic model from shallow to
+deep more accurately. 
+
 \end{eabstract}
 
 \ekeywords{Waveform inversion, Elasticity, Mode decomposition, Resolution matrix

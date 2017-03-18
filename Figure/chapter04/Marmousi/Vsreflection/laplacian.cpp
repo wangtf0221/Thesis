@@ -40,7 +40,7 @@ int main(int  argc,char **argv)
 	{
 //		for(l=-1;l<2;l++)
 //		vs0[i][j]=+vp0[i-1][j]-2*vp0[i][j]+vp0[i+1][j];
-		vs0[i][j]=(-vp0[i][j-1]+2*vp0[i][j]-vp0[i][j+1])/1.0;
+		vs0[i][j]=(-vp0[i][j-1]+2.0*vp0[i][j]-vp0[i][j+1])/0.6;
 
 	}
 //    fp2=fopen("filtered","wb");

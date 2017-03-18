@@ -263,15 +263,17 @@ LSRTM的理论是基于Born散射数据导出的，因此高频参数扰动预�
    \label{fig:Vpcomparison}
 \end{figure}
 
-图\ref{fig:refl_born_comparison}(a)所示为将真实模型按照30m半径平滑后所获得的反射数据、反射残差数据
-（此处我们将反射数据减去平滑模型中背景场数据叫做反射残差数据）以及Born数据。可以看到当平滑半径较小时，背景模型中会包含部分高波数成分，就会产
-生部分反射能量，这就导致Born数据会与真实反射数据相差很远。最终会导致在反演中数据残差收敛时产生参数扰动的过估计(图\ref{fig:Vpcomparison})。
-但如果用反射残差数据就可以与Born数据很好地匹配。
+图\ref{fig:refl_born_comparison}(a)所示为将真实模型按照30m半径平滑后所获得的反射数据、剩余反射数据（这里我们将
+反射数据与背景波场记录的残差称为“剩余反射数据”）
+以及真实扰动产生的Born数据之间的比较。可以看到当平滑半径较小时，背景模型中会包含部分高波数成分，这就使得背景场中产
+生部分反射能量，从而导致Born数据会与真实反射数据相差较远。由于反射数据振幅大于真实Born数据的振幅，如果在反演中直接匹配该反射数据的振幅，
+最终会导致在反演中数据残差收敛时产生参数扰动的过估计(图\ref{fig:Vpcomparison})。
+但剩余反射数据可以与Born数据很好地匹配。
 
-也就是说，如果模型中包含较强的反射能量，那么就需要匹配观测数据与背景场之间的残差，而不是反射数据。
+也就是说，如果模型中包含较强的反射能量，那么就需要匹配差异反射数据，而不是反射数据。
 而如果模型平滑尺度较大，背景波场中包含的反射能量较弱，那么Born数据就不会与反射数据
-相差太远，但即使如此，Born数据也与反射数据之间的差异也大于其与发射残差数据之间的差异
-(图\ref{fig:refl_born_comparison}(b))。因此在LSRTM时，匹配反射残差数据
+相差太远，但即使如此，Born数据与反射数据之间的差异也大于其与剩余反射数据之间的差异
+(图\ref{fig:refl_born_comparison}(b))。因此在LSRTM时，匹配剩余反射数据
 将是一个更优的选择。
 \subsection{参数耦合的影响}
 参数耦合是E-LSRTM中面临的另一个挑战，E-LSRTM可以一定程度上消除参数间
@@ -283,49 +285,67 @@ Schuster,2016\cite{Feng2016}。但是他们也只能做到压制“脚印”，�
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vs.pdf}}\\
-   \caption{真实模型，(a)$V_p$,(b)$V_s$}
+   \caption{参数耦合测试真实模型，(a) $V_p$, (b) $V_s$.}
    \label{fig:tradeoffModel}
 \end{figure}
-\begin{figure}
+\begin{figure}[!htb]
    \centering
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvpnodecomp.pdf}}
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvsnodecomp.pdf}}\\
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vpnodecomp.pdf}}
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsnodecomp.pdf}}
-   \caption{常规ERTM与E-LSRTM结果。左侧为$\delta V_p$，右侧为$\delta V_s$。第一排为ERTM结果，第二排为E-LSRTM结果。}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvsnodecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsnodecomp.pdf}}
+   \caption{常规ERTM与E-LSRTM结果。左侧为$\delta V_p$，右侧为$\delta V_s$。(a), (b)为ERTM结果，(c),
+   (d)为E-LSRTM结果。}
    \label{fig:tradeoff_nodecomp}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsdecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/2ndvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsdecomp.pdf}}
+   \caption{模式解耦预条件的ERTM与E-LSRTM结果。左侧为$\delta V_p$，右侧为$\delta V_s$。(a),
+   (b)为ERTM结果; (c), (d)为采用策略1时E-LSRTM结果；(e), (f)为采用策略2时E-LSRTM结果。}
+   \label{fig:tradeoff_decomp}
 \end{figure}
 
 真实模型如图\ref{fig:tradeoffModel}所示。这里我们采用Born正演数据进行双参数同时反演。
 由于$V_s$界面也会产生P波反射，因此如图\ref{fig:tradeoff_nodecomp}中，
-常规RTM结果中$V_p$与$V_s$成像结果中存在明显的相互影响，而E-LSRTM过程可以消除部分参数耦合的效应，但是难以完全压制，尤其是$V_s$中的$V_p$脚印。
-而加入模式解耦之后，我们首先采用策略1进行反演。由于采用S波波场来计算$V_s$梯度，
-这就可以完全避免P波对$V_s$梯度的干扰效应。根据前文所分析的模式解耦帮助压制参数耦合的机制，这将
-加速$V_s$的收敛。但是对于$\delta
-V_p$的估计帮助没有这么明显。从ERTM结果上看，解耦之后的成像结果已经可以压制$\delta V_s$中
+常规RTM结果中$V_p$与$V_s$成像结果中存在明显的相互影响，而E-LSRTM过程可以消除部分参数耦合的效应，
+但是难以完全压制，尤其是$\delta V_s$中存在非常明显的$\delta V_p$脚印。
+
+而加入模式解耦之后，
+我们首先采用策略1进行反演。
+由于采用S波波场来计算$\delta V_s$梯度，
+这就可以完全避免了P波对$\delta
+V_s$梯度的干扰效应。根据第二章中所分析的模式解耦帮助压制参数耦合的机制，采用S波反演$V_s$近似于单参数反演，这将
+有助于$V_s$的收敛。但是对于$\delta
+V_p$的反演提升没有这么明显，只能依靠在迭代过程中$\delta
+V_s$趋近于真值时来消除其所产生的P波数据残差，进而提升$\delta V_p$的反演效果。
+
+从ERTM结果上看，解耦之后的成像结果已经可以压制$\delta V_s$中
 $V_p$界面产生的脚印。而解耦预条件的E-LSRTM得到的$\delta
 V_s$已经没有了$V_p$界面的脚印干扰，但是$\delta
-V_p$仍然存在一定的干扰，这是因为反演出的$\delta
-V_s$不可能与真值一样，这样数据残差中就一定存在少量的来自$\delta
-V_s$的P波。如果想要压制这一部分干扰，可以考虑策略2。
-\begin{figure}
-   \centering
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvpdecomp.pdf}}
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/RTMvsdecomp.pdf}}\\
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vpdecomp.pdf}}
-   \subfloat{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vsdecomp.pdf}}
-   \caption{模式解耦预条件的ERTM与E-LSRTM结果。左侧为$\delta V_p$，右侧为$\delta V_s$。第一排为ERTM结果，第二排为E-LSRTM结果。}
-   \label{fig:tradeoff_decomp}
-\end{figure}
+V_p$中仍然存在一定的干扰，这是因为在策略1中，初始迭代阶段时$\delta
+V_s$反演更新量不足，使得$\delta
+V_p$的梯度总是存在脚印的影响，而在此阶段中总是能够搜索到较大的更新步长，这就导致在初始阶段的参数耦合效应仍然较为严重。而且主要是
+$\delta V_p$受到$\delta V_s$的影响。
+策略2可以进一步压制这种类型的干扰，在$\delta
+V_s$反演足够好的时候$V_s$界面产生的P波数据已经基本匹配，这时再反演$\delta
+V_p$就能够最小化$V_s$界面在$\delta V_p$中的影响。
+然而反演得到的$\delta V_s$不可能与真值一样，这样数据残差中就一定存在少量的来自$\delta
+V_s$的P波。因此可以看到即使采用策略2，$\delta V_p$中最终还会存留非常弱的脚印。
 
 
 \subsection{Marmousi模型}
-本节中我们将在Marmousi模型上进行算法的测试，为了降低计算代价，$V_s$模型通过固定的泊凇比获得。
-观测系统中，60个炮点等间隔地分布在地表，为了提高成像质量我们将检波点沉降到第一个反射界面附近。模型空间采样间隔
+本节将在Marmousi模型上进行算法的测试，为了降低计算代价，$V_s$模型通过固定的泊凇比获得。
+观测系统中，60个炮点等间隔地分布在地表，为了提高成像质量检波点被置放在第一个反射界面附近。模型空间采样间隔
 为10m，时间采样间隔为1ms，模拟时间总长3s，子波主频20Hz。除非特别指明，本节中所有数值实验都采用上述相同的观测系统。
 为了对比Born数据与反射残差数据间的反演差异，
-每个模型我们都采用Born数据与反射残差数据各进行一次E-LSRTM。
-\begin{figure}
+每个模型都采用Born数据与反射残差数据各进行一次E-LSRTM。
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vs.pdf}}\\
@@ -334,25 +354,39 @@ V_s$的P波。如果想要压制这一部分干扰，可以考虑策略2。
    \caption{Marmousi真实模型与偏移模型。左侧为$V_p$，右侧为$V_s$。第一行为真实模型，第二行为偏移模型。}
    \label{fig:TrueAndInitial_1}
 \end{figure}
-\begin{figure}
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvpnodecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvsnodecomp.pdf}}\\
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vpnodecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vsnodecomp.pdf}}
-   \caption{常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果。}
+   \caption{Born数据常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果。}
    \label{fig:nodecomp_1}
 \end{figure}
-\begin{figure}
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvpdecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/RTMvsdecomp.pdf}}\\
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vpdecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/born/vsdecomp.pdf}}\\
-   \caption{常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果。}
+   \caption{Born数据模式解耦下ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果。}
    \label{fig:decomp_1}
 \end{figure}
-\begin{figure}
+
+第一个实验中，为了突出参数耦合效应，在$V_p$模型中加入了一个高速薄层。这样在常规E-LSRTM中，$\delta
+V_s$的反演会受到参数耦合的干扰，由于$\delta V_p$中则较少受到$V_s$结构的影响，因此可以采用反演策略1，同时反演$\delta
+V_p$与$\delta V_s$。首先我们采用Born数据进行E-LSRTM。如图\ref{fig:nodecomp_1}所示，常规ERTM结果中，$V_p$和$V_s$成像中
+可以看到低频噪音的干扰，并且由于参数耦合，$\delta
+V_s$中还存在$V_p$结构的影子。在经过E-LSRTM之后，低频噪音被压制，
+整个成像剖面能量更加均衡
+而且$V_s$中的参数耦合干扰也被部分消除了，但是仍然可以明显的看到残留的干扰脚印。
+
+之后将模式解耦的预条件加入到梯度计算中，结果如图\ref{fig:decomp_1}所示，ERTM结果中$\delta
+V_p$仍然存在低频噪音，而$\delta
+V_s$中的低频噪音已经很少了，这说明低频噪音主要是PP波路径所产生，在经过解耦之后，反传P波被压制，所以$\delta
+V_s$中基本消除了低频噪音。而且ERTM结果中也可以看到来自$V_p$结构的脚印已经被完全压制掉了。在经过E-LSRTM之后，采用解耦预条件的方法获得了
+很好的$\delta V_p$与$\delta V_s$的反演结果。
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpnodecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsnodecomp.pdf}}\\
@@ -361,7 +395,13 @@ V_s$的P波。如果想要压制这一部分干扰，可以考虑策略2。
    \caption{反射数据常规ERTM与E-LSRTM结果。左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:RTM_1_refl}
 \end{figure}
-\begin{figure}
+
+虽然理论上Born数据与反射残差数据相差不多，但是这只是考虑一次散射的情况，在复杂区域中多次散射很强的地方利用反射数据进行LSRTM就会遇到挑战。
+接下来，我们将采用反射数据测试我们的算法。反射数据中的直达波会带来很大的干扰，因此我们在进行实验时首先根据走时对直达波进行切除。
+在切除直达波后，ERTM结果中较少受到低频噪音干扰，但是模型深部成像能量不均衡以及参数的耦合是影响反演的主要因素。而且在中间断层区域，多次散射
+效应也很明显，存在许多干扰的假象。经过E-LSRTM之后，深部的能量获得了较好的补偿，分辨率也得到了提高，但是参数耦合导致的$\delta
+V_s$结果中的脚印难以被压制。
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpdecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvsdecomp.pdf}}\\
@@ -371,52 +411,11 @@ V_s$的P波。如果想要压制这一部分干扰，可以考虑策略2。
    \label{fig:LSRTM_1_refl}
 \end{figure}
 
-第一个实验中，为了突出参数耦合效应，我们在$V_p$模型中加入一个高速薄层。这样在常规E-LSRTM中，$\delta
-V_s$的反演就会受到参数耦合的干扰，而$V_p$中则较少受到$V_s$结构的影响，那么我们可以采用反演策略1，同时反演$\delta
-V_p$与$\delta V_s$。首先我们采用Born数据进行E-LSRTM。如图\ref{fig:nodecomp_1}所示，常规ERTM结果中，$V_p$和$V_s$成像中都
-可以看到低频噪音的干扰，并且由于参数耦合，$V_s$像中还存在$V_p$结构的影子。在经过E-LSRTM之后，低频噪音被很好的压制了，成像效果更加均衡
-而且$V_s$中的参数耦合干扰也被部分消除了，但是仍然可以明显的看到残留的干扰脚印。
-
-然后我们将模式解耦加入到梯度预条件中，则结果如图\ref{fig:decomp_1}所示，ERTM结果中$\delta
-V_p$仍然存在低频噪音，而$\delta
-V_s$中的低频噪音已经很少了，这说明低频噪音主要是PP波路径所产生，在经过解耦之后，反传P波被压制，所以$\delta
-V_s$中基本消除了低频噪音。而且ERTM结果中也可以看到来自$V_p$结构的脚印已经被完全压制掉了。在经过E-LSRTM之后，采用解耦预条件的方法获得了
-很好的$\delta V_p$与$\delta V_s$的反演结果。
-
-虽然理论上Born数据与反射残差数据相差不多，但是这只是考虑一次散射的情况，在复杂区域中多次散射很强的地方利用反射数据进行LSRTM就会遇到挑战。
-接下来，我们将采用反射数据测试我们的算法。反射数据中的直达波会带来很大的干扰，因此我们在进行实验时首先根据走时对直达波进行切除。
-在切除直达波后，ERTM结果中较少受到低频噪音干扰，但是模型深部成像能量不均衡以及参数的耦合是影响反演的主要因素。而且在中间断层区域，多次散射
-效应也很明显，存在许多干扰的假象。经过E-LSRTM之后，深部的能量获得了较好的补偿，分辨率也得到了提高，但是参数耦合导致的$\delta
-V_s$结果中的脚印难以被压制。
-
 在引入模式解耦的梯度之后，可以看到ERTM结果中$\delta
 V_s$的脚印已经被压制，在经过E-LSRTM之后，成像分辨率得到了提高，同时深部区域的能量也经过补偿获得了更好的均衡。
 从结果上看Born数据要比散射数据的反演效果好，这是因为,第一，Born数据的正演与反演过程完全匹配；
 第二，散射数据中存在多次散射效应，这导致深部的成像与反演质量较差。但是可以看到采用模式解耦的梯度能够在E-LSRTM基础上进一步压制参数耦合效应。
-
-第二个实验中，为了进一步突出参数耦合效应，我们在两个参数模型中分别加入速度异常结构(图\ref{fig:TrueAndInitial_2})。
-这样参数耦合会在两个参数中都会有很大的干扰，这在实际数据是很容易遇到的情况。
-此时如果考虑同时反演的策略1，参数耦合会导致
-E-LSRTM的非线性程度增高。Born数据的常规E-LSRTM成像结果中，$\delta
-V_s$甚至还存在低频噪音，一个可能的原因就是$\delta V_s$右侧受到参数耦合的干扰，导致P波残差没有或者错误的匹配造成的。
-而加入模式解耦的梯度之后，不论ERTM还是E-LSRTM都消除了$\delta
-V_s$中的参数耦合，但是$\delta
-V_p$中仍然存在部分的耦合脚印。这一部分脚印是由于$\delta
-V_s$的反演没有完全收敛到真值，导致数据中总有来自$\delta V_s$的残余P波在$\delta
-V_p$中成像。这部分假象很难被完全消除掉，这就需要考虑策略2来进行反演。并且在反射数据中，正反演过程并不完全匹配，
-所以这种假象在同时反演中更难以被消除。因此我们将在反射数据实验中观察策略2的有效性。
-
-针对反射数据，我们首先进行双参数同时反演，其常规ERTM与E-LSRTM的结果与之前的结果类似，E-LSRTM可以改善成像质量，提高分辨率，
-并部分压制参数耦合效应。在采用解耦预条件的梯度之后，ERTM以及E-LSRTM结果中$\delta
-V_s$的假象有所改善，但是$\delta
-V_p$中的假象仍然存在。此后我们又采用策略2来进行反演，
-先采用解耦预条件的方式反演好$\delta V_s$，其次固定反演好的$\delta V_s$来反演$\delta
-V_p$。由于第一阶段中只匹配S波残差，因此反演结果基本与图\ref{fig:decomp_2}c中结果一致，这里由于篇幅限制就不再展示。
-而采用两步法反演的$\delta
-V_p$如图\ref{fig:final_comparison_2}b所示，可以看到左侧速度结构异常区域的干扰被进一步压制。但是由于$\delta
-V_s$反演并未完全消除其产生的P波残差，因此最后的反演结果中仍然存在少量的干扰。
-
-\begin{figure}
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vs.pdf}}\\
@@ -425,43 +424,56 @@ V_s$反演并未完全消除其产生的P波残差，因此最后的反演结果
    \caption{Marmousi真实模型与偏移模型。}
    \label{fig:TrueAndInitial_2}
 \end{figure}
-\begin{figure}
+
+\begin{figure}[!htb]
    \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsdecomp.pdf}}\\
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsnodecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsnodecomp.pdf}}
    \caption{Born数据常规ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:nodecomp_2}
 \end{figure}
-\begin{figure}
+\begin{figure}[!htb]
    \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/RTMvsdecomp.pdf}}\\
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsborn/vsdecomp.pdf}}
    \caption{Born数据模式解耦ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:decomp_2}
 \end{figure}
-\begin{figure}
+第二个实验中，为了进一步突出参数耦合效应，我们在两个参数模型中分别加入速度异常结构(图\ref{fig:TrueAndInitial_2})。
+这样参数耦合会在两个参数产生比较严重的相互干扰，这在实际数据是很容易遇到的情况。
+此时如果考虑同时反演的策略1，参数耦合会导致
+E-LSRTM的非线性程度增高。Born数据的常规E-LSRTM成像结果中，$\delta
+V_s$甚至还存在低频噪音，一个可能的原因就是$\delta V_s$中右侧受到参数耦合的干扰，导致P波残差没有或者错误的匹配造成的。
+而加入模式解耦的梯度之后，不论ERTM还是E-LSRTM的结果都消除了$\delta
+V_s$中的参数耦合，但是$\delta
+V_p$中仍然存在部分的耦合脚印。这一部分脚印是由于$\delta
+V_s$的反演没有完全收敛到真值，导致数据中总有来自$\delta V_s$的残余P波在$\delta
+V_p$中成像。这部分假象很难被完全消除掉，这就需要考虑策略2来进行反演。并且在反射数据中，正反演过程并不完全匹配，
+所以这种假象在同时反演中更难以被消除。我们将在反射数据实验中观察策略2的有效性。
+
+\begin{figure}[!htb]
    \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpdecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsdecomp.pdf}}\\
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsnodecomp.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpnodecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsnodecomp.pdf}}
    \caption{反射数据常规ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:nodecomp_2_refl}
 \end{figure}
-\begin{figure}
+\begin{figure}[!htb]
    \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvpdecomp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/RTMvsdecomp.pdf}}\\
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsdecomp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpnodecomp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vsnodecomp.pdf}}
    \caption{反射数据模式解耦ERTM与E-LSRTM结果，左侧为$V_p$，右侧为$V_s$。第一行为ERTM结果，第二行为E-LSRTM结果}
    \label{fig:decomp_2_refl}
 \end{figure}
-\begin{figure}
+\begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/firstvs2ndvpdecomp.pdf}}
@@ -470,3 +482,22 @@ V_s$反演并未完全消除其产生的P波残差，因此最后的反演结果
    (d) linearly increasing with depth. }
    \label{fig:final_comparison_2}
 \end{figure}
+针对反射数据，同样将数据中的直达波进行切除，
+首先进行双参数同时反演。其常规ERTM与E-LSRTM的结果与前述实验结果类似，E-LSRTM可以改善成像质量，提高分辨率，
+并部分压制参数耦合效应。在采用解耦预条件的梯度之后，ERTM以及E-LSRTM结果中$\delta
+V_s$的假象有所改善，但是$\delta
+V_p$中的假象仍然存在。此后我们又采用策略2来进行反演，
+先采用解耦预条件的方式反演好$\delta V_s$，其次固定反演好的$\delta V_s$来反演$\delta
+V_p$。由于第一阶段中只匹配S波残差，因此反演结果基本与图\ref{fig:decomp_2}c中结果一致，这里由于篇幅限制就不再展示。
+而采用两步法反演的$\delta
+V_p$如图\ref{fig:final_comparison_2}b所示，可以看到左侧速度结构异常区域的干扰被进一步压制。但是由于$\delta V_s$反演并未完全消除其产生的P波残差，因此最后的反演结果中仍然存在少量的干扰。
+\section{本章小结}
+E-LSRTM可视为线性的EFWI过程，其同样会受到参数耦合的影响。虽然该过程中
+可以提高成像分辨率并部分压制参数耦合，但是无法做到完全压制。模式解耦的预条件方式可以非常有效地压制$\delta
+V_s$反演中来自$\delta V_p$的影响。
+在$\delta V_p$受参数耦合影响较弱时，在模式解耦的帮助下进行双参数同时反演可以快速地获得$\delta
+V_s$与$\delta V_p$。而在$\delta V_p$受参数耦合影响较强时，可以通过先反演$\delta V_s$后反演$\delta
+V_p$来进一步压制$\delta V_p$中来自$\delta V_s$耦合效应干扰。
+
+E-LSRTM过程中，由于Born数据与反射数据之间的差异，直接匹配反射数据会导致界面参数扰动的过估计，
+而匹配剩余反射数据则可以更好地近似Born散射过程。此外，在模型复杂区域，反射数据中包含有多次散射效应，这些散射波会带来较多的干扰。

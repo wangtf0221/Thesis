@@ -1,0 +1,46 @@
+The aim of seismic exploration is to estimate the elastic parameters or rock properties quantitively
+with the recording data on the surface. With the developement of 
+high-performance computation ability and the
+maturation of wide-azimuth, long-offset and broadband data accquisition 
+technology, full waveform inversion (FWI) becomes a powerful tool to recover the full
+wavenumber spectrum of the subsurface. However, FWI can not provide the perfectly estimated model
+once and for all due to the obstacles such as bad initial models,
+insufficiency of low frequency component in the data, inaccurately estimated source
+wavelet, low sigal/noisy ratio in the data and so on,
+In order to rebuild the model with different wavenumber spectrum, elastic full waveform inversion (EFWI), elastic wave equation 
+reflected traveltime inversion (E-WERTI) and elastic least square reverse time
+migration (E-LSRTM) are implemented with the help of wave mode decomposition, in which we
+try to recover the full wavenumber, the low and intermediat wavenumber
+and the high wavenumber spectrum of the elastic model, respectively.
+
+Elastic reflection waveform inversion (ERWI) utilize the reflections to update the low and intermediate wavenumber in the
+deeper part of model, which can provide good initial models for EFWI. However, ERWI suffers from
+the cycle-skipping problem because of the objective function fitting waveform. Since taveltime
+information relates to the background model more linearly, the cycle-skipping will be less severe
+compared with waveform norm. Thus, in the third chapter we use the $L_2$ norm of the traveltime
+residual extracted by the Dynamic image warping (DIW) as objective function in the manner of
+WERTI. 
+A two-step inversion strategy is adopted. Firstly, PP reflections are used to invert $V_p$. 
+After that PS reflections are used to invert $V_s$ based on the well recoverd $V_p$. Surface P/S
+separation and spatial wave mode decomposition provide P or S wave data effectively, which helps
+to  reduce the nonlinearty of inversion greatly.
+The kernel of reflection wavepath proves that mode decomposition can surpress the artifacts in
+the reflection inversion. The local dip-dependent smooth filter ensures the inversion converging to a
+geological model. Finally, numerical example of Sigsbee2A model validates the effectivenss of the 
+algorithms and strategies for E-WERTI, whose results also are tested through EFWI.
+
+E-LSRTM is the linearied EFWI aimming to fit the waveform of reflections with the inverted
+high-wavenumber perturbations. Due to the energy difference between Born and reflection data, it is
+more suitable to match the residual between reflection data and the background data during E-LSRTM. Conventional
+E-LSRTM can sligthly mitigate the parameter trade-offs through iterations. While mode decomposition
+isolates the S-wave part in  gradient calculation, which makes the inversion of S-wave velocity
+perturbation a mono-parameter inversion to help mitigate the trade-offs. In the fourth chapter, we
+design different inversion strategies to cope with the different situations. When $V_p$ is little
+affected by $V_s$, we invert the two parameter simultaneously with mode decomposition; when $V_p$ and $V_s$ couple with each
+other severely, we recommand inverting $V_s$ firstly followed by $V_p$ inversion to further mitigate
+the trade-offs from $V_s$ during the $V_p$ inversion.
+ 
+In this paper, we focus on the mode-decomposition-based inversion methods, select different strategy
+according to the requirement of different inversion stage to reduce the nonlinearty, trade-off
+effects and other problems and finally rebuild the elastic model from shallow to
+deep more accurately.

@@ -15,19 +15,23 @@ bclip=478.682 wclip=-541.513
 gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-./filter2 Vssmoothnew_decomp_adjoint_vs_stage1_it_40.bin tmp
+./filter3 Vssmoothnew_decomp_adjoint_vs_stage1_it_40.bin tmp
+#./filter2 Vssmoothnew_decomp_adjoint_vs_stage1_it_40.bin tmp
 data=tmp
 out=vsdecomp
 output=vsdecomp.eps
- bclip=318.552 wclip=-300.76
+ bclip=418.552 wclip=-400.76
+# bclip=318.552 wclip=-300.76
 gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
-./filter2 Vssmoothnew_nodecomp_adjoint_vs_stage1_it_40.bin tmp
+./filter3 Vssmoothnew_nodecomp_adjoint_vs_stage1_it_40.bin tmp
+#./filter2 Vssmoothnew_nodecomp_adjoint_vs_stage1_it_40.bin tmp
 data=tmp
 out=vsnodecomp
 output=vsnodecomp.eps
- bclip=318.309 wclip=-295.886
+ bclip=418.309 wclip=-405.886
+# bclip=318.309 wclip=-295.886
 gnuplot -e "wclip='${wclip}';bclip='${bclip}';datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 

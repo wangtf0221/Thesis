@@ -30,6 +30,12 @@ output=vpdecomp.eps
 gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
 epstopdf ${out}.eps
 
+data=born_decomp_2ndvp_vp_stage1_it_30.bin
+out=2ndvpdecomp
+output=2ndvpdecomp.eps
+gnuplot -e "datafilevp='${data}'; outputfilevp='${output}'" gnuplot_imagevp.plg
+epstopdf ${out}.eps
+
 data=born_nodecomp_simul_vs_stage1_it_40.bin
 out=vsdecomp
 output=vsdecomp.eps

@@ -43,4 +43,4 @@ the trade-offs from $V_s$ during the $V_p$ inversion.
 In this paper, we focus on the mode-decomposition-based inversion methods, select different strategy
 according to the requirement of different inversion stage to reduce the nonlinearty, trade-off
 effects and other problems and finally rebuild the elastic model from shallow to
-deep more accurately.
+deep.more accurately.

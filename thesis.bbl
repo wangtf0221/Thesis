@@ -28,11 +28,24 @@ Xu S, Wang D, Chen F, et~al.
   1--7
 \tongjidot
 
+\bibitem{Wu2015b}
+Wu Z, Alkhalifah T.
+\newblock Simultaneous inversion of the background velocity and the
+  perturbation in full-waveform inversion.
+\newblock GEOPHYSICS, 2015, 80(6):R317--R329
+\tongjidot
+
 \bibitem{zhou:2015}
 Zhou W, Brossier R, Operto S, et~al.
 \newblock Full waveform inversion of diving \& reflected waves for velocity
   model building with impedance inversion based on scale separation.
 \newblock Geophysical Journal International, 2015, 202:1535--1554
+\tongjidot
+
+\bibitem{chi2015}
+Chi B~X, Dong L~G, Liu Y~Z.
+\newblock Correlation-based reflection full-waveform inversion.
+\newblock Geophysics, 2015, 80(4):R189--R202
 \tongjidot
 
 \bibitem{Sava2006}
@@ -47,6 +60,30 @@ Almomin A, Biondi B.
   Feasible Approach.
 \newblock Proceedings of {SEG} Technical Program Expanded Abstracts 2012.
   Society of Exploration Geophysicists, 2012
+\tongjidot
+
+\bibitem{Nemeth1999}
+Nemeth T, Wu C, Schuster G~T.
+\newblock Least-squares migration of incomplete reflection data.
+\newblock {GEOPHYSICS}, 1999, 64(1):208--221
+\tongjidot
+
+\bibitem{KuehlEtAl2003}
+Kühl H, Sacchi M~D.
+\newblock Least-squares wave-equation migration for {AVP}/{AVA} inversion.
+\newblock {GEOPHYSICS}, 2003, 68(1):262--273
+\tongjidot
+
+\bibitem{DaiEtAl2012}
+Dai W, Fowler P, Schuster G~T.
+\newblock Multi-source least-squares reverse time migration.
+\newblock Geophysical Prospecting, 2012, 60(4):681--695
+\tongjidot
+
+\bibitem{董良国2015}
+董良国, 黄超, 迟本鑫, et~al.
+\newblock 基于地震数据子集的波形反演思路、方法与应用.
+\newblock 地球物理学报, 2015, 58(10):3735--3745
 \tongjidot
 
 \bibitem{Claerbout1971}
@@ -72,6 +109,13 @@ Mora P.
 Mora P.
 \newblock Elastic wave-field inversion of reflection and transmission data.
 \newblock Geophysics, 1988, 53(6):750--759
+\tongjidot
+
+\bibitem{PRATTEtAl1990}
+PRATT R~G, WORTHINGTON M~H.
+\newblock {INVERSE} {THEORY} {APPLIED} {TO} {MULTI}-{SOURCE} {CROSS}-{HOLE}
+  {TOMOGRAPHY}.. {PART} 1: {ACOUSTIC} {WAVE}-{EQUATION} {METHOD}1.
+\newblock Geophysical Prospecting, 1990, 38(3):287--310
 \tongjidot
 
 \bibitem{pratt1996two}
@@ -131,6 +175,13 @@ Djikpesse H, Tarantola A.
 \newblock Multiparameter {L}2 norm waveform fitting: Interpretation of Gulf
   Mexico reflection seismograms.
 \newblock Geophysics, 1999, 64:1023--1035
+\tongjidot
+
+\bibitem{sears2008}
+Sears T, Singh S, Barton P.
+\newblock Elastic full waveform inversion of multi-component {OBC} seismic
+  data.
+\newblock Geophysical Prospecting, 2008, 56:843--862
 \tongjidot
 
 \bibitem{sears:2010}
@@ -198,6 +249,12 @@ Forgues E, Lambare G.
 \newblock Journal of Seismic Exploration, 1997, 6:253--278
 \tongjidot
 
+\bibitem{MillerEtAl1987}
+Miller D, Oristaglio M, Beylkin G.
+\newblock A new slant on seismic imaging: Migration and integral geometry.
+\newblock {GEOPHYSICS}, 1987, 52(7):943--964
+\tongjidot
+
 \bibitem{sirgue.pratt:2004}
 Sirgue L, Pratt R~G.
 \newblock Efficient waveform inversion and imaging: A strategy for selecting
@@ -233,13 +290,6 @@ Sirgue L, Pratt R~G.
 Wang Y, Rao Y.
 \newblock Reflection seismic waveform tomography.
 \newblock Journal of Geophysical Research, 2009, 114(B3)
-\tongjidot
-
-\bibitem{sears2008}
-Sears T, Singh S, Barton P.
-\newblock Elastic full waveform inversion of multi-component {OBC} seismic
-  data.
-\newblock Geophysical Prospecting, 2008, 56:843--862
 \tongjidot
 
 \bibitem{luo1991}
@@ -482,24 +532,11 @@ Wang S, Chen F, Zhang H, et~al.
   Geophysicists, 2013. Society of Exploration Geophysicists
 \tongjidot
 
-\bibitem{Wu2015b}
-Wu Z, Alkhalifah T.
-\newblock Simultaneous inversion of the background velocity and the
-  perturbation in full-waveform inversion.
-\newblock GEOPHYSICS, 2015, 80(6):R317--R329
-\tongjidot
-
 \bibitem{ma2013}
 Ma Y, Hale D.
 \newblock Wave-equation reflection traveltime inversion with dynamic warping
   and full waveform inversion.
 \newblock Geophysics, 2013, 78(6):R223--R233
-\tongjidot
-
-\bibitem{chi2015}
-Chi B~X, Dong L~G, Liu Y~Z.
-\newblock Correlation-based reflection full-waveform inversion.
-\newblock Geophysics, 2015, 80(4):R189--R202
 \tongjidot
 
 \bibitem{Wang2015}
@@ -523,17 +560,23 @@ Guo Q, Alkhalifah T.
 \newblock Society of Exploration Geophysicists, sep, 2016: 1421--1425
 \tongjidot
 
+\bibitem{BeylkinEtAl1985}
+Beylkin G, Oristaglio M, Miller D.
+\newblock Spatial Resolution of Migration Algorithms.
+\newblock Proceedings of Acoustical Imaging. Springer Nature, 1985: 155--168
+\tongjidot
+
+\bibitem{Bleistein1987}
+Bleistein N.
+\newblock On the imaging of reflectors in the earth.
+\newblock {GEOPHYSICS}, 1987, 52(7):931--942
+\tongjidot
+
 \bibitem{Schuster1993}
 Schuster G~T.
 \newblock Least-squares cross-well migration.
 \newblock Proceedings of {SEG} Technical Program Expanded Abstracts 1993.
   Society of Exploration Geophysicists, 1993
-\tongjidot
-
-\bibitem{Nemeth1999}
-Nemeth T, Wu C, Schuster G~T.
-\newblock Least-squares migration of incomplete reflection data.
-\newblock {GEOPHYSICS}, 1999, 64(1):208--221
 \tongjidot
 
 \bibitem{ChaventEtAl1999}
@@ -598,6 +641,19 @@ Wong M, Biondi B~L, Ronen S.
 \newblock {GEOPHYSICS}, 2015, 80(6):S223--S235
 \tongjidot
 
+\bibitem{ZhangEtAl2015}
+Zhang Y, Duan L, Xie Y.
+\newblock A stable and practical implementation of least-squares reverse time
+  migration.
+\newblock {GEOPHYSICS}, 2015, 80(1):V23--V31
+\tongjidot
+
+\bibitem{刘玉金2015}
+刘玉金, 李振春.
+\newblock 扩展成像条件下的最小二乘逆时偏移.
+\newblock 地球物理学报, 2015, 58(10):3771--3782
+\tongjidot
+
 \bibitem{Symes2008a}
 Symes W~W.
 \newblock Migration velocity analysis and waveform inversion.
@@ -609,6 +665,12 @@ Dutta G, Schuster G~T.
 \newblock Attenuation compensation for least-squares reverse time migration
   using the viscoacoustic-wave equation.
 \newblock {GEOPHYSICS}, 2014, 79(6):S251--S262
+\tongjidot
+
+\bibitem{李振春2014}
+李振春, 郭振波, 田坤.
+\newblock 黏声介质最小平方逆时偏移.
+\newblock 地球物理学报, 2014, 57(1):214--228
 \tongjidot
 
 \bibitem{Dai2015}
@@ -644,6 +706,25 @@ Xu L, Stanton A, Sacchi M.
 Ren Z, Liu Y, Sen M~K.
 \newblock Least-squares reverse time migration in elastic media.
 \newblock Geophysical Journal International, 2016, 208(2):1103--1125
+\tongjidot
+
+\bibitem{DuEtAl2014}
+Du Q, Gong X, Zhang M, et~al.
+\newblock {3D} {PS}-wave imaging with elastic reverse-time migration.
+\newblock {GEOPHYSICS}, 2014, 79(5):S173--S184
+\tongjidot
+
+\bibitem{GongEtAl2016}
+Gong T, Nguyen B~D, McMechan G~A.
+\newblock Polarized wavefield magnitudes with optical flow for elastic
+  angle-domain common-image gathers.
+\newblock {GEOPHYSICS}, 2016, 81(4):S239--S251
+\tongjidot
+
+\bibitem{RochaEtAl2016a}
+Rocha D, Tanushev N, Sava P.
+\newblock Isotropic elastic wavefield imaging using the energy norm.
+\newblock {GEOPHYSICS}, 2016, 81(4):S207--S219
 \tongjidot
 
 \bibitem{plessix2006}
@@ -803,11 +884,10 @@ Zhang Q, McMechan G~A.
 \newblock Geophysics, 2010, 75(3):D13--D26
 \tongjidot
 
-\bibitem{ma.zhu:2003}
-Ma D~T, Zhu G~M.
-\newblock P- and S-wave separated elastic wave equation numerical modeling (in
-  Chinese).
-\newblock Oil Geophysical Prospecting, 2003, 38:482--486
+\bibitem{马德堂2003}
+马德堂, 朱光明.
+\newblock 弹性波波场P波和S波分解的数值模拟.
+\newblock 石油地球物理勘探, 2003, 38(5):482--486
 \tongjidot
 
 \bibitem{cheng:2016}
@@ -882,25 +962,6 @@ Leeuwen T, Mulder W~A.
 \newblock A correlation-based misfit criterion for wave-equation traveltime
   tomography.
 \newblock Geophysical Journal International, 2010, 182:1383--1394
-\tongjidot
-
-\bibitem{DuEtAl2014}
-Du Q, Gong X, Zhang M, et~al.
-\newblock {3D} {PS}-wave imaging with elastic reverse-time migration.
-\newblock {GEOPHYSICS}, 2014, 79(5):S173--S184
-\tongjidot
-
-\bibitem{GongEtAl2016}
-Gong T, Nguyen B~D, McMechan G~A.
-\newblock Polarized wavefield magnitudes with optical flow for elastic
-  angle-domain common-image gathers.
-\newblock {GEOPHYSICS}, 2016, 81(4):S239--S251
-\tongjidot
-
-\bibitem{RochaEtAl2016a}
-Rocha D, Tanushev N, Sava P.
-\newblock Isotropic elastic wavefield imaging using the energy norm.
-\newblock {GEOPHYSICS}, 2016, 81(4):S207--S219
 \tongjidot
 
 \end{thebibliography}

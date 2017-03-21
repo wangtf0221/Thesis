@@ -914,8 +914,8 @@ Wang W, McMechan G~A, Zhang Q.
 
 \bibitem{vigh20083d}
 Vigh D, Starr E~W.
-\newblock 3D prestack plane-wave, full-waveform inversion.
-\newblock Geophysics, 2008, 73(5):VE135--VE144
+\newblock {3D} prestack plane-wave, full-waveform inversion.
+\newblock {GEOPHYSICS}, 2008, 73(5):VE135--VE144
 \tongjidot
 
 \bibitem{menke:1989}
@@ -948,6 +948,13 @@ Mavko G, Mukerji T, Dvorkin J.
 Jeong W, Lee H~Y, Min D~J.
 \newblock Full waveform inversion strategy for density in the frequency domain.
 \newblock Geophysical Journal International, 2012, 188(3):1221--1242
+\tongjidot
+
+\bibitem{kennett:1988}
+Kennett B~L, Sambridge M~S, Williamson P~R.
+\newblock Subspace methods for large inverse problem with multiple parameter
+  classes.
+\newblock Geophyscal Journal, 1988, 94:237--247
 \tongjidot
 
 \bibitem{Li2016a}

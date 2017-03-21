@@ -6,7 +6,7 @@
 
 
 
-\chapter{基于模式解耦的常规弹性波全波形反演}
+\chapter{弹性波模式解耦全波形反演}
 \label{cha:MD-EFWI}
 \section{引言}
 针对地下介质的定量成像方法对于刻画油气储层，监测CO$_2$注入以及估计近地表土壤和岩石的物理性
@@ -265,7 +265,7 @@ $\delta \mathbf{m}=(\delta\mathbf{V}_p \quad \delta\mathbf{V}_s)^T$.
 Wang and McMechan, 2015\cite{wang.mcmechan:2015b})。
 因此，我们并未采用传播解耦波场的方法而是采用传播之后用方程\eqref{eq:PropaMDsplit}来进行模式解耦。
 
-\section{反演问题}
+\section{弹性波模式解耦全波形反演}
 方程\eqref{eq:finalMatrixshort}对应的反问题是要找到一个能够解释地震数据的最优模型。该问题的解可以通过求解以下
 目标函数的最小值来获得：
 \begin{equation}
@@ -366,7 +366,7 @@ FWI梯度可看作是偏导数波场与数据残差在时间域的零延迟互�
         \end{split}
 \label{eq:Jsvp1}
 \end{equation}
-\subsection{利用模式解耦对梯度预条件}
+\subsection{模式解耦梯度预条件}
 利用方程\eqref{eq:crossterms}和\eqref{eq:Jsvp1}，我们可以获得以下近似：
 \begin{equation}
         \mathbf{J}^{\dagger}_{V_p}\delta \mathbf{d}^P\approx
@@ -471,7 +471,7 @@ and Starr, 2008\cite[]{vigh20083d})。
 对正传波场与反传波场在时间轴上进行重采样，并且在互相关之前只对反传的伴随波场进行模式解耦。
 当更多的多尺度策略考虑进来的时候，也可以对正传波场进行解耦，例如在单级反演中单独的使用S-S或者P-S模式。但是我们并不推荐
 这样的策略，我们将在讨论部分进行阐述。
-\section{模式解耦降低参数耦合的机制}
+\section{模式解耦降低参数耦合的理论机制}
 	在前一节中我们提出了通过模式解耦来第梯度进行预条件的EFWI方式。然而解决参数解耦问题最直接有效（但也最昂贵）
 的方法是考虑Hessian矩阵的优化方法。我们将采用解耦后的
 Frech$\acute{e}$t导数来调查Hessian和分辨率矩阵的性质，并且对比高斯牛顿梯度与模式解耦方法的梯度来
@@ -656,7 +656,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
     \end{center}
 \end{figure}
 在图\ref{fig:all}中，我们同样采用前文中小模型实验来比较原始梯度、GN梯度和解耦梯度。
-我们在模型中央放置三种不同类型，大小为10$\times$10m的参数扰动组合，分别为：(a) $\delta V_p \neq 0$, $\delta V_s = 0$; (b) $\delta V_p = 0$，
+我们在模型中央放置三种不同类型、大小为10$\times$10m的参数扰动组合，分别为：(a) $\delta V_p \neq 0$, $\delta V_s = 0$; (b) $\delta V_p = 0$，
 $\delta V_s \neq 0$，和(c) $\delta V_p =10\delta
 V_s$。初始模型为均匀的背景速度。在第一组实验中只有P波数据，我们可以看到原始的梯度，$\mathbf{g}_{V_p}$和$\mathbf{g}_{V_s}$中，有非常明显的参数耦合效应。
 从图\ref{fig:all}a和b中可以看到，对于物理参数A而言，另一个参数B扰动会产生一个与B扰动方向相反的A的梯度。从图\ref{fig:all}b和c中$\mathbf{g}^{P}_{V_s}$看到，尽管P波数据残差可能携带了$\delta V_s$的信息，
@@ -666,7 +666,7 @@ V_s$有关，因此正如我们所期望的，$\mathbf{g}^S_{V_s}$总是能提�
 一般来说，在以P波能量占主导的地震数据中，梯度的参数耦合部分总是带来负面的效应，除非有行之有效的预条件算子，例如图\ref{fig:all}中的GN梯度。
 
 更重要的是，图\ref{fig:all}中最后三列结果在数值上验证了方程\eqref{eq:KeyPoint}，同时也展示了模式解耦梯度法与GN方法之间的异同。与常规梯度法不同，
-GN方法通过Hessian的逆加权叠加三个解耦之后的梯度，
+GN方法利用Hessian的逆以不同权重叠加三个解耦之后的梯度，
 $\mathbf{g}^P_{V_p}$、$\mathbf{g}^P_{V_s}$和$\mathbf{g}^S_{V_s}$，来获得P波速度梯度的最佳预条件。对于S波速度，GN方法实际上用
 $\mathbf{G}$做为算子来对S波数据梯度做预条件处理。而算子$\mathbf{G}$近似等价于$[\mathbf{J}^{S}_{V_s}]^{\dagger}\mathbf{J}^{S}_{V_s}$的伪逆，
 见方程\ref{eq:ResoOperS2}。正如方程\eqref{eq:Gradientmethod}所示，模式解耦梯度法也需要进一步的预条件来加速收敛。例如，预条件算子$\mathbf{Q}_2$
@@ -685,7 +685,7 @@ $V_p=2.6 km/s$和$V_s=1.66 km/s$，下部为水饱和$V_p=3.0 km/s$和$V_s=1.66 
 每阶段最大迭代次数限制为10次。从反演结果上看，常规EFWI方法能得到可接受的$V_p$模型，而$V_s$反演结果由于很强的参数耦合影响则非常糟糕。
 由于在初始阶段，梯度会受到参数耦合的强烈影响，这导致模型中长波长成分的重建受到严重干扰，因此在有限的迭代次数下反演最终收敛到了局部极值中。
 但是，因为采用了模式解耦之后的梯度，MD方法最后很好的重建了$V_p$ 和$V_s$模型。
-\begin{figure}
+\begin{figure}[!htb]
     \begin{center}
 		\subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/smallmodel/Fig/truevp.pdf}}
 		\subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/smallmodel/Fig/truevs.pdf}}\\
@@ -694,74 +694,91 @@ $V_p=2.6 km/s$和$V_s=1.66 km/s$，下部为水饱和$V_p=3.0 km/s$和$V_s=1.66 
 		\subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/smallmodel/Fig/decomvp.pdf}}
 		\subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/smallmodel/Fig/decomvs.pdf}}
         \caption{
-            EFWI of a fluid-saturated sandstone model: the true $V_p$ (left) and $V_s$
-            (right) models (top),
-            and the inverted models using the PCG (mid) and the MD-based (bottom)
-            methods, respectively.
+			流体饱和沙岩模型的EFWI结果：左侧为$V_p$，右侧为$V_s$;
+			(a),(b)为真实模型;(c),(d)为PCG方法反演结果; (e), (f)为模式解耦方法反演结果。
     }
     \label{fig:smallmodel}
     \end{center}
 \end{figure}
 \subsection{Marmousi-II模型}
-\begin{figure}
+\begin{figure}[!htb]
     \begin{center}
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/truevp.pdf}}
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/truevs.pdf}}\\
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/initvp.pdf}}
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/initvs.pdf}}
         \caption{
-            The SEG Marmousi-II model: (a) and (b) are true $V_p$ and $V_s$ models, respectively,
-            while (c) and (d) are initial $V_p$ and $V_s$ models, respectively.
-            Note the P-wave velocity
-            anomalies related to the gas sand reservoirs and the newly inserted high-velocity
-            thin layer in the S-wave velocity field.
+			SEG Marmousii-II模型：(a), (b)分别为真实的$V_p$和$V_s$模型; (c),
+			(d)分别为初始的$V_p$和$V_s$模型。注意，P波速度含有含气沙岩储层产生的速度异常以及S波速度
+			中加入了高速薄层异常结构。
     }
     \label{fig:MarInitTrue}
     \end{center}
 \end{figure}
-过去十年间，很多EFWI策略被用在了OBC地震数据中。在低频数据存在的情况下，重建低Poisson值的模型（硬海底）相对比较容易\cite[]{bae:2012}。
-然而，软海底环境在现实中更为普遍。这种情况下，有限的PS转换能量，反演中的非线性程度以及参数间的耦合会变得更加严重。为了应对这种更真实的软海底情况，、
-如图\ref{fig:MarInitTrue}(a)和(b)所示，我们用Marmousi-II模型中的原始P波与S波速度来测试我们的算法。不同参数间非一致的结构能更明显地表明参数间的耦合。
-为了更好的展示MD方法的优势，我们在S波速度模型1.5km深处添加一个高速的薄层。在反演中，我们采用交错网格有限差分来计算正传与共轭波场，空间采样间隔为5m。
-记录总时间为8s，时间采样间隔为0.5ms。共有40炮合成数据，炮点深度在20m的水深处，2800个检波点放置于海底来模拟OBC观测。初始模型通过SU软件中的smooth2函数
-来平滑真实模型产生，平滑半径为300m。我们采用与前一实验同样的多尺度策略，但是每阶段最大迭代次数扩大为40次。
-\begin{figure}
+\begin{figure}[!htb]
     \begin{center}
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/nodevp.pdf}}
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/nodevs.pdf}}\\
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/devp.pdf}}
 		\subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/devs.pdf}}
         \caption{
-        The inverted Marmousi-II model: The inverted results using the PCG (a, b)
-            and the MD-based methods (c, d).
-        (a) and (c) are $V_p$ models while (b) and (d) are $V_s$ models.
+			反演的Marmousi-II模型：其中左侧为$V_p$，右侧为$V_s$. (a), (b)为PCG方法反演结果；(c), (d)为模式解耦方法反演结果。
+%        The inverted Marmousi-II model: The inverted results using the PCG (a, b)
+%            and the MD-based methods (c, d).
+%        (a) and (c) are $V_p$ models while (b) and (d) are $V_s$ models.
     }
     \label{fig:MarInvert}
     \end{center}
 \end{figure}
+过去十年间，很多EFWI策略被用在了OBC地震数据中。在低频数据存在的情况下，重建低Poisson比的模型（硬海底）相对比较容易\cite[]{bae:2012}。
+然而，软海底环境在现实中更为普遍。这种情况下，PS转换能量非常有限，同时反演中的非线性程度以及参数间的耦合也
+会变得更加严重。为了应对这种更真实的软海底情况，
+如图\ref{fig:MarInitTrue}(a)和(b)所示，我们用Marmousi-II模型中的原始P波与S波速度来测试我们的算法。不同参数间非一致的结构能更明显地表明参数间的耦合。
+为了更好的展示MD方法的优势，我们在S波速度模型1.5km深处添加一个高速的薄层。在反演中，我们采用交错网格有限差分来计算正传与共轭波场，空间采样间隔为5m。
+记录总时间为8s，时间采样间隔为0.5ms。共有40炮合成数据，炮点深度在20m的水深处，2800个检波点放置于海底来模拟OBC观测。初始模型通过SU软件中的smooth2函数
+来平滑真实模型产生，平滑半径为300m。我们采用与前一实验同样的多尺度策略，但是每阶段最大迭代次数扩大为40次。
 
-图\ref{fig:MarInvert}展示了MD方法比常规方法能提供更好的反演结果。在模型浅部（约1.5km），两种方法都能很好的恢复$V_p$模型，而常规方法恢复的$V_s$模型
-分辨率较低一些。很明显，常规方法中，S波速度模型中的高速异常薄层给反演造成了很大的挑战。如图\ref{fig:MarInvert}(a)和(b)中所示，反演结果受到了很强的参数耦合
+图\ref{fig:MarInvert}的结果证明了MD方法比常规方法能提供更好的反演结果。
+在模型浅部（约1.5km），两种方法都能很好的恢复$V_p$模型，而常规方法恢复的$V_s$模型
+分辨率较低。常规方法中，S波速度模型中的高速异常薄层给反演造成了很大的挑战，如图\ref{fig:MarInvert}(a)和(b)中所示，反演结果受到了很强的参数耦合
 的干扰，尤其是在左侧的高速异常薄层区域。这就导致了在该异常薄层下方构造的错位与不聚焦，如图中箭头所示。然而，模式解耦反演方法很好地避免了这些参数耦合效应，
-获得了模型的细节，包括中部的断层与背斜构造。模型的纵向剖面进一步证明了模式解耦反演方法获得了比常规方法更好的结果。
+获得了模型的许多细节，包括中部的断层与背斜构造。模型的纵向剖面（图\ref{fig:VertiProfile}）
+进一步证明了模式解耦反演方法获得了比常规方法更好的结果。
+\begin{figure}[!htb]
+	\begin{center}
+		{\includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/new3km.pdf}}
+		{\includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/new9km.pdf}}
+		\caption{
+		模型在3.0km(a,b)和9.0km(c,d)处的纵向剖面。黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表PCG和模式解耦方法反演结果。
+%		The velocity profiles at 3.0 km (a, b) and 9.0 km (c, d) with the true models
+%			(black),
+%			the initial models (blue), the PCG-based (yellow) and MD-based (green)
+%			inverted models.
+	}
+	\label{fig:VertiProfile}
+	\end{center}
+\end{figure}
 
-图\ref{fig:L2}展示了在前两个阶段的反演中，归一化的目标函数值随迭代次数的下降曲线。可以看到，模式解耦反演方法要比常规方法收敛更快。在第一个阶段，模式解耦
-反演方法的数据拟合程度更高，同时获得了更准确的中低波数模型更新。在第二个阶段，常规梯度方法最终在25次迭代之后停止更新且数据残差相当大，而模式解耦反演方法
-在22次迭代后数据残差快速下降达到终止条件。这些结果说明利用模式解耦对梯度做预条件可以很有效地在反演中降低参数耦合从而加速收敛。
-\begin{figure}
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/L2.pdf}
         \caption{
-            Normalized L2 norms as a function of iteration for the PCG-based (dash)
-            and MD-based (solid) inversions in the first (red) and second (blue)
-            stages.
+			归一化后的L2残差随迭代次数的变化。红色与蓝色代表第一和第二阶段的反演，虚线代表PCG方法
+			实线代表模式解耦方法。
+%            Normalized L2 norms as a function of iteration for the PCG-based (dash)
+%            and MD-based (solid) inversions in the first (red) and second (blue)
+%            stages.
     }
     \label{fig:L2}
     \end{center}
 \end{figure}
-\begin{table}
+图\ref{fig:L2}展示了在前两个阶段的反演中，归一化的目标函数值随迭代次数的下降曲线。可以看到，模式解耦反演方法要比常规方法收敛更快。在第一个阶段，模式解耦
+反演方法的数据拟合程度更高，同时获得了更准确的中低波数模型更新。在第二个阶段，常规梯度方法最终在25次迭代之后停止更新且数据残差相当大，而模式解耦反演方法
+在22次迭代后数据残差快速下降达到终止条件。这些结果说明利用模式解耦对梯度做预条件可以很有效地在反演中降低参数耦合从而加速收敛。
+\begin{table}[!htb]
     \caption{The total computational costs}
     \label{table:TotalComputime}
+	\centering 
 %   \begin{tabular}{|c|c|c|c|c|c|c|}
 %   \begin{tabular}{|p{1.8cm}|c|c|c|c|p{2.2cm}p{2.3cm}p{2cm}|}
     \begin{tabular}{p{1.8cm}p{1.0cm}p{1.0cm}p{1.0cm}p{1.2cm}p{1.0cm}p{1.0cm}}
@@ -790,33 +807,9 @@ $V_p=2.6 km/s$和$V_s=1.66 km/s$，下部为水饱和$V_p=3.0 km/s$和$V_s=1.66 
 我们可以对正传与反传波场分别解耦从而获得对应不同模式转换的解耦梯度，也即PP、PS、SP和SS。但是，很难设计出一个单独使用某一模式转换数据的EFWI策略，因为我们无法
 采用P/S分离的算法在观测面上区分入射波场的类型，也即无法区分PP与SP（或PS与SS）。否则，只能使用分解后的单模式地震数据来进行单参数反演。例如
 Ren和Liu\cite{ren.liu:2016}，在其四步反演策略的第二步中，当有很强的S波能量时，只采用分解的P波场来反演P波速度，或者在弱S波能量时仅仅拟合S波数据来反演S波速度。
-\begin{figure*}
-    \begin{center}
-        \includegraphics[width=12cm]{Figure/chapter02/ResoOpera/Fig/resolutionMN.pdf}
-        \caption{
-            Resolution matrices associated with different mode conversion data using
-            mix-source:
-            (a) $\mathbf{R}$, (b) $\mathbf{R}^{PP}$, (c) $\mathbf{R}^{PS}$, (d)
-            $\mathbf{R}^{SP}$ and (e)
-            $\mathbf{R}^{SS}$.
-    }
-    \label{fig:ResoMN}
-    \end{center}
-\end{figure*}
-
-\begin{figure*}
-    \begin{center}
-        \includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SPSS.pdf}
-        \caption{
-            Radiation pattern of SP and SS modes with a same normalization: SP
-            mode (red) and SS mode (blue).
-    }
-    \label{fig:SPSS}
-    \end{center}
-\end{figure*}
 
 
-注意到，在梯度计算中分解正传波场等价于次级源（或背景波场）的波模式，而次级源是Frech{$\acute{e}$}t导数中的一部分。因此我们可以将该线性问题写为：
+需要注意的是，在梯度计算中分解正传波场等价于次级源（或背景波场）的波模式，而次级源是Frech{$\acute{e}$}t导数中的一部分。因此我们可以将该线性问题写为：
 \begin{equation}
     \mathbf{J}^{XY}\delta\mathbf{m}=\mathbf{\delta u}^{XY},
     \label{eq:JXY}
@@ -830,15 +823,42 @@ Ren和Liu\cite{ren.liu:2016}，在其四步反演策略的第二步中，当有�
 图\ref{fig:ResoMN}展示了PP、PS、SP和SS模式的分辨率矩阵，其观测系统与图\ref{fig:Resolution}中一致，但是采用了P和S的混合震源。图中的带对角结果是由于更加复杂的
 波现象。可以看到，$\mathbf{R}^{PP}$ 与$\mathbf{R}^P$十分类似，而$\mathbf{R}^{SP}$却几乎为空矩阵。这表明用PP波数据来反演$V_p$会受到来自$V_s$的干扰。而SP波数据
 则对两个参数的反演都贡献很小。从Ren和Liu\cite{ren.liu:2016}的例子中（见其文中图19与20），即使震源中含有足够强的S波能量，SP梯度也是很弱且有很多噪音。一个
-可能的解释就是如图\ref{fig:SPSS}所示，S-to-P的散射能量很弱。此外，我们也很那区分出PS和SS模式的贡献，因为从图\ref{fig:ResoMN}中看到，$\mathbf{R}^{PS}$和
+可能的解释就是如图\ref{fig:SPSS}所示，S-to-P的散射能量很弱。此外，我们也难
+区分出PS和SS模式的贡献，因为从图\ref{fig:ResoMN}中看到，$\mathbf{R}^{PS}$和
 $\mathbf{R}^{SS}$的非零元素分布非常一致。因此，想通过分解正传波来对进一步地降低参数耦合效应的潜力非常有限，尽管这样会带来更多的计算量。这也是为什么我们只
 分解反传波场来对梯度进行预条件。
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=12cm]{Figure/chapter02/ResoOpera/Fig/resolutionMN.pdf}
+        \caption{
+			采用混合震源时不同模式数据转换的分辨率矩阵。
+%            Resolution matrices associated with different mode conversion data using
+%            mix-source:
+            (a) $\mathbf{R}$, (b) $\mathbf{R}^{PP}$, (c) $\mathbf{R}^{PS}$, (d)
+            $\mathbf{R}^{SP}$ 和(e)
+            $\mathbf{R}^{SS}$.
+    }
+    \label{fig:ResoMN}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SPSS.pdf}
+        \caption{
+			归一化的SP模式（红色）和SS模式（蓝色）的辐射模式。
+%            Radiation pattern of SP and SS modes with a same normalization: SP
+%            mode (red) and SS mode (blue).
+    }
+    \label{fig:SPSS}
+    \end{center}
+\end{figure}
 \subsection{密度模型的反演}
 密度扰动同时散射P-和S-波，但是却几乎不影响两种波模式的相位或者走时。这种模式的散射能量大多与入射波场的传播方向相反\cite[]{wu.aki:1985,tarantola:1986}。因此，
 密度作为一个次级效应的参数，由于其微弱的敏感性和多参数的耦合效应\cite[]{tarantola:1986,forgues.lambare:1997}，其很难被重构。这也是为何很多EFWI的研究只考虑
 常密度的情形\cite[]{shipp:2002,sears2008,brossier2009}。只有很少一部分的工作能够从多尺度策略和（或）不同参数化方式的选取中获得较为合理的密度反演结果
 \cite{jeong2012full}。最近，基于子空间的方式\cite[]{kennett:1988}，Xu和McMechan\cite{xu.mcmechan:2014}提出了一种多步长的梯度类方法来压制$V_p$, $V_s$和
-$\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（SI）来通过Hessian的逆来提高声波FWI中$V_p$和$\rho$的估计。尽管Ren和Liu\cite{ren.liu:2016}提出了
+$\rho$之间的串扰。Yang等\cite{Yang:2016}采用改进的散射积分法（SI）来通过Hessian的逆来提高声波FWI中$V_p$和$\rho$的估计。尽管Ren和Liu\cite{ren.liu:2016}提出了
 基于波场解耦的四阶段多尺度策略来做EFWI，但是他们只是在第二阶段中采用了P/S分离来压制$V_p$和$V_s$之间的耦合，然后通过多步长的手段来改善三参数同时反演的结果。
 在他们展示的overthrust模型中，密度的反演结果仍然偏离真实模型较远。因此非常有必要进一步调查模式解耦预条件方法对改善密度反演的潜力。
 \begin{figure*}
@@ -846,7 +866,8 @@ $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/truerho.pdf}}
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/initrho.pdf}}
     \caption{
-                The true (a) and initial (b) density Marmousi-II model.
+		真实(a)和初始(b)Marmousi-II的密度模型
+%                The true (a) and initial (b) density Marmousi-II model.
     }
     \label{fig:Marrho}
     \end{center}
@@ -857,7 +878,7 @@ $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（
     \hat{\mathbf{g}}_{\rho}=(V^2_p-2V^2_s)\mathbf{g}_{\lambda}+V^2_s\mathbf{g}_{\mu}+\mathbf{g}_{\rho},
     \label{eq:Gradient_rho} 
 \end{equation}
-其中$\mathbf{g}_{\lambda}$, $\mathbf{g}_{\mu}$和$\mathbf{g}_{\rho}$为采用密度-Lame参数化时的梯度，也即：
+其中$\mathbf{g}_{\lambda}$, $\mathbf{g}_{\mu}$和$\mathbf{g}_{\rho}$为采用$\rho$-Lame参数化时的梯度，也即：
     \begin{equation} 
         \begin{split}
                 \mathbf{g}_{\lambda}&=-\int_{0}^{T}\frac{\partial u_i}{\partial
@@ -887,10 +908,14 @@ $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/1devs.pdf}}\\
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/1noderho.pdf}}
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/1derho.pdf}}
-        \caption{Comparison between conventional and MD-based method with density
-            variation: (a) - (c) are the inverted $V_p$, $V_s$ and $\rho$ with
-            conventional method, (d) - (f) are the inverted $V_p$, $V_s$ and $\rho$
-            with MD-based method. }
+        \caption{
+			密度变化时常规和模式解耦的EFWI结果对比。左侧为常规PCG方法反演结果，右侧为模式解耦方法反演结果。
+			其中(a),(b)为$V_p$; (c), (d)为$V_s$; (e), (f)为$\rho$。
+%			Comparison between conventional and MD-based method with density
+%            variation: (a) - (c) are the inverted $V_p$, $V_s$ and $\rho$ with
+%            conventional method, (d) - (f) are the inverted $V_p$, $V_s$ and $\rho$
+%            with MD-based method. 
+		}
     \label{fig:InvertWithRho}
     \end{center}
 \end{figure*} 
@@ -898,10 +923,12 @@ $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（
     \begin{center}
         {\includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/3kmrho.pdf}}
         \caption{
-        The velocity and density profiles at 3.0 km (a, b)  with the true models
-            (black),
-            the initial models (blue), the PCG-based (yellow) and MD-based (green)
-            inverted models.
+			速度与密度模型在3.0km处的纵向剖面。
+			黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表PCG和模式解耦方法反演结果。
+%        The velocity and density profiles at 3.0 km (a, b)  with the true models
+%            (black),
+%            the initial models (blue), the PCG-based (yellow) and MD-based (green)
+%            inverted models.
     }
     \label{fig:RhoProfile3km}
     \end{center}
@@ -910,16 +937,18 @@ $\rho$之间的串扰。Yang等\cite{yang:2016}采用改进的散射积分法（
     \begin{center}
         {\includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/9kmrho.pdf}}
         \caption{
-        The velocity and density profiles at 9.0 km (a, b)  with the true models
-            (black),
-            the initial models (blue), the PCG-based (yellow) and MD-based (green)
-            inverted models.
+			速度与密度模型在9.0km处的纵向剖面。
+			黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表PCG和模式解耦方法反演结果。
+%        The velocity and density profiles at 9.0 km (a, b)  with the true models
+%            (black),
+%            the initial models (blue), the PCG-based (yellow) and MD-based (green)
+%            inverted models.
     }
     \label{fig:RhoProfile9km}
     \end{center}
 \end{figure*} 
 
-\section{结论}
+\section{本章小结}
 多参数反演的耦合效应使得常规梯度方法EFWI受到很大挑战，即使是只考虑P-和S波速度的反演。辐射模式表明速度扰动都会产生P波数据扰动从而导致在特定散射角范围内的
 串扰效应。相反，S波扰动波场则只与S波速度扰动相关。通过引入弹性波模式解耦，我们发现在解耦之后，不同波模式的Frech{$\acute{e}$}t和数据残差之间的互相关对梯度
 的贡献非常微弱。通过该交叉项近似，我们导出了基于模式解耦的梯度，该梯度可以通过伴随状态法快速计算得到。采用解耦之后的Frech{$\acute{e}$}t导数，我们调查了

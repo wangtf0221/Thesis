@@ -2,7 +2,7 @@
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
-\chapter{基于模式解耦的弹性波最小平方逆时偏移}
+\chapter{弹性波模式解耦最小平方逆时偏移}
 \label{cha:MD-ELSRTM}
 \section{引言}
 前一章内容中我们将模型分解为高波数与低波数成分，并通过弹性波WERTI方式来恢复模型的低波数成分。常规的FWI算法可以恢复模型的高波数成分，但是会受到许多因素干扰，
@@ -16,7 +16,9 @@ LSRTM的过程通常被认为是线性的全波形反演，其假设在已经获
 
 近期，为了更准确地描述波传播过程，同时获得更多的参数
 成像，并解决多参数带来的耦合效应，原本基于声波方程的
-LSRTM被推广到了变密度声波介质\cite{Yang2016}，衰减介质\cite{Dai2015}以及弹性介质中\cite{Duan2016,Feng2016,Xu2016}（ELSRTM）。
+LSRTM被推广到了变密度声波介质(Yang et al., 2016\cite{Yang2016})，衰减介质(Dai et al.,
+2015\cite{Dai2015})以及弹性介质中(Duan et al., 2016\cite{Duan2016};Feng and Schuster,
+2016\cite{Feng2016}; Xu et al., 2016\cite{Xu2016})（ELSRTM）。
 相比声波成像，弹性波成像可以提供更多的地下信息，例如裂缝分布以及弹性性质。但是，弹性波偏移中存在的许多问题会很大程度上影响成像质量。因为通常很难将记录中的
 波模式完全区分开，因此其中某些波模式的会因速度不对而被错误地成像。这些非物理的模式就会引起假象，也即“cross-talk”。
 而通过ELSRTM则可以提高成像的分辨率，并且可以压制由于观测孔径限制，粗网格采样以及数据缺失引起的偏移假象。
@@ -30,7 +32,7 @@ al(2016)\cite{WangEtAl2016}提出了更具有物理含义的无极性反转
 al.(2016)\cite{Feng2016}
 等都推导出了与EFWI梯度非常类似的成像条件。该成像条件也可以回避极性反转问题，同时也可以认为是更加接近于高频的参数扰动梯度。而基于
 第二章中对EFWI算法的分析，模式解耦带来的优势将同样能在ELSRTM中得以应用，因此我们将在本章中应用波模式解耦来对ELSRTM进行预条件，从而获得更好结果。
-\section{矩阵形式弹性波方程}
+\section{矩阵形式的弹性波方程}
 与第二章中类似，我们将从弹性波方程出发，推导出E-LSRTM的梯度。本章中，为了方便，我们同样将在频率域
 利用矩阵形式的弹性波方程来完成推导。方程\ref{eq:WE}可以写作：
 \begin{equation}
@@ -96,13 +98,13 @@ $\delta\lambda,\delta\mu,\delta\rho$时，介质中总波场和扰动场满足�
         \label{eq:L_rho}
 \end{equation}
 由于在E-LSRTM中假设背景场及背景模型不发生变化，则可将方程\ref{eq:WE_Matrix_delta}看作为新的状态方程，
+与EFWI中所描述的正问题不同的是，该状态方程所描述的正问题只考虑反射（散射）波的扰动而不包含透射波（直达波）。
 方程右端项为背景波场与参数扰动之间通过辐射模式作用形成新的震源。
 上述问题通常假定在背景模型足够好的时候来恢复扰动，因此方程也只描述一次散射。
-与EFWI中所描述的正问题不同的是，该正问题只考虑反射（散射）波的扰动而不包含透射波（直达波）。
-然而实际地下介质中，模型复杂时多次散射效应会对成像带来很大影响。近期，也有学者考虑在该过程中将扰动量同时加入背景场，
+而且在实际地下介质中，模型复杂时多次散射效应会对成像带来很大影响。近期，也有学者考虑在该过程中将扰动量同时加入背景场，
 例如Guo and
 Alkhalifah(2016)\cite{Guo2016}所展示的RWI过程中，他们将界面扰动同时加入到背景场中来包括多次散射效应的影响。
-\section{E-LSRTM梯度}
+\section{弹性波最小平方逆时偏移梯度}
 E-LSRTM中我们同样利用$L_2$范数来定义目标函数：
 \begin{equation}
     E=\frac{1}{2}\sum_{\omega}\sum_{s,r}\left\lVert \mathfrak{F}\delta \mathbf{U}-\mathbf{d}^{obs} \right \rVert^2,
@@ -118,7 +120,7 @@ E-LSRTM中我们同样利用$L_2$范数来定义目标函数：
     \label{eq:Lagrangian_LSRTM}
 \end{split}
 \end{equation}
-这里，$\bm\Psi=(\psi_x,\psi_z,\psi_{xx},\psi_{zz},\psi_{xz})^T$为伴随波场，$\langle,\quad\rangle_\mathbf{x}$
+这里，$\bm\Psi=(\psi_x,\psi_z,\psi_{xx},\psi_{zz},\psi_{xz})^T$为伴随波场，$\langle\cdot\rangle_\mathbf{x}$
 代表空间域的内积运算，根据Plessix(2006)\cite{plessix2006}，该优化问题的极值点需要满足
 $\frac{\partial\mathcal{L}}{\partial(\delta\mathbf{U})}=0$，也即对应于共轭状态方程：
 \begin{equation}
@@ -170,7 +172,7 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 可以看到在反传波场的求取过程中，由于转置算子的作用导致伴随状态方程发生了改变不再是原本的弹性波方程，新的方程中多出了两项应力导数项，同时应力
 应变也不再是原本的关系，这是求解中需要注意的。但是我们也通过实验发现，采用新的方程也并未带来非常大的不同，可以说新方程在数学导出上不一样，但是
 不影响物理过程。
-\section{模式解耦对E-LSRTM进行预条件}
+\section{模式解耦梯度预条件}
 可以看到以上梯度表达式与EFWI中的梯度(式\ref{eq:DeGradient_vpvsrho})非常类似，只是EFWI中$\lambda$和$\mu$的梯度互相关波场都为位移的空间导数，而
 此处则为位移场空间导数与应力场的互相关，密度的梯度表达式则完全一致。
 采用速度-密度的参数化方式，我们可以导出$V_p$与$V_s$的E-LSRTM梯度：
@@ -232,9 +234,12 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 策略1通过一次迭代获得双参数反演的结果，而策略2需要多耗费一轮迭代的计算量。
 策略2中，我们先反演出合理的$\delta V_s$，这样数据中来自$\delta
 V_s$的P波能量就会首先得到匹配，之后再反演$\delta
-V_p$时这一部分P波残差就不会在梯度中产生太多的干扰，从而达到压制参数耦合的效果。需要注意的是，这一思路在EFWI中并不十分适用。因为在EFWI中我们需要
-更新模型的中低波数成分，而PS波数据的匹配将又非常依赖$V_p$模型的更新，因此EFWI中往往需要进行同时反演来降低非线性。
-\subsection{反射数据与Born数据的差异}
+V_p$时这一部分P波残差就不会在梯度中产生太多的干扰，从而达到压制参数耦合的效果。需要注意的是，这一思路在EFWI中并不十分适用。
+因为在EFWI中，我们需要
+逐步地更新$V_p$模型的中低波数成分来确保
+PS波数据的匹配不会陷入局部极值，而于此同时又要采用PS波数据以解耦的方式更新$V_s$使得P波残差较好地收敛以改善$V_p$的反演精度
+，因此EFWI中往往需要进行双参数同时反演来降低非线性。
+\subsection{反射数据与Born模拟数据的差异}
 LSRTM的理论是基于Born散射数据导出的，因此高频参数扰动预测的反射波其实是Born散射数据。所以在进行数据匹配的时候观测数据需要尽可能地接近Born散射数据
 ，这样才能保证最终数据残差的收敛。而实际中，我们无法获得Born数据，通常在进行LSRTM时都是匹配反射数据。而反射数据与Born数据之间存在差异，
 这就会使得模拟数据无法与观测数据匹配。
@@ -263,19 +268,19 @@ LSRTM的理论是基于Born散射数据导出的，因此高频参数扰动预�
    \label{fig:Vpcomparison}
 \end{figure}
 
-图\ref{fig:refl_born_comparison}(a)所示为将真实模型按照30m半径平滑后所获得的反射数据、剩余反射数据（这里我们将
+图\ref{fig:refl_born_comparison}a所示为将真实模型按照30m半径平滑后所获得的反射数据、剩余反射数据（这里我们将
 反射数据与背景波场记录的残差称为“剩余反射数据”）
 以及真实扰动产生的Born数据之间的比较。可以看到当平滑半径较小时，背景模型中会包含部分高波数成分，这就使得背景场中产
 生部分反射能量，从而导致Born数据会与真实反射数据相差较远。由于反射数据振幅大于真实Born数据的振幅，如果在反演中直接匹配该反射数据的振幅，
 最终会导致在反演中数据残差收敛时产生参数扰动的过估计(图\ref{fig:Vpcomparison})。
-但剩余反射数据可以与Born数据很好地匹配。
+但剩余反射数据则可以与Born数据很好地匹配。
 
 也就是说，如果模型中包含较强的反射能量，那么就需要匹配差异反射数据，而不是反射数据。
 而如果模型平滑尺度较大，背景波场中包含的反射能量较弱，那么Born数据就不会与反射数据
 相差太远，但即使如此，Born数据与反射数据之间的差异也大于其与剩余反射数据之间的差异
-(图\ref{fig:refl_born_comparison}(b))。因此在LSRTM时，匹配剩余反射数据
+(图\ref{fig:refl_born_comparison}b)。因此在LSRTM时，匹配剩余反射数据
 将是一个更优的选择。
-\subsection{参数耦合的影响}
+\subsection{参数耦合分析}
 参数耦合是E-LSRTM中面临的另一个挑战，E-LSRTM可以一定程度上消除参数间
 彼此的干扰，例如Duan et al., 2016\cite{Duan2016}，Feng and
 Schuster,2016\cite{Feng2016}。但是他们也只能做到压制“脚印”，而难以完全消除，
@@ -330,7 +335,7 @@ $V_p$界面产生的脚印。而解耦预条件的E-LSRTM得到的$\delta
 V_s$已经没有了$V_p$界面的脚印干扰，但是$\delta
 V_p$中仍然存在一定的干扰，这是因为在策略1中，初始迭代阶段时$\delta
 V_s$反演更新量不足，使得$\delta
-V_p$的梯度总是存在脚印的影响，而在此阶段中总是能够搜索到较大的更新步长，这就导致在初始阶段的参数耦合效应仍然较为严重。而且主要是
+V_p$的梯度总是存在脚印的影响，而在此阶段中总是能够搜索到较大的更新步长，这就导致在初始阶段的参数耦合效应仍然较为严重。而且耦合主要体现在
 $\delta V_p$受到$\delta V_s$的影响。
 策略2可以进一步压制这种类型的干扰，在$\delta
 V_s$反演足够好的时候$V_s$界面产生的P波数据已经基本匹配，这时再反演$\delta
@@ -375,17 +380,19 @@ V_s$的P波。因此可以看到即使采用策略2，$\delta V_p$中最终还�
 
 第一个实验中，为了突出参数耦合效应，在$V_p$模型中加入了一个高速薄层。这样在常规E-LSRTM中，$\delta
 V_s$的反演会受到参数耦合的干扰，由于$\delta V_p$中则较少受到$V_s$结构的影响，因此可以采用反演策略1，同时反演$\delta
-V_p$与$\delta V_s$。首先我们采用Born数据进行E-LSRTM。如图\ref{fig:nodecomp_1}所示，常规ERTM结果中，$V_p$和$V_s$成像中
+V_p$与$\delta
+V_s$。首先我们采用Born数据进行E-LSRTM。如图\ref{fig:nodecomp_1}所示，常规ERTM结果中，$\delta
+V_p$和$\delta V_s$成像中
 可以看到低频噪音的干扰，并且由于参数耦合，$\delta
 V_s$中还存在$V_p$结构的影子。在经过E-LSRTM之后，低频噪音被压制，
 整个成像剖面能量更加均衡
-而且$V_s$中的参数耦合干扰也被部分消除了，但是仍然可以明显的看到残留的干扰脚印。
+而且$\delta V_s$中的参数耦合干扰也被部分消除了，但是仍然可以明显的看到残留的干扰脚印。
 
 之后将模式解耦的预条件加入到梯度计算中，结果如图\ref{fig:decomp_1}所示，ERTM结果中$\delta
 V_p$仍然存在低频噪音，而$\delta
 V_s$中的低频噪音已经很少了，这说明低频噪音主要是PP波路径所产生，在经过解耦之后，反传P波被压制，所以$\delta
 V_s$中基本消除了低频噪音。而且ERTM结果中也可以看到来自$V_p$结构的脚印已经被完全压制掉了。在经过E-LSRTM之后，采用解耦预条件的方法获得了
-很好的$\delta V_p$与$\delta V_s$的反演结果。
+较好的$\delta V_p$与$\delta V_s$的反演结果。
 \begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/reflection/RTMvpnodecomp.pdf}}
@@ -477,9 +484,9 @@ V_p$中成像。这部分假象很难被完全消除掉，这就需要考虑策�
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/vpdecomp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/Marmousi/Vsreflection/firstvs2ndvpdecomp.pdf}}
-   \caption{Sigbee2A model example. On the top are true models of 
-   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
-   (d) linearly increasing with depth. }
+   \caption{
+   模式解耦下策略1与策略2所得到的$\delta
+   V_p$反演结果对比。(a)为策略1反演结果，(b)为策略2的反演结果。可以看到策略2的效果要优于策略1.}
    \label{fig:final_comparison_2}
 \end{figure}
 针对反射数据，同样将数据中的直达波进行切除，
@@ -501,3 +508,4 @@ V_p$来进一步压制$\delta V_p$中来自$\delta V_s$耦合效应干扰。
 
 E-LSRTM过程中，由于Born数据与反射数据之间的差异，直接匹配反射数据会导致界面参数扰动的过估计，
 而匹配剩余反射数据则可以更好地近似Born散射过程。此外，在模型复杂区域，反射数据中包含有多次散射效应，这些散射波会带来较多的干扰。
+

@@ -34,7 +34,7 @@ S的转换模式非常弱，基于拖缆或者海底多分量数据的EFWI的非
 很多学者指出参数化方式对缓解参数耦合效应非常重要，通常可以通过调查散射模式或者Hessian算子来选取不同的参数化方式
 \cite[]{wu.aki:1985,tarantola:1986,plessix.cao:2011,gholami2013}。另外一个常用的降低非线性程度的方法是采用多尺度的策略
 将速度扰动分解为低波数与高波数成分\cite[]{symes.carazzone:1991,bunks1995multiscale,clement:2001,shin.cha:2008,dehoop:2012,
-xu:2012,biondi.almomin:2013,ma.hale:2013,warner2016adaptive,alkhalifah2015scattering}。
+xu:2012,biondi.almomin:2013,ma2013,warner2016adaptive,alkhalifah2015scattering}。
 将声波FWI扩展到弹性介质中学要付出更多的工作。正如Tarantola(1986)\cite{tarantola:1986}所建议的，我们应当先重构出对数据具有主要影响
 的参数，然后再重构出对数据有次级影响的参数。Sears(2008)\cite{sears2008}提出了一个有效的多尺度策略，通过时间窗来选取海底电缆(OBC)
 数据中的不同子集来进行多尺度反演。Operto(2013)\cite{operto2013guided}讨论了如何多级地选取不同的数据分量以及不同的参数类型进行反演，从而
@@ -103,6 +103,7 @@ c_{ijkl}(\mathbf{x})$相互作用产生的次级源所引发。为了简单起�
 \end{equation}
 其中，$\omega$表示频率，$G_{ni}(\mathbf{r},\mathbf{x},\omega)$为弹性波背景格林函数，表示在$\mathbf{x}$处沿$i$方向的单位体力源
 所产生的在$\mathbf{r}$处沿$n$方向的质点位移，$\Omega(\mathbf{x})$为体积积分范围。注意方程\eqref{eq:Repre}只考虑了一阶散射的情况。
+\subsection{P/S波数据耦合与辐射模型}
 刚度系数扰动与速度扰动之间的关系为：
 \begin{equation}
         \delta c_{ijkl}=\frac{\partial c_{ijkl}}{\partial V_p}\delta V_p

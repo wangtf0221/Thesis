@@ -80,6 +80,27 @@ Dai W, Fowler P, Schuster G~T.
 \newblock Geophysical Prospecting, 2012, 60(4):681--695
 \tongjidot
 
+\bibitem{cheng:2014b}
+Cheng J, Fomel S.
+\newblock Fast algorithms for elastic-wave-mode separation and vector
+  decomposition using low-rank approximation for anisotropic media.
+\newblock Geophysics, 2014, 79(4):C97--C110
+\tongjidot
+
+\bibitem{cheng:2016}
+Cheng J~B, Alkhalifah T, Wu Z~D, et~al.
+\newblock Simulating propagation of decoupled elastic waves using low-rank
+  approximate mixed-domain integral operators for anisotropic media.
+\newblock Geophysics, 2016, 81(2):T63--T77
+\tongjidot
+
+\bibitem{wang2016scalar}
+Wang C, Cheng J, Arntsen B.
+\newblock Scalar and vector imaging based on wave mode decoupling for elastic
+  reverse time migration in isotropic and transversely isotropic media.
+\newblock {GEOPHYSICS}, 2016, 81(5):S383--S398
+\tongjidot
+
 \bibitem{董良国2015}
 董良国, 黄超, 迟本鑫, et~al.
 \newblock 基于地震数据子集的波形反演思路、方法与应用.
@@ -863,13 +884,6 @@ Yan J, Sava P.
 \newblock Geophysics, 2008, 73(6):S229--S239
 \tongjidot
 
-\bibitem{wang2016scalar}
-Wang C, Cheng J, Arntsen B.
-\newblock Scalar and vector imaging based on wave mode decoupling for elastic
-  reverse time migration in isotropic and transversely isotropic media.
-\newblock {GEOPHYSICS}, 2016, 81(5):S383--S398
-\tongjidot
-
 \bibitem{kamath2016elastic}
 Kamath N, Tsvankin I.
 \newblock Elastic full-waveform inversion for {VTI} media: Methodology and
@@ -888,13 +902,6 @@ Zhang Q, McMechan G~A.
 马德堂, 朱光明.
 \newblock 弹性波波场P波和S波分解的数值模拟.
 \newblock 石油地球物理勘探, 2003, 38(5):482--486
-\tongjidot
-
-\bibitem{cheng:2016}
-Cheng J~B, Alkhalifah T, Wu Z~D, et~al.
-\newblock Simulating propagation of decoupled elastic waves using low-rank
-  approximate mixed-domain integral operators for anisotropic media.
-\newblock Geophysics, 2016, 81(2):T63--T77
 \tongjidot
 
 \bibitem{brytik:2011}

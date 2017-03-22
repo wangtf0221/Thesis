@@ -44,7 +44,6 @@ I was expecting a `,' or a `}'---line 1197 of file reference.bib
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring dehoop:2012's extra "volume" field
 --line 1498 of file reference.bib
-Warning--I didn't find a database entry for "ma.hale:2013"
 Warning--I didn't find a database entry for "Yang:2016"
 Warning--I didn't find a database entry for "Hale2013"
 Warning--I didn't find a database entry for "Wang2015a"
@@ -58,6 +57,14 @@ while executing---line 1196 of file tongjibib.bst
 Name 3 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry zhou:2015
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "B. X. Chi and L. G. Dong, and Y. Z. Liu" has a comma at the end for entry chi2015
+while executing---line 1196 of file tongjibib.bst
+Name 2 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 3 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
+while executing---line 1196 of file tongjibib.bst
+Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "T.J. Sears and S.C. Singh, and P.J. Barton" has a comma at the end for entry sears2008
 while executing---line 1196 of file tongjibib.bst
@@ -85,14 +92,6 @@ Name 3 in "Sheen, D. H. and Tuncay, K., and Baag, C. E., and Ortoleva, P. J." ha
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "T.F. Wang and J.B. Cheng, and C.L. Wang" has a comma at the end for entry wang:2015
 while executing---line 1196 of file tongjibib.bst
-Name 2 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
 Name 2 in "V. Brytik and M. V. de-Hoop, and H. F. Smith, and G. Uhlmann" has a comma at the end for entry brytik:2011
 while executing---line 1196 of file tongjibib.bst
 Name 3 in "V. Brytik and M. V. de-Hoop, and H. F. Smith, and G. Uhlmann" has a comma at the end for entry brytik:2011
@@ -104,45 +103,45 @@ Name 1 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a co
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a comma at the end for entry kennett:1988
 while executing---line 1196 of file tongjibib.bst
-You've used 143 entries,
+You've used 144 entries,
             2219 wiz_defined-function locations,
-            1359 strings with 28661 characters,
-and the built_in function-call counts, 66583 in all, are:
-= -- 6644
-> -- 1658
+            1363 strings with 28855 characters,
+and the built_in function-call counts, 66964 in all, are:
+= -- 6681
+> -- 1667
 < -- 13
-+ -- 766
-- -- 383
-* -- 5476
-:= -- 8926
-add.period$ -- 312
-call.type$ -- 143
++ -- 770
+- -- 385
+* -- 5507
+:= -- 8978
+add.period$ -- 314
+call.type$ -- 144
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 151
-duplicate$ -- 4501
-empty$ -- 7073
-format.name$ -- 509
-if$ -- 15111
+cite$ -- 152
+duplicate$ -- 4524
+empty$ -- 7115
+format.name$ -- 512
+if$ -- 15198
 int.to.chr$ -- 0
-int.to.str$ -- 143
-missing$ -- 150
-newline$ -- 865
-num.names$ -- 143
-pop$ -- 605
+int.to.str$ -- 144
+missing$ -- 151
+newline$ -- 871
+num.names$ -- 144
+pop$ -- 609
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 951
+skip$ -- 956
 stack$ -- 0
-substring$ -- 9311
+substring$ -- 9363
 swap$ -- 147
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 8
-while$ -- 717
-width$ -- 146
-write$ -- 1717
+while$ -- 721
+width$ -- 147
+write$ -- 1729
 (There were 31 error messages)

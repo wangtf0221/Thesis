@@ -22,29 +22,24 @@ A level-1 auxiliary file: ack.aux
 A level-1 auxiliary file: data/appendix01.aux
 A level-1 auxiliary file: data/appendix02.aux
 Database file #1: reference.bib
-Repeated entry---line 480 of file reference.bib
+Repeated entry---line 484 of file reference.bib
  : @article{Yang2016
  :                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 641 of file reference.bib
- : @article{WangEtAl2016
- :                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 720 of file reference.bib
- : @article{WangEtAl2016
- :                      ,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1188 of file reference.bib
+I was expecting a `,' or a `}'---line 1192 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1197 of file reference.bib
+I was expecting a `,' or a `}'---line 1201 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring dehoop:2012's extra "volume" field
---line 1498 of file reference.bib
+--line 1502 of file reference.bib
+Warning--I didn't find a database entry for "Jeong2012"
+Warning--I didn't find a database entry for "Prieux2013a"
 Warning--I didn't find a database entry for "Yang:2016"
+Warning--I didn't find a database entry for "WangEtAl2016"
 Warning--I didn't find a database entry for "Hale2013"
 Warning--I didn't find a database entry for "Wang2015a"
 Warning--there's a publisher but no address in Claerbout1985Imaging
@@ -103,45 +98,45 @@ Name 1 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a co
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a comma at the end for entry kennett:1988
 while executing---line 1196 of file tongjibib.bst
-You've used 144 entries,
+You've used 146 entries,
             2219 wiz_defined-function locations,
-            1363 strings with 28855 characters,
-and the built_in function-call counts, 66964 in all, are:
-= -- 6681
-> -- 1667
+            1383 strings with 29429 characters,
+and the built_in function-call counts, 68122 in all, are:
+= -- 6797
+> -- 1701
 < -- 13
-+ -- 770
-- -- 385
-* -- 5507
-:= -- 8978
-add.period$ -- 314
-call.type$ -- 144
++ -- 786
+- -- 393
+* -- 5616
+:= -- 9134
+add.period$ -- 317
+call.type$ -- 146
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 152
-duplicate$ -- 4524
-empty$ -- 7115
-format.name$ -- 512
-if$ -- 15198
+cite$ -- 154
+duplicate$ -- 4590
+empty$ -- 7234
+format.name$ -- 522
+if$ -- 15453
 int.to.chr$ -- 0
-int.to.str$ -- 144
-missing$ -- 151
-newline$ -- 871
-num.names$ -- 144
-pop$ -- 609
+int.to.str$ -- 146
+missing$ -- 153
+newline$ -- 883
+num.names$ -- 146
+pop$ -- 614
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 956
+skip$ -- 971
 stack$ -- 0
-substring$ -- 9363
+substring$ -- 9544
 swap$ -- 147
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 8
-while$ -- 721
-width$ -- 147
-write$ -- 1729
-(There were 31 error messages)
+while$ -- 737
+width$ -- 149
+write$ -- 1754
+(There were 29 error messages)

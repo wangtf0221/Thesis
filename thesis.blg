@@ -22,26 +22,23 @@ A level-1 auxiliary file: ack.aux
 A level-1 auxiliary file: data/appendix01.aux
 A level-1 auxiliary file: data/appendix02.aux
 Database file #1: reference.bib
-Repeated entry---line 484 of file reference.bib
+Repeated entry---line 489 of file reference.bib
  : @article{Yang2016
  :                  ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1192 of file reference.bib
+I was expecting a `,' or a `}'---line 1197 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1201 of file reference.bib
+I was expecting a `,' or a `}'---line 1206 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring dehoop:2012's extra "volume" field
---line 1502 of file reference.bib
-Warning--I didn't find a database entry for "Jeong2012"
-Warning--I didn't find a database entry for "Prieux2013a"
-Warning--I didn't find a database entry for "Yang:2016"
+--line 1507 of file reference.bib
 Warning--I didn't find a database entry for "WangEtAl2016"
 Warning--I didn't find a database entry for "Hale2013"
-Warning--I didn't find a database entry for "Wang2015a"
+Warning--I didn't find a database entry for "cha:AdjointForEWERTI"
 Warning--there's a publisher but no address in Claerbout1985Imaging
 Name 2 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
 while executing---line 1196 of file tongjibib.bst
@@ -98,45 +95,45 @@ Name 1 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a co
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a comma at the end for entry kennett:1988
 while executing---line 1196 of file tongjibib.bst
-You've used 146 entries,
+You've used 148 entries,
             2219 wiz_defined-function locations,
-            1383 strings with 29429 characters,
-and the built_in function-call counts, 68122 in all, are:
-= -- 6797
-> -- 1701
+            1387 strings with 29634 characters,
+and the built_in function-call counts, 68917 in all, are:
+= -- 6873
+> -- 1722
 < -- 13
-+ -- 786
-- -- 393
-* -- 5616
-:= -- 9134
-add.period$ -- 317
-call.type$ -- 146
++ -- 796
+- -- 398
+* -- 5679
+:= -- 9247
+add.period$ -- 322
+call.type$ -- 148
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 154
-duplicate$ -- 4590
-empty$ -- 7234
-format.name$ -- 522
-if$ -- 15453
+cite$ -- 156
+duplicate$ -- 4645
+empty$ -- 7319
+format.name$ -- 528
+if$ -- 15631
 int.to.chr$ -- 0
-int.to.str$ -- 146
-missing$ -- 153
-newline$ -- 883
-num.names$ -- 146
-pop$ -- 614
+int.to.str$ -- 148
+missing$ -- 155
+newline$ -- 895
+num.names$ -- 148
+pop$ -- 620
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 971
+skip$ -- 983
 stack$ -- 0
-substring$ -- 9544
+substring$ -- 9649
 swap$ -- 147
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 8
-while$ -- 737
-width$ -- 149
-write$ -- 1754
+while$ -- 745
+width$ -- 151
+write$ -- 1777
 (There were 29 error messages)

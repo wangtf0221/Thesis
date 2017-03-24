@@ -913,13 +913,13 @@ $\rho$之间的串扰。Yang等\cite{Yang2016}采用改进的散射积分法（S
         \label{eq:DeGradient_vpvsrho}
     \end{equation}
 如前文所述，在Born近似下，S波数据对$V_s$的扰动更敏感，基于以上事实前文采用了解耦梯度的方式来同时反演$V_p$和$V_s$。然而，考虑密度反演时，由于密度扰动
-同时产生P与S波散射数据，因此上述逻辑就不再成立。联合方程\eqref{eq:DeGradient_vpvs}和\eqref{eq:Gradient_rho}来进行三参数同时反演。采用同样的
+同时产生P与S波散射数据，因此上述逻辑就不再成立。联合方程\eqref{eq:DeGradient_vpvs}和\eqref{eq:Gradient_rho}来进行三参数同时反演。我们采用同样的
 观测系统和反演策略并引入原始Marmousi密度模型来进行数值实验。
 
-如图\ref{fig:InvertWithRho}所示，由于强烈的参数耦合效应，采用PCG优化的常规EFWI方法对三个参数都未能获得合理的重建。在模型左侧软海底较厚的区域，在引入密度变化后，
-反演的病态性变得更强。$V_p$和$V_s$之间的耦合甚至导致反演结果中结构的错位。在采用模式解耦预条件之后， $V_p$和$V_s$的反演都获得了很大的改善，但是密度的反演
-结果仍然不准确，包含了较多来自$V_s$扰动的“脚印”。不管如何，可以看到模式解耦可以降低反问题病态程度并提高反演模型的分辨率。若想进一步改善密度反演，
-就需要用到更多的多尺度策略以及Hessian的逆来更好的压制参数耦合效应。
+如图\ref{fig:InvertWithRho}所示，由于强烈的参数耦合效应，采用PCG优化的常规EFWI对三个参数都未能获得合理的重建。在模型左侧软海底较厚的区域，在引入密度变化后，
+反演的病态性变得更加剧烈。$V_p$和$V_s$之间的耦合甚至导致反演结果中结构的错位。在采用模式解耦预条件后， $V_p$和$V_s$的反演都获得了很大的改善，但是密度的反演
+结果仍然不准确，并包含了较多来自$V_s$扰动的“脚印”。不管如何，我们可以看到模式解耦可以降低反问题病态程度并提高反演模型的分辨率。但是若想改善密度反演结果，
+就需要用到更多的多尺度策略以及Hessian的逆的信息来更好的压制参数耦合效应。
 \begin{figure*}
     \begin{center}
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/1nodevp.pdf}}
@@ -929,7 +929,7 @@ $\rho$之间的串扰。Yang等\cite{Yang2016}采用改进的散射积分法（S
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/1noderho.pdf}}
         \subfloat[]{\includegraphics[width=7cm]{Figure/chapter02/tariqsugresult/Fig/1derho.pdf}}
         \caption{
-			密度变化时常规和模式解耦的EFWI结果对比。左侧为常规PCG方法反演结果，右侧为MDPCG方法反演结果。
+			密度变化时常规和模式解耦的EFWI结果对比。左侧为常规PCG方法反演结果，右侧为模式解耦方法反演结果。
 			其中(a),(b)为$V_p$; (c), (d)为$V_s$; (e), (f)为$\rho$。
 %			Comparison between conventional and MD-based method with density
 %            variation: (a) - (c) are the inverted $V_p$, $V_s$ and $\rho$ with
@@ -944,7 +944,7 @@ $\rho$之间的串扰。Yang等\cite{Yang2016}采用改进的散射积分法（S
         {\includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/3kmrho.pdf}}
         \caption{
 			速度与密度模型在3.0km处的纵向剖面。
-			黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表常规PCG和MDPCG方法反演结果。
+			黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表PCG和模式解耦方法反演结果。
 %        The velocity and density profiles at 3.0 km (a, b)  with the true models
 %            (black),
 %            the initial models (blue), the PCG-based (yellow) and MD-based (green)
@@ -958,7 +958,7 @@ $\rho$之间的串扰。Yang等\cite{Yang2016}采用改进的散射积分法（S
         {\includegraphics[width=10cm]{Figure/chapter02/tariqsugresult/Fig/9kmrho.pdf}}
         \caption{
 			速度与密度模型在9.0km处的纵向剖面。
-			黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表常规PCG和MDPCG方法反演结果。
+			黑线和蓝线分别代表真实和初始模型；黄线与绿线分别代表PCG和模式解耦方法反演结果。
 %        The velocity and density profiles at 9.0 km (a, b)  with the true models
 %            (black),
 %            the initial models (blue), the PCG-based (yellow) and MD-based (green)
@@ -969,13 +969,13 @@ $\rho$之间的串扰。Yang等\cite{Yang2016}采用改进的散射积分法（S
 \end{figure*} 
 
 \section{本章小结}
-多参数耦合效应使得常规梯度类EFWI受到很大挑战，即使是只考虑P和S波速度的反演。辐射模式表明两种速度扰动都会产生P波数据扰动从而导致在特定散射角范围内的
-重叠效应。相反，S波扰动波场则只与S波速度扰动相关。通过引入弹性波模式解耦，本文发现在解耦之后，不同波模式的Frech{$\acute{e}$}t和数据残差之间的互相关对梯度
-的贡献非常微弱。通过该交叉项近似，导出了基于模式解耦的梯度，该梯度可以通过伴随状态法快速计算得到。利用解耦之后的Frech{$\acute{e}$}t导数，调查了
-Hessian以及分辨率矩阵对应于P波与S波数据的有关分量。这些调查确认了在S波速度的梯度计算中丢弃P波分量可以降低参数耦合效应。因此，采用基于模式解耦的方法
-来反演$V_s$等价于采用S波数据的单参数反演。借助较好的预条件算子消除S波数据的照明以及有限带宽效应，就能获得近似GN方法的收敛速度而不涉及
-任何Hessian相关的计算。对于双参数同时反演，$V_s$反演的改善可以明显提高$V_p$的反演精度。数值实验尤其是包含软海底结构的Marmousi模型实验，表明模式解耦方法
-对压制参数耦合、加速收敛是有效的。
+多参数反演的耦合效应使得常规梯度方法EFWI受到很大挑战，即使是只考虑P-和S波速度的反演。辐射模式表明速度扰动都会产生P波数据扰动从而导致在特定散射角范围内的
+串扰效应。相反，S波扰动波场则只与S波速度扰动相关。通过引入弹性波模式解耦，我们发现在解耦之后，不同波模式的Frech{$\acute{e}$}t和数据残差之间的互相关对梯度
+的贡献非常微弱。通过该交叉项近似，我们导出了基于模式解耦的梯度，该梯度可以通过伴随状态法快速计算得到。采用解耦之后的Frech{$\acute{e}$}t导数，我们调查了
+Hessian以及分辨率矩阵对应于P波与S波数据的相关分量。这些调查结果确认了在S波速度的梯度计算中分离P波分量可以降低参数耦合的效应。由此，采用基于模式解耦的方法
+来反演$V_s$等价于采用S波数据的单参数反演。如果能找到较好的预条件算子来消除S波数据的照明以及有限带宽效应，则该方式总能获得近似GN方法的收敛速度而不涉及
+任何Hessian相关的计算。而对于双参数同时反演，$V_s$反演的改善可以明显提高$V_p$的反演结果。数值实验，尤其是包含软海底结构的Marmousi模型，证明了模式解耦方法
+对降低参数耦合、加速收敛的有效性。
 
-到目前为止，通过波形反演来重建可靠的密度模型仍然非常困难。正如我们所看到的那样，模式解耦并未改善密度反演结果。但是在引入密度扰动后，反演病态性明显加剧后，采用MDPCG方法的EFWI仍能保证
-获得比较合理的$V_p$和$V_s$结果。
+目前为止，通过波形反演来重建可靠的密度结果仍然非常困难。正如我们所看到，模式解耦并未能改善密度反演结果。但是在引入密度扰动，反演病态性明显剧增后仍能保证
+获得合理的$V_p$和$V_s$结果。

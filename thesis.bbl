@@ -454,6 +454,12 @@ Wang T, Cheng J.
 \newblock Geophysical Journal International, 2017, 209(2):606--622
 \tongjidot
 
+\bibitem{jeong2012full}
+Jeong W, Lee H~Y, Min D~J.
+\newblock Full waveform inversion strategy for density in the frequency domain.
+\newblock Geophysical Journal International, 2012, 188(3):1221--1242
+\tongjidot
+
 \bibitem{Woodward1992}
 Woodward M~J.
 \newblock Wave-Equation Tomography.
@@ -964,12 +970,6 @@ Mavko G, Mukerji T, Dvorkin J.
 \newblock Cambridge university press, 2009
 \tongjidot
 
-\bibitem{jeong2012full}
-Jeong W, Lee H~Y, Min D~J.
-\newblock Full waveform inversion strategy for density in the frequency domain.
-\newblock Geophysical Journal International, 2012, 188(3):1221--1242
-\tongjidot
-
 \bibitem{kennett:1988}
 Kennett B~L, Sambridge M~S, Williamson P~R.
 \newblock Subspace methods for large inverse problem with multiple parameter
@@ -977,11 +977,23 @@ Kennett B~L, Sambridge M~S, Williamson P~R.
 \newblock Geophyscal Journal, 1988, 94:237--247
 \tongjidot
 
+\bibitem{Fu2015}
+付继有, 李振春, 杨国权, et~al.
+\newblock 声介质波动方程反射旅行时反演方法.
+\newblock 石油地球物理勘探, 2015, 50(6):1134--1140
+\tongjidot
+
 \bibitem{Li2016a}
 Li Z, Ma X, Fu C, et~al.
 \newblock Frequency-wavenumber implementation for P- and S-wave separation from
   multi-component seismic data.
 \newblock Exploration Geophysics, 2016, 47(1):32
+\tongjidot
+
+\bibitem{Hale2009Structure}
+Hale D.
+\newblock Structure-oriented smoothing and semblance.
+\newblock CWP report, 2009.
 \tongjidot
 
 \bibitem{vanLeeuwen:2010}

@@ -1,13 +1,13 @@
 \chapter{共轭状态法推导弹性波WERTI的梯度}
 \label{cha:AdjointForEWERTI}
-本节中，我们采用Plessix(2006)给出的共轭状态法导出弹性波WERTI的梯度。我们共有三个状态方程其中两个为式\eqref{eq:WE}
+本节中，我们采用共轭状态法Plessix(2006)\cite{plessix2006}导出弹性波WERTI的梯度。E-WERTI中共有三个状态方程，其中两个为式\eqref{eq:WE}
 和\eqref{eq:DeltaWE}。第三个状态方程来自DIW的优化约束。
 
-我们知道DIW是要找出$\mathbf{\tau}=\tau(\mathbf{x}_r,t;\mathbf{x}_s)$，使得目标函数$D(l)$最小，其中$D(l)$为：
+我们知道DIW要找出局部的走时残差($\mathbf{\tau}=\tau(\mathbf{x}_r,t;\mathbf{x}_s)$)使得目标函数$D(\tau)$最小，其中$D(\tau)$为：
 \begin{equation}
 	D(\tau)=\frac{1}{2}\int
-	d\mathbf{x}_sd\mathbf{x}_r(d_c(\mathbf{x}_r,t;\mathbf{x}_s)-
-	d_o(\mathbf{x}_r,t+\tau(\mathbf{x}_r,t;\mathbf{x}_s);\mathbf{x}_s))^2
+	d\mathbf{x}_sd\mathbf{x}_r(d^c(\mathbf{x}_r,t;\mathbf{x}_s)-
+	d^o(\mathbf{x}_r,t+\tau(\mathbf{x}_r,t;\mathbf{x}_s);\mathbf{x}_s))^2
         \label{eq:Dl}
 \end{equation}
 而目标函数最小则需要满足：
@@ -16,32 +16,34 @@
 	d\mathbf{x}_sd\mathbf{x}_r\alpha(\mathbf{x}_r,t;\mathbf{x}_s)=0.
         \label{eq:PartialD}
 \end{equation}
-其中$\alpha(\mathbf{x}_r,t;\mathbf{x}_s)=\dot{d}_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)(d_o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)-
-d_c(\mathbf{x}_r,t;\mathbf{x}_s))$
+其中$\alpha(\mathbf{x}_r,t;\mathbf{x}_s)=\dot{d}^o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)(d^o(\mathbf{x}_r,t+\tau;\mathbf{x}_s)-
+d^c(\mathbf{x}_r,t;\mathbf{x}_s))$。
 偏导数$\frac{\partial D}{\partial
-\tau}$一定为0，如果不为0，则我们总能找到一个$\tau$使得$D$变得更小，而这与DIW找到的最小值相矛盾。则式\eqref{eq:PartialD}为
-第三个状态方程。我们可以定义增广函数：
+\tau}$一定为0，如果不为0，则总能找到一个$\tau$使得$D$变得更小，这与DIW找到的最小值相矛盾。因此，式\eqref{eq:PartialD}为
+第三个状态方程。定义增广函数：
 \begin{equation}
 	\begin{split}
 	\mathcal{L}(\mathbf{\tau},\mathbf{u},\mathbf{\psi},\mathbf{\mu},\bar{\mathbf{u}},\bar{\mathbf{\psi}})
 	&=\frac{1}{2}\int \tau^2(\mathbf{x}_r,t;\mathbf{x}_s)d\mathbf{x}_sd\mathbf{x}_rdt\\
 	&-\int
 	\mu(\mathbf{x}_r,t;\mathbf{x}_s)\alpha(\mathbf{x}_r,t;\mathbf{x}_s)d\mathbf{x}_sd\mathbf{x}_rdt\\
-	&-\int \bar{{u_i}}\left(\rho\frac{\partial^2
-	\psi_i }{\partial t^2}-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial
-	\psi_k}{\partial x_l})-\frac{\partial}{\partial x_j}(\delta
-	c_{ijkl}\frac{\partial u_k}{\partial x_l})\right)d\mathbf{x}_sd\mathbf{x}_rdt\\
-	&-\int \bar{{\psi_i}}\left(\rho\frac{\partial^2 u_i }{\partial
+	&-\int {\delta \psi_i}\left(\rho\frac{\partial^2 u_i }{\partial
 	t^2}-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial u_k}{\partial x_l}) -
-	f_i\right)d\mathbf{x}_sd\mathbf{x}_rdt,
+	f_i\right)d\mathbf{x}_sd\mathbf{x}_rdt\\
+	&-\int \psi_i\left(\rho\frac{\partial^2
+	\delta u_i }{\partial t^2}-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial
+	\delta u_k}{\partial x_l})-\frac{\partial}{\partial x_j}(\delta
+	c_{ijkl}\frac{\partial u_k}{\partial x_l})\right)d\mathbf{x}_sd\mathbf{x}_rdt,
 	\end{split}
         \label{eq:Lagrangian}
 \end{equation}
-其中，$\tau(\mathbf{x}_r,t;\mathbf{x}_s)$,$\mathbf{u}$和$\mathbf{\psi}$为状态变量，同时$\mu(\mathbf{x}_r,t;\mathbf{x}_s)$，$\bar{\mathbf{u}}$和$\bar{\mathbf{\psi}}$分别为伴随状态变量，$\bar{\mathbf{u}}$和$\bar{\mathbf{\psi}}$也即反传波场。
+其中，$\tau(\mathbf{x}_r,t;\mathbf{x}_s)$,$\mathbf{u}$和$\delta \mathbf{u}$为状态变量，同时$\mu(\mathbf{x}_r,t;\mathbf{x}_s)$, 
+$\boldsymbol{\psi}$和$\boldsymbol{\delta\psi}$为伴随状态变量。后两者也即反传波场。
 
-伴随状态变量可以通过使增广函数对状态变量偏导数为零来求取，也即使得$\frac{\partial \mathcal{L}}{\partial \mathbf{\tau}}=0$，
-$\frac{\partial \mathcal{L}}{\partial \mathbf{u}}=0$和$\frac{\partial \mathcal{L}}{\partial \mathbf{\psi}}=0$。
-则
+伴随状态变量可以通过令增广函数对状态变量偏导数为零来求取，即使得$\frac{\partial \mathcal{L}}{\partial \mathbf{\tau}}=0$，
+$\frac{\partial \mathcal{L}}{\partial \delta u}=0$和$\frac{\partial \mathcal{L}}{\partial 
+	u}=0$。
+首先
 \begin{equation}
 	\frac{\partial \mathcal{L}}{\partial \mathbf{\tau}}=\tau(\mathbf{x}_r,t;\mathbf{x}_s)
 	-\mu(\mathbf{x}_r,t;\mathbf{x}_s)\frac{\partial \alpha(\mathbf{x}_r,t;\mathbf{x}_s)}{\partial \tau(\mathbf{x}_r,t;\mathbf{x}_s)},
@@ -53,25 +55,39 @@ $\frac{\partial \mathcal{L}}{\partial \mathbf{u}}=0$和$\frac{\partial \mathcal{
         \label{eq:AdjointTau}
 \end{equation}
 其中$h_i(\mathbf{x_r},t;\mathbf{x_s})=(\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))^2-\ddot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})
-(d^c_i(\mathbf{x_r},t;\mathbf{x_s})-d^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))$。而$\dot{d}$则代表$d$在时间方向的导数。同时，通过另外两个偏导数方程可得：
+(d^c_i(\mathbf{x_r},t;\mathbf{x_s})-d^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}))$, $\dot{d}$代表时间方向导数。
+
+其次：
 \begin{equation}
-	\rho\frac{\partial^2 \bar{u}_i }{\partial t^2}
-	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial \bar{u}_k}{\partial x_l})=\mu(\mathbf{x}_r,t;\mathbf{x}_s)
+	\frac{\partial \mathcal{L}}{\partial \delta u}=
+	\rho\frac{\partial^2 {\psi}_i }{\partial t^2}
+	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial {\psi}_k}{\partial x_l})-\mu(\mathbf{x}_r,t;\mathbf{x}_s)
+	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})
+%	\frac{\partial}{\partial x_j}(\delta c_{ijkl}\frac{\partial \bar{u}_k}{\partial x_l}).
+        \label{eq:Partial_U}
+\end{equation}
+注意到这里利用反射数据的走时残差，因此$\mathbf{d}^c=\mathcal{F}(\delta
+\mathbf{u})$，所以上式中对$\delta u$求导时需要加入DIW的约束。
+于是，背景波场的伴随状态方程为：
+\begin{equation}
+	\rho\frac{\partial^2 {\psi}_i }{\partial t^2}
+	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial {\psi}_k}{\partial x_l})=\mu(\mathbf{x}_r,t;\mathbf{x}_s)
 	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}),
-        \label{eq:PartialU}
+        \label{eq:Adjoint_deltaU}
 \end{equation}
-和
+
+同上利用$\frac{\partial \mathcal{L}}{\partial u}=0$可得散射波场的伴随状态方程：
 \begin{equation}
-	\rho\frac{\partial^2 \bar{\psi}_i }{\partial t^2}
-	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial \bar{\psi}_k}{\partial x_l})=
-	\frac{\partial}{\partial x_j}(\delta c_{ijkl}\frac{\partial \bar{u}_k}{\partial x_l}).
-        \label{eq:PartialPsi}
+	\rho\frac{\partial^2 \delta {\psi}_i }{\partial t^2}
+	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial \delta {\psi}_k}{\partial x_l})=
+	\frac{\partial}{\partial x_j}(\delta c_{ijkl}\frac{\partial {\psi}_k}{\partial x_l}).
+        \label{eq:Adjoint_U}
 \end{equation}
-这样就可以求得梯度：
+利用式\eqref{eq:Adjoint_deltaU}和\eqref{eq:Adjoint_U}求出伴随状态变量后就可以求得梯度：
 \begin{equation}
 	\frac{\partial \mathcal{L}}{\partial c_{ijkl}}=
     \frac{\partial E}{\partial c_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
-    x_j}\frac{\partial \bar{\psi}_{k}}{\partial x_l}+\frac{\partial \bar{u}_{i}}{\partial
+    x_j}\frac{\partial \delta{\psi}_{k}}{\partial x_l}+\frac{\partial \delta {u}_{i}}{\partial
     x_j}\frac{\partial \psi_{k}}{\partial x_l}),
     \label{eq:GradientCijkl1}
 \end{equation}

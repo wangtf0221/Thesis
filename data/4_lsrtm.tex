@@ -5,33 +5,52 @@
 \chapter{弹性波模式解耦最小平方逆时偏移}
 \label{cha:MD-ELSRTM}
 \section{引言}
-前一章内容中我们将模型分解为高波数与低波数成分，并通过弹性波WERTI方式来恢复模型的低波数成分。常规的FWI算法可以恢复模型的高波数成分，但是会受到许多因素干扰，
-如cycle-skipping问题，信噪比低，地震子波未知，正演算子不准确等等。除FWI之外，我们通常也会通过最小平方偏移（LSM）来实现高波数成分的重构。
-早在1993年，Schuster(1993)\cite{Schuster1993}提出了针对井间数据的LSM算法，而Nemeth et al.\cite{Nemeth1999}将该方法应用到了地面数据中。
-以波动方程为引擎的最小平方逆时偏移（LSRTM）近年来一直是研究的热点，例如Dai and
-Schuster(2013)\cite{Dai2013},Dong et al.(2012)\cite{Dong2012}, Luo and
-Hale(2014)\cite{Luo2014}。尽管其计算代价昂贵，但是LSRTM可以回避模型速度复杂时所产生的多路径问题。
-LSRTM的过程通常被认为是线性的全波形反演，其假设在已经获得足够好的低波数模型成分之后恢复模型的高频扰动，也即获得“像”，使得在最小平方意义下，
-用该“像”所预测的反射数据能与观测数据达到最佳匹配。因此，最小平方逆时偏移与全波形反演的理论框架是一致的。
+%前一章内容中我们将模型分解为高波数与中低波数成分，并通过弹性波WERTI方式来恢复模型的中低波数成分。
+随着勘探技术的发展，传统偏移成像方法所获得的界面高波数成分已经不能满足现阶段参数估计、岩性预测等技术的需要。
+人们更希望获得振幅保真的成像结果以便准确地获得反射率的估计。早期，基于Kirchhoff偏移的真振幅成像技术，通过计算不同偏移距（或入射角）的积分权重
+来获得高保真的地下界面成像\cite{BeylkinEtAl1985,Bleistein1987}。
+目前随着计算机的发展，RTM技术以及广泛应用于地震勘探偏移成像中。
+近年来，Zhang et al.
+(2014)\cite{Zhang2014}基于波动理论，给出了RTM框架下振幅校正的因子并为速度和阻抗反演提供好的成像结果。
 
-近期，为了更准确地描述波传播过程，同时获得更多的参数
-成像，并解决多参数带来的耦合效应，原本基于声波方程的
-LSRTM被推广到了变密度声波介质(Yang et al., 2016\cite{Yang2016})，衰减介质(Dai et al.,
-2015\cite{Dai2015})以及弹性介质中(Duan et al., 2016\cite{Duan2016};Feng and Schuster,
-2016\cite{Feng2016}; Xu et al., 2016\cite{Xu2016})（ELSRTM）。
-相比声波成像，弹性波成像可以提供更多的地下信息，例如裂缝分布以及弹性性质。但是，弹性波偏移中存在的许多问题会很大程度上影响成像质量。因为通常很难将记录中的
-波模式完全区分开，因此其中某些波模式的会因速度不对而被错误地成像。这些非物理的模式就会引起假象，也即“cross-talk”。
-而通过ELSRTM则可以提高成像的分辨率，并且可以压制由于观测孔径限制，粗网格采样以及数据缺失引起的偏移假象。
-弹性波成像需要处理矢量波的问题，也就需要选取合适的成像条件（Du et al, 2014\cite{DuEtAl2014};Gong et
-al, 2016\cite{GongEtAl2016};Rocha et al,2016\cite{RochaEtAl2016a})，近期Wang et
-al(2016)\cite{WangEtAl2016}提出了更具有物理含义的无极性反转
-的矢量成像条件。
+除了真振幅成像技术之外，最小平方偏移通过多次迭代来拟合观测与模拟的反射波数据以实现高波数成分的重构。
+受到计算能力的限制，早期的最小平方偏移也基于射线近似来实现\cite{Schuster1993,Nemeth1999}。
+同样在RTM广泛应用后，由于能够回避模型复杂时射线理论难以应对的多路径问题，最小平方逆时偏移（LSRTM）也逐渐成为近年来的研究热点。
+LSRTM可视为线性的全波形反演。它假设在已经获得足够好的中低波数成分之后恢复模型的高频扰动。
+%使得在最小平方意义下，
+%用该“像”所预测的反射数据能与观测数据达到最佳匹配。因此，最小平方逆时偏移与全波形反演的理论框架是一致的。
 
-而从EFWI理论框架出发，许多学者，
+%常规的FWI算法可以恢复模型的高波数成分，但是会受到许多因素干扰，
+%如cycle-skipping问题，信噪比低，地震子波未知，正演算子不准确等等。除FWI之外，我们通常也会通过最小平方偏移（LSM）来实现高波数成分的重构。
+%早在1993年，Schuster(1993)\cite{Schuster1993}提出了针对井间数据的LSM算法，而Nemeth et al.\cite{Nemeth1999}将该方法应用到了地面数据中。
+%以波动方程为引擎的最小平方逆时偏移（LSRTM）近年来一直是研究的热点，例如Dai and
+%Schuster(2013)\cite{Dai2013},Dong et al.(2012)\cite{Dong2012}, Luo and
+%Hale(2014)\cite{Luo2014}。尽管其计算代价昂贵，但是LSRTM可以回避模型速度复杂时所产生的多路径问题。
+%LSRTM的过程通常被认为是线性的全波形反演，其假设在已经获得足够好的低波数模型成分之后恢复模型的高频扰动，也即获得“像”，使得在最小平方意义下，
+%用该“像”所预测的反射数据能与观测数据达到最佳匹配。因此，最小平方逆时偏移与全波形反演的理论框架是一致的。
+
+由于LSRTM本质上为反演过程，因此可以用来获得不同参数的高频扰动。
+%为了更准确地描述波传播过程，同时获得更多的参数
+%成像，并解决多参数带来的耦合效应，原本基于声波方程的
+例如Yang et
+al.(2016)\cite{Yang2016}通过散射积分法，利用Hessian信息约束变密度声波介质中的LSRTM以获得速度与密度的高频扰动。
+Duan et al. (2016)\cite{Duan2016}, Feng and Schuster(2016)\cite{Feng2016}和Xu et al.(2016)
+\cite{Xu2016}几乎同时提出了弹性介质中进行LSRTM的方法。
+相比声波成像，弹性波成像可以提供更多的地下信息。但是，弹性波偏移也存在更复杂的问题，
+例如成像中不同波模式产生的“cross-talk”假象、PS波成像中的极性反转问题以及如何选取合适的矢量成像条件获取更具有物理意义的成像结果等等（Du et al,
+2014\cite{DuEtAl2014};Gong et
+al, 2016\cite{GongEtAl2016};Rocha et al,2016\cite{RochaEtAl2016a})。
+
+从反演理论框架出发，许多学者，
 如Duan et al.(2016)\cite{Duan2016},Feng et
 al.(2016)\cite{Feng2016}
-等都推导出了与EFWI梯度非常类似的成像条件。该成像条件也可以回避极性反转问题，同时也可以认为是更加接近于高频的参数扰动梯度。而基于
-第二章中对EFWI算法的分析，模式解耦带来的优势将同样能在ELSRTM中得以应用，因此我们将在本章中应用波模式解耦来对ELSRTM进行预条件，从而获得更好结果。
+等都推导出了与EFWI梯度非常类似的成像条件。该成像条件也可以回避极性反转问题，同时也可以获得更加接近于高频的参数扰动梯度。
+本章从矩阵形式的弹性波方程出发，同样给出了相似的梯度公式。
+基于第\ref{cha:MD-EFWI}章的分析，调查模式解耦在弹性波最小平方偏移中压制参数耦合的应用潜力。并根据模型不同的参数耦合程度，测试不同的反演策略，
+以更快速有效地获得弹性模型参数的高频扰动。
+%而基于
+%第二章中对EFWI算法的分析，模式解耦带来的优势将同样能在ELSRTM中得以应用，因此我们将在本章中应用波模式解耦来对ELSRTM进行预条件，从而获得更好结果。
+\clearpage
 \section{矩阵形式的弹性波方程}
 与第二章类似，我们将从弹性波方程出发，推导出E-LSRTM的梯度。为了方便，我们同样在频率域
 利用矩阵形式的弹性波方程来完成推导。二维位移-应力弹性波方程为：
@@ -212,7 +231,7 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 	2(\frac{\partial u^M_x}{\partial x}\psi^S_{xx}+\frac{\partial u^M_z}{\partial z}\psi^S_{zz})+
 	(\frac{\partial u^M_x}{\partial z}+\frac{\partial u^M_x}{\partial
 	z})\psi^S_{xz}dt,
-    \label{eq:Gradient_lambdamurho_LSRTM}
+    \label{eq:Gradient_Vel_LSRTM}
 \end{split}
 \end{equation}
 其中$M\in{\{P,S\}}$。需要注意，与EFWI所不同的是LSRTM中只需要获得模型的高波数分量，因此所处理的数据频带较宽，包括高频成分。但是
@@ -233,7 +252,7 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
         \delta\mathbf{m}_{k+1}=\delta\mathbf{m}_{k}-\alpha_k
         \begin{bmatrix}\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_p}}\\
 		\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_s}}\end{bmatrix}_{k},
-        \label{eq:Gradientmethod}
+        \label{eq:Gradientmethod_LSRTM}
 \end{equation}
 其中$\delta\mathbf{m}_{k}$为$k$次迭代的模型扰动，$\alpha$为k+1次迭代的步长。
 步长搜索同样采用抛物线拟合的方式来求取。
@@ -520,7 +539,7 @@ V_p$如图\ref{fig:final_comparison_2}b所示，可以看到左侧速度结构�
 但是由于$\delta V_s$反演并未完全消除其产生的P波残差，最后的反演结果中仍然存在少量的干扰。
 \section{本章小结}
 E-LSRTM可视为线性的EFWI过程，同样会受到参数耦合的影响。虽然该过程
-可以提高成像分辨率，但是无法完全压制$\deltaV_p$与$\delta V_s$中的参数耦合。模式解耦的预条件处理可以非常有效地压制$\delta
+可以提高成像分辨率，但是无法完全压制$\delta V_p$与$\delta V_s$中的参数耦合。模式解耦的预条件处理可以非常有效地压制$\delta
 V_s$图像中来自$\delta V_p$的串扰。
 在$\delta V_p$受参数耦合影响较弱时，在模式解耦的帮助下进行双参数同时反演可以快速地获得$\delta
 V_s$与$\delta V_p$。而在$\delta V_p$受参数耦合影响较强时，可以先反演$\delta V_s$后反演$\delta

@@ -33,35 +33,36 @@
 而且当$V_p$，$V_s$和$\rho$在结构上有差异时，trade-off效应会更加明显。
 
 将声波FWI扩展到弹性介质中需要付出更多的努力。
-很多学者指出参数化方式对缓解trade-off效应非常重要，通过调查散射模式或者Hessian算子来选取恰当的参数化方式
-\cite[]{wu.aki:1985,tarantola:1986,plessix.cao:2011,gholami2013}。另外一个常用的降低非线性程度的方法是采用多尺度的策略
-将速度扰动分解为低波数与高波数成分，然后利用不同的数据子集或者在不同阶段进行反演\cite[]{symes.carazzone:1991,bunks1995multiscale,clement:2001,shin.cha:2008,dehoop:2012,
+很多学者指出参数化方式对缓解trade-off效应非常重要，可以通过调查散射模式或者Hessian算子来选取恰当的参数化方式
+\cite[]{wu.aki:1985,tarantola:1986,plessix.cao:2011,gholami2013}。另外一个常用的降低非线性程度的方法是
+将速度扰动分解为低波数与高波数成分，然后用不同的数据子集多尺度地进行反演\cite[]{symes.carazzone:1991,bunks1995multiscale,clement:2001,shin.cha:2008,dehoop:2012,
 xu:2012,biondi.almomin:2013,ma2013,warner2016adaptive,alkhalifah2015scattering}。
-正如Tarantola(1986)\cite{tarantola:1986}所建议的，可先重构出对数据具有主要影响
-的参数，然后再重构出对数据有次级影响的参数。Sears(2008)\cite{sears2008}提出了一个有效的多尺度策略，通过时间窗来选取海底电缆(OBC)
+Tarantola(1986)\cite{tarantola:1986}指出可先重构出对数据具有主要影响
+的参数，再重构出对数据有次级影响的参数。Sears(2008)\cite{sears2008}提出了一个有效的多尺度策略，通过时间窗来选取海底电缆(OBC)
 数据中的不同子集来进行多尺度反演。Operto(2013)\cite{operto2013guided}讨论了如何多级地选取不同的数据分量以及不同的参数类型进行反演，从而
 压制参数之间trade-off效应并降低反演的非线性程度。Xu and McMechan\cite{xu.mcmechan:2014}提出了一个多步长的策略来提高密度模型的反演精度。
 
-另一个行之有效解决trade-off的方法就是在反演中施加Hessian算子。Hessian逆的对角块能够消除几何扩散以及带限效应带来的模糊性，而非对角块能够压制
+%另一个行之有效解决trade-off的方法就是在反演中施加Hessian算子。
+Hessian逆的对角块能够消除几何扩散以及带限效应带来的模糊性，而非对角块能够压制
 trade-off效应\cite[]{pratt1998gauss,fichtner2011hessian,operto2013guided,innanen2014seismic,pan2015estimation}。
-对于大规模问题，为了避免不可承受的Hessian计算和求逆，很多研究工作都旨在寻找对Hessian逆的有效近似，例如采用拟Hessian\cite[]{shin2001improved,choi.shin:2008}
+对于大规模问题，为了避免不可承受的Hessian计算及求逆，很多研究工作都旨在寻找对Hessian逆的有效近似，例如采用拟Hessian\cite[]{shin2001improved,choi.shin:2008}
 或者通过拟牛顿方式迭代构建Hessian的向量乘，如L-BFGS方法\cite[]{nocedal2006numerical,brossier2009}。
 Sheen et al(2006)\cite{sheen:2006}通过互易原理和褶积定理来计算近似Hessian从而实现了时间域基于GN的EFWI方法。
 Bae et al(2012)\cite{bae:2012}提出了频率域基于GN共轭梯度法的声弹耦合FWI。
 Pratt et al(1998)\cite{pratt1998gauss}采用“虚震源”引起的偏导数波场的概念解释了梯度与Hessian算子的物理含义。参数耦合效应是由于
-不同参数的偏导数波场在特定角度范围内的重叠导致的。因此，Wang et al\cite{wang:2015}提出通过解耦弹性波波场并在不同阶段分别选取P波与S波
-数据来反演不同参数有助于压制trade-off。通过调查解耦之后的P波与S波目标函数，Ren and Liu\cite{ren.liu:2016}证明了波场的解耦可以降低EFWI的非线性程度。
+不同参数的偏导数波场在特定角度范围内的重叠导致的。因此，Wang et al (2015)\cite{wang:2015}提出通过解耦弹性波波场并在不同阶段分别选取P波与S波
+数据来反演不同参数有助于压制trade-off。%通过调查解耦之后的P波与S波目标函数，Ren and Liu (2016)\cite{ren.liu:2016}证明了波场的解耦可以降低EFWI的非线性程度。
 此外，模式解耦也是弹性波逆时偏移中获得具有物理含义成像的关键步骤\cite{yan:2008,wang2016scalar}。
 
-本文未经验性的通过解耦正、反传波场以及地震记录\cite{ren.liu:2016}，而是采用了更有物理意义同时更节省计算量的预条件方式，
-即在伴随状态法计算梯度时只解耦反传波场。通过调查解耦后的Frech{$\acute{e}$}t导数、
-Hessian矩阵以及分辨率矩阵等反演中的关键问题，从而解释模式解耦预条件的共轭梯度（MDPCG）相比常规预条件共轭梯度（PCG）方法能够更好压制参数trade-off的理论机制。
+本文未经验性地解耦正、反传波场以及地震记录\cite{ren.liu:2016}计算梯度，而是采用了更有物理意义同时更节省计算量的预条件方式，
+即在计算梯度时只解耦反传波场。通过调查解耦后的Frech{$\acute{e}$}t导数、
+Hessian矩阵以及分辨率矩阵等反演中的关键问题，来解释模式解耦预条件的共轭梯度（MDPCG）相比常规预条件共轭梯度（PCG）方法能够更好压制参数trade-off的理论机制。
 为了简单起见，我们暂撇开密度，只在讨论部分涉及该三参数反演的问题。
 %首先，通过弹性波Born近似，我们分析了P波速度与S波速度扰动的
 %辐射模式，并导出了解耦的Frech{$\acute{e}$}t导数或Jacobian矩阵；然后，我们调查了解耦后的P波与S波数据对梯度的贡献并提出了在梯度计算中的交叉项近似。
 %在此基础上，预条件的梯度可以通过伴随状态法\cite[]{plessix2006}快速有效地计算得到，也即正传波场与解耦后反传波场的零延迟互相关。
 %然后，为了获得更多物理机制上的认识，我们计算并分析了基于解耦的Hessian和分辨率矩阵，同时也比较了MD预条件后的梯度与GN梯度的异同。
-此后，通过在流体饱和沙岩模型以及Marmousi-II模型的数值实验验证基于模式解耦的EFWI的有效性。
+此后，通过在流体饱和砂岩模型以及Marmousi-II模型的数值实验验证模式解耦EFWI的有效性。
 最后，将讨论密度参数对反演带来的复杂性以及MDPCG方法对三参数EFWI的贡献，并给出结论。
 \clearpage
 
@@ -122,7 +123,7 @@ c_{ijkl}(\mathbf{x})$相互作用产生的次级源所引发。为了简单起�
                 &\frac{\partial c_{ijkl}}{\partial V_s}=2\rho
                 V_s(-2\delta_{ij}\delta_{kl}+\delta_{ik}\delta _{jl}+\delta_{il}\delta_{jk}),
         \end{split}
-        \label{eq:deltaLame}
+        \label{eq:deltaLame_vel}
 \end{equation}
 将方程\eqref{eq:Repre}重写为速度参数化方式：
 \begin{equation}
@@ -301,7 +302,7 @@ Wang and McMechan, 2015\cite{wang.mcmechan:2015b})。
 为了在效率与精度之间寻求平衡，通常会采用梯度类的方法迭代地求解方程\eqref{eq:misfit}，即：
 \begin{equation}
         \mathbf{m}_{k+1}=\mathbf{m}_{k}-\alpha_k \mathbf{g}_k,
-        \label{eq:Gradientmethod}
+        \label{eq:Gradientmethod1}
 \end{equation}
 其中$\mathbf{m}$是模型参数向量，$k$是迭代次数，$\alpha_k$和$\mathbf{g}_k$则分别是第$k$迭代的步长与梯度。
 常规的EFWI需要非常多的迭代次数，因此良好的梯度预条件能够加速收敛。

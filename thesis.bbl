@@ -977,16 +977,22 @@ Kennett B~L, Sambridge M~S, Williamson P~R.
 \newblock Geophyscal Journal, 1988, 94:237--247
 \tongjidot
 
+\bibitem{Stork1992}
+Stork C.
+\newblock Reflection tomography in the postmigrated domain.
+\newblock {Geophysics}, 1992, 57(5):680--692
+\tongjidot
+
 \bibitem{ChaventEtAl1995}
 Chavent G, Jacewitz C~A.
 \newblock Determination of background velocities by multiple migration fitting.
-\newblock {GEOPHYSICS}, 1995, 60(2):476--490
+\newblock {Geophysics}, 1995, 60(2):476--490
 \tongjidot
 
 \bibitem{SymesEtAl1991}
 Symes W~W, Carazzone J~J.
 \newblock Velocity inversion by differential semblance optimization.
-\newblock {GEOPHYSICS}, 1991, 56(5):654--663
+\newblock {Geophysics}, 1991, 56(5):654--663
 \tongjidot
 
 \bibitem{SavaEtAl2004}
@@ -1026,7 +1032,7 @@ Leeuwen T, Mulder W~A.
 Zhang Y, Ratcliffe A, Roberts G, et~al.
 \newblock Amplitude-preserving reverse time migration: From reflectivity to
   velocity and impedance inversion.
-\newblock GEOPHYSICS, 2014, 79(6):S271--S283
+\newblock Geophysics, 2014, 79(6):S271--S283
 \tongjidot
 
 \end{thebibliography}

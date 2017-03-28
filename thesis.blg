@@ -12,20 +12,20 @@ A level-1 auxiliary file: ack.aux
 A level-1 auxiliary file: data/appendix01.aux
 A level-1 auxiliary file: data/appendix02.aux
 Database file #1: reference.bib
-Repeated entry---line 565 of file reference.bib
+Repeated entry---line 578 of file reference.bib
  : @article{Yang2016
  :                  ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1273 of file reference.bib
+I was expecting a `,' or a `}'---line 1286 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1282 of file reference.bib
+I was expecting a `,' or a `}'---line 1295 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring dehoop:2012's extra "volume" field
---line 1583 of file reference.bib
+--line 1596 of file reference.bib
 Warning--I didn't find a database entry for "cha:AdjointForEWERTI"
 Warning--there's a publisher but no address in Claerbout1985Imaging
 Name 2 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
@@ -83,45 +83,45 @@ Name 1 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a co
 while executing---line 1196 of file tongjibib.bst
 Name 2 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a comma at the end for entry kennett:1988
 while executing---line 1196 of file tongjibib.bst
-You've used 152 entries,
+You've used 153 entries,
             2219 wiz_defined-function locations,
-            1407 strings with 30271 characters,
-and the built_in function-call counts, 70808 in all, are:
-= -- 7064
-> -- 1766
+            1411 strings with 30372 characters,
+and the built_in function-call counts, 71091 in all, are:
+= -- 7093
+> -- 1770
 < -- 13
-+ -- 816
-- -- 408
-* -- 5843
-:= -- 9500
-add.period$ -- 330
-call.type$ -- 152
++ -- 818
+- -- 409
+* -- 5865
+:= -- 9541
+add.period$ -- 332
+call.type$ -- 153
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 160
-duplicate$ -- 4771
-empty$ -- 7521
-format.name$ -- 542
-if$ -- 16053
+cite$ -- 161
+duplicate$ -- 4786
+empty$ -- 7553
+format.name$ -- 543
+if$ -- 16115
 int.to.chr$ -- 0
-int.to.str$ -- 152
-missing$ -- 159
-newline$ -- 919
-num.names$ -- 152
-pop$ -- 635
+int.to.str$ -- 153
+missing$ -- 160
+newline$ -- 925
+num.names$ -- 153
+pop$ -- 637
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1006
+skip$ -- 1009
 stack$ -- 0
-substring$ -- 9931
+substring$ -- 9970
 swap$ -- 147
 text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 8
-while$ -- 766
-width$ -- 155
-write$ -- 1825
+while$ -- 770
+width$ -- 156
+write$ -- 1837
 (There were 27 error messages)

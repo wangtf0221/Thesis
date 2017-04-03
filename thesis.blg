@@ -2,126 +2,50 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: data/denotation.aux
-A level-1 auxiliary file: data/1_introduction.aux
-A level-1 auxiliary file: data/2_efwi.aux
-A level-1 auxiliary file: data/3_ewerti.aux
-A level-1 auxiliary file: data/4_lsrtm.aux
-A level-1 auxiliary file: data/5_conclusion.aux
-The style file: tongjibib.bst
-A level-1 auxiliary file: ack.aux
-A level-1 auxiliary file: data/appendix01.aux
-A level-1 auxiliary file: data/appendix02.aux
-Database file #1: reference.bib
-Repeated entry---line 578 of file reference.bib
- : @article{Yang2016
- :                  ,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1286 of file reference.bib
- : publisher={SEG}
- :                .
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1295 of file reference.bib
- : publisher={SEG}
- :                .
-I'm skipping whatever remains of this entry
-Warning--I'm ignoring dehoop:2012's extra "volume" field
---line 1596 of file reference.bib
-Warning--I didn't find a database entry for "cha:AdjointForEWERTI"
-Warning--there's a publisher but no address in Claerbout1985Imaging
-Name 2 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry zhou:2015
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry zhou:2015
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "B. X. Chi and L. G. Dong, and Y. Z. Liu" has a comma at the end for entry chi2015
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 4 in "J. B. Cheng and T. Alkhalifah, and Z. D. Wu, and P. Zou, and C. L. Wang" has a comma at the end for entry cheng:2016
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "T.J. Sears and S.C. Singh, and P.J. Barton" has a comma at the end for entry sears2008
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "Timothy J. Sears and Penny J. Barton, and Satish C. Singh" has a comma at the end for entry sears:2010
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "Denes Vigh and Kun Jiao, and Dave Watts, and Dong Sun" has a comma at the end for entry vigh:2014
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "Denes Vigh and Kun Jiao, and Dave Watts, and Dong Sun" has a comma at the end for entry vigh:2014
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "R. Brossier and S. Operto, and J. Virieux" has a comma at the end for entry brossier2009
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "Sirgue, L. and Etgen, J., and Albertin, U." has a comma at the end for entry sirgue:2008
-while executing---line 1196 of file tongjibib.bst
-Warning--there's a number but no volume in 曹书红2014
-Warning--there's a number but no volume in 黄超2015
-Warning--there's a publisher but no address in BeylkinEtAl1985
-Name 2 in "Clement, F. and Chavent, G., and Gomez, S." has a comma at the end for entry clement:2001
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "de Hoop, M. V. and Qiu, L., and Scherzer, O." has a comma at the end for entry dehoop:2012
-while executing---line 1196 of file tongjibib.bst
-Warning--there's a publisher but no address in nocedal2006numerical
-Name 2 in "Sheen, D. H. and Tuncay, K., and Baag, C. E., and Ortoleva, P. J." has a comma at the end for entry sheen:2006
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "Sheen, D. H. and Tuncay, K., and Baag, C. E., and Ortoleva, P. J." has a comma at the end for entry sheen:2006
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "T.F. Wang and J.B. Cheng, and C.L. Wang" has a comma at the end for entry wang:2015
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "V. Brytik and M. V. de-Hoop, and H. F. Smith, and G. Uhlmann" has a comma at the end for entry brytik:2011
-while executing---line 1196 of file tongjibib.bst
-Name 3 in "V. Brytik and M. V. de-Hoop, and H. F. Smith, and G. Uhlmann" has a comma at the end for entry brytik:2011
-while executing---line 1196 of file tongjibib.bst
-Warning--there's a publisher but no address in menke:1989
-Warning--there's a publisher but no address in snieder1999inverse
-Warning--there's a publisher but no address in mavko2009rock
-Name 1 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a comma at the end for entry kennett:1988
-while executing---line 1196 of file tongjibib.bst
-Name 2 in "Kennett, B. L., and Sambridge, M. S., and Williamson, P. R." has a comma at the end for entry kennett:1988
-while executing---line 1196 of file tongjibib.bst
-You've used 153 entries,
-            2219 wiz_defined-function locations,
-            1411 strings with 30372 characters,
-and the built_in function-call counts, 71091 in all, are:
-= -- 7093
-> -- 1770
-< -- 13
-+ -- 818
-- -- 409
-* -- 5865
-:= -- 9541
-add.period$ -- 332
-call.type$ -- 153
+A level-1 auxiliary file: data/ack.aux
+A level-1 auxiliary file: data/resume.aux
+I found no \citation commands---while reading file thesis.aux
+I found no \bibdata command---while reading file thesis.aux
+I found no \bibstyle command---while reading file thesis.aux
+You've used 0 entries,
+            0 wiz_defined-function locations,
+            86 strings with 532 characters,
+and the built_in function-call counts, 0 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 0
+:= -- 0
+add.period$ -- 0
+call.type$ -- 0
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 161
-duplicate$ -- 4786
-empty$ -- 7553
-format.name$ -- 543
-if$ -- 16115
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 0
+format.name$ -- 0
+if$ -- 0
 int.to.chr$ -- 0
-int.to.str$ -- 153
-missing$ -- 160
-newline$ -- 925
-num.names$ -- 153
-pop$ -- 637
-preamble$ -- 1
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 0
+num.names$ -- 0
+pop$ -- 0
+preamble$ -- 0
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1009
+skip$ -- 0
 stack$ -- 0
-substring$ -- 9970
-swap$ -- 147
-text.length$ -- 13
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 8
-while$ -- 770
-width$ -- 156
-write$ -- 1837
-(There were 27 error messages)
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 0
+(There were 3 error messages)

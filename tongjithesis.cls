@@ -53,7 +53,8 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ExecuteOptions{gbk,arialtitle}
 \ProcessOptions\relax
-\LoadClass[12pt,a4paper,openany]{book}
+\LoadClass[12pt,a4paper,openright]{book}
+%\LoadClass[12pt,a4paper,openany]{book}
   \iftongji@master\relax\else
     \iftongji@doctor\relax\else
       \ClassError{tongjithesis}%
@@ -289,13 +290,14 @@
   \def\@oddfoot{\hfil\wuhao\thepage\hfil}
   \let\@evenfoot=\@oddfoot}
 %英文摘要页面设置
+	\gdef\tongji@lmk{}
 \def\ps@tongji@enabheadings{%
   \def\@oddhead{\vbox to\headheight{%
-      \hb@xt@\textwidth{\hfill\wuhao\song Tongji University Doctor of Philosophy Abstract}%
+      \hb@xt@\textwidth{\hfill\wuhao\song Tongji University Doctor of Philosophy Abstract 
+	  \tongji@lmk}%
       \vskip 2pt\hbox{\vrule width\textwidth height 0.4pt depth 0pt}}}
   \def\@evenhead{\vbox to\headheight{%
-      \hb@xt@\textwidth{\wuhao\song%
-      Tongji University Doctor of Philosophy Abstract\hfill}%
+      \hb@xt@\textwidth{\wuhao\song Tongji University Doctor of Philosophy Abstract \tongji@lmk \hfill}%
       \vskip 2pt\hbox{\vrule width\textwidth height 0.4pt depth 0pt}}}
   \def\@oddfoot{\hfil\wuhao\thepage\hfil}
   \let\@evenfoot=\@oddfoot}
@@ -311,7 +313,7 @@
   \def\@oddfoot{\hfil\wuhao\thepage\hfil}
   \let\@evenfoot=\@oddfoot}
 %页眉页脚设置
-\gdef\tongji@lmk{你好}
+\gdef\tongji@lmk{}
  \def\ps@tongji@otherheadings{%
   \def\@oddhead{\vbox to\headheight{%
       \hb@xt@\textwidth{\hfill\wuhao\song 同济大学\ \,博士学位论文\ \,\tongji@lmk}%
@@ -490,7 +492,7 @@
     \addtocounter{tongji@bookmark}\@ne
     \pdfbookmark[0]{#2}{tongjichapter.\thetongji@bookmark}
   \else
-    \addcontentsline{toc}{chapter}{#1}
+    \addcontentsline{toc}{chapter}{\hei{#1}}
   \fi
   \chapter*{#2}
   \ifx\@tmpb\@empty
@@ -519,6 +521,7 @@
 \fi
 %增加目录页
 \renewcommand\tableofcontents{%
+   \cleardoublepage
 \gdef\tongji@lmk{目录}
 \pagestyle{tongji@otherheadings}
   \tongji@chapter*[]{\lcontentsname}[\contentsname]
@@ -758,7 +761,8 @@
 \newcommand{\tongji@makeabstract}{%
   \cleardoublepage % always openright for Abstract
   \tongji@chapter*[]{\cabstractname} % no tocline
-  \thispagestyle{tongji@cnabheadings}  
+    \addcontentsline{toc}{chapter}{\hei{摘要}}
+  \pagestyle{tongji@cnabheadings}  
   \pagenumbering{Roman}
   \tongji@cabstract
   \vskip12bp
@@ -767,7 +771,8 @@
     \box0\tongji@ckeywords
   %英文摘要页面
   \tongji@chapter*[]{\eabstractname} % no tocline
-  \thispagestyle{tongji@enabheadings}
+    \addcontentsline{toc}{chapter}{\hei{ABSTRACT}}
+  \pagestyle{tongji@enabheadings}
   \tongji@eabstract
   \vskip12bp
   \setbox0=\hbox{\textbf{Key words:\enskip}}

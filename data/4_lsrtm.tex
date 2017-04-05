@@ -54,7 +54,7 @@ al.(2016)\cite{Feng2016})
 %而基于
 %第二章中对EFWI算法的分析，模式解耦带来的优势将同样能在ELSRTM中得以应用，因此我们将在本章中应用波模式解耦来对ELSRTM进行预条件，从而获得更好结果。
 \section{矩阵形式的弹性波方程}
-与第二章类似，我们将从弹性波方程出发，推导出E-LSRTM的梯度。为了方便，我们同样在频率域
+与第二章类似，将从弹性波方程出发，推导出E-LSRTM的梯度。为了方便，同样在频率域
 利用矩阵形式的弹性波方程来完成推导。二维位移-应力弹性波方程为：
 
 \begin{equation}
@@ -132,8 +132,8 @@ $\delta\lambda,\delta\mu,\delta\rho$时，介质中总波场和扰动场满足�
         \end{bmatrix}.
         \label{eq:L_rho}
 \end{equation}
-由于在E-LSRTM中假设背景波场及背景模型不发生变化，故可将方程\eqref{eq:WE_Matrix_delta}看作为新的状态方程。
-与EFWI中所描述的正问题不同的是，该状态方程所描述的正问题只考虑反射（散射）波的扰动而不包含透射波（或直达波）。
+在E-LSRTM中通常假设背景波场及背景模型不发生变化。%故可将方程\eqref{eq:WE_Matrix_delta}看作为新的状态方程。
+与EFWI中所描述的正问题不同的是，该方程所描述的正问题只考虑反射（散射）波的扰动而不包含透射波（或直达波）。
 方程右端项为背景波场与参数扰动之间通过辐射模式作用形成新的震源。
 上述问题通常假定在背景模型足够好的时候来恢复高波数扰动，因此方程也只描述一次散射。
 在实际地下介质中，模型复杂时多次散射效应会对成像带来很大影响。近期，也有学者考虑在反演迭代过程中将更新的扰动量加入背景场。
@@ -200,7 +200,7 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
    & \rho\frac{\partial^2 \psi_{z}}{\partial t^2}=	\lambda\frac{\partial \psi_{xx}}{\partial z}+
 		(\lambda+2\mu)\frac{\partial \psi_{zz}}{\partial z}+\mu\frac{\partial \psi_{xz}}{\partial x},\\
    & \psi_{xx}=\frac{\partial \psi_x}{\partial x}, \psi_{zz}=\frac{\partial \psi_z}{\partial z},\\
-   & \psi_{xz}=\frac{\partial \psi_x}{\partial z} + \frac{\partial \psi_z}{\partial x},
+   & \psi_{xz}=\frac{\partial \psi_x}{\partial z} + \frac{\partial \psi_z}{\partial x}.
     \label{eq:Time_Adjoint_WE_LSRTM}
 \end{split}
 \end{equation}
@@ -251,9 +251,9 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 \end{equation}
 该补偿相当于对角Hessian的作用。于是最终采用模式解耦作为预条件的E-LSRTM更新方式如下：
 \begin{equation}
-        \delta\mathbf{m}_{k+1}=\delta\mathbf{m}_{k}-\alpha_k
+	\delta\mathbf{m}_{k+1}=\delta\mathbf{m}_{k}-\alpha_{k+1}
         \begin{bmatrix}\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_p}}\\
-		\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_s}}\end{bmatrix}_{k},
+		\mathbf{Q}{\frac{\partial\mathcal{L}}{\partial \delta V_s}}\end{bmatrix}_{k+1},
         \label{eq:Gradientmethod_LSRTM}
 \end{equation}
 其中$\delta\mathbf{m}_{k}$为$k$次迭代的模型扰动，$\alpha$为k+1次迭代的步长。
@@ -262,7 +262,7 @@ $\frac{\partial\mathcal{L}}{\partial\delta\rho}=\mathcal{L}^{'}_{\rho}$。
 本节将通过数值实验来验证模式解耦在最小平方偏移中的应用潜力。
 将从简单模型出发分析E-LSRTM中可能存在的问题，并在Marmousi-II模型上测试解耦预条件的E-LSRTM算法与反演策略。
 根据第\ref{cha:MD-EFWI}章中的分析结果，采用S波来反演$V_s$扰动接近于单参数的反演。E-LSRTM为线性问题，
-只需要更新模型高频扰动部分，因此在反演策略上也与EFWI略有不同。我们将根据不同的情况采取如下两种不同的反演策略：
+只需要更新模型高频扰动部分，因此在反演策略上也与EFWI略有不同。将根据不同的情况采取如下两种不同的反演策略：
 
 策略1：$\delta V_p$较少受到耦合影响时，采用解耦预条件梯度进行$\delta V_p$与$\delta V_s$同时反演；
 
@@ -282,7 +282,7 @@ LSRTM的理论是基于一阶Born散射导出的，因此高频参数扰动预�
 ，这样才能保证最终数据残差的下降。而实际中无法获得Born散射数据，通常在进行LSRTM时都是匹配切除直达波的反射数据。而反射数据与Born模拟数据之间存在差异，
 这就会使得模拟数据无法与观测数据完全匹配。
 
-我们从简单的两层介质出发来调查弹性波中反射数据与Born模拟数据间的差异。这里只考虑$V_p$的速度界面，
+这里，从简单的两层介质出发来调查弹性波中反射数据与Born模拟数据间的差异。这里只考虑$V_p$的速度界面，
 上层$V_p=2.6km/s$，下层$V_p=2.8km/s$， $V_s$采用均匀模型($V_s=1.5km/s$)。有限差分算法空间采样10m，时间采样1ms。
 由于Born近似在小扰动下成立，因此对真实模型进行不同尺度平滑后进行Born正演，从而调查反射数据与Born模拟数
 据之间的差异。
@@ -325,7 +325,7 @@ Schuster,2016\cite{Feng2016}。但是这也只能做到压制“脚印”，难�
 尤其是在$V_p$与$V_s$结构不一致的时候。%而模式解耦的梯度可以很好的帮助降低$V_s$反演中受到的参数耦合干扰。
 为了测试参数耦合对E-LSRTM的影响
 %以及模式解耦的有效性，
-我们选取具有不同结构的$V_p$与$V_s$双层模型来进行实验。
+选取具有不同结构的$V_p$与$V_s$双层模型来进行实验。
 \begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter04/tradeoff/vp.pdf}}
@@ -444,7 +444,7 @@ V_s$图像中基本消除了低频噪音，来自$V_p$结构的脚印已经被�
 \end{figure}
 
 虽然理论上Born模拟数据与剩余反射数据相差不多，但这只是考虑一次散射的情况。在复杂区域，多次散射很强时利用反射数据进行LSRTM就会遇到挑战。
-接下来，我们将采用剩余反射数据测试算法。反射数据中的直达波会带来很大的干扰，因此在进行实验时，先根据走时对直达波进行切除。
+接下来，将采用剩余反射数据测试算法。反射数据中的直达波会带来很大的干扰，因此在进行实验时，先根据走时对直达波进行切除。
 切除直达波后，ERTM结果较少受到低频噪音干扰，但是模型深部成像能量不均衡以及参数的耦合还存在。而且在中间断层区域，多次散射
 效应也很明显，存在许多串扰的假象。经过E-LSRTM之后，深部的能量获得了较好的补偿，分辨率也得到了提高，但是参数耦合导致$\delta
 V_s$图像中的$\delta V_p$脚印难以被彻底压制。

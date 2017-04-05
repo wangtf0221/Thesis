@@ -559,20 +559,6 @@ Wang S, Chen F, Zhang H, et~al.
   Geophysicists, 2013. Society of Exploration Geophysicists
 \tongjidot
 
-\bibitem{ma2013}
-Ma Y, Hale D.
-\newblock Wave-equation reflection traveltime inversion with dynamic warping
-  and full waveform inversion.
-\newblock Geophysics, 2013, 78(6):R223--R233
-\tongjidot
-
-\bibitem{Wang2015}
-Wang H, Singh S~C, Audebert F, et~al.
-\newblock Inversion of seismic refraction and reflection data for building
-  long-wavelength velocity models.
-\newblock Geophysics, 2015, 80(2):R81--R93
-\tongjidot
-
 \bibitem{Irabor2016}
 Irabor K, Warner M.
 \newblock Reflection FWI.
@@ -585,6 +571,20 @@ Irabor K, Warner M.
 Wang F, Donno D, Chauris H, et~al.
 \newblock Waveform inversion based on wavefield decomposition.
 \newblock {Geophysics}, 2016, 81(6):R457--R470
+\tongjidot
+
+\bibitem{ma2013}
+Ma Y, Hale D.
+\newblock Wave-equation reflection traveltime inversion with dynamic warping
+  and full waveform inversion.
+\newblock Geophysics, 2013, 78(6):R223--R233
+\tongjidot
+
+\bibitem{Wang2015}
+Wang H, Singh S~C, Audebert F, et~al.
+\newblock Inversion of seismic refraction and reflection data for building
+  long-wavelength velocity models.
+\newblock Geophysics, 2015, 80(2):R81--R93
 \tongjidot
 
 \bibitem{Guo2016}
@@ -796,51 +796,6 @@ Operto S, Virieux J, Dessa J~X, et~al.
   Nankai trough.
 \newblock Journal of Geophysical Research: Solid Earth (1978--2012), 2006,
   111(B9)
-\tongjidot
-
-\bibitem{symes.carazzone:1991}
-Symes W, Caeazzone J.
-\newblock Velocity inversion by differential semblance optimization.
-\newblock Geophysics, 1991, 56:654--663
-\tongjidot
-
-\bibitem{bunks1995multiscale}
-Bunks C, Saleck F~M, Zaleski S, et~al.
-\newblock Multiscale seismic waveform inversion.
-\newblock Geophysics, 1995, 60(5):1457--1473
-\tongjidot
-
-\bibitem{clement:2001}
-Clement F, Chavent G, Gomez S.
-\newblock Migration-based traveltime waveform inversion of 2-D simple
-  structures: A synthetic example.
-\newblock Geophysics, 2001, 66:845--860
-\tongjidot
-
-\bibitem{dehoop:2012}
-Hoop M~V, Qiu L, Scherzer O.
-\newblock Local analysis of inverse problems: Holder stability and iterative
-  reconstruction.
-\newblock Inverse Problem, 2012, 2012:045001
-\tongjidot
-
-\bibitem{biondi.almomin:2013}
-Biondi B, Almomin A.
-\newblock Tomographic full-waveform inversion ({TFWI}) by combing {FWI} and
-  wave-equation migration velocity analysis.
-\newblock The Leading Edge, 2013, 32(9):1074--1080
-\tongjidot
-
-\bibitem{warner2016adaptive}
-Warner M, Guasch L.
-\newblock Adaptive waveform inversion: Theory.
-\newblock Geophysics, 2016, 81(6):R429--R445
-\tongjidot
-
-\bibitem{alkhalifah2015scattering}
-Alkhalifah T.
-\newblock Scattering-angle based filtering of the waveform inversion gradients.
-\newblock Geophysical Journal International, 2015, 200(1):363--373
 \tongjidot
 
 \bibitem{xu.mcmechan:2014}

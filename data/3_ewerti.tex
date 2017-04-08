@@ -28,7 +28,7 @@ Sava and
 Fomel(2006)\cite{SavaEtAl2006}; Yang and Sava(2011)\cite{YangEtAl2011}; Almomin and
 Biondi(2012)\cite{Almomin2012}; Sun and Symes(2012)\cite{SunEtAl2012})。
 WEMVA通常需要引入扩展成像条件，采用各类准则衡量成像残差，例如叠加能量最大（SI）\cite{ChaventEtAl1995}、微分相似优化(DSO)\cite{SymesEtAl1991}
-和差异剩余偏移(DRM)\cite{SavaEtAl2004}等，来实现背景模型的更新。
+和差异剩余偏移(DRM)\cite{SavaEtAl2004}等来实现背景模型的更新。
 但WEMVA受困于昂贵的计算代价，尤其在三维问题中。
 针对反射走时，Luo et
 al(2016)\cite{Luo2016}用时间轴方向的扩展成像与Rytov近似结合，导出了全走时反演（FTI）方法，获得了不错的反演效果。该方法实质上也是一种成像域的反演方法。
@@ -212,7 +212,7 @@ $h^{'}_i(\mathbf{x_r};\mathbf{x_s})=\int h_i(\mathbf{x_r},t;\mathbf{x_s})dt$
    \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsPS.pdf}}\\
    \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsSP.pdf}}
    \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsSS.pdf}}
-   \caption{$K_{V_s}$核函数的四个分量：(a), $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
+   \caption{$K_{V_s}$核函数的四个分量：(a) $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
    \label{fig:kernel2_vs_decomp}
 \end{figure}
 图\ref{fig:kernel2}中$V_p$核函数与图\ref{fig:kernel1_vp}有所不同，这是因为当存在$V_s$反射层时，反传的散射波场在界面处产生“非物理”的SP转换波，
@@ -224,7 +224,7 @@ $h^{'}_i(\mathbf{x_r};\mathbf{x_s})=\int h_i(\mathbf{x_r},t;\mathbf{x_s})dt$
 如图\ref{fig:kernel2_vs_decomp}所示，$K_{V_s}^{PP}$的能量与图\ref{fig:kernel2}c中
 的$V_p$核函数十分类似，但是主要能量的符号相反（在第二章图\ref{fig:all}中有类似现象）；$K_{V_s}^{PS}$与$K_{V_s}^{SP}$则包含非常多的高频信息，
 它们是不同模式的正传与反传波场之间的偏移脉冲响应；$K_{V_s}^{SS}$则与其他三者有些不同，只包含了检波点端的单支反射路径，这是由于
-采用了P波震源，在震源端的波场中不包含S波数据（$K_{V_s}^{SS}$的震源端项会是0）。这样的话，$K_{V_s}^{SS}$就很少会受到P波路径的影响。如果利用好分解后很函数的这些特征，
+采用了P波震源，在震源端的波场中不包含S波数据（$K_{V_s}^{SS}$的震源端项会是0）。这样的话，$K_{V_s}^{SS}$就很少会受到P波路径的影响。如果利用好分解后核函数的这些特征，
 将会非常有助于背景$V_s$的反演。
 \section{弹性波波动方程反射走时反演流程}
 弹性介质中P波震源情况下，不同模式的转换波，主要是PP与PS同相轴之间会互相叠加、互相交叉。在用DIW提取走时残差的时候，这些交叉点的位置就会变成一些奇异点带来很大麻烦
@@ -234,9 +234,10 @@ P波或S波地震记录。这样，走时残差就可以被分成P波与S波两�
 由于DIW提取走时的方式对数据的频率成分并不敏感，因此EWERTI中的多尺度策略主要体现在反演参数先后顺序上，并不需要过多考虑分频的策略。
 \subsection{$V_p$反演}
 在这个阶段主要采用PP反射波来建立P波速度的背景模型。首先，从ERTM中获得P波速度的扰动，即$\delta V_p$。
-为了确保模拟的反射波与观测数据中的零（小）偏移距走时匹配，这里采用小偏移距的数据
-获取$\delta V_p$。因为在速度不准的情况下大偏移距数据的偏移/反偏移结果会
+因为在速度不准的情况下大偏移距数据的偏移/反偏移结果会
 造成模拟的反射波零偏移距走时误差，进而增加反演的困难程度。
+这里为了确保模拟的反射波与观测数据中的零（小）偏移距走时匹配，采用小偏移距的数据
+获取$\delta V_p$。
 此外，由于在WERTI中只考虑走时，可以只进行ERTM成像
 而不是ELSRTM来准确估计反射率。
 这也降低了反演中对反射系数估计的依赖程度。因此，目标函数变为最小化PP反射波的走时残差：
@@ -282,12 +283,12 @@ P波或S波地震记录。这样，走时残差就可以被分成P波与S波两�
 \end{figure}
 其中$\theta_1$和$\theta_2$分别为入射和反射角，$h$为界面深度，则PS波时距曲线关系为：
 \begin{equation}
-	t=\frac{h}{cos\theta_1V_p}+\frac{h}{cos\theta_2V_s},
+	t=\frac{h}{cos\theta_1V_p}+\frac{h}{cos\theta_2V_s}.
     \label{eq:TravelTime_PS} 
 \end{equation}
 方式\uppercase\expandafter{\romannumeral1}与方式\uppercase\expandafter{\romannumeral2}的差异在于速度不准时，确定界面深度的过程不同。
 这里使用零（小）偏移距的图偏移获得界面深度，然后带入到
-式\eqref{eq:TravelTime_PS}中来近似获得错误速度下Born反射数据的时距关系。
+式\eqref{eq:TravelTime_PS}中来近似获得错误速度下反偏移获得的反射数据的时距关系。
 
 方式\uppercase\expandafter{\romannumeral1}
 中，在图偏移时零偏移距走时保持不变，则偏移后的深度位置满足：
@@ -308,11 +309,11 @@ P波或S波地震记录。这样，走时残差就可以被分成P波与S波两�
 通常情况下
 $V_p>V_s$因此$\frac{V_p+V_s}{V^{'}_p+V^{'}_s}$中$V^{'}_p$的小偏差也会带来很大的影响，
 因此PS波零（小）偏移距成像界面的深度会同时受到$V_p$与$V_s$速度误差的影响。
-下文将使用式\eqref{eq:Snell_PS}-\eqref{eq:ZerooffMig_PP}测试Born反射数据的时距关系对$V^{'}_p$和$h$的敏感性。
+下文将使用式\eqref{eq:Snell_PS}-\eqref{eq:ZerooffMig_PP}测试反偏移反射数据的时距关系对$V^{'}_p$和$h$的敏感性。
 
 这里将以下几个参数固定为$V_p=2500m/s$, $V_s=1500m/s$, $V^{'}_s=1300m/s$, 而$V^{'}_p$选取$2450,
 2500, 2550m/s$三个扰动值。
-从图\ref{fig:Sens_vp}中可以看到采用方式\uppercase\expandafter{\romannumeral1}时获取的Born反射数据对$V_p$的误差非常敏感，
+从图\ref{fig:Sens_vp}中可以看到采用方式\uppercase\expandafter{\romannumeral1}时获取的反偏移反射数据对$V_p$的误差非常敏感，
 在$\pm50m/s$范围内就会引起反偏移数据的走时残差发生方向
 改变。相反，如果采用方式\uppercase\expandafter{\romannumeral2}，其走时残差方向都是正确的。
 \begin{figure}[h]
@@ -332,7 +333,7 @@ $V_p>V_s$因此$\frac{V_p+V_s}{V^{'}_p+V^{'}_s}$中$V^{'}_p$的小偏差也会�
 但这样做也存在两个弊端：
 第一、产生的PS反射无法保证振幅的准确性，幸运的是这并不会给DIW拾取走时残差带来大的
 困扰；第二、来自深部的PS反射可能由于时差太大使得DIW拾取的时候受到cycle-skipping困扰，不过这个问题可以采用“层剥离”的方式，通过照明能量补偿的控制，先使用浅部的反射走时残差来更新浅层，
-再使用深部的走时残差更新深部的速度。这样即使初始阶段深部的反射走时残差错误也不影响浅部的速度更新，在浅部更新较好后，深部的反射走时残差也能保证拾取较为准确。
+再使用深部的走时残差更新深部的速度。这样即使初始阶段深部的反射走时残差错误也不影响浅部的速度更新，在浅部更新较好后，深部的反射走时残差也能保证拾取得较为准确。
 %先更新浅层$V_s$
 %然后更新深层来避免。
 %但方式\uppercase\expandafter{\romannumeral2}也存在问题，
@@ -451,7 +452,7 @@ Hale (2009)\cite{Hale2009Structure}采用结构张量来估计地层倾角。对
    \label{fig:TrueAndInitial}
 \end{figure}
 \subsection{Sigsbee2A模型}
-为了验证EWERTI算法的有效性，本节采用Sigsbee2A$V_p$模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b），
+为了验证EWERTI算法的有效性，本节采用Sigsbee2A模型的一部分来进行实验（如图\ref{fig:TrueAndInitial}a和\ref{fig:TrueAndInitial}b），
 $V_s$模型通过固定的泊松比来产生。
 图\ref{fig:TrueAndInitial}c和\ref{fig:TrueAndInitial}d展示了$V_p$和$V_s$的初始模型，
 速度值随深度线性增加。可以看到，初始模型中$V_p$比真实值偏低而$V_s$则偏高，
@@ -487,7 +488,7 @@ $V_s$模型通过固定的泊松比来产生。
 从上述糟糕的初始模型出发，按照前文所设计的工作流程进行EWERTI，其反演结果如
 图\ref{fig:InvertedModel_WERTI}。
 在经过每个阶段40次迭代之后，EWERTI较好地恢复了模型中深部的中低波数成分，加之由于倾角导引正则化的优势，
-反演模型在宏观上与真实模型更吻合。模型两侧反射数据覆盖较少的区域以及最底部无反射波穿过的区域，
+反演模型在宏观上与真实模型更吻合。但是模型两侧反射数据覆盖较少的区域以及最底部无反射波穿过的区域，
 %由于缺乏反射波路径信息
 EWERTI也无法对背景速度进行更新。
 \begin{figure}[!htb]
@@ -507,7 +508,7 @@ EWERTI也无法对背景速度进行更新。
    \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_true.pdf}}
    \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_init.pdf}}
    \subfloat[]{\includegraphics[width=0.33\textwidth]{Figure/chapter03/sigbee2/Fig/DataPS_werti.pdf}}
-   \caption{真实反射数据（左），初始模型Born反射数据（中）与EWERTI之后Born反射数据（右）之间的比较：(a),(b)和(c)为垂直分量，(d),(e),(f)为水平
+   \caption{真实反射数据（左），初始模型反偏移反射数据（中）与EWERTI之后反偏移反射数据（右）之间的比较：(a),(b)和(c)为垂直分量，(d),(e)和(f)为水平
    分量。}
    \label{fig:Data_comparison}
 \end{figure}
@@ -554,7 +555,7 @@ EWERTI也无法对背景速度进行更新。
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter03/sigbee2/Fig/1km.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter03/sigbee2/Fig/3km.pdf}}
    \caption{
-	   1.4km和3km处EWERTI和EFWI的垂向剖面对比。黑线和蓝线分别代表真实模型与初始模型，绿线与黄线分别代表WERTI和EFWI的结果。
+	   1.4km (a) 和3km (b) 处EWERTI和EFWI的垂向剖面对比。黑线和蓝线分别代表真实模型与初始模型，绿线与黄线分别代表WERTI和EFWI的结果。
 %	   Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
 %       3km (b). The black and blue lines indicate the true and linearly increased
 %       initial model. The green and yellow lines indicate the WERTI and EFWI results,
@@ -606,6 +607,6 @@ EFWI受到越来越严重的困扰，尤其是在EWERTI未能恢复中低波数�
 因此相对于采用波形拟合的目标函数，采用走时残差的目标函数对规避cycle-skipping问题有着明显的优势，
 可以更好地反演模型的长波长分量。相对空间或时间互相关提取走时残差的方法而言，DIW在模型复杂时更加稳健可靠。
 
-针对弹性波场中复杂的模式转换问题，本文采用多分量地震数据的P/S分离技术分别获得PP与PS反射波的走时，采用空间波场模式解耦的方式来获得更具有物理含义的
+针对弹性波场中复杂的模式转换问题，本文采用多分量地震数据的P/S分离技术分别获得PP与PS反射波的走时残差，采用空间波场模式解耦的方式来获得更具有物理含义的
 PS波反射波核函数来更新$V_s$模型。为了降低反演中的非线性程度，文中设计了两步法的策略，先反演$V_p$后反演$V_s$。通过局部倾角导引正则化约束，采用PP
 波界面反偏移获取PS反射波，结合“层剥离”等手段来对反演进行控制，从而确保其收敛性。实验表明，反演获得了较为可靠的包含中低波数成分的模型，为EFWI提供了良好的初始模型。

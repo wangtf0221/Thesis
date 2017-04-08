@@ -1,6 +1,6 @@
 \chapter{Gauss-Newton梯度的调查}
 \label{cha:InvestigationOfGNGradient}
-利用方程\eqref{eq:GN}和\eqref{eq:HessInv}, 我们可以得到GN方法预条件后的梯度：
+利用方程\eqref{eq:GN}和\eqref{eq:HessInv}, 可以得到GN方法预条件后的梯度：
 \begin{equation}
         \delta \tilde{\mathbf{m}}=
         \begin{bmatrix}
@@ -16,8 +16,8 @@
         \end{bmatrix}.
         \label{eq:PreGN}
 \end{equation}
-注意到上式中我们利用了关系$\mathbf{g}_{V_p}=\mathbf{g}^P_{V_p}+\mathbf{g}^S_{V_p}$，
-$\mathbf{g}_{V_s}=\mathbf{g}^P_{V_s}+\mathbf{g}^S_{V_s}$和$\mathbf{g}_{V_p}=\mathbf{g}^P_{V_p}$。很自然地，我们同样也
+注意到上式中利用了关系$\mathbf{g}_{V_p}=\mathbf{g}^P_{V_p}+\mathbf{g}^S_{V_p}$，
+$\mathbf{g}_{V_s}=\mathbf{g}^P_{V_s}+\mathbf{g}^S_{V_s}$和$\mathbf{g}_{V_p}=\mathbf{g}^P_{V_p}$。很自然地，同样也
 可以将预条件后的梯度$\delta\tilde{\mathbf{m}}$，分成两个部分：
 $\delta \tilde{\mathbf{m}} = \delta \tilde{\mathbf{m}}^P+\delta
 \tilde{\mathbf{m}}^S$, 其中
@@ -52,8 +52,8 @@ $\delta \tilde{\mathbf{m}} = \delta \tilde{\mathbf{m}}^P+\delta
 考虑到$\delta \tilde{\mathbf{m}}^P=\mathbf{R}^P\delta \mathbf{m}$ 以及$\delta \tilde{\mathbf{m}}^S=\mathbf{R}^S\delta \mathbf{m}$，则
 \begin{equation}
 \begin{split}
-        \delta \mathbf{V}^P_s\approx0, \\
-        \delta \mathbf{V}_s \approx \delta
+        &\delta \mathbf{V}^P_s\approx0, \\
+        &\delta \mathbf{V}_s \approx \delta
         \mathbf{V}^S_s=-\mathbf{G}\mathbf{g}^S_{V_s},
         \label{eq:gradGN}
 \end{split}

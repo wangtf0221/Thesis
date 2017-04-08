@@ -1,6 +1,6 @@
 \chapter{共轭状态法推导弹性波WERTI的梯度}
 \label{cha:AdjointForEWERTI}
-本节中，我们采用共轭状态法Plessix(2006)\cite{plessix2006}导出弹性波WERTI的梯度。E-WERTI中共有三个状态方程，其中两个为式\eqref{eq:WE}
+本节中，采用共轭状态法(Plessix(2006)\cite{plessix2006})导出弹性波WERTI的梯度。EWERTI中共有三个状态方程，其中两个为式\eqref{eq:WE}
 和\eqref{eq:DeltaWE}。第三个状态方程来自DIW的优化约束。
 
 我们知道DIW要找出局部的走时残差($\mathbf{\tau}=\tau(\mathbf{x}_r,t;\mathbf{x}_s)$)使得目标函数$D(\tau)$最小，其中$D(\tau)$为：
@@ -62,7 +62,7 @@ $\frac{\partial \mathcal{L}}{\partial \delta u}=0$和$\frac{\partial \mathcal{L}
 	\frac{\partial \mathcal{L}}{\partial \delta u}=
 	\rho\frac{\partial^2 {\psi}_i }{\partial t^2}
 	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial {\psi}_k}{\partial x_l})-\mu(\mathbf{x}_r,t;\mathbf{x}_s)
-	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})
+	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}).
 %	\frac{\partial}{\partial x_j}(\delta c_{ijkl}\frac{\partial \bar{u}_k}{\partial x_l}).
         \label{eq:Partial_U}
 \end{equation}
@@ -72,7 +72,7 @@ $\frac{\partial \mathcal{L}}{\partial \delta u}=0$和$\frac{\partial \mathcal{L}
 \begin{equation}
 	\rho\frac{\partial^2 {\psi}_i }{\partial t^2}
 	-\frac{\partial}{\partial x_j}(c_{ijkl}\frac{\partial {\psi}_k}{\partial x_l})=\mu(\mathbf{x}_r,t;\mathbf{x}_s)
-	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}),
+	\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s}).
         \label{eq:Adjoint_deltaU}
 \end{equation}
 
@@ -88,7 +88,7 @@ $\frac{\partial \mathcal{L}}{\partial \delta u}=0$和$\frac{\partial \mathcal{L}
 	\frac{\partial \mathcal{L}}{\partial c_{ijkl}}=
     \frac{\partial E}{\partial c_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
     x_j}\frac{\partial \delta{\psi}_{k}}{\partial x_l}+\frac{\partial \delta {u}_{i}}{\partial
-    x_j}\frac{\partial \psi_{k}}{\partial x_l}),
+    x_j}\frac{\partial \psi_{k}}{\partial x_l}).
     \label{eq:GradientCijkl1}
 \end{equation}
 

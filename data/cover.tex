@@ -106,14 +106,14 @@
 	更加线性的关系。因此第三章中采用弹性波波动方程反射走时反演（EWERTI），
 	通过DIW（Dynamic image warping）算法来提取走时残差并以此建立目标函数，
 	可以一定程度上回避周波跳跃。
-	文中采用基于模式解耦的两步反演策略，首先采用PP波数据反演$V_p$，然后固定反演好的$V_p$通过PS波反演$V_s$。
 	地面P/S数据分离可获得不同模式数据残差，空间域弹性波模式解耦则可以对梯度有效地预条件，从而实现$V_p$和$V_s$的分步反演，这将有效降低反演的非线性程度。
 	反射波波路径核函数分析解释了解耦的波模式反射路径对压制串扰的重要作用。
 %	局部倾角导引正则化约束可以使得反演快速收敛到具有地质意义的模型。
 	此外，
 	为了降低反演的多解性、保证反演够获得更合理的速度模型，采用包含地层倾角信息的成像结果进行局部倾角导
 	引正则化来确保反演获得更符合地质意义的速度模型。
-	文中采用Sigsbee2A模型来
+	基于以上所述，文中采用两步反演策略，首先采用PP波数据反演$V_p$，然后固定反演好的$V_p$通过PS波反演$V_s$。
+	然后，通过Sigsbee2A模型的数值实验结果
 	验证EWERTI方法以及反演策略的有效性，并用EFWI检验EWERTI反演结果的准确性。
 
 	ELSRTM旨在通过拟合反射波振幅信息来反演弹性参数模型的高波数成分，可视为线性的EFWI问题。
@@ -145,7 +145,8 @@
 	maturation of wide-azimuth, long-offset and broadband data accquisition 
 	technology, full waveform inversion (FWI) becomes a powerful tool to recover the full
 	 wavenumber spectrum of the subsurface. However, FWI can not provide the estimated
-	model as good as expected. In order to overcome the obstacles such as bad initial models,
+	model as good as expected. In order to overcome the obstacles such as cycle-skipping problems
+	caused by bad initial models or
 	insufficiency of low frequency component in the data, inaccurately estimated source
 	wavelet, low sigal/noisy ratio in the data, many researchers developed hierarachical strategies
 	by selecting data subsets of different frequency, offset or scattering-angle during the
@@ -155,9 +156,9 @@
 	parameter will lead to trade-offs.
 	To rebuild the model containing different wavenumber spectrum, elastic full waveform
 	inversion (EFWI), elastic wave equation 
-	reflected traveltime inversion (EWERTI) and elastic least square reverse time
-	migration (ELSRTM) are implemented with the help of wave mode decomposition, in which we
-	try to recover the low and intermediat wavenumber, 
+	reflection traveltime inversion (EWERTI) and elastic least square reverse time
+	migration (ELSRTM) are implemented with the help of wave mode decomposition, through which we
+	try to recover the low and intermediate wavenumber, 
 	the high wavenumber and the full wavenumber spectrum of the elastic model.
 
 Elastic full waveform inversion (EFWI) aims to reduce the misfit between recorded and modelled multi-component
@@ -192,11 +193,12 @@ The reflection kernel analysis shows that mode decomposition can suppress the ar
 gradient calculation. 
 Besides, the model regularization through local dip-dependent smooth filter ensures the inversion converging to a
 geological model. 
-Based on that, a two-step inversion strategy is adopted, in which PP reflections are first used to invert $V_p$,
-followed by $V_s$ inversion with PS reflections based on the well recoverd $V_p$. P/S
+P/S
 separation of multicomponent seismograms provides P or S recordings while spatial wave mode
 decomposition provides P or S wavefields, which help
 to  reduce the nonlinearty of inversion effectively.
+Based on the above, a two-step inversion strategy is adopted, in which PP reflections are first used to invert $V_p$,
+followed by $V_s$ inversion with PS reflections based on the well recoverd $V_p$. 
 %The kernel of reflection wavepath proves that mode decomposition can surpress the artifacts in
 %the reflection inversion. 
 Numerical example of Sigsbee2A model validates the effectiveness of the
@@ -208,7 +210,7 @@ ELSRTM is a linearized EFWI aimming to fit the waveform of reflections generated
 high-wavenumber perturbations. 
 %Due to the energy difference between Born and reflection data, it is
 %more suitable to match the residual between reflection data and the background data during ELSRTM.
-LSRTM can suppress the imaging artifacts caused by reduce migration artifacts arising
+LSRTM can reduce migration artifacts arising
 from limited aperture, coarse sampling, and acquisition gaps. Conventional ELSRTM can sligthly but
 not entirely mitigate the parameter trade-offs. 
 Nonetheless, mode decomposition
@@ -233,5 +235,5 @@ deep more effectively.
 
 %\ckeywords{全波形反演，Hessian和分辨率矩阵，参数耦合，波动方程反射走时反演，反射波路径核函数，最小平方逆时偏移，弹性波，模式解耦}
 \ekeywords{Full waveform inversion, Hessian and resolution matrix, parameter trade-off, 
-	wave equation reflected traveltime inversion, kernel of reflection wavepath, least-square RTM,
+	wave equation reflection traveltime inversion, reflection kernel, least-squares RTM,
 	Elasticity, Mode decomposition}

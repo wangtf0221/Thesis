@@ -1,7 +1,7 @@
 \begin{thebibliography}{100}
 
 \bibitem{Claerbout1985Imaging}
-Claerbout, JonF.
+Claerbout J~F.
 \newblock Imaging the earth's interior.
 \newblock Blackwell Scientific, 1985: 217--217
 \tongjidot
@@ -43,7 +43,7 @@ Zhou W, Brossier R, Operto S, et~al.
 \tongjidot
 
 \bibitem{chi2015}
-Chi B~X, Dong L~G, Liu Y~Z.
+Chi B, Dong L, Liu Y.
 \newblock Correlation-based reflection full-waveform inversion.
 \newblock Geophysics, 2015, 80(4):R189--R202
 \tongjidot
@@ -88,7 +88,7 @@ Cheng J, Fomel S.
 \tongjidot
 
 \bibitem{cheng:2016}
-Cheng J~B, Alkhalifah T, Wu Z~D, et~al.
+Cheng J, Alkhalifah T, Wu Z, et~al.
 \newblock Simulating propagation of decoupled elastic waves using low-rank
   approximate mixed-domain integral operators for anisotropic media.
 \newblock Geophysics, 2016, 81(2):T63--T77
@@ -140,7 +140,7 @@ Pratt R~G, Worthington M~H.
 \tongjidot
 
 \bibitem{pratt1996two}
-Pratt R, Song Z~M, Williamson P, et~al.
+Pratt R, Song Z, Williamson P, et~al.
 \newblock Two-dimensional velocity models from wide-angle seismic data by
   wavefield inversion.
 \newblock Geophysical Journal International, 1996, 124(2):323--340
@@ -334,7 +334,7 @@ Chi B, Dong L, Liu Y.
 \tongjidot
 
 \bibitem{Wu2014b}
-Wu R~S, Luo J, Wu B.
+Wu R, Luo J, Wu B.
 \newblock Seismic envelope inversion and modulation signal model.
 \newblock Geophysics, 2014, 79(3):WA13--WA24
 \tongjidot

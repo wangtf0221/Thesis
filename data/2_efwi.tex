@@ -10,31 +10,31 @@
 \label{cha:MD-EFWI}
 \section{引言}
 针对地下介质的定量成像方法对于定位与刻画油气储层、监测CO$_2$注入以及估计近地表土壤和岩石的物理性
-质非常有必要。相比于从地震偏移获得的定性化的成像剖面，人们更希望得到定量化的深度域弹
-性参数。地震反演旨在采用迭代优化类方法通过拟合正演数据与实际观测数据来恢复地下的参数模型。
-相比走时层析反演类方法，
+质非常重要。相比于从地震偏移获得的定性化的成像剖面，人们更希望得到定量化的地下弹
+性参数。地震反演旨在采用迭代优化类方法通过拟合正演数据与实际观测数据来恢复地下弹性参数模型。
+相比走时层析类方法，
 %例如Luo and Schuster (1991)\citep{luo1991}，
 FWI提供
-了更加完善的思路，同时利用走时与振幅信息来反演参数模型\cite[]{tarantola:1986}。
+了更加完善的理论，同时利用走时与振幅信息来反演介质参数\cite[]{tarantola:1986}。
 随着长偏移距、宽方位和宽频带采集技术的应用，全波形反演已经成为构建高质量速度模型和进行定量地震成像的有效工具\cite{virieux2009overview}。
 
-然而，FWI有许多制约因素。首先，它所需计算量十分巨大，尤其是在三维模型反演中。尽管梯度类的局部优化方法并不能保证反演收敛到全局最优解，
+然而，FWI有许多制约因素。首先，它所需的计算量十分巨大，尤其是在三维模型反演中。尽管梯度类的局部优化方法并不能保证反演收敛到全局最优解，
 但为了降低计算代价仍然被广泛应用于FWI中。收敛性更好的基于Hessian的反演方法\cite{mora:1987,crase1990robust}
-因其更昂贵的计算代价则更多被FWI所舍弃。此外，为了减少计算量，人们通常采用声学近似来获得P波速度\cite{ravaut2004multiscale,operto2006crustal}。
+因其更昂贵的计算代价则在大多数FWI应用中被舍弃不用。此外，为了减少计算量，人们通常采用声学近似来反演获得P波速度\cite{ravaut2004multiscale,operto2006crustal}。
 但实际中，即使是以P波为主的单分量地震数据，声学近似也只能保证运动学信息的准确，振幅的可靠性只有在小角度入射时才有保证。
-这也是声波FWI通常需要非常仔细的数据预处理与预条件的主要原因。总之，地震数据中总是包含弹性波场，即使在海上勘探中，
-声波反演也不能考虑到由于模式转换带来的能量损失，就会对声波数据的产生过度拟合而低估模型中界面周围的速度反差。
+这也是声波FWI通常需要非常仔细的数据预处理和预条件的主要原因。总之，地震数据中总是包含弹性波场，即使在海洋勘探中，
+声波反演也不能考虑到由于模式转换带来的能量损失，会对声波数据过度拟合而低估模型中界面周围的速度反差。
 
-弹性波全波形反演（EFWI）能够从多分量数据中反演地下介质的弹性参数，如$V_p$, $V_s$和$\rho$。
+弹性波全波形反演（EFWI）能够从多分量数据中估计地下介质的弹性参数，如$V_p$, $V_s$和$\rho$。
 %尽管其仍然需要很大计算代价，EFWI还是在很多实际数据中获得了应用
 %\cite{crase1992nonlinear,djikpesse.tarantola:1999,sears2008,sears:2010,prieux:2013a,prieux:2013b,vigh:2014}。
 %其实现方式可以在时间域\cite{shipp:2002},可以在频率域\cite{brossier2009}，也可以采用混合的方式在时间域进行正演模拟而在频率域求解
 %\cite{nihei.li:2007,sirgue:2008}。
-然而，EFWI中多个参数参与反演会增加反问题的非线性程度，也会受到由于不同物理参数之间的串扰
+然而，EFWI中多个参数参与反演会增加反问题的非线性程度，也会受到由于不同物理参数之间串扰(trade-off)
 的影响\cite{forgues.lambare:1997}。
 %在海洋环境中，尤其是在软海底环境中，由于PS的转换模式非常弱，
 %基于拖缆或者海底多分量数据的EFWI的非线性程度会变得更严重\cite{sears2008}。
-而且当$V_p$，$V_s$和$\rho$在结构上有差异时，trade-off效应会更加明显。
+当$V_p$，$V_s$和$\rho$在结构上有差异时，trade-off效应会更加明显。
 将声波FWI扩展到弹性介质中需要付出更多的努力。
 很多学者指出参数化方式对缓解trade-off效应非常重要，可以通过调查散射模式或者Hessian算子来选取恰当的参数化方式
 \cite[]{wu.aki:1985,tarantola:1986,plessix.cao:2011,gholami2013}。
@@ -43,8 +43,8 @@ FWI提供
 %xu:2012,biondi.almomin:2013,ma2013,warner2016adaptive,alkhalifah2015scattering}。
 Tarantola(1986)\cite{tarantola:1986}指出可先重构出对数据具有主要影响
 的参数，再重构出对数据有次级影响的参数。Sears(2008)\cite{sears2008}提出了一个有效的多尺度策略，通过时间窗来选取海底电缆(OBC)
-数据中的不同子集来进行多尺度反演。Operto(2013)\cite{operto2013guided}讨论了如何多级地选取不同的数据分量以及不同的参数类型进行反演，从而
-压制参数之间trade-off效应并降低反演的非线性程度。Xu and McMechan\cite{xu.mcmechan:2014}提出了一个多步长的策略来提高密度模型的反演精度。
+数据中的不同子集进行多尺度反演。Operto(2013)\cite{operto2013guided}讨论了如何多级地选取不同的数据分量以及不同的参数类型进行反演，从而
+压制trade-off效应并降低反演的非线性程度。Xu and McMechan\cite{xu.mcmechan:2014}提出了一个多步长的策略来提高密度模型的反演精度。
 
 %另一个行之有效解决trade-off的方法就是在反演中施加Hessian算子。
 Hessian逆的对角块能够消除几何扩散以及带限效应带来的模糊性，而非对角块能够压制
@@ -54,20 +54,20 @@ trade-off效应\cite[]{pratt1998gauss,fichtner2011hessian,operto2013guided,innan
 Sheen et al(2006)\cite{sheen:2006}通过互易原理和褶积定理来计算近似Hessian从而实现了时间域基于GN的EFWI方法。
 Bae et al(2012)\cite{bae:2012}提出了频率域基于GN共轭梯度法的声弹耦合FWI。
 Pratt et al(1998)\cite{pratt1998gauss}采用“虚震源”引起的偏导数波场的概念解释了梯度与Hessian算子的物理含义。参数耦合效应是由于
-不同参数的偏导数波场在特定角度范围内的重叠导致的。因此，Wang et al (2015)\cite{wang:2015}提出了通过解耦弹性波波场并在不同阶段分别选取P波与S波
-数据来反演不同参数有助于压制trade-off。%通过调查解耦之后的P波与S波目标函数，Ren and Liu (2016)\cite{ren.liu:2016}证明了波场的解耦可以降低EFWI的非线性程度。
+不同参数的偏导数波场在特定角度范围内的重叠导致的。因此，Wang et al (2015)\cite{wang:2015}发现通过解耦弹性波场并在不同阶段分别选取P波与S波
+数据来反演不同参数有助于压制trade-off效应。%通过调查解耦之后的P波与S波目标函数，Ren and Liu (2016)\cite{ren.liu:2016}证明了波场的解耦可以降低EFWI的非线性程度。
 此外，模式解耦也是弹性波逆时偏移中获得具有物理含义成像的关键步骤\cite{yan:2008,wang2016scalar}。
 
-本文未经验性地解耦正、反传波场以及地震记录\cite{ren.liu:2016}来计算梯度，而是采用了更有物理意义同时更节省计算量的预条件方式，
+本文EFWI方法中不是经验性地解耦正、反传波场以及地震记录\cite{ren.liu:2016}来计算梯度，而是采用了更有物理意义同时节省计算量的预条件方式，
 即在计算梯度时只解耦反传波场。通过调查解耦后的Frech{$\acute{e}$}t导数、
-Hessian矩阵以及分辨率矩阵等反演中的关键问题，来解释模式解耦预条件的共轭梯度（MDPCG）相比常规预条件共轭梯度（PCG）方法能够更好压制参数trade-off的理论机制。
-为了简单起见，我们暂抛开密度，只在讨论部分涉及该三参数反演的问题。
+Hessian矩阵以及分辨率矩阵等反演中的关键要素，来解释模式解耦预条件的梯度相比常规预条件梯度能够更好压制参数trade-off的理论机制。
+为了简单起见，我们先抛开密度，只在讨论部分涉及包含密度的三参数反演问题。
 %首先，通过弹性波Born近似，我们分析了P波速度与S波速度扰动的
 %辐射模式，并导出了解耦的Frech{$\acute{e}$}t导数或Jacobian矩阵；然后，我们调查了解耦后的P波与S波数据对梯度的贡献并提出了在梯度计算中的交叉项近似。
 %在此基础上，预条件的梯度可以通过伴随状态法\cite[]{plessix2006}快速有效地计算得到，也即正传波场与解耦后反传波场的零延迟互相关。
 %然后，为了获得更多物理机制上的认识，我们计算并分析了基于解耦的Hessian和分辨率矩阵，同时也比较了MD预条件后的梯度与GN梯度的异同。
 此后，通过在流体饱和砂岩模型以及Marmousi-II模型的数值实验验证模式解耦EFWI的有效性。
-最后，将讨论密度参数对反演带来的复杂性以及MDPCG方法对三参数EFWI的贡献，并给出结论。
+最后，将讨论密度参数对反演带来的复杂性以及模式解耦预条件共轭梯度（MDPCG）算法对三参数EFWI的贡献，并给出本章结论。
 %\clearpage
 
 \section{弹性波正问题}
@@ -195,12 +195,12 @@ $\delta \mathbf{V}_p$和$\delta \mathbf{V}_s$为长度是$L$的模型参数向�
 $\delta \mathbf{m}=(\delta\mathbf{V}_p \quad \delta\mathbf{V}_s)^T$.
 
 \subsection{P/S波数据耦合与辐射模型}
-方程\eqref{eq:finalMatrix}或\eqref{eq:finalMatrixshort}表明Jacobian矩阵与参数扰动向量的乘积即为相应的散射数据响应，所有该数据响应的
+方程\eqref{eq:finalMatrix}或\eqref{eq:finalMatrixshort}表明Jacobian矩阵与参数扰动向量的乘积即为相应的散射数据响应，所有响应的
 叠加就组成了整个散射波场。从图\ref{fig:radiationpattern}中展示的散射模式可看出，$\delta V_p$只通过PP模式散射P波数据，而$\delta V_s$
 则散射所有模式的P波和S波数据。这就很难分辨出散射数据中的P波是来自于哪一类速度扰动（$\delta V_p$或$\delta V_s$）。
 幸运的是，散射S波仅仅由$\delta V_s$产生，因而对于单次散射的弹性波数据来讲，耦合效应只会出现在P波模式中。
 既然反演中的参数耦合效应是由于不同模型参数的偏导数波场在特定角度范围内的重叠导致的\cite{tarantola:1986,operto2013guided}，
-所以很自然地，本文提出采用模式解耦来作为降低EFWI降低参数耦合效应的方法。
+所以很自然地，本文提出采用模式解耦来作为降低EFWI参数耦合效应的方法。
 \begin{figure}[!htb]
     \begin{center}
         \subfloat[]{\includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/PP.pdf}}
@@ -343,7 +343,7 @@ Wang and McMechan, 2015\cite{wang.mcmechan:2015b})。
     \begin{center}
         \includegraphics[width=1.0\textwidth]{Figure/chapter02/finalMarmousiII/Fig/zerolagLAST1.pdf}
         \caption{
-			通过偏导数波场与数据残差之间的零延迟互相关计算梯度的示意图。为了简单说明，只在背景介质中放置单个的散射点。
+			通过偏导数波场与数据残差之间的零延迟互相关计算梯度的示意图。为了简单说明，只在背景介质中放置一个的散射点。
 %Schematic illustration of gradient calculation through zero-lag correlation
 % between the partial derivative wavefields
 %and the residual seismogram.
@@ -490,7 +490,7 @@ and Starr, 2008\cite[]{vigh20083d})。
 \section{模式解耦降低参数耦合的理论机制}
 	前一节提出了通过模式解耦来预条件处理EFWI的梯度，以便压制参数耦合效应。然而解决参数解耦问题最直接有效（但也最昂贵）
 的方法是考虑Hessian矩阵的优化方法。下面将采用解耦后的
-Frech$\acute{e}$t导数来调查Hessian和分辨率矩阵的性质，并且对比GN，PCG与MDPCG方法的梯度来
+Frech$\acute{e}$t导数来调查Hessian和分辨率矩阵的性质，并且对比常规（PCG）、模式解耦（MDPCG）和高斯-牛顿（GN）的梯度来
 阐明模式解耦EFWI能压制参数耦合的内在机制。
 \subsection{Hessian矩阵及其不同模式的分量}
 多参数情况下的Hessian矩阵是一个具有块状结构的对称方阵，其中非对角块测量了不同物理参数的偏导数波场之间的互相关效应，其作用
@@ -660,7 +660,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
     \begin{center}
         \includegraphics[width=14cm]{Figure/chapter02/Hessiantest/Fig/newepsall.pdf}
         \caption{
-			PCG、GN以及MDPCG方法的第一次迭代梯度之间的对比。
+			常规（PCG）、模式解耦（MDPCG）和高斯-牛顿（GN）梯度对比：
     (a) $\delta V_p \neq 0$, $\delta V_s=0$; (b) $\delta V_p=0$, $\delta V_s\neq0$; and (c)
     $\delta V_p=10 \delta V_s$.
 	从上到下为三个面板，每个面板中包含2行7列。第一行对应$V_p$,
@@ -680,7 +680,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
     \end{center}
 \end{figure}
 
-在图\ref{fig:all}中，同样采用前文小模型实验来比较PCG、GN和MDPCG方法的梯度。
+在图\ref{fig:all}中，同样采用前文小模型实验来比较常规（PCG）、模式解耦（MDPCG）和高斯-牛顿（GN）第一次迭代的梯度。
 在模型中央放置三种不同类型、尺度为10$\times$10m的参数扰动组合，分别为：(a) $\delta V_p \neq 0$, $\delta V_s = 0$; (b) $\delta V_p = 0$，
 $\delta V_s \neq 0$，和(c) $\delta V_p =10\delta
 V_s$。初始模型为均匀的背景速度。在第一组实验中只有P波数据，可以看到原始的梯度（$\mathbf{g}_{V_p}$和$\mathbf{g}_{V_s}$）中，有非常明显的参数耦合效应。

@@ -80,11 +80,31 @@ Dai W, Fowler P, Schuster G~T.
 \newblock Geophysical Prospecting, 2012, 60(4):681--695
 \tongjidot
 
+\bibitem{董良国2015}
+董良国, 黄超, 迟本鑫, et~al.
+\newblock 基于地震数据子集的波形反演思路、方法与应用.
+\newblock 地球物理学报, 2015, 58(10):3735--3745
+\tongjidot
+
+\bibitem{zhang.mcmechan:2010}
+Zhang Q, McMechan G~A.
+\newblock {2D} and {3D} elastic wavefield vector decomposition in the
+  wavenumber domain for {VTI} media.
+\newblock Geophysics, 2010, 75(3):D13--D26
+\tongjidot
+
 \bibitem{cheng:2014b}
 Cheng J, Fomel S.
 \newblock Fast algorithms for elastic-wave-mode separation and vector
   decomposition using low-rank approximation for anisotropic media.
 \newblock Geophysics, 2014, 79(4):C97--C110
+\tongjidot
+
+\bibitem{Li2016a}
+Li Z, Ma X, Fu C, et~al.
+\newblock Frequency-wavenumber implementation for P- and S-wave separation from
+  multi-component seismic data.
+\newblock Exploration Geophysics, 2016, 47(1):32
 \tongjidot
 
 \bibitem{cheng:2016}
@@ -101,10 +121,17 @@ Wang C, Cheng J, Arntsen B.
 \newblock {Geophysics}, 2016, 81(5):S383--S398
 \tongjidot
 
-\bibitem{董良国2015}
-董良国, 黄超, 迟本鑫, et~al.
-\newblock 基于地震数据子集的波形反演思路、方法与应用.
-\newblock 地球物理学报, 2015, 58(10):3735--3745
+\bibitem{wang:2015}
+Wang T, Cheng J, Wang C.
+\newblock Elastic wave mode decoupling for full waveform inversion.
+\newblock 77th EAGE Conference and Exhibition 2015, Expanded Abstracts, 2015.
+\tongjidot
+
+\bibitem{ren.liu:2016}
+Ren Z, Liu Y.
+\newblock A hierarchical elastic full-waveform inversion scheme based on
+  wavefield separation and the multistep-length approach.
+\newblock Geophysics, 2016, 81(3):R99--R123
 \tongjidot
 
 \bibitem{Claerbout1971}
@@ -381,13 +408,6 @@ Operto S, Gholami Y, Prieux V, et~al.
 \newblock A guided tour of multiparameter full-waveform inversion with
   multicomponent data: From theory to practice.
 \newblock The Leading Edge, 2013, 32(9):1040--1054
-\tongjidot
-
-\bibitem{pratt1998gauss}
-Pratt R~G, Shin C, Hick G.
-\newblock Gauss--Newton and full Newton methods in frequency--space seismic
-  waveform inversion.
-\newblock Geophysical Journal International, 1998, 133(2):341--362
 \tongjidot
 
 \bibitem{wu.aki:1985}
@@ -767,13 +787,6 @@ Wang C, Cheng J, Arntsen B.
 \newblock {Geophysics}, 2016, 81(5):S383--S398
 \tongjidot
 
-\bibitem{plessix2006}
-Plessix R~E.
-\newblock A review of the adjoint-state method for computing the gradient of a
-  functional with geophysical applications.
-\newblock Geophysical Journal International, 2006, 167(2):495--503
-\tongjidot
-
 \bibitem{crase1990robust}
 Crase E, Pica A, Noble M, et~al.
 \newblock Robust elastic nonlinear waveform inversion: Application to real
@@ -803,6 +816,13 @@ Xu K, McMechan G~A.
 \newblock 2D frequency-domain elastic full-waveform inversion using time-domain
   modeling and a multistep-length gradient approach.
 \newblock Geophysics, 2014, 79(2):R41--R53
+\tongjidot
+
+\bibitem{pratt1998gauss}
+Pratt R~G, Shin C, Hick G.
+\newblock Gauss--Newton and full Newton methods in frequency--space seismic
+  waveform inversion.
+\newblock Geophysical Journal International, 1998, 133(2):341--362
 \tongjidot
 
 \bibitem{innanen2014seismic}
@@ -839,23 +859,10 @@ Bae H~S, Pyun S, Chung W, et~al.
 \newblock Geophysical prospecting, 2012, 60:413--432
 \tongjidot
 
-\bibitem{wang:2015}
-Wang T, Cheng J, Wang C.
-\newblock Elastic wave mode decoupling for full waveform inversion.
-\newblock 77th EAGE Conference and Exhibition 2015, Expanded Abstracts, 2015.
-\tongjidot
-
 \bibitem{yan:2008}
 Yan J, Sava P.
 \newblock Isotropic angle-domain elastic reverse-time migration.
 \newblock Geophysics, 2008, 73(6):S229--S239
-\tongjidot
-
-\bibitem{ren.liu:2016}
-Ren Z, Liu Y.
-\newblock A hierarchical elastic full-waveform inversion scheme based on
-  wavefield separation and the multistep-length approach.
-\newblock Geophysics, 2016, 81(3):R99--R123
 \tongjidot
 
 \bibitem{kamath2016elastic}
@@ -863,13 +870,6 @@ Kamath N, Tsvankin I.
 \newblock Elastic full-waveform inversion for {VTI} media: Methodology and
   sensitivity analysis.
 \newblock Geophysics, 2016, 81(2):C53--C68
-\tongjidot
-
-\bibitem{zhang.mcmechan:2010}
-Zhang Q, McMechan G~A.
-\newblock {2D} and {3D} elastic wavefield vector decomposition in the
-  wavenumber domain for {VTI} media.
-\newblock Geophysics, 2010, 75(3):D13--D26
 \tongjidot
 
 \bibitem{马德堂2003}
@@ -897,6 +897,13 @@ Wang W, McMechan G~A, Zhang Q.
 Vigh D, Starr E~W.
 \newblock {3D} prestack plane-wave, full-waveform inversion.
 \newblock {Geophysics}, 2008, 73(5):VE135--VE144
+\tongjidot
+
+\bibitem{plessix2006}
+Plessix R~E.
+\newblock A review of the adjoint-state method for computing the gradient of a
+  functional with geophysical applications.
+\newblock Geophysical Journal International, 2006, 167(2):495--503
 \tongjidot
 
 \bibitem{menke:1989}
@@ -961,13 +968,6 @@ Sava P, Biondi B.
 付继有, 李振春, 杨国权, et~al.
 \newblock 声介质波动方程反射旅行时反演方法.
 \newblock 石油地球物理勘探, 2015, 50(6):1134--1140
-\tongjidot
-
-\bibitem{Li2016a}
-Li Z, Ma X, Fu C, et~al.
-\newblock Frequency-wavenumber implementation for P- and S-wave separation from
-  multi-component seismic data.
-\newblock Exploration Geophysics, 2016, 47(1):32
 \tongjidot
 
 \bibitem{Hale2009Structure}

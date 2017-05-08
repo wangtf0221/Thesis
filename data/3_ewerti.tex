@@ -299,12 +299,12 @@ $\quad$
 \end{equation}
 方式\uppercase\expandafter{\romannumeral1}与方式\uppercase\expandafter{\romannumeral2}的差异在于速度不准时，确定界面深度的过程不同。
 这里数值分析时使用零（小）偏移距的图偏移获得界面深度，然后带入到
-式\eqref{eq:TravelTime_PS}中来近似获得错误速度下反偏移获得的反射数据的时距关系。
+式\eqref{eq:TravelTime_PS}中来近似获得错误速度下反偏移预测的反射数据时距关系。
 
 方式\uppercase\expandafter{\romannumeral1}
 中，在图偏移时零偏移距走时保持不变，则偏移后的深度位置满足：
 \begin{equation}
-	\frac{h_{1}}{V_p}+\frac{h_{1}}{V^{'}_s}=\frac{h}{V_p}+\frac{h}{V_s},
+	\frac{h_{1}}{V^{'}_p}+\frac{h_{1}}{V^{'}_s}=\frac{h}{V_p}+\frac{h}{V_s},
     \label{eq:Mapmigration_PS} 
 \end{equation}
 其中$V^{'}_p$和$V^{'}_s$为错误的偏移速度。可以求得图偏移的深度：
@@ -564,6 +564,7 @@ EWERTI也无法对背景速度进行更新。
 将导致很难进一步地更新$V_s$模型。
 而采用倾角约束滤波后，EWERTI获得了更加合理的反演结果，也为后续的$V_s$更新提供了较好的$V_p$初始模型。需要注意的是，虽然在$V_s$反演中，
 采用PP波反射界面进行反偏移，但是仍然基于不断修正的PS波成像剖面进行局部倾角约束滤波对梯度进行平滑处理。
+
 \begin{figure}[!htb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter03/sigbee2/Fig/1km.pdf}}
@@ -589,9 +590,14 @@ EWERTI也无法对背景速度进行更新。
 的“测井”曲线。从图中可以看出，
 弹性WERTI能够提供可靠的包含长波长分量的初始模型，以此为基础的EFWI反演可以比较有效地恢复准确的弹性速度模型。
 
-通常，cycle-skipping问题与数据中的低频以及初始模型中的中低波数成分密切相关。数据中有效的低频成分可以降低FWI对初始模型的依赖程度，
-而较好地包含中低波数成分的初始模型则可以降低FWI对低频数据的依赖。实际数据处理中，由于低频分量中常常含有许多噪音干扰，使得FWI更依赖于良好
+通常，cycle-skipping问题与数据中的低频及初始模型中的中低波数成分密切相关。数据中有效的低频成分可以降低FWI对初始模型的依赖程度，
+而较好地包含中低波数成分的初始模型则可以降低FWI对低频数据的依赖。实际数据中，由于低频分量中常常含有许多噪音干扰，使得FWI更依赖于良好
 的初始模型。这里将进一步测试EWERTI+EFWI串级反演流程对数据中低频成分的依赖性。
+
+$\quad$
+$\quad$
+
+$\quad$
 
 采用图\ref{fig:InvertedModel_WERTI}中的结果作为初始模型，将分别从3Hz，5Hz和7Hz开始进行常规EFWI，
 低于门槛值的频率成分将通过滤波切除，反演仍然遵循从低频到高频的多尺度策略，以观察EFWI在该初始模型下对数据中低频成分的依赖性。
@@ -601,7 +607,7 @@ EWERTI也无法对背景速度进行更新。
 EFWI受到越来越严重的困扰，尤其是在EWERTI未能恢复中低波数的右侧区域。这表明，受观测孔径影响模型右侧比左侧更依赖数据中的低频信息。
 %事实上在左侧区域，由于背景速度已经基本恢复准确，高频数据的EFWI反演已经接近于最小平方成像的过程。我们将在下一章对
 %该问题做详细讨论。
-\begin{figure}[!htb]
+\begin{figure}[!thb]
    \centering
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter03/sigbee2/3Hzvp.pdf}}
    \subfloat[]{\includegraphics[width=0.5\textwidth]{Figure/chapter03/sigbee2/3Hzvs.pdf}}\\

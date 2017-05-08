@@ -1,11 +1,11 @@
 \chapter{引言}
 \section{研究背景和意义}
 地震勘探的主要目标是通过观测的地震数据来推断地下结构以及定量地估计介质参数。
-弹性参数，包括纵波（P波）速度，横波（S波）速度以及密度等参数，可以通过岩石物理这一桥梁转换为岩石物性参数，从而获得储层及其围岩的岩石性质。这对油气田的勘探、
+弹性参数，包括纵波（P波）速度、横波（S波）速度以及密度等参数，可以通过岩石物理这一桥梁转换为岩石物性参数，从而获得储层及其围岩的岩石性质。这对油气田的勘探、
 开发以及二氧化碳(CO$_2$)填埋动态监测等具有重要意义。传统地震数据处理中，通常用声波方程来描述地震波在地下介质中的传播。而地下介质的真实情况往往要复杂得多，
 需要通过考虑弹性
 、各向异性甚至衰减的波动方程来更准确地描述波的传播。但是介质模型越复杂，所引入的计算量就越大，
-所对应的多参数反问题也越困难。目前来看，从声介质过渡到弹性介质能够以较小代价来获取较准确的模型表征。
+所对应的多参数反问题也越困难。目前来看，从声介质过渡到弹性介质能够以较小的代价来获取较准确的模型表征。
 尽管从声波近似过渡到弹性近似会成倍地增加计算量，但是这对多分量地震数据的成像或反演显然十分必要。考虑弹性效应的数据处理流程能区分并利用数据中的
 P波与S波模式，因此可以充分利用弹性全波场信息改善气云区成像、岩性估计、流体识别以及裂缝与应力场的刻画等。
 近年来，岩性油气藏（如致密砂岩、页岩）勘探技术极大地依赖于弹性参数估计，这使得考虑地震波的弹性乃至各向异性效应都具有重要意义。
@@ -28,8 +28,8 @@ MVA与走时层析只能恢复波数非常低的成分，而偏移成像只能�
 \begin{figure}[t] 
    \centering 
    \subfloat{\includegraphics[width=1.00\textwidth]{Figure/chapter01/WavenumberGap2.pdf}}
-   \caption{地震数据所能恢复的频带示意图。传统层析+成像的方式所恢复的速度频带中有着明显的中低频缺失，
-	   WEMVA和LSM方法能够分别拓展低波数与高波数部分的带宽，而FWI则尝试恢复更连续的波数谱(引自Claerbout, 1985\cite{Claerbout1985Imaging})。}
+   \caption{地震数据所能恢复的频带示意图。传统走时层析+偏移成像的方式所恢复的速度模型有明显的中低频缺口，
+	   WEMVA和LSM方法有助于拓展低波数与高波数部分的带宽，而FWI则尝试恢复更连续的波数谱(引自Claerbout, 1985\cite{Claerbout1985Imaging})。}
    \label{fig:GapInSeisVel}
 \end{figure}
 
@@ -43,16 +43,16 @@ MVA与走时层析只能恢复波数非常低的成分，而偏移成像只能�
 (1984)\cite{tarantola1984}建立了FWI理论框架之后，随着长偏移距、宽方位数据采集的推广，FWI
 被认为是填补速度模型中尺度波数缺口最有潜力的工具。
 但是FWI也受到众多因素的制约，如初始模型不够好或者数据缺少低频分量时产生的周波跳跃问题（cycle-skipping）、
-地面观测数据导致的有限观测孔径问题、地下实际介质的粘弹性和各向异性问题以及高昂的计算代价等等。因此近二十年来人们一方面尝试采用宽频震源、
+地面观测数据导致的有限观测孔径问题、地下实际介质的粘弹性和各向异性问题以及高昂的计算代价等等。因此近二十年来，人们一方面尝试采用宽频震源、
 鬼波压制等手段获得更加宽频的地震数据，另一方面尝试从目标函数选取、多尺度反演策略等方面降低上述问题的困扰。即便如此，FWI技术的推广应用扔存在许多挑战。
 
-2、波动方程偏移速度分析（WEMVA）：该类方法旨在更新模型中的长波长（背景）速度，即模型的中低波数成分。
-目前主流的做法通常利用地震数据中的反射波信息，通过构建反射波波路径信息并沿该路径来合理地更新模型中深部。
+2、波动方程偏移速度分析（WEMVA）：该类方法旨在更新背景速度模型，即模型的中低波数成分。
+目前主流的做法通常利用地震数据中的反射波信息，通过构建反射波波路径并沿该路径来合理地更新模型中深部。
 根据目标函数的残差类型，WEMVA可以分为数据域反演（如Xu et al., 2012\cite{xu:2012};Wu and Alkhalifah,
 2015\cite[]{Wu2015b}; Zhou et al,
 2015\cite[]{zhou:2015}; Chi et al, 2015\cite{chi2015}）和
 扩展成像域反演（如Sava and Fomel, 2006\cite{Sava2006}; Almomin and Biondi, 2012\cite{Almomin2012}）。
-前者采用拟合观测数据与模拟数据间的走时、振幅等信息的目标函数，后者则通过最大化扩展域成像道集零偏移距的能量来定义收敛准则。
+前者采用观测数据与模拟数据间的走时、振幅等信息作为目标函数，后者则通过最大化扩展域成像道集零偏移距的能量来定义收敛准则。
 它们与基于射线理论的成像域层析与数据域（非线性）层析方法有许多类似之处，但避免了传统层析流程中繁琐的人工拾取工作。不过，它们
 还是会在一定程度上受到cycle-skipping等问题的困扰。
 
@@ -64,13 +64,13 @@ et al., 1999\cite{Nemeth1999}; Kühl and Sacchi, 2003\cite{KuehlEtAl2003};
 Dai et al.,
 2012\cite{DaiEtAl2012}）。
 其本质上是通过最小化数据残差施加目标函数对模型二阶导数（Hessian）的信息
-来获得二阶的收敛效果，从而获得更好的成像效果。
+来获得二阶的收敛效果，从而获得更好的参数扰动反演结果。
 
 重建地下介质的弹性参数模型对地球内部探测与油气藏的勘探至关重要。
 相比声波FWI，
 弹性波全波形反演（EFWI）能够自动考虑多分量数据中的各种弹性效应并反演得到地下介质的弹性参数，如P波速度（$V_p$）和S波速度（$V_s$）和密度（$\rho$）。
 然而在地震反演中考虑弹性效应会大大增加反问题的非线性程度，而且多参数反演
-也会受到trade-off效应的影响，因此
+也会受到参数耦合（trade-off）效应的影响，因此
 从声波近似过渡到弹性近似使得计算量和反演的困难程度成倍增加。
 近年来，
 由于计算机能力提升、多分量观测数据的增多，为了解决声波FWI无法回避的问题，考虑弹性甚至各向异
@@ -89,7 +89,7 @@ FWI中广泛采用的多尺度策略（分频率、分偏移距、分时窗和�
 2016\cite{wang2016scalar})。
 这些研究为弹性波反演中采取更多的多尺度策略带来新的机会（Wang et al., 2015\cite{wang:2015}; Ren and
 Liu, 2016\cite{ren.liu:2016}）。
-本文借助模式解耦形成的波场分量或数据子集，实现新的更灵活的多尺度EFWI、EWERTI和ELSRTM方法，以期更准确地估计弹性参数模型的低、中、高波数成分，
+本文借助模式解耦形成的波场分量或数据子集，实现新的更灵活的多尺度EFWI、EWERTI和ELSRTM方法，以期更准确地估计弹性参数模型的高、中、低波数成分，
 为地球内部成像与油气资源勘探提供更好的支撑。
 
 $\quad$
@@ -136,8 +136,9 @@ EFWI的实现方式可以在时间域(Shipp et al., 2002\cite{shipp:2002}),
 转换模式非常弱，基于拖缆或者海底多分量数据的EFWI的非线性程度会变得更严重\cite{sears2008}。
 同时，不同参数
 在特定散射角范围内会产生相似的数据扰动，从而导致不同物理参数之间trade-off效应
-(Forgues and Lambare, 1997\cite{forgues.lambare:1997})。在海洋环境中，尤其是在软海底环境中，由于PS
-转换模式非常弱，基于拖缆或者海底多分量数据的EFWI的非线性程度会变得更严重\cite{sears2008}。
+(Forgues and Lambare, 1997\cite{forgues.lambare:1997})。
+%在海洋环境中，尤其是在软海底环境中，由于PS
+%转换模式非常弱，基于拖缆或者海底多分量数据的EFWI的非线性程度会变得更严重\cite{sears2008}。
 
 从声介质到弹性介质，波形反演方法将受到更多挑战。解决EFWI中的这些难题，
 不仅要应对原有声波FWI框架下的困难，同时也要解决多参数反演带来新问题。下面分别讨论EFWI面临的两个主要挑战：
@@ -157,7 +158,7 @@ $\omega$为角频率，$\mathbf{n}$为$\mathbf{k}$方向的单位向量。由上
    \caption{地下散射点处入射波矢量，散射波矢量以及散射角之间关系示意图。}
    \label{fig:WavenumberVector}
 \end{figure}
-\begin{figure}[!htb] 
+\begin{figure}[b] 
    \centering 
    \subfloat{\includegraphics[width=0.60\textwidth]{Figure/chapter01/Cycle-skipping.pdf}}
    \caption{FWI波形匹配中的cycle-skipping现象(Virieux and Operto,
@@ -172,8 +173,8 @@ Pratt, 2004\cite{sirgue.pratt:2004}; 刘国峰等, 2012\cite{刘国峰2012};
 刘璐等,2013\cite{刘璐2013}; 曹书红和陈景波, 2014\cite{曹书红2014}; 
 张文生等, 2015\cite{张文生2015})，根据时窗与偏移距分选数据子集逐步加入反演中(Shipp and
 Singh, 2002\cite{shipp:2002}; Wang and Rao, 2009\cite{WangEtAl2009}; Sears et al., 2008\cite{sears2008})，
-修正目标函数使其凸性更好(Luo and Schuster, 1991\cite{luo1991};Tromp et al.,
-2005\cite{tromp2005seismic};Chi
+修正目标函数使其凸性更好(Luo and Schuster, 1991\cite{luo1991}; Tromp et al.,
+2005\cite{tromp2005seismic}; Chi
 et al., 2014\cite{ChiEtAl2014}; Wu et al., 2014\cite{Wu2014b}; Shin and Cha,
 2008\cite{shin.cha:2008}; Luo et al., 2016\cite{Luo2016})等等。上述策略可以用
 在EFWI中，但是由于更多参数的引入以及更复杂的弹性波波场，这些策略需要根据情况择优或者组合使用。
@@ -201,13 +202,13 @@ Tarantola（1986）\cite{tarantola:1986}指出EFWI应分主次顺序依次构建
 参数扰动，从而引起参数间的trade-off效应。这样的话，即使在初始模型足够好的时候也很难从数据扰动中恰当地恢复相应的参数扰动。
 
 为了解决EFWI中的trade-off问题，
-许多学者通过调查散射模式或者Hessian算子来选取不同的参数化方式（Wu and Aki, 1985\cite{wu.aki:1985}；Tarantola, 1986\cite{tarantola:1986}；
-Plessix and Cao, 2011\cite{plessix.cao:2011},Gholami et al, 2013\cite{gholami2013}）。
-当然，最有效的就是考虑多参数Hessian算子，用Hessian的信息来压制trade-off的影响(Fichtner et al., 2001\cite{fichtner2011hessian};Operto et al.,
-2013\cite{operto2013guided},Pan et al., 2015\cite{pan2015estimation};Yang et al.,
+许多学者通过调查散射模式或者Hessian算子来选取不同的参数化方式（Wu and Aki, 1985\cite{wu.aki:1985}; Tarantola, 1986\cite{tarantola:1986}; 
+Plessix and Cao, 2011\cite{plessix.cao:2011}; Gholami et al, 2013\cite{gholami2013}）。
+当然，最有效的就是考虑多参数Hessian算子，用Hessian的信息来压制trade-off的影响(Fichtner et al., 2001\cite{fichtner2011hessian}; Operto et al.,
+2013\cite{operto2013guided}; Pan et al., 2015\cite{pan2015estimation}; Yang et al.,
 2016\cite{Yang2016})。然而Hessian有关的计算所需代价太过昂贵，即使在声波FWI中也很难在大规模问题中获得应用。在EFWI中想要压制参数trade-off，就
 需要在反演中利用Hessian非对角区块的信息。近期，在Hessian非对角区块的近似与利用方面，许多学者做出了一些有益的尝试，例如Wang
-et al. (2016)\cite{WangYuweiEtAl2016}采用块对角Hessian压制参数耦合，Pan et
+et al. (2016)\cite{WangYuweiEtAl2016}采用块对角Hessian压制参数耦合。Pan et
 al (2017)\cite{PanEtAl2017}借助l-BFGS优化策略进行多参数反演。
 Wang et al. (2015)\cite{wang:2015}和Ren and                                                                           
 Liu
@@ -262,9 +263,10 @@ al. (2015)\cite{zhou:2015}。
 近期，Irabor and
 Warner (2016)\cite{Irabor2016}和Wang et al.
 (2016)\cite{WangFangEtAl2016}通过上、下行波分离来帮助常规FWI获取背景分量的更新，其实质也利用了反射波波路径的信息。
-然而，尽管RWI的目的在于更新背景速度，波形拟合的$L_2$范数在背景速度与真实值相差较远的时候，反偏移
-所预测的与
-观测数据中的反射波波形也可能相差半个周期以上从而产生周波跳跃。Wang et
+%然而，尽管RWI的目的在于更新背景速度，波形拟合的$L_2$范数在背景速度与真实值相差较远的时候，反偏移
+%所预测的与
+然而，尽管RWI的目的在于更新背景速度，当背景速度与真实值相差较远的时候，反偏移
+所预测的与观测数据中的反射波波形也可能相差半个周期以上，从而导致波形拟合的$L_2$范数产生周波跳跃。Wang et
 al
 (2013)\cite{Wang2013}指出采用低频数据可以一定程度上缓解跳周现象。为了避免振幅相关的目标函数带来的非线性，更趋于线性关系的
 走时类目标函数获得了关注。Ma and
@@ -316,7 +318,7 @@ Gauss-Newton法(Bae et al., 2012\cite{bae2012frequency}; Metiver et al.,
 2014\cite{Metivier2014})的FWI是一致的。
 因此，最小平方逆时偏移与全波形反演的理论框架基本是一致的，只是输入数据（反射波/全波场）和输出结果(高频扰动/模型参数)不一样。
 因此目前LSRTM研究中主要通过最小化Born模拟的反射数据与观测数据之间的残差来改善成像质量，获得更高分辨率的反射率、波阻抗
-界面或弹性参数扰动的图像(Dai and
+界面或弹性参数扰动的反演结果(Dai and
 Schuster, 2013\cite{Dai2013}; Dong et al., 2012\cite{Dong2012}; Luo and
 Hale, 2014\cite{Luo2014})。
 
@@ -365,7 +367,7 @@ ELSRTM构建弹性波速度模型的高波数成分。整个论文中，弹性�
 在此基础上，通过伴随状态法快速计算得到预条件的梯度，
 即正传波场与解耦后反传波场的零延迟互相关。
 然后，为了获得更多物理机制上的认识，将计算并分析基于解耦的Hessian和分辨率矩阵，同时也对比模式解耦预条件的梯度与Gauss-Newton（GN）梯度的异同。
-接着，利用流体饱和砂岩模型以及Marmousi-II模型的数值实验验证基于模式解耦的EFWI的有效性。
+接着，利用流体饱和砂岩模型以及Marmousi-II模型的数值算例验证基于模式解耦的EFWI的有效性。
 最后，将讨论引入密度给反演带来的复杂性以及模式解耦EFWI的表现。
 
 第三章将通过弹性波波动方程反射走时反演（EWERTI）来重建速度模型中深部的中低波数分量。

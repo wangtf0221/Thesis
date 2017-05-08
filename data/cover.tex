@@ -20,9 +20,9 @@
 
 \makeatother
 
-\cdepartment{同济大学海洋学院}
+\cdepartment{海洋与地球科学学院}
 
-\cmajorfirst{固体地球物理}
+\cmajorfirst{固体地球物理学}
 
 \degtype{理学}
 
@@ -84,30 +84,30 @@
 	进一步增加了反问题的非线性程度，而且
 	不同参数扰动的偏导数波场在特定散射角范围内的重叠还会导致参数耦合效应。
 	为此，本文围绕模式解耦这一数据分离工具，从弹性波全波形反演（EFWI）、弹性波波动方程反射走时反演
-	（EWERTI）以及弹性波最小二乘逆时偏移（ELSRTM）出发，尝试恢复中、低、高各种波数成分的弹性参数模型，进而形成比较实用的弹性波
+	（EWERTI）以及弹性波最小二乘逆时偏移（ELSRTM）出发，尝试恢复高、中、低各种波数成分的弹性参数模型，进而形成比较实用的弹性波
 	反演方法与流程。
 
 %	在第二章中主要讨论EFWI中模式解耦对压制参数耦合效应的作用。
 	EFWI通过最小化观测到的多分量数据与正演模拟数据
 	之间的残差来获得高分辨率的地下弹性参数模型。由于Hessian矩阵的显式计算与求逆代价十分
-	巨大，实际应用中的大规模反演问题通常采用梯度类而非基于Hessian类的最优化方法来求解。然而，多参数
+	巨大，实际应用中的大规模反演问题通常采用梯度类而非Hessian类的最优化方法来求解。然而，多参数
 	反演中的参数耦合效应会引起不同参数间梯度的串扰，进而会严重影响反演的收敛速度与精度。
 %	近期，弹性波模式解耦的方法被用来对梯度进行预条件从而降低EFWI过程中的参数耦合
 %	问题。
-	第二章提出了一种基于模式解耦的EFWI方法，它在时间域通过正传
-	与解耦的反传波场之间的互相关来获得梯度。文中基于解耦的Frech$\acute{e}t$导数分析
+	第二章提出了一种基于模式解耦的EFWI方法，通过时间域的正传
+	波场与解耦的反传波场互相关来预条件梯度。文中基于解耦的Frech$\acute{e}t$导数来分析
 	Hessian矩阵和分辨率矩阵的性态，并对比常规共轭梯度法、Gauss-Newton法和模式解耦法三者之间梯度的异同来解释模式解耦预条件处理压制参数耦合的物理机制。
 	简单流体饱和模
-	型与Marmousi-II模型数值实例，明了模式解耦的预条件共轭梯度法（MDPCG）可以降低P-波和S-波速度（$V_p$和$V_s$）
+	型与Marmousi-II模型数值实例证明了模式解耦的预条件共轭梯度法（MDPCG）可以降低P-波和S-波速度（$V_p$和$V_s$）
 	之间的参数耦合，在不涉及Hessian计算的情况下获得较高的收敛效率。
 
-	利用弹性反射波波形反演（ERWI）有助于更新中深层模型的中低波数成分，从而为EFWI提供较好的初始模型。
-	然而，波形匹配的ERWI也同样会面临周波跳跃的问题。相比波形匹配的目标函数，反射走时目标函数关于背景速度模型
+	弹性反射波波形反演（ERWI）有助于更新中深层模型的中低波数成分，从而为EFWI提供较好的初始模型。
+	然而，波形匹配的ERWI同样面临周波跳跃的问题。相比波形匹配的目标函数，反射走时目标函数关于背景速度模型
 	的非线性程度更低。因此第三章采用弹性波波动方程反射走时反演（EWERTI），
 	通过DIW（Dynamic image warping）算法来提取走时残差并以此建立目标函数，
 	可以一定程度上克服周波跳跃问题。
-	地面多分量数据P/S分离可获得不同模式的数据残差。空间域弹性波模式解耦则可以对梯度有效地预条件，从而实现$V_p$和$V_s$的分步反演，有效降低了反问题的非线性程度。
-	反射波波路径核函数分析解释了解耦波模式反射路径对压制串扰的重要作用。
+	地面多分量数据P/S分离可帮助获得不同模式的数据残差，空间域弹性波模式解耦则可以对梯度有效地预条件，从而实现$V_p$和$V_s$的分步反演。这有效降低了反问题的非线性程度。
+	反射波波路径核函数分析解释了解耦不同波模式的反射路径对压制串扰的重要作用。
 %	局部倾角导引正则化约束可以使得反演快速收敛到具有地质意义的模型。
 	此外，
 	为了降低反演的多解性，采用了成像剖面进行局部倾角导
@@ -118,9 +118,9 @@
 
 	ELSRTM旨在通过拟合反射波振幅信息来反演弹性参数模型的高波数成分，可视为线性的EFWI问题。
 	常规ELSRTM通过多次迭代可以压制由于数据缺失、粗网格采样等产生的成像噪音，提高成像分辨率，同时部分地降低参数间的耦合
-	效应。模式解耦则可以在计算梯度时通过分离出S波梯度，使得ELSRTM中S波速度扰动的估计接近于单参数反演，从而降低了反演参数耦合及非线性程度
+	效应。模式解耦则可以在计算梯度时通过分离出S波梯度，使得ELSRTM中S波速度扰动的估计接近于单参数反演，从而降低了反演中的参数耦合及非线性程度
 	。于是，针对不同的参数耦合情况设计了相应
-	的反演策略。在$V_p$较少受$V_s$耦合影响时，采用梯度解耦双参数同时反演；而在$V_p$与$V_s$强烈相互影响时，借助解耦后的S波
+	的反演策略。在$V_p$较少受$V_s$耦合影响时，采用梯度解耦后的双参数同时反演；而在$V_p$与$V_s$强烈相互影响时，借助解耦后的S波
 	反演$V_s$扰动，然后再反演$V_p$扰动，这样可以进一步压制$V_p$所受到的来自$V_s$的耦合影响。
 %	另外，由于实际反射数据与Born模拟数据之间存在差异，因此在ELSRTM中最好能匹配反射数据与背景波场之间的残差。
 
@@ -138,28 +138,29 @@
 \ckeywords{弹性波，模式解耦，全波形反演，Hessian和分辨率矩阵，参数耦合，反射走时反演，反射核函数，最小平方逆时偏移}
 
 \begin{eabstract}
-	The primary task of the detection and exploration of the Earth's interior is to estimate the elastic parameters or rock properties
+	The primary task of the detecting and imaging the Earth's interior is to estimate the elastic parameters or rock properties
 	quantitively
 	through the recording data on the surface. With the developement of 
-	high-performance computation ability and the
+	high-performance computation and the
 	maturation of wide-azimuth, long-offset and broadband data accquisition 
 	technology, full waveform inversion (FWI) becomes a powerful tool to recover the full
-	 wavenumber spectrum of the subsurface. However, FWI can not provide the estimated
+	 wavenumber spectrum of the subsurface. However, FWI can not rebuild the estimated
 	model as good as expected. In order to overcome the obstacles such as cycle-skipping problems
 	caused by bad initial models or
-	insufficiency of low frequency component in the data, inaccurately estimated source
-	wavelet, low sigal/noisy ratio in the data, many researchers developed hierarachical strategies
+	insufficiency of low frequency components in the data, inaccurately estimated source
+	wavelet, low sigal/noisy ratio and so on, many researchers developed hierarachical strategies
 	by selecting data subsets of different frequency, offset or scattering-angle during the
 	inversion.	
 	In elastic media, complicated mode conversions and other multicomponent problems further increase the
 	nonlinearity of inversion. Besides, in certain angles, the overlapped partial derivative wavefields of  different
 	parameter will lead to trade-offs.
-	To rebuild the model containing different wavenumber spectrum, elastic full waveform
+	To rebuild the elastic model of different wavenumber, elastic full waveform
 	inversion (EFWI), elastic wave equation 
-	reflection traveltime inversion (EWERTI) and elastic least square reverse time
-	migration (ELSRTM) are implemented with the help of wave mode decomposition, through which we
-	try to recover the low and intermediate wavenumber, 
-	the high wavenumber and the full wavenumber spectrum of the elastic model.
+	reflection traveltime inversion (EWERTI) and elastic least-squares reverse time
+	migration (ELSRTM) are implemented with the help of wave mode decomposition. Utilizing these
+	methods, we
+	try to recover the elastic model from low and itermediate wavenumber to high
+	wavenumber, or even full wavenumber.
 
 Elastic full waveform inversion (EFWI) aims to reduce the misfit between recorded and modelled multi-component
 seismic data for deducing a detailed model of elastic parameters in the subsurface.
@@ -182,8 +183,8 @@ can mitigate the trade-off between the P- and S-wave velocities and achieve fast
 convergence without any Hessian-involved calculations.
 
 Elastic reflection waveform inversion (ERWI) utilize the reflections to update the low and
-intermediate wavenumber in the
-deeper part of model, which can provide good initial models for EFWI. However, ERWI suffers from
+intermediate wavenumber of
+the deep part model, which can provide good initial models for EFWI. However, ERWI suffers from
 the cycle-skipping problem due to the objective function of waveform fitting. Since taveltime
 information relates to the background model more linearly, the cycle-skipping of traveltime
 objective function will be less severe
@@ -222,18 +223,19 @@ and $V_s$ couple with each
 other severely, we recommand inverting $V_s$ firstly followed by $V_p$ inversion to further mitigate
 the trade-offs from $V_s$ during the $V_p$ inversion.
 
-In this thesis, we focus on the mode-decomposition-based inversion methods to recover the model
-containing different wavenumber spectrum. P/S separation of multicomponent data and wave mode
+In this thesis, we focus on the mode-decomposition-based inversion methods to recover the elastic model
+containing different wavenumber. P/S separation of multicomponent data and wave mode
 decomposition provide flexible P or S wave data in different stage of inversion.
-Investigation of decomposed Frechet derivative, Hessian and resolution matrices and Born reflection
-kernel show the different contribution of P or S wave to gradients. Accordingly, hierarchical
+The investigation of decomposed Frech{$\acute{e}$}t derivatives, Hessian and resolution matrices and Born reflection
+kernels show the different contribution of P or S wave to gradients. Accordingly, hierarchical
 strategies are designed to reduce the nonlinearty, trade-off
 effects and other problems during inversion and finally rebuild the elastic model from shallow to
-deep more effectively. 
+deep effectively. 
 
 \end{eabstract}
 
 %\ckeywords{全波形反演，Hessian和分辨率矩阵，参数耦合，波动方程反射走时反演，反射波路径核函数，最小平方逆时偏移，弹性波，模式解耦}
-\ekeywords{Full waveform inversion, Hessian and resolution matrix, parameter trade-off, 
-	wave equation reflection traveltime inversion, reflection kernel, least-squares RTM,
-	Elasticity, Mode decomposition}
+\ekeywords{Elasticity, mode decomposition, full waveform inversion, Hessian and resolution matrix,
+	parameter trade-off, reflection kernel,
+	wave equation reflection traveltime inversion, least-squares RTM,
+	}

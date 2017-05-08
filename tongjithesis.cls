@@ -761,7 +761,7 @@
 \newcommand{\tongji@makeabstract}{%
   \cleardoublepage % always openright for Abstract
   \tongji@chapter*[]{\cabstractname} % no tocline
-    \addcontentsline{toc}{chapter}{\hei{摘要}}
+%    \addcontentsline{toc}{chapter}{\hei{摘要}}
   \pagestyle{tongji@cnabheadings}  
   \pagenumbering{Roman}
   \tongji@cabstract
@@ -771,7 +771,7 @@
     \box0\tongji@ckeywords
   %英文摘要页面
   \tongji@chapter*[]{\eabstractname} % no tocline
-    \addcontentsline{toc}{chapter}{\hei{ABSTRACT}}
+%    \addcontentsline{toc}{chapter}{\hei{ABSTRACT}}
   \pagestyle{tongji@enabheadings}
   \tongji@eabstract
   \vskip12bp

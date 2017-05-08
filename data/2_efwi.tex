@@ -66,7 +66,7 @@ Hessian矩阵以及分辨率矩阵等反演中的关键要素，来解释模式�
 %辐射模式，并导出了解耦的Frech{$\acute{e}$}t导数或Jacobian矩阵；然后，我们调查了解耦后的P波与S波数据对梯度的贡献并提出了在梯度计算中的交叉项近似。
 %在此基础上，预条件的梯度可以通过伴随状态法\cite[]{plessix2006}快速有效地计算得到，也即正传波场与解耦后反传波场的零延迟互相关。
 %然后，为了获得更多物理机制上的认识，我们计算并分析了基于解耦的Hessian和分辨率矩阵，同时也比较了MD预条件后的梯度与GN梯度的异同。
-此后，通过在流体饱和砂岩模型以及Marmousi-II模型的数值实验验证模式解耦EFWI的有效性。
+此后，通过在流体饱和砂岩模型以及Marmousi-II模型的数值算例验证模式解耦EFWI的有效性。
 最后，将讨论密度参数对反演带来的复杂性以及模式解耦预条件共轭梯度（MDPCG）算法对三参数EFWI的贡献，并给出本章结论。
 %\clearpage
 
@@ -261,7 +261,7 @@ $\delta \mathbf{m}=(\delta\mathbf{V}_p \quad \delta\mathbf{V}_s)^T$.
 这里$\mathbf{J}^P=(\mathbf{J}^P_{V_p}\quad\mathbf{J}^P_{V_s})$和$\mathbf{J}^S=(\mathbf{J}^S_{V_p}\quad\mathbf{J}^S_{V_s})$为大小是$K\times{2L}$的矩阵，分别代表P波或S波分量对应的Frech{$\acute{e}$}t导数（Jacobian矩阵）。
 方程\eqref{eq:UPandUS}表示了在模式解耦下的Born近似所描述的散射波场。
 
-我们知道，次级震源只有在背景波场入射到参数扰动的位置时才会被激发。尽管次级震源（或者说背景场）中会既有P波又有S波，
+我们知道，次级震源只有在背景波场入射到参数扰动的位置时才会被激发。尽管次级震源（或者说背景场）中既有P波又有S波，
 对于反演来说并不需要严格区分出它们的贡献（原因将在本章讨论部分进行详细阐述）。于是，模式解耦下Jacobian
 矩阵满足：
 \begin{equation}
@@ -308,8 +308,8 @@ Wang and McMechan, 2015\cite{wang.mcmechan:2015b})。
         \mathbf{m}_{k+1}=\mathbf{m}_{k}-\alpha_k \mathbf{g}_k,
         \label{eq:Gradientmethod1}
 \end{equation}
-其中$\mathbf{m}$是模型参数向量，$k$是迭代次数，$\alpha_k$和$\mathbf{g}_k$则分别是第$k$迭代的步长与梯度。
-常规的EFWI需要非常多的迭代次数，因此良好的梯度预条件能够加速收敛。
+其中$\mathbf{m}$是模型参数向量，$k$是迭代次数，$\alpha_k$和$\mathbf{g}_k$则分别是第$k$次迭代的步长与梯度。
+常规的EFWI需要非常多的迭代次数，因此良好的梯度预条件能加速收敛。
 
 方程\eqref{eq:MatrixGra1}中的梯度并没有内在的机制来判断数据残差中的成分是来自$\delta V_p$还是来自$\delta V_s$。
 将方程\eqref{eq:MatrixGra1}分裂为P波与S波分量对应的两个部分：
@@ -480,18 +480,18 @@ and Starr, 2008\cite[]{vigh20083d})。
         \label{eq:DeGradient_vpvs} 
 \end{equation}
 其中$\psi^P$和$\psi^S$分别为P波和S波的伴随波场。由于$\mathbf{g}_{V_p}$的计算中隐含了散度算子，总是满足$\hat{\mathbf{g}}_{V_p}=\mathbf{g}_{V_p}$。
-与方程\eqref{eq:Gradient_vpvs}对比，由于S波的散度总是为0，所以在计算预条件后的S波速度梯度时舍弃了$-2\delta_{ij}\delta_{kl}$项。
-因此，对于P波速度而言，模式解耦已经自动隐含在梯度计算中，但是对S波速度梯度的模式解耦预条件需要显式地施加。
+与方程\eqref{eq:Gradient_vpvs}对比，由于S波的散度总是为0，所以在计算预条件后的$V_s$梯度时舍弃了$-2\delta_{ij}\delta_{kl}$项。
+因此，对于P波速度而言，模式解耦已经自动隐含在梯度计算中，但是对$V_s$梯度的模式解耦预条件需要显式地施加。
 
 解耦伴随波场需要额外的计算量，主要体现在每个时间片中需要两次Fourier变换。为了减少计算量并节省内存消耗，可以
 对正传波场与反传波场在时间轴上进行重采样，并且在互相关之前只对反传的伴随波场进行模式解耦。
-当考虑其它多尺度策略考虑时，也可以对正传波场进行解耦，例如在某一阶段反演中单独使用SS或者PS模式。但本文并不推荐
+当考虑其它多尺度策略考虑时，也可以对正传波场进行解耦，例如在某一阶段反演中单独使用SS或者PS波模式的数据。但本文并不推荐
 这样的策略，这将在讨论部分进行阐述。
 \section{模式解耦降低参数耦合的理论机制}
 	前一节提出了通过模式解耦来预条件处理EFWI的梯度，以便压制参数耦合效应。然而解决参数解耦问题最直接有效（但也最昂贵）
 的方法是考虑Hessian矩阵的优化方法。下面将采用解耦后的
 Frech$\acute{e}$t导数来调查Hessian和分辨率矩阵的性质，并且对比常规（PCG）、模式解耦（MDPCG）和高斯-牛顿（GN）的梯度来
-阐明模式解耦EFWI能压制参数耦合的内在机制。
+阐明模式解耦EFWI压制参数耦合的内在机制。
 \subsection{Hessian矩阵及其不同模式的分量}
 多参数情况下的Hessian矩阵是一个具有块状结构的对称方阵，其中非对角块测量了不同物理参数的偏导数波场之间的互相关效应，其作用
 是消除多参数反演中的参数耦合效应。当反问题为近似线性或者数据残差非常小的时候，全Hessian将约等于近似Hessian
@@ -537,7 +537,7 @@ Frech$\acute{e}$t导数来调查Hessian和分辨率矩阵的性质，并且对�
 Frech{$\acute{e}$}t导数显式
 计算，$H_a$中非对角块中明显的非零元素代表了很强的参数耦合效应。可以观察到以下
 现象：
-首先，交叉项分量，$\mathbf{H}_a^{PS}$和$\mathbf{H}_a^{SP}$对$\mathbf{H}_a$的贡献可以忽略不计。这是由于
+首先，交叉项分量（$\mathbf{H}_a^{PS}$和$\mathbf{H}_a^{SP}$）对$\mathbf{H}_a$的贡献可以忽略不计。这是由于
 背景P波和S波速度不同导致
 相应
 的P波与S波Fr{$\acute{e}$}chet导数
@@ -604,7 +604,7 @@ $\mathbf{R}$ 的对角区块隐含了单参数内部间的相互影响及其相�
 \end{equation}
 且$\mathbf{H}_a^S=\mathbf{J}^{\dagger}\mathbf{J}^S$。容易证明$\mathbf{R}=\mathbf{R}^P+\mathbf{R}^S$。
 
-\begin{figure}[!htb]
+\begin{figure}[!bht]
     \begin{center}
         \includegraphics[width=8cm]{Figure/chapter02/ResoOpera/Fig/resolutionoriginal.pdf}
         \caption{
@@ -656,7 +656,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
         \label{eq:KeyPoint}
 \end{equation}
 （见附录A）。
-\begin{figure}[!htb]
+\begin{figure}[!thb]
     \begin{center}
         \includegraphics[width=14cm]{Figure/chapter02/Hessiantest/Fig/newepsall.pdf}
         \caption{
@@ -682,7 +682,7 @@ GN方法利用近似Hessian的逆对梯度进行预条件来处理参数之间�
 
 在图\ref{fig:all}中，同样采用前文小模型实验来比较常规（PCG）、模式解耦（MDPCG）和高斯-牛顿（GN）第一次迭代的梯度。
 在模型中央放置三种不同类型、尺度为10$\times$10m的参数扰动组合，分别为：(a) $\delta V_p \neq 0$, $\delta V_s = 0$; (b) $\delta V_p = 0$，
-$\delta V_s \neq 0$，和(c) $\delta V_p =10\delta
+$\delta V_s \neq 0$和(c) $\delta V_p =10\delta
 V_s$。初始模型为均匀的背景速度。在第一组实验中只有P波数据，可以看到原始的梯度（$\mathbf{g}_{V_p}$和$\mathbf{g}_{V_s}$）中，有非常明显的参数耦合效应。
 从图\ref{fig:all}a和b中可以看到，对于物理参数A而言，另一个参数B扰动会产生一个与B扰动方向相反的A的梯度。从图\ref{fig:all}b和c中$\mathbf{g}^{P}_{V_s}$看到，尽管P波数据残差可能携带了$\delta V_s$的信息，
 常规梯度类方法用P波数据来反演$V_s$将会受到参数耦合的影响。在第三组实验中，由于参数耦合的影响，$\mathbf{g}^P_{V_s}$甚至提供了错误的更新方向。
@@ -697,7 +697,7 @@ $\mathbf{G}$做为算子来对S波速度梯度（$\mathbf{g}^S_{V_s}$）做预�
 （见方程\ref{eq:ResoOperS2}）。正如方程\eqref{eq:Gradientmethod}所示，MDPCG方法也需要进一步的预条件来加速收敛。例如，预条件算子$\mathbf{Q}_2$
 只需要考虑S波的照明补偿以及子波带宽效应即可，即近似$\mathbf{G}$的效果。因此，对
 $V_s$反演，MDPCG方法几乎可看作是采用解耦的S波数据进行的单参数反演。相应地，预条件算子$\mathbf{Q}_2$要更廉价一些，比如利用单参数拟Hessian或者l-BFGS
-方法。这种预条件方法为$V_s$反演近似提供了GN梯度同时又降低了迭代中的参数耦合，能够在不引入Hessian的情况下加速收敛。
+方法。这种预条件方法为$V_s$反演近似提供了GN方法的梯度从而降低了迭代中的参数耦合，能够在不引入Hessian的情况下加速收敛。
 
 \section{数值实验}
 本节用两个理论合成数据的例子来验证模式解耦EFWI的有效性。实验中采用纯P波震源来合成多分量地震记录。
@@ -758,7 +758,7 @@ $V_p=2.6 km/s$和$V_s=1.66 km/s$，下部含水，$V_p=3.0 km/s$和$V_s=1.66 km/
 过去十年间，很多EFWI策略被用在了OBC地震数据中。在地震数据低频成分比较丰富的情况下，重建低Poisson比的模型（如硬海底）相对比较容易\cite[]{bae:2012}。
 然而，软海底环境在现实中更为普遍。此时，PS转换能量非常有限，反演中的非线性程度以及参数间的耦合也
 会变得更加严重。为了应对这种更真实的软海底情况，
-如图\ref{fig:MarInitTrue}(a)和(b)所示，用Marmousi-II模型中的原始P波与S波速度来测试算法。不同参数间非一致的结构能更明显地调查参数间的耦合程度。
+如图\ref{fig:MarInitTrue}(a)和(b)所示，采用泊松比变化剧烈的原始Marmousi-II模型测试算法。不同参数间非一致的结构能更明显地调查参数间的耦合程度。
 为了更好的展示本文方法的优势，在S波速度模型1.5km深处添加了一个高速的薄层。在反演中，采用交错网格有限差分法来计算正传与共轭波场，空间采样间隔为5m，
 记录总时间为8s，时间采样间隔为0.5ms。共有40炮合成数据，炮点深度在20m的水深处，2800个检波点放置于海底来模拟OBC观测。初始模型通过SU软件中的smooth2函数
 平滑真实模型产生，平滑半径为300m。采用与前一实验同样的多尺度策略，但是每阶段最大迭代次数扩大为40次。
@@ -798,7 +798,7 @@ $V_p=2.6 km/s$和$V_s=1.66 km/s$，下部含水，$V_p=3.0 km/s$和$V_s=1.66 km/
     \end{center}
 \end{figure}
 图\ref{fig:L2}展示了在前两个阶段的反演中，归一化的目标函数值随迭代次数的下降曲线。可以看到，MDPCG方法要比常规PCG方法收敛更快。在第一个阶段，模式解耦
-反演方法的数据拟合程度更高，获得了更准确的中低波数模型更新。在第二个阶段，常规PCG方法最终在25次迭代之后停止更新且数据残差仍相当大，而MDPCG方法
+反演方法的数据拟合程度更高，反演结果恢复了更准确的中低波数成分。在第二个阶段，常规PCG方法最终在25次迭代之后停止更新且数据残差仍相当大，而MDPCG方法
 在22次迭代后数据残差快速下降达到终止条件。这些分析表明利用模式解耦对梯度做预条件可以很有效地在反演中降低参数耦合从而加速收敛。
 
 表\ref{table:TotalComputime}
@@ -839,7 +839,7 @@ Ren和Liu\cite{ren.liu:2016}，在其四步反演策略的第二步中，当有�
     \mathbf{J}^{XY}\delta\mathbf{m}=\mathbf{\delta u}^{XY},
     \label{eq:JXY}
 \end{equation}
-其中$X$和$Y$分别表示次级源与散射Green's函数的波模式，$\mathbf{\delta u}^{XY}$则表示${X}{Y}$模式的扰动波场。根据方程\eqref{eq:ResoOperP}的推导方式，
+其中$X$和$Y$分别表示次级源与散射Green函数的波模式，$\mathbf{\delta u}^{XY}$则表示${X}{Y}$模式的扰动波场。根据方程\eqref{eq:ResoOperP}的推导方式，
 可以获得相应的分辨率矩阵：
 \begin{equation}
     \mathbf{R}^{XY}=\mathbf{H}_a^{-g}\mathbf{J}^{\dagger}\mathbf{J}^{XY}. 
@@ -851,7 +851,7 @@ Ren和Liu\cite{ren.liu:2016}，在其四步反演策略的第二步中，当有�
 ，即使震源中含有足够强的S波能量，SP梯度也很弱且有很多噪音。一个
 可能的解释就是如图\ref{fig:SPSS}所示，SP的散射能量很弱。此外，也难以
 区分出PS和SS模式各自的贡献，因为从图\ref{fig:ResoMN}中看到，$\mathbf{R}^{PS}$和
-$\mathbf{R}^{SS}$的非零元素分布非常一致。因此，通过正传波场解耦来进一步压制参数耦合效应的潜力非常有限，尽管这样会带来更多的计算量。这也是为什么本文只
+$\mathbf{R}^{SS}$的非零元素分布非常一致，也就是说它们的分辨能力相似。因此，通过正传波场解耦来进一步压制参数耦合效应的潜力非常有限，尽管这样会带来更多的计算量。这也是为什么本文只
 分解反传波场来对梯度进行预条件。
 \begin{figure}[!htb]
     \begin{center}
@@ -870,7 +870,7 @@ $\mathbf{R}^{SS}$的非零元素分布非常一致。因此，通过正传波场
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=5cm]{Figure/chapter02/radiationpattern/Fig/SPSS.pdf}
+        \includegraphics[width=6cm]{Figure/chapter02/radiationpattern/Fig/SPSS.pdf}
         \caption{
 			归一化的SP模式（红色）和SS模式（蓝色）的辐射模式。
 %            Radiation pattern of SP and SS modes with a same normalization: SP

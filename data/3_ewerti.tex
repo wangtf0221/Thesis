@@ -210,7 +210,7 @@ $h^{'}_i(\mathbf{x_r};\mathbf{x_s})=\int h_i(\mathbf{x_r},t;\mathbf{x_s})dt$
 %   \caption{单独$V_p$扰动时的反射波路径。左侧为$V_p$，右侧为$V_s$.}
 %   \label{fig:kernel2}
 %\end{figure}
-\begin{figure}[!htb]
+\begin{figure}[!bth]
    \centering
    \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsPP.pdf}}
    \subfloat[]{\includegraphics[width=0.50\textwidth]{Figure/chapter03/Kernel/VsonlyvsPS.pdf}}\\
@@ -232,18 +232,16 @@ $h^{'}_i(\mathbf{x_r};\mathbf{x_s})=\int h_i(\mathbf{x_r},t;\mathbf{x_s})dt$
 采用了P波震源，在震源端的波场中不包含S波数据（$K_{V_s}^{SS}$的震源端项会是0）。这样的话，$K_{V_s}^{SS}$就几乎不受到P波路径的影响，且较少包含高波数的偏移响应。
 如果利用好这些分解后核函数分量的特征，
 将会非常有助于背景$V_s$的反演。
+
+$\quad$
+
+$\quad$
 \section{反射走时反演流程}
 弹性介质中P波震源情况下，不同模式的转换波（主要是PP与PS波）同相轴之间会互相叠加、互相交叉。在用DIW提取走时残差的时候，这些交叉点的位置就会变成一些奇异点带来很大麻烦
 。因此，如果直接用原始多分量数据的话，拾取到的$\tau(\mathbf{x_r},t;\mathbf{x_s})$就会不准确，这也是为什么式\eqref{eq:AdjointDeltaWE}中的梯度很难直接应用。
 为了解决这个问题，本文将观测与模拟地震数据分解为P波与S波两部分。该模式分解只作用于地面地震数据\cite[]{Li2016a}，可以快速地获得每一炮数据分解之后的矢量
 P波或S波地震记录。这样，走时残差就可以被分成P波与S波两部分，使得弹性波WERTI变得可行。于是，设计出一个两阶段的反演流程，先P波阶段后S波阶段。
 由于DIW提取走时的方式对数据的频率成分并不敏感，因此EWERTI中的多尺度策略主要体现在参数反演先后顺序上，并不需要过多考虑分频的策略。
-
-$\quad$
-
-$\quad$
-
-$\quad$
 \subsection{$V_p$反演}
 在这个阶段主要采用PP反射波来建立P波速度的背景模型。首先，从ERTM中获得P波速度的扰动，即$\delta V_p$。
 因为在速度不准的情况下大偏移距数据的偏移/反偏移结果会
